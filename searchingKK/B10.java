@@ -44,7 +44,7 @@ public class B10 {
 
         int arr[]={4,5,6,7,0,1,2};
         System.out.println(countRotation(arr));
-        System.out.println("vdshh");
+        System.out.println("dhrbgk");
 
 
     }
