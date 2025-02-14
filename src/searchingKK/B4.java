@@ -65,7 +65,7 @@ public class B4 {
 
     public static void main(String[] args) {
 
-        int nums[]={5,7,7,8,8,10};
+        int nums[]={5,7,8,8,8,8,10};
         int target=8;
         int[] finalAns=searchInRange(nums,target);
         System.out.println(Arrays.toString(finalAns));
