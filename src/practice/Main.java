@@ -1,45 +1,59 @@
 package practice;
 
+class Address{
 
+    String city;
 
-class Human{
+    Address(String city){
 
-    int age;
-    String name;
-    String address;
-
-    Human(int age,String name,String address){
-
-        this.age=age;
-        this.name=name;
-        this.address=address;
+        this.city=city;
     }
 
-    Human(Human other){
+}
 
-        this.age=other.age;
-        this.name=other.name;
-        this.address=other.address;
+class Person implements Cloneable{
+
+    String name;
+    int age;
+    Address add;
+
+    Person(String name,int age,Address add){
+        this.name=name;
+        this.age=age;
+        this.add=add;
+    }
+
+    protected Object clone() throws CloneNotSupportedException{
+        return super.clone();
+    }
+
+
+}
+
+
+
+public class Main {
+
+    public static void main(String[] args) throws CloneNotSupportedException {
+
+        Address obj=new Address("uk");
+        Person obj2=new Person("kunal",12,obj);
+        Person obj3=(Person) obj2.clone();
+
+        System.out.println(obj.city);
+        System.out.println(obj2.add.city);
+        System.out.println(obj3.add.city);
+
+        obj3.add.city="nepal";
+
+
+        System.out.println(obj.city);
+        System.out.println(obj2.add.city);
+        System.out.println(obj3.add.city);
+
+
+
+
 
     }
 }
-public class Main {
-
-
-    public static void main(String[] args) {
-
-        Human obj=new Human(10,"kunal","uk");
-        Human obj2=new Human(obj);
-
-
-
-
-
-    }
-
-
-
-
-
-    }
-

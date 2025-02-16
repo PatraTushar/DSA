@@ -32,12 +32,13 @@ public class ListInterface {
         System.out.println(st.size());  //1
         System.out.println(st.isEmpty());  //false
 
+
     }
 
 
     static void QueueExample(){
 
-        Queue<Integer> q=new LinkedList<>();
+        LinkedList<Integer> q=new LinkedList<>();
 
         q.offer(1);
         q.offer(2);

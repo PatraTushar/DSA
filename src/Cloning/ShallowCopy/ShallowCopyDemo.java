@@ -42,7 +42,7 @@ public class ShallowCopyDemo {
 
         Person p2 = (Person) p1.clone(); // Cloning
 
-        p2.address.city="england";
+        p1.address.city="england";
 
 
 
@@ -54,6 +54,7 @@ public class ShallowCopyDemo {
 
         p1.display();
         p2.display();
+
 
     }
 
