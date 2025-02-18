@@ -1,55 +1,49 @@
 package practice;
 
-class Address{
+class animal{
+    void eat(){
 
-    String city;
-
-    Address(String city){
-
-        this.city=city;
+        System.out.println(" animal is eating ");
     }
-
-}
-
-class Person implements Cloneable{
-
-    String name;
-    int age;
-    Address add;
-
-    Person(String name,int age,Address add){
-        this.name=name;
-        this.age=age;
-        this.add=add;
-    }
-
-    protected Object clone() throws CloneNotSupportedException{
-        return super.clone();
-    }
-
-
 }
 
 
+class dog extends animal{
+
+    void bark(){
+        System.out.println(" dog barks ");
+    }
+
+    void eat(){
+        System.out.println(" dog is eating ");
+    }
+}
+
+class cat extends animal{
+
+    void meow(){
+
+        System.out.println(" cat meow ");
+    }
+}
+
+class elephant extends animal{
+    void trumph(){
+        System.out.println(" elephant trumph ");
+    }
+}
 
 public class Main {
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
 
-        Address obj=new Address("uk");
-        Person obj2=new Person("kunal",12,obj);
-        Person obj3=(Person) obj2.clone();
+        animal obj=new animal();
+        obj.eat();
 
-        System.out.println(obj.city);
-        System.out.println(obj2.add.city);
-        System.out.println(obj3.add.city);
+        dog obj2=new dog();
+        obj2.eat();
+        obj2.bark();
 
-        obj3.add.city="nepal";
-
-
-        System.out.println(obj.city);
-        System.out.println(obj2.add.city);
-        System.out.println(obj3.add.city);
 
 
 

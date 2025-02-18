@@ -1,8 +1,6 @@
 package OopsByKK.Properties.Inheritance.SingleInheritance;
 
-import OopsByKK.AccessModifier.Public.A;
-
-public class BoxWeight extends Box {
+public  class BoxWeight extends Box {
 
     double weight;
 
@@ -31,3 +29,4 @@ public class BoxWeight extends Box {
 
 
 }
+

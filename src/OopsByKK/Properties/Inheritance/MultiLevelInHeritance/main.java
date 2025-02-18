@@ -4,7 +4,7 @@ public class main {
 
     public static void main(String[] args) {
 
-         // box class object
+         // box class object8
         box obj1=new box();
         System.out.println(obj1.length + " : " + obj1.breadth + " : " + obj1.height);
         box obj2=new box(100);
