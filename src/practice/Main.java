@@ -1,48 +1,28 @@
 package practice;
 
-class animal{
-    void eat(){
-
-        System.out.println(" animal is eating ");
-    }
-}
-
-
-class dog extends animal{
-
-    void bark(){
-        System.out.println(" dog barks ");
-    }
-
-    void eat(){
-        System.out.println(" dog is eating ");
-    }
-}
-
-class cat extends animal{
-
-    void meow(){
-
-        System.out.println(" cat meow ");
-    }
-}
-
-class elephant extends animal{
-    void trumph(){
-        System.out.println(" elephant trumph ");
-    }
-}
-
 public class Main {
+
+    static int BS(int arr[],int target,int start,int end){
+
+        int mid=start + (end-start)/2;
+
+        if(target==arr[mid]) return mid;
+
+       else if(target>arr[mid]) return BS(arr,target,mid+1,end);
+
+       else return BS(arr,target,start,mid-1);
+
+
+    }
 
     public static void main(String[] args) {
 
-        animal obj=new animal();
-        obj.eat();
+        int[] arr={10,20,30,40,50,60,70,80,90,100};
+        int target=80;
+        System.out.println(BS(arr,target,0,arr.length-1));
 
-        dog obj2=new dog();
-        obj2.eat();
-        obj2.bark();
+
+
 
 
 

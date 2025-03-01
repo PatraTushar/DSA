@@ -7,6 +7,7 @@ public class Box {
     double width;
     double height;
 
+
     Box() {
 
         this.length = -1;
@@ -40,7 +41,11 @@ public class Box {
         this.height = old.height;
     }
 
-    public void information() {
-        System.out.println(" running the box ");
+    public static void information() {
+        System.out.println(" running the box " );
     }
+
+
+
+
 }

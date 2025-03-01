@@ -2,9 +2,23 @@ package OopsByKK.ExceptionHandling.Throws;
 
 public class ThrowsDemo {
 
-    public static void main(String[] args) throws InterruptedException {
-        Thread.sleep(1000);  // InterruptedException may occur
-        System.out.println(" after sleep ");
+    static void divide(int a,int b) throws ArithmeticException{
+
+        int result=a/b;
+        System.out.println(result);
+
+
+    }
+
+    public static void main(String[] args)  {
+
+
+        try {
+            divide(10,0);
+        }catch (ArithmeticException e){
+            System.out.println(" cannot divide by zero ");
+        }
+
 
 
 

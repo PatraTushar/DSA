@@ -55,6 +55,10 @@ public class main {
         obj4.eat();
 
 
+
+
+
+
     }
 
 

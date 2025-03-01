@@ -1,7 +1,7 @@
 package OopsByKK.ExceptionHandling.CustomException;
 
 
-class AgeException extends  Exception{
+class  AgeException extends  Exception{
 
     AgeException(String message){
         super(message);
