@@ -19,6 +19,7 @@ public class Implementation {
         Node head=null;
         Node tail=null;
 
+
         int size=0;
 
         void insertAtEnd(int val){

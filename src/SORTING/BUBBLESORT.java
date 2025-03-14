@@ -20,7 +20,7 @@ public class BUBBLESORT {
                 }
             }
 
-            if(flag==false){
+            if(!flag){
                 return;
             }
         }

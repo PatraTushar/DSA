@@ -14,7 +14,7 @@ public class SelectionSort {
 
     static int max(int arr[],int start,int end){
 
-        int max=Integer.MIN_VALUE;
+        int max=start;
 
         for(int i=start;i<=end;i++){
 
