@@ -46,7 +46,7 @@ public class Q9 {
 
     public static void main(String[] args) {
 
-        // Q: Delete the middle element of linked list for odd and right middle for even
+        // Q: Delete the middle element of linked list for odd and right middle for even  (leeTCode->2095)
 
         Node a=new Node(1);
         Node b=new Node(5);

@@ -56,7 +56,7 @@ public class Q5 {
 
     public static void main(String[] args) {
 
-      // Q: Delete nth node from end of the linked list(in one traversal)  here head node is deleted
+      // Q: Delete nth node from end of the linked list(in one traversal)  here head node is deleted  (leeTCode->237)
 
         Node a=new Node(100);
         Node b=new Node(15);

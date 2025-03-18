@@ -87,7 +87,7 @@ public class Q6 {
 
     public static void main(String[] args) {
 
-        // Q: Intersection of 2 linked list
+        // Q: Intersection of 2 linked list  (leeTCode->160)
 
         Node a=new Node(87);
         Node b=new Node(100);

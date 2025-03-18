@@ -39,7 +39,7 @@ public class Q7 {
 
     public static void main(String[] args) {
 
-        // Q: find middle element of linked list for odd and right middle for even
+        // Q: find middle element of linked list for odd and right middle for even  (leeTCode->876)
 
         Node a =new Node(100);
         Node b=new Node(13);
