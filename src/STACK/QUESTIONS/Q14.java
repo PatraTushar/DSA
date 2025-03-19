@@ -1,6 +1,6 @@
 package STACK.QUESTIONS;
 
-import LINKEDLIST.Q5;
+
 
 import java.util.Stack;
 
