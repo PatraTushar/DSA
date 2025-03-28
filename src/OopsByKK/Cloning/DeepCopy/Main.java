@@ -1,24 +1,18 @@
 package OopsByKK.Cloning.DeepCopy;
 
-
-
-class Address implements Cloneable {  // Step 2: Implement Cloneable in Address
+// Address class (remains the same)
+class Address {
     String city;
 
     Address(String address) {
         this.city = address;
     }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new Address(this.city); // Step 2: Return a new Address object
-    }
 }
 
+// Person class (modified for deep copy)
 class Person implements Cloneable {
     String name;
     int age;
-
     Address address;
 
     Person(String name, int age, Address address) {
@@ -29,10 +23,9 @@ class Person implements Cloneable {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        // Step 1: Create a new Person instance and copy values manually
-        Person clonedPerson = (Person) super.clone();
-        clonedPerson.address = (Address) this.address.clone(); // Step 1: Deep copy of Address
-        return clonedPerson;
+        Person cloned = (Person) super.clone(); // Shallow copy first
+        cloned.address = new Address(this.address.city); // Deep copy of Address
+        return cloned;
     }
 
     void display() {
@@ -40,16 +33,26 @@ class Person implements Cloneable {
     }
 }
 
+// Main class (demonstrates deep copy)
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
-        Address obj = new Address("UK");
-        Person obj2 = new Person("John", 14, obj);
-        Person obj3 = (Person) obj2.clone();  // Cloning obj2 with Deep Copy
+        // Create an Address object
+        Address originalAddress = new Address("London");
 
-        obj3.address.city = "USA";  // Changing obj3's city
+        // Create a Person object
+        Person originalPerson = new Person("Alice", 30, originalAddress);
 
-        obj2.display(); // Prints "UK" (unchanged)
-        obj3.display(); // Prints "USA" (only changed in obj3)
+        // Clone the Person object (deep copy)
+        Person clonedPerson = (Person) originalPerson.clone();
+
+        // Modify the cloned Person's Address
+        clonedPerson.address.city = "New York";
+
+        // Display the original and cloned Person objects
+        System.out.println("Original Person:");
+        originalPerson.display(); // Output: Name: Alice, Age: 30, City: London
+
+        System.out.println("\nCloned Person:");
+        clonedPerson.display(); // Output: Name: Alice, Age: 30, City: New York
     }
 }
-

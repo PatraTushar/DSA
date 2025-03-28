@@ -7,6 +7,8 @@ class CustomArrayList<T> {
     private static final int DEFAULT_CAPACITY = 10;  // Default initial size
 
     // Constructor with default capacity
+
+    @SuppressWarnings("unchecked")
     public CustomArrayList() {
         this.capacity = DEFAULT_CAPACITY;
         this.arr = (T[]) new Object[capacity]; // Creating a generic array
@@ -14,6 +16,8 @@ class CustomArrayList<T> {
     }
 
     // Constructor with custom capacity
+
+    @SuppressWarnings("unchecked")
     public CustomArrayList(int capacity) {
         this.capacity = capacity;
         this.arr = (T[]) new Object[capacity];
@@ -29,6 +33,8 @@ class CustomArrayList<T> {
     }
 
     // Resize the array when it's full
+
+    @SuppressWarnings("unchecked")
     private void resize() {
         capacity *= 2;  // Double the capacity
         T[] newArr = (T[]) new Object[capacity]; // Create a larger array
@@ -64,6 +70,7 @@ class CustomArrayList<T> {
     }
 
     // Shrink the array when too much unused space is available
+    @SuppressWarnings("unchecked")
     private void shrink() {
         capacity /= 2;
         T[] newArr = (T[]) new Object[capacity];
@@ -79,6 +86,8 @@ class CustomArrayList<T> {
     }
 
     // Clear all elements from the list
+
+    @SuppressWarnings("unchecked")
     public void clear() {
         size = 0;
         capacity = DEFAULT_CAPACITY;

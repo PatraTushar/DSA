@@ -5,6 +5,7 @@ class Address {
     String city;
 
     Address(String address) {
+
         this.city = address;
     }
 }

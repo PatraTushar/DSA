@@ -1,5 +1,5 @@
 
-class Car{
+ class Car{
 
     String name;
     float mileage;

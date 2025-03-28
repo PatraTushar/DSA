@@ -108,8 +108,7 @@ public class Q6 {
         Node i=new Node(9);
         h.next=i;
         i.next=e;
-        e.next=f;
-        f.next=g;
+
 
         display(a,h);
         Node Ans=intersection(a,h);

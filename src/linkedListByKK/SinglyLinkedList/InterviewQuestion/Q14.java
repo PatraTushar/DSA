@@ -50,8 +50,8 @@ public class Q14 {
 
             Node temp1 = head1;
             Node temp2 = head2;
-            Node head = new Node(100);
-            Node t = head;
+            Node dummy = new Node(100);
+            Node t = dummy;
 
 
             while (temp1 != null && temp2 != null) {
@@ -78,7 +78,7 @@ public class Q14 {
                 t.next = temp1;
             }
 
-            return head.next;
+            return dummy.next;
 
         }
 
