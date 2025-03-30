@@ -37,9 +37,9 @@ public class Q26 {
 
         // Q: Happy number (leeTCode->202)
 
-        int n=61;
+        int n=19;
 
-        System.out.println(isHappy(2));
+        System.out.println(isHappy(n));
 
     }
 }

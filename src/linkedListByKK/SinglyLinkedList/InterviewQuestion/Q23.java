@@ -63,14 +63,18 @@ public class Q23 {
 
 
         // Assigning random pointers
+        while (t1!=null && t2!=null) {
 
-        if (t1.random==null){
-            t2.random=null;
-        }
-        else {
-            t2.random = t1.random.next;
-            t1=t1.next.next;
-           if(t1!=null) t2=t2.next.next;
+
+            if (t1.random == null) {
+                t2.random = null;
+            } else {
+                t2.random = t1.random.next;
+
+            }
+            t1 = t1.next.next;
+            if (t1 != null) t2 = t2.next.next;
+
         }
 
 

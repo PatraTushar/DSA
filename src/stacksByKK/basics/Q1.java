@@ -6,6 +6,8 @@ public class Q1 {
 
     public static void main(String[] args) {
 
+        // Q: copy the content of one stack to another in same order
+
         Stack<Integer> st=new Stack<>();
         st.push(1);
         st.push(2);

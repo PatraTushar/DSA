@@ -60,7 +60,8 @@ public class Q28 {
         slow.next=reverse2ndHalf;
 
         Node t1=head;
-        Node t2=slow.next;
+       Node t2=reverse2ndHalf;
+
 
         while (t2!=null){
             slow.next=t2.next;
