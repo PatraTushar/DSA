@@ -20,13 +20,16 @@ public class Q7 {
                 st.pop();
             }
 
-            if(st.isEmpty()){
-                res[i]=i+1;
+            if(!st.isEmpty()){
+                res[i]=i-st.peek();
 
             }
 
             else {
-                res[i]=i-st.peek();
+
+                res[i]=i+1;
+
+
             }
 
             st.push(i);

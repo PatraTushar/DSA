@@ -40,6 +40,7 @@ public class Q2 {
         System.out.println(bracketRemoveToMakeSequenceBalanced(")))"));    // Output: 3
         System.out.println(bracketRemoveToMakeSequenceBalanced("()()"));   // Output: 0
         System.out.println(bracketRemoveToMakeSequenceBalanced("())("));   //// Output: 2
+        System.out.println(bracketRemoveToMakeSequenceBalanced("(()()("));   //// Output: 2
 
 
     }

@@ -7,14 +7,53 @@ public class ListInterface {
     static  void ArrayListExamples(){
 
         ArrayList<Integer> l=new ArrayList<>();
+        ArrayList<Integer> l2=new ArrayList<>();
+        ArrayList<Integer> l3=new ArrayList<>();
+        ArrayList<Integer> l4=new ArrayList<>();
         l.add(1);
         l.add(2);
         l.add(3);
-        System.out.println(l);       // 1 2 3
-        System.out.println(l.get(1));   // 2
-        l.set(1,10);
-        System.out.println(l);      // 1 10 3
-        System.out.println(l.contains(10));     //true
+        l.add(4);
+        l.add(5);
+//        System.out.println(l);       // 1 2 3 4 5
+//        System.out.println(l.get(1));   // 2
+//        l.set(1,10);
+//        System.out.println(l);      // 1 10 3 4 5
+//        System.out.println(l.contains(10));     //true
+//        l.remove(Integer.valueOf(4));
+//        System.out.println(l); // 1 10 3 5
+
+        l2.add(100);
+        l2.add(200);
+        l2.add(300);
+
+        l3.add(1000);
+        l3.add(2000);
+        l3.add(3000);
+        l3.add(300);
+
+//        l2.addAll(l3);
+//        System.out.println(l2);
+//        l2.removeAll(l3);
+//        System.out.println(l2);
+//        l2.retainAll(l3);
+//        System.out.println(l2);  // intersection
+
+
+        l4.add(455);
+        l4.add(535);
+        l4.add(675);
+        l4.add(155);
+        l4.add(7755);
+     //   System.out.println(l4.get(2));  // 675
+      //  l4.set(4,898); // 455 535 675 155 898
+       // System.out.println(l4);
+      //  l4.add(1,10000); // 455, 10000, 535, 675, 155, 898
+      //  System.out.println(l4);
+       // System.out.println( l4.indexOf(155)); //3
+        System.out.println( l4.subList(1,4)); // 535, 675, 155
+
+
 
 
     }
@@ -38,7 +77,7 @@ public class ListInterface {
 
     static void QueueExample(){
 
-        LinkedList<Integer> q=new LinkedList<>();
+        Queue<Integer> q=new LinkedList<>();
 
         q.offer(1);
         q.offer(2);
@@ -95,11 +134,11 @@ public class ListInterface {
 
 
     public static void main(String[] args) {
-        //ArrayListExamples();
+        ArrayListExamples();
        // stackExample();
       //  QueueExample();
        // priorityQueue();
-        DequeueExamples();
+      //  DequeueExamples();
 
 
     }

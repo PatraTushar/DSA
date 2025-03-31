@@ -14,6 +14,10 @@ public class treeSet {
         st.add(1000);
         st.add(15);
         st.add(111);
-        System.out.println(st);
+
+        System.out.println(st);  // 10, 15, 90, 100, 111, 1000]
+        st.remove(90);
+        System.out.println(st);  // 10, 15, 100, 111, 1000
+        System.out.println(st.contains(15)); // true
     }
 }

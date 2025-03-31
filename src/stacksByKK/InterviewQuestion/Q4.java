@@ -11,11 +11,11 @@ public class Q4 {
 
         for(int i=0;i<arr.length;i++){
 
-            if(st.isEmpty() || st.peek()!=arr[i])st.push(arr[i]);
+            if(st.isEmpty() || st.peek()!=arr[i]) st.push(arr[i]);
 
 
 
-            else if (st.peek()==arr[i]) {
+            else if (arr[i]==st.peek()) {
 
                 if(i==arr.length-1 || arr[i]!=arr[i+1]){
                     st.pop();
