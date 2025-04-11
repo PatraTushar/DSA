@@ -5,46 +5,47 @@ import java.util.Stack;
 public class practice {
 
 
-    static int[] stockSpan(int[] arr) {
-
-        int n = arr.length;
-        Stack<Integer> st = new Stack<>();
-        int[] res = new int[n];
-        st.push(0);
-        res[0] = 1;
-
-        for (int i = 1; i < n; i++) {
-
-            while (!st.isEmpty() && arr[i] > arr[st.peek()]) {
-                st.pop();
-            }
-
-
-            if (!st.isEmpty()) {
-                res[i] = i - st.peek();
-            } else {
-                res[i] = i + 1;
-            }
-
-            st.push(i);
-
-
-        }
-
-
-        return res;
-
-    }
-
-
     public static void main(String[] args) {
 
-        int[] arr = {100, 80, 60, 70, 60, 75, 85};
-        int[] ans = stockSpan(arr);
-        System.out.println(Arrays.toString(ans));
+//        1️⃣ Core Java (Must Have)
+//✔ OOP Concepts – Encapsulation, Inheritance, Polymorphism, Abstraction
+//✔ Interfaces & Abstract Classes
+//✔ Exception Handling
+//✔ Collections Framework (List, Set, Map, Queue)
+//✔ Generics
+//✔ Lambda Expressions & Functional Interfaces
+//✔ Streams API
+//✔ Multithreading & Concurrency
+//
+//        2️⃣ Advanced Java (Important)
+//✔ JDBC (Java Database Connectivity) – Connection handling, Statement, PreparedStatement
+//✔ Servlets & JSP – HTTP requests, response handling, filters, session management
+//✔ JPA (Java Persistence API) & Hibernate – ORM (Object-Relational Mapping), Entity lifecycle
+//✔ REST APIs & JSON Processing – Jackson, Gson
+//
+//        3️⃣ Spring Core (Before Spring Boot)
+//✔ Spring Framework Basics – IoC (Inversion of Control), Dependency Injection (DI)
+//✔ Spring Beans & ApplicationContext
+//✔ Spring AOP (Aspect-Oriented Programming)
+//✔ Spring MVC – Controllers, ViewResolvers, Model
+//✔ Spring Security (Basics)
+//
+//                4️⃣ Databases
+//✔ SQL (MySQL/PostgreSQL) – Joins, Indexing, Transactions
+//✔ NoSQL (MongoDB, Redis) [Optional]
+//
+//        5️⃣ Maven/Gradle (Build Tools)
+//✔ Dependency Management, Build Lifecycle
+//
+//        6️⃣ Basic DevOps (Optional, But Useful)
+//✔ Git & GitHub
+//✔ Docker & Kubernetes
+//✔ CI/CD Basics
 
 
     }
 
+    }
 
-}
+
+
