@@ -75,6 +75,9 @@ public class Q9 {
     }
 
     public static void main(String[] args) {
+
+        // find in mountain array (leeTCode-->1095)
+
         int[] mountainArray = {1, 3, 5, 7, 6, 4, 2};
         int target = 4;
 

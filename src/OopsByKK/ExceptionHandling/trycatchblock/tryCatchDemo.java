@@ -10,6 +10,7 @@ public class tryCatchDemo {
 
         try {
             int ans=divide(10,0);
+            System.out.println(ans);
         }
         catch (ArithmeticException e){
 

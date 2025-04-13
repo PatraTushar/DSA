@@ -49,6 +49,9 @@ public class Main {
     public static void main(String[] args) {
 
         customArrayList obj=new customArrayList(5);
+
+        Object val=obj.get(0);
+        int square= (Integer)val*(Integer) val;  // this is the reason we use generics
         obj.add(10);
         obj.add("rahul");
         obj.print();

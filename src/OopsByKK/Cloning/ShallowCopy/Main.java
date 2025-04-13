@@ -4,9 +4,9 @@ package OopsByKK.Cloning.ShallowCopy;
 class Address {
     String city;
 
-    Address(String address) {
+    Address(String city) {
 
-        this.city = address;
+        this.city = city;
     }
 }
 
@@ -33,6 +33,8 @@ class Person implements Cloneable {
 
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException { // Exception handled here
+
+        // shallowCopy-->shallow copy means creation of new object that copy the primitive fields from the original object and for non Primitive fields it will copy the reference
 
         Address obj = new Address("UK");
         Person obj2 = new Person("john", 14, obj);
