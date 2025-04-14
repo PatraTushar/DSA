@@ -12,11 +12,11 @@ public class Q20 {
         while (start<=end){
 
             int mid=start+(end-start)/2;
-            int midElt=arr[mid/columns][mid%columns];
+            int midElement=arr[mid/columns][mid%columns];
 
-            if(target==midElt) return true;
+            if(target==midElement) return true;
 
-            else if(target<midElt){
+            else if(target<midElement){
                 end=mid-1;
             }
             else {
