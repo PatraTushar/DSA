@@ -53,7 +53,9 @@ public class Q24 {
         if(days>arr.length) return -1;
 
         int start=findMax(arr);
-        int end=findSum(arr);
+       int end=findSum(arr);
+
+
 
         while (start<=end){
 
@@ -64,9 +66,12 @@ public class Q24 {
             if(totalDays>days){
 
                 start=mid+1;
+
+
             }
 
             else {
+
 
                 end=mid-1;
 
@@ -82,5 +87,6 @@ public class Q24 {
         int[] arr={1,2,3,4,5,6,7,8,9,10};
         int days=5;
         System.out.println(leastCapacity(arr,days));
+
     }
 }

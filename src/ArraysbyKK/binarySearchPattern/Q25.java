@@ -1,58 +1,75 @@
-//package ArraysbyKK.binarySearchPattern;
-//
-//import java.util.Arrays;
-//
-//public class Q25 {
-//
-//    static int findMax(int[] arr){
-//
-//        int max=Integer.MIN_VALUE;
-//
-//        for(int a:arr){
-//            if(a>max){
-//                max=a;
-//            }
-//        }
-//
-//        return max;
-//    }
-//
-//    static int isPossible(int[] arr,int mid){
-//
-//        int totalCows=1;
-//        int totalSum=0;
-//        int min=Integer.MAX_VALUE;
-//
-//        for(int i=1;i<arr.length;i++){
-//
-//            if(arr[i]-arr[i-1]<min){
-//                min=arr[i]-arr[i-1];
-//            }
-//
-//
-//        }
-//    }
-//
-//    static void AggressiveCows(int[] arr,int cows){
-//
-//        int start=1;
-//        int end=findMax(arr);
-//
-//        while (start<=end){
-//
-//            int mid=start+(end-start)/2;
-//            int canWePlaceCows;
-//        }
-//    }
-//
-//    public static void main(String[] args) {
-//
-//        // Aggressive cows
-//
-//        int[] arr={0,3,4,7,10,9};
-//        int cows=4;
-//
-//        Arrays.sort(arr);
-//
-//    }
-//}
+package ArraysbyKK.binarySearchPattern;
+
+
+import java.util.Arrays;
+
+public class Q25 {
+
+    static int totalCows(int[] arr,int mid){
+
+        int cowsPlace=1;
+        int position=arr[0];
+
+        for (int i=1;i<arr.length;i++){
+
+            if(position+mid<=arr[i]){
+                cowsPlace++;
+                position=arr[i];
+            }
+
+        }
+        return cowsPlace;
+
+
+    }
+
+
+
+
+
+    static int AggressiveCows(int[] arr,int cows){
+
+        if(cows>arr.length) return -1;
+
+
+        int n=arr.length;
+
+        int start=1;
+        int end=arr[n-1]-arr[0];
+
+        while (start<=end){
+
+            int mid=start+(end-start)/2;
+
+          int placedCow=totalCows(arr,mid);
+
+            if(placedCow<cows){
+                end=mid-1;
+            }
+
+            else {
+                start=mid+1;
+            }
+
+
+        }
+
+        return end;
+
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+        // Aggressive cows
+
+        int[] arr={0,3,4,7,10,9};
+        int cows=4;
+        Arrays.sort(arr);
+        System.out.println(AggressiveCows(arr,cows));
+
+
+    }
+}
