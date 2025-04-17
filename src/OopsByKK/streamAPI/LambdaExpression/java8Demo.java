@@ -39,6 +39,14 @@ public class java8Demo {
         int res=sum.operate(100,200);
         System.out.println(res);
 
+
+        //  internally--> math sum=(a,b)->a+b;-->   MathOperation sum = new MathOperation() {
+        //    @Override
+        //    public int operate(int a, int b) {
+        //        return a + b;
+        //    }
+        //};
+
         MathOperation subtraction=(a,b)->a-b;
         int res1=subtraction.operate(90,50);
         System.out.println(res1);

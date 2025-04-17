@@ -23,6 +23,7 @@ public class basics {
         List<Integer> list3=Arrays.asList(23,56,21,98,45); // used to add element bt cant modify and add something like list3.add(x).if u have to add then add inside Arrays.asList only
 
 
+
         // without stream API
         List<Integer> l1=new ArrayList<>();
 

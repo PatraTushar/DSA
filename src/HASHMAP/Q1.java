@@ -17,6 +17,8 @@ public class  Q1 {
         mp.put("Harry",18);
 
 
+
+
         // Getting Value of a key from the HashMap
         System.out.println(mp.get("Yash")); //16
         System.out.println(mp.get("rahul")); //null

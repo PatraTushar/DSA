@@ -10,8 +10,12 @@ public class arbitraryInstanceMethodReference {
 
         // lambda Expression
 
-        BiFunction<String,String,Integer> obj=(a,b)->a.compareToIgnoreCase(b);
+        BiFunction<String,String,Integer> obj=(a,b)->a.compareToIgnoreCase(b);    // compareToIgnoreCase-->It only compares the 1st character from both strings:
         System.out.println(obj.apply("java","developer"));
+
+        //'j' = 106(ascii)
+        //'d' = 100(ascii)
+        //106 - 100 = 6
 
         // Method reference
 

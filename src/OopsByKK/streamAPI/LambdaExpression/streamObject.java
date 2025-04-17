@@ -18,11 +18,13 @@ public class streamObject {
 
         // u can create stream for empty object
         Stream<Object> st=Stream.empty();
+        System.out.println(st.count());
+
 
         // u can create stream in array,object, collection
 
         String[] names={"Durgesh","uttam","Ankit","Divya"};
-        Stream<String> obj=Stream.of(names);
+        Stream<String> obj=Stream.of(names);             // internally-->Stream<String> obj=Stream.of("Durgesh","uttam","Ankit","Divya");
         obj.forEach(e-> System.out.print(e+" "));
 
         System.out.println();
@@ -30,11 +32,22 @@ public class streamObject {
         // using builder u can create stream
 
       Stream<Object> obj2=  Stream.builder().build();
+      Stream<Object> abc=  Stream.builder().add("hello").add("world").build();
+      abc.forEach(x-> System.out.println(x));
 
       // using Array.Stream
 
-       IntStream obj3= Arrays.stream(new int[]{10,20,3,4,5});
+       IntStream obj3= Arrays.stream(new int[]{10,20,3,4,5});   // internally--> public static IntStream stream(int[] array)
        obj3.forEach(a-> System.out.print(a +" "));
+
+       // java provides
+
+        //Array    Type	Stream Type	        Example
+        //int[]	    IntStream	         Arrays.stream(new int[]{...})
+        //long[]	LongStream	            Arrays.stream(new long[]{...})
+        //double[]	DoubleStream	       Arrays.stream(new double[]{...})
+        //Integer[]	Stream<Integer>      	Arrays.stream(new Integer[]{...})
+        //String[]	Stream<String>	       Arrays.stream(new String[]{...})
 
         System.out.println();
 
