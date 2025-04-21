@@ -1,12 +1,15 @@
 package ArraysbyKK.interviewQuestions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 public class Q23 {
 
     static int[][] pascal(int n){
 
       int[][] ans=new int[n][];
+
 
         for(int i=0;i<n;i++){
 
@@ -23,7 +26,40 @@ public class Q23 {
             }
         }
 
+
+
         return ans;
+
+
+    }
+
+    static List<List<Integer>> pascalTriangle(int n){
+
+        List<List<Integer>> result=new ArrayList<>();
+
+        for(int i=0;i<n;i++){
+
+            List<Integer> row=new ArrayList<>();
+
+            for(int j=0;j<=i;j++){
+                if(j==0 || j==i){
+
+                    row.add(1);
+
+                }
+
+                else {
+
+                    int val=result.get(i-1).get(j-1)+result.get(i-1).get(j);
+                    row.add(val);
+
+                }
+            }
+
+            result.add(row);
+        }
+
+        return result;
 
 
     }
@@ -38,6 +74,8 @@ public class Q23 {
         int n=sc.nextInt();
        int[][] result= pascal(n);
         System.out.println(Arrays.deepToString(result));
+        List<List<Integer>> ans=pascalTriangle(5);
+        System.out.println(ans);
 
 
 
