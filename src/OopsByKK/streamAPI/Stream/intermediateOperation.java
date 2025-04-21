@@ -46,6 +46,40 @@ public class intermediateOperation {
         //6.skip
 
         System.out.println(Stream.iterate(1,x->x+1).skip(10).limit(100).count());
+        System.out.println();
+
+        //7.peek()
+        Stream.iterate(1,x->x+1).skip(10).limit(100).peek(System.out::println).count();
+
+        // flatMap
+        //Handle streams of collections ,lists or arrays where each element is itself a collection
+        //Flatten nested structure(eg lists within list)so that they can be processed as single sequence of elements
+        //Transform and flatten elements at the same time
+
+        List<List<String>> listOfLists=Arrays.asList(
+                Arrays.asList("apple","banana"),
+                Arrays.asList("orange","kiwi"),
+                Arrays.asList("pear","grapes")
+        );
+
+        System.out.println(listOfLists.get(0).get(1));
+
+        System.out.println( listOfLists.stream().flatMap(e->e.stream().map(String::toUpperCase)).toList());
+
+        List<String> sentences=Arrays.asList(
+                "Hello world ",
+                "java Streams are powerful",
+                "flatmap is useful"
+        );
+
+        System.out.println(sentences
+                .stream()
+                .flatMap(e->Arrays.stream(e.split(" ")))
+                .map(String::toUpperCase).toList());
+
+
+
+
 
 
 
