@@ -40,7 +40,7 @@ public class java8Demo {
         System.out.println(res);
 
 
-        //  internally--> math sum=(a,b)->a+b;-->   MathOperation sum = new MathOperation() {
+        //  internally--> MathOperation sum=(a,b)->a+b;-->   MathOperation sum = new MathOperation() {
         //    @Override
         //    public int operate(int a, int b) {
         //        return a + b;

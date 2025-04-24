@@ -31,11 +31,15 @@ public class streamObject {
 
         // using builder u can create stream
 
+        //Stream.Builder is used to add elements to a stream programmatically
+        //.build() is used to finalize the stream construction and return a new Stream object containing the elements that were added to the builder.
       Stream<Object> obj2=  Stream.builder().build();
       Stream<Object> abc=  Stream.builder().add("hello").add("world").build();
       abc.forEach(x-> System.out.println(x));
 
       // using Array.Stream
+
+        //IntStream is a special type of Stream in Java designed to handle only primitive int values.
 
        IntStream obj3= Arrays.stream(new int[]{10,20,3,4,5});   // internally--> public static IntStream stream(int[] array)
        obj3.forEach(a-> System.out.print(a +" "));

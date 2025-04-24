@@ -129,6 +129,8 @@ public class Q26 {
         int[] arr1={1,3,4,7,10,12};
         int[] arr2={2,3,6,15};
 
+
+
         double ans=findMedianSortedArrays(arr1,arr2);
         System.out.println(ans);
         double result=findMedianOf2SortedArrays(arr1,arr2);
