@@ -1,6 +1,14 @@
 package OopsByKK.streamAPI.LambdaExpression;
 
+import java.util.Random;
 import java.util.function.Supplier;
+
+class HeavyResource{
+
+    HeavyResource(){
+        System.out.println(" HeavyResource created ");
+    }
+}
 
 public class supplier {
 
@@ -28,6 +36,35 @@ public class supplier {
 
         // Example:  Using with Method That Needs Lazy Evaluation
         printIfNeeded(true,()->expensiveComputation());
+
+        //Example – Lazy Initialization
+
+        Supplier<HeavyResource> heavyResourceSupplier=()->new HeavyResource();
+
+        System.out.println(" before calling get() ");
+        HeavyResource resource=heavyResourceSupplier.get();
+        System.out.println("After calling get()");
+
+
+        System.out.println();
+
+        // Advanced Example – Random Number Supplier
+
+        Supplier<String> otpSupplier=()->{
+
+            StringBuilder otp=new StringBuilder();
+            Random random=new Random();
+
+            for(int i=0;i<6;i++){
+                otp.append(random.nextInt(10));
+            }
+
+            return otp.toString();
+        };
+
+        System.out.println(" generated otp " +otpSupplier.get());
+
+
 
 
 

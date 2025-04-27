@@ -1,3 +1,4 @@
+import java.util.function.BiFunction;
 
 public class myPractice {
 
@@ -5,8 +6,10 @@ public class myPractice {
 
 
 
-
-
-
     }
+
+
+
+
+
 }
