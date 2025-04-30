@@ -1,14 +1,16 @@
 package OopsByKK.streamAPI.LambdaExpression;
+import java.util.Scanner;
 
 import TREE.BinaryTree;
 
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 
-class student{
+class MyStudent{
     String name;
     int age;
-    student(String name,int age){
+    MyStudent(String name,int age){
 
         this.name=name;
         this.age=age;
@@ -46,10 +48,62 @@ public class biFunction {
 
 
         // Example:4  Using BiFunction to Create an Object
-
-        BiFunction<String,Integer,student> createStudent=(name,age)->new student(name,age);
-        student s=createStudent.apply("Alice",25);
+        BiFunction<String,Integer,MyStudent> createStudent=(name,age)->new MyStudent(name,age);
+        MyStudent s=createStudent.apply("Alice",25);
         System.out.println(s.name + " is " + s.age +" years old ");
+
+        // Example:5  Chain BiFunction with andThen()
+        BiFunction<Integer,Integer,Integer> multiply=(a,b)->a * b;
+        Function<Integer,String> convertToString=(result)->" Result : "+result;
+        String output=multiply.andThen(convertToString).apply(3,4);
+        System.out.println(output);
+
+        // Example:6 Compare Two Strings Length
+        BiFunction<String,String,String> longer=(str1,str2)->(str1.length()>str2.length()) ? str1 : str2;
+        System.out.println(longer.apply("apple","banana"));  // banana
+
+        // Example:7  Custom Calculator using BiFunction
+        BiFunction<Integer,Integer,Integer> addition=(a,b)->a+b;
+        BiFunction<Integer,Integer,Integer> subtraction=(a,b)->a-b;
+        BiFunction<Integer,Integer,Integer> multiplication=(a,b)->a*b;
+        BiFunction<Integer,Integer,Integer> division=(a,b)-> b!=0 ? a/b : 0;
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println(" enter first number ");
+        int a=sc.nextInt();
+        System.out.println(" enter second number ");
+        int b=sc.nextInt();
+        System.out.println(" enter operation (+,-,*,/) ");
+        char sign=sc.next().charAt(0);
+
+        int result=0;
+
+        switch (sign){
+
+            case '+': result=addition.apply(a,b);
+            break;
+
+            case '-' : result=subtraction.apply(a,b);
+            break;
+
+            case '*' : result=multiplication.apply(a,b);
+            break;
+
+            case '/' : result=division.apply(a,b);
+            break;
+
+            default:
+                System.out.println(" Invalid operation ");
+                break;
+
+
+        }
+
+        System.out.println(result);
+
+
+
+
 
 
 
