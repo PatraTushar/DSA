@@ -6,6 +6,9 @@ public class Q5 {
 
     static int findUnique(int[] arr) {
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int unique=0;
 
         for(int a:arr){

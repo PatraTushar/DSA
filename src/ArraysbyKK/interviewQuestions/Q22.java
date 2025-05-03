@@ -5,87 +5,104 @@ import java.util.Arrays;
 public class Q22 {
 
 
+    static void swap(int[] arr,int i,int j){
 
-    static void reverse(int[] arr){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
 
-        int i=0;
-        int j=arr.length-1;
+    static void reverse(int[] arr,int start,int end){
 
-        while (i<j){
 
-            int temp=arr[i];
-            arr[i]=arr[j];
-            arr[j]=temp;
 
-            i++;
-            j--;
+        while(start<=end){
+            swap(arr,start,end);
+            start++;
+            end--;
 
         }
     }
 
-    static void swap(int[][] arr, int i, int j){
-        int temp=arr[i][j];
-        arr[i][j]=arr[j][i];
-        arr[j][i]=temp;
+
+
+    static int[][] transpose(int[][] arr){
+
+        int r= arr.length;
+        int c=arr[0].length;
+
+        int[][] result=new int[c][r];
+
+        for(int i=0;i<c;i++){
+            for(int j=0;j<r;j++){
+                result[i][j]=arr[j][i];
+
+            }
+        }
+
+        return result;
+
     }
 
+    static int[][] rotate90deg(int[][] arr){
 
-    static void rotate90Degree(int[][] arr){  // Brute force approach
+        //Total Time Complexity (TC):O(r * c)
+        //(Where r is the number of rows and c is the number of columns in the 2D array)
+        //Total Space Complexity (SC):O(r * c)
+        //(For the new 2D array created in the transpose function)
+
+        int[][] transpose=transpose(arr);
+
+        for(int i=0;i<transpose.length;i++){
+
+            reverse(transpose[i],0,transpose[0].length-1);
+        }
+
+        return transpose ;
+    }
+    public static void rotate(int[][] arr) {    // optimal Approach
+
+        //Time Complexity (TC):O(r * c)
+        //Where r is the number of rows and c is the number of columns in the matrix. The nested loops for transposing and reversing the rows both iterate over the entire matrix.
+        //Space Complexity (SC):O(1)
+
 
         int rows=arr.length;
         int cols=arr[0].length;
 
-        // Step 1: Transpose the matrix
-
         for(int i=0;i<rows;i++){
-            for (int j=i+1;j<cols;j++){
-                swap(arr,i,j);
+
+            for(int j=i;j<cols;j++){
+
+                int temp=arr[i][j];
+                arr[i][j]=arr[j][i];
+                arr[j][i]=temp;
 
             }
-
         }
 
-        // Step 2: Reverse each row
+
+        for(int i=0;i<rows;i++){
+
+            int start=0;
+            int end=cols-1;
+
+            while (start<=end){
+
+                int temp=arr[i][start];
+                arr[i][start]=arr[i][end];
+                arr[i][end]=temp;
+                start++;
+                end--;
+            }
 
 
-       for(int i=0;i<rows;i++){
-
-               reverse(arr[i]);
 
 
-
-       }
+        }
 
 
         System.out.println(Arrays.deepToString(arr));
-
-
-    }
-
-    public static void rotate(int[][] matrix) {    // optimal Approach
-
-
-       // transpose
-        for(int i=0;i<matrix.length;i++){
-            for(int j=i;j<matrix[0].length;j++){
-                int temp=matrix[i][j];
-                matrix[i][j]=matrix[j][i];
-                matrix[j][i]=temp;
-            }
-        }
-
-
-        // each row reverse
-
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix.length/2;j++){
-                int temp=matrix[i][j];
-                matrix[i][j]=matrix[i][matrix.length-1-j];
-                matrix[i][matrix.length-1-j]=temp;
-            }
-        }
-
-        System.out.println(Arrays.deepToString(matrix));
 
     }
 
@@ -94,7 +111,9 @@ public class Q22 {
         // Q: Rotate a square matrix
 
         int[][] arr={{1,2,3},{4,5,6},{7,8,9}};
-       // rotate90Degree(arr);
+        int[][] arr2={{8,5},{11,9},{5,4}};
+     //  int[][] ans= rotate90deg(arr);
+      //  System.out.println(Arrays.deepToString(ans));
         rotate(arr);
     }
 }

@@ -1,83 +1,54 @@
-import java.util.Stack;
+import java.util.Arrays;
 
 public class myPractice {
 
-    static int precedence(char op){
+    static void rotate(int[][] arr){
 
-        if(op=='+' || op=='-') return 1;
-        else if(op=='*' || op=='/') return 2;
-        else if(op=='^') return 3;
-        else return 0;
-    }
+        int rows=arr.length;
+        int cols=arr[0].length;
 
-    static String postfix(String infix    ){
+        for(int i=0;i<rows;i++){
 
-        Stack<Character> st=new Stack<>();
-        String ans="";
-        int i=0;
-        int n=infix.length();
+            for(int j=i;j<cols;j++){
 
-        while (i<n){
-
-            char ch=infix.charAt(i);
-
-            if((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || (ch>='0' && ch<='9')){
-                ans+=ch;
+                int temp=arr[i][j];
+                arr[i][j]=arr[j][i];
+                arr[j][i]=temp;
 
             }
+        }
 
-            else if(ch=='('){
 
-                st.push(ch);
+        for(int i=0;i<rows;i++){
+
+            int start=0;
+            int end=cols-1;
+
+            while (start<=end){
+
+                int temp=arr[i][start];
+                arr[i][start]=arr[i][end];
+                arr[i][end]=temp;
+                start++;
+                end--;
             }
-
-            else if(ch==')'){
-
-                while (!st.isEmpty() && st.peek()!='('){
-                    ans+=st.pop();
-                }
-
-                st.pop();
-            }
-
-            else {
-
-                while (!st.isEmpty() && precedence(st.peek())>=precedence(ch)){
-
-                    ans+=st.pop();
-                }
-
-                st.push(ch);
-            }
-
-            i++;
-
-
-
 
 
         }
 
-
-        while (!st.isEmpty()){
-            ans+=st.pop();
-        }
-
-        return ans;
-
-
+        System.out.println(Arrays.deepToString(arr));
     }
+
+
 
     public static void main(String[] args) {
 
-        String infix="a+b*(c^d-e)";
-        System.out.println(postfix(infix));
+        int[][] arr={{1,2,3},{4,5,6},{7,8,9}};
+        rotate(arr);
+
 
 
     }
-
-
-
 
 
     }

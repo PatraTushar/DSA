@@ -37,6 +37,9 @@ public class A5 {
     }
 
     static int[] smallestAndLargest(int[] arr){
+
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
         int largest=max(arr);
         int smallest=min(arr);
 

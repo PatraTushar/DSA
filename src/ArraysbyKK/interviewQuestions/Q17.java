@@ -18,6 +18,8 @@ public class Q17 {
     public static void main(String[] args) {
 
         // print the sum of values in a given range of indices from L to R.
+        //Time Complexity (TC): O(R - L + 1) per query (in the worst case, where the range is the whole array)
+        //Space Complexity (SC): O(1)
 
         Scanner sc=new Scanner(System.in);
         int[] arr={2,4,1,3,6};

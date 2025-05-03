@@ -51,6 +51,9 @@ public class Q15 {
 
         // Q; Given an array A sorted in non decreasing order return the array of the squares of each number sorted in non decreasing order
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(n)
+
         int[] arr={-10,-3,-2,1,4,5};
        // int[] arr2={2,4,6,7,10};
         int[] ans=sorted(arr);

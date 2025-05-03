@@ -5,6 +5,11 @@ import java.util.Arrays;
 public class Q16 {
 
     static int[] suffixSum(int[] arr){
+
+     //   Time Complexity (TC): O(n)
+      //  Space Complexity (SC): O(1)
+
+
         int n=arr.length;
 
         for(int i=n-2;i>=0;i--){
@@ -15,6 +20,11 @@ public class Q16 {
     }
 
     static int[] prefixSum(int[] arr){
+
+      //  Time Complexity (TC): O(n)
+     //   Space Complexity (SC): O(1)
+
+
 
         for(int i=1;i<arr.length;i++){
 

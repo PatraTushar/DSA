@@ -46,6 +46,9 @@ public class Q14 {
 
         // Q: move all the even integers at teh beginning followed by all the odd integers
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int[] arr={1,2,3,4,5,6,7,8};
         int[] ans=order(arr);
         System.out.println(Arrays.toString(ans));

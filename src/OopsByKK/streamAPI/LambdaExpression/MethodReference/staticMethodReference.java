@@ -11,6 +11,7 @@ public class staticMethodReference {
 
         //A method reference follows this syntax:
         //ClassName::methodName
+        //ClassName::methodName-->classname.methodName
 
         // Example 1: Basic Static Method Reference
 
@@ -22,18 +23,9 @@ public class staticMethodReference {
         BiFunction<Integer,Integer,Integer> maxMethodReference=Math::max;
         System.out.println(maxMethodReference.apply(200,400)); //400
 
-        // Example 2:In this case, we can pass a static method reference to a collection's method like forEach.
-
-        // using Lambda Expression
-        List<String> message= Arrays.asList("Hello","World","java");
-        message.forEach(msg-> System.out.println(msg));
-
-        // using Method Reference
-        List<String> Message=Arrays.asList("I","am","a","java","developer");
-        Message.forEach(System.out::println);
 
 
-        // Example 3: Now, let’s explore a more complex example using a Comparator to sort a list of objects based on a static method.
+        // Example 2: Now, let’s explore a more complex example using a Comparator to sort a list of objects based on a static method.
 
         // using Lambda Expression
         List<String> words=Arrays.asList("apple", "banana", "kiwi", "cherry");
@@ -47,6 +39,23 @@ public class staticMethodReference {
         List<String> Words=Arrays.asList("cricket","football","hockey","tennis");
         Words.sort(Comparator.comparingInt(String::length));
         System.out.println(Words);
+
+        //Example 3: You want to sort a list of integers in descending order using a static method from Integer.
+        List<Integer> numbers=Arrays.asList(5,2,8,1);
+
+        // using Lambda Expression
+        numbers.sort((a,b)->b.compareTo(a));
+        System.out.println(numbers);
+
+        //using method reference
+
+        numbers.sort(Comparator.comparingInt(Integer::intValue).reversed());
+        System.out.println(numbers);
+
+
+
+
+
 
 
 

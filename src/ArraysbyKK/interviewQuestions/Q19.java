@@ -6,6 +6,9 @@ public class Q19 {
 
     static int[][] add(int[][] arr1,int[][] arr2){
 
+        //Time Complexity (TC): O(n × m)
+        //Space Complexity (SC): O(n × m)
+
         int rows=arr1.length;
         int cols=arr1[0].length;
 

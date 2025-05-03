@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Q20 {
 
 
-    static int[][] multiplication(int[][] arr1,int[][] arr2){
+    static void multiplication(int[][] arr1,int[][] arr2){
 
         int  r1=arr1.length;
         int c1=arr1[0].length;
@@ -15,6 +15,15 @@ public class Q20 {
         int c2=arr2[0].length;
 
         int[][] result=new int[r1][c2];
+
+         //Time Complexity (TC): O(r1 * c2 * c1)
+        // Space Complexity (SC): O(r1 * c2)
+
+        if (c1 != r2) {
+            System.out.println("Matrix multiplication not possible: The number of columns in arr1 must equal the number of rows in arr2.");
+            return;
+        }
+
 
         for(int i=0;i<r1;i++){
             for(int j=0;j<c2;j++){
@@ -27,7 +36,7 @@ public class Q20 {
             }
         }
 
-        return result;
+        System.out.println(Arrays.deepToString(result));
 
     }
 
@@ -37,8 +46,7 @@ public class Q20 {
 
         int[][] arr1={{1,2,3},{4,5,6},{7,8,9}};
         int[][] arr2={{8,5},{11,9},{5,4}};
-        int[][] Ans=multiplication(arr1,arr2);
-        System.out.println(Arrays.deepToString(Ans));
+        multiplication(arr1,arr2);
 
 
 

@@ -4,21 +4,28 @@ public class Q18 {
 
     static boolean subArrayWithEqualSum(int[] arr){
 
-      int totalSum=0;
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
 
-      for(int a: arr){
-          totalSum+=a;
-      }
+        int n=arr.length;
+        int prefixSum=0;
+        int suffixSum=0;
+        for(int i=n-1;i>=0;i--){
+            suffixSum+=arr[i];
+        }
 
-      int prefixSum=0;
+        for (int i=0;i<n-1;i++){
 
-      for(int i=0;i<arr.length;i++){
-          prefixSum+=arr[i];
+            prefixSum+=arr[i];
+            if(prefixSum==(suffixSum-prefixSum)) return true;
 
-          if(prefixSum*2==totalSum) return true;
-      }
 
-      return false;
+        }
+
+        return false;
+
+
+
 
     }
 

@@ -22,6 +22,9 @@ public class Q12 {
 
         // Q: Given q queries check if the number is present in teh array or not .NOTE:- value of all the element in the array is less than 10^5.
 
+        //Time Complexity (TC): O(n + q)
+        //Space Complexity (SC): O(100000)
+        
         int[] arr={5,6,5,400,560,1000,400};
         Scanner sc=new Scanner(System.in);
         int[] Ans=qQueries(arr);

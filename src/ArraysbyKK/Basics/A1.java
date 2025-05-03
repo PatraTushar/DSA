@@ -4,6 +4,9 @@ public class A1 {
 
     static int countOccurrence(int[] arr,int x){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int count=0;
         for(int i=0;i<arr.length;i++){
 

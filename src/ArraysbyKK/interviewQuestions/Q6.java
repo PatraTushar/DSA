@@ -6,6 +6,9 @@ public class Q6 {
 
     static int secondLargest(int[] arr){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
       int largest=Integer.MIN_VALUE;
       int secLargest=Integer.MIN_VALUE;
 

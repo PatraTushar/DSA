@@ -14,6 +14,9 @@ public class Q21 {
 
     static void transPose(int[][] arr){         // only for square matrix
 
+        //Time Complexity (TC): O(n²)
+        //Space Complexity (SC): O(1)
+
         int rows=arr.length;
         int cols=arr[0].length;
 
@@ -33,14 +36,17 @@ public class Q21 {
 
     static int[][] transpose2(int[][] arr){    // for All matrix type
 
+        //Time Complexity (TC): O(n × m)
+        //Space Complexity (SC): O(m × n)
+
         int row=arr.length;
         int cols=arr[0].length;
 
         int Transpose[][]=new int[cols][row];
 
-        for(int i=0;i<row;i++){
-            for(int j=0;j<cols;j++){
-                Transpose[j][i]=arr[i][j];
+        for(int i=0;i<cols;i++){
+            for(int j=0;j<row;j++){
+                Transpose[i][j]=arr[j][i];
             }
         }
 

@@ -3,6 +3,8 @@ package ArraysbyKK.Basics;
 public class A4 {
 
     static boolean isSorted(int[] arr){
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
 
         for(int i=0;i<arr.length-1;i++){
             if(arr[i]>arr[i+1]){

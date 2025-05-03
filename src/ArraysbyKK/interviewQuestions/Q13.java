@@ -14,6 +14,9 @@ public class Q13 {
 
     static void sort0sAnd1s(int[] arr) {
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int i = 0;
         int j = arr.length-1;
 
@@ -25,7 +28,7 @@ public class Q13 {
                 j--;
 
             }
-            else if(arr[i]==0){
+            else if(arr[i]==0 && arr[j]==0){
                 i++;
             }
 

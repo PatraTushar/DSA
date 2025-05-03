@@ -1,8 +1,14 @@
 package ArraysbyKK.interviewQuestions;
 
+import java.util.HashSet;
+
 public class Q3 {
 
-    static int totalPairs(int[] arr,int target){
+    static int totalPairs(int[] arr,int target){  // bruteforce approach
+
+        // Time Complexity (TC): O(n²)
+        //Space Complexity (SC): O(1)
+
         int count=0;
 
         for(int i=0;i<arr.length-1;i++){
@@ -24,12 +30,39 @@ public class Q3 {
         return count;
     }
 
+    static int totalPairsI(int[] arr,int target){  // optimal solution
+
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(n)
+
+
+
+        HashSet<Integer> set=new HashSet<>();
+        int count=0;
+
+        for(int ele:arr){
+
+            int required=target-ele;
+
+            if(set.contains(required)){
+                System.out.println(ele +" "+ required);
+                count++;
+
+            }
+            set.add(ele);
+        }
+
+        return count;
+
+
+    }
+
     public static void main(String[] args) {
 
         // Q: find the total number of pairs in the array whose sum is equal to the given value x
 
         int[] arr={4,6,3,5,8,2};
         int target=7;
-        System.out.println(" Total pairs : "+totalPairs(arr,target));
+        System.out.println(" Total pairs : "+totalPairsI(arr,target));
     }
 }
