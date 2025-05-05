@@ -4,6 +4,9 @@ public class Q5 {
 
     static char smallestCharacter(char[] ch,char target){
 
+        //Time Complexity (TC): O(log n)
+        //Space Complexity (SC): O(1)
+
         int start=0;
         int end=ch.length-1;
 

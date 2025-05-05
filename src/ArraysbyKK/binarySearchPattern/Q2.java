@@ -4,6 +4,9 @@ public class Q2 {
 
     static int orderAgnosticBS(int [] arr,int target){
 
+       // Time Complexity (TC): O(log n)
+      //  Space Complexity (SC): O(1)
+
         int start=0;
         int end=arr.length-1;
 

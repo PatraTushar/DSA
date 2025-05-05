@@ -18,48 +18,16 @@ public class Q26 {
 
     }
 
-    static void findPrefixSumOfArr(int[][] arr){
-
-        int row=arr.length;
-        int column=arr[0].length;
-
-        for(int i=0;i<row;i++){
-            for(int j=1;j<column;j++){
-                arr[i][j]+=arr[i][j-1];
-            }
-        }
-    }
 
 
-    // Method->2
-    static int SumOfRec(int[][] arr,int r1,int c1,int r2,int c2){
+    // Method-2 (Optimal approach)
 
-        int sum=0;
-        findPrefixSumOfArr(arr);
+    static int calculateSum(int[][] arr,int r1,int r2,int c1,int c2){
 
-        for (int i=r1;i<=r2;i++){
-
-            if(c1>=1){
-                sum+=arr[i][c2]-arr[i][c1-1];
-
-            }
-
-            else {
-                sum+=arr[i][c2];
-            }
-
+        if (r1 < 0 || r2 < 0 || c1 < 0 || c2 < 0) {
+            throw new IllegalArgumentException("Negative indices are not allowed");
         }
 
-
-
-        return sum;
-
-
-    }
-
-    // Method-3 (Optimal approach)
-
-    static int find(int[][] arr,int r1,int c1,int r2,int c2){
         int row=arr.length;
         int column=arr[0].length;
 
@@ -80,9 +48,8 @@ public class Q26 {
                 }
             }
 
-        int sum;
 
-        sum = arr[r2][c2];
+       int  sum = arr[r2][c2];
         if (r1 > 0) sum -= arr[r1 - 1][c2];
         if (c1 > 0) sum -= arr[r2][c1 - 1];
         if (r1 > 0 && c1 > 0) sum += arr[r1 - 1][c1 - 1];
@@ -106,10 +73,13 @@ public class Q26 {
     public static void main(String[] args) {
 
         // Q: sum of rectangles between the coordinates (pattern: prefix sum in 2D arrays)
-        int[][] arr={{1,2,3},{4,5,6},{7,8,9}};
-//        System.out.println(sumOfRectangles(arr,1,1,2,2));
-//        System.out.println(SumOfRec(arr,1,1,2,2));
-        System.out.println(find(arr,1,1,2,2));
+        int[][] arr={{1,1,1,1,1,1,1},{1,1,1,1,1,1,1},{1,1,1,1,1,1,1},{1,1,1,1,1,1,1},{1,1,1,1,1,1,1},{1,1,1,1,1,1,1},{1,1,1,1,1,1,1}};
+        int r1=3;
+        int r2=5;
+        int c1=1;
+        int c2=4;
+        System.out.println(calculateSum(arr,r1,r2,c1,c2));
+
 
 
     }
