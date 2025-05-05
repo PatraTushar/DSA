@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 public class Q23 {
 
+    //Time Complexity: O(n^2)
+    //Space Complexity: O(n^2)
+
     static int[][] pascal(int n){
 
       int[][] ans=new int[n][];
@@ -34,6 +37,9 @@ public class Q23 {
     }
 
     static List<List<Integer>> pascalTriangle(int n){
+
+        //Time Complexity: O(n^2)
+        //Space Complexity: O(n^2)
 
         List<List<Integer>> result=new ArrayList<>();
 

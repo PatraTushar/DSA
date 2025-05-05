@@ -7,6 +7,9 @@ public class Q24 {
 
     static List<Integer> spiralOrder(int[][] matrix){
 
+        //Time Complexity (TC): O(n × m)
+        //Space Complexity (SC): O(n × m) — for the output list (excluding input matrix)
+
 
        List<Integer> list=new ArrayList<>();
 

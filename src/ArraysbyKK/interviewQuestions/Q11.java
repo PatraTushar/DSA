@@ -24,12 +24,12 @@ public class Q11 {
 
     static void rotateKTimes(int[] arr,int k) {
 
-        int n=arr.length-1;
+        int n=arr.length;
         k=k%n;
 
-        reverse(arr,0,k);
-        reverse(arr,k+1,n);
-        reverse(arr,0,n);
+        reverse(arr,0,n-1);
+        reverse(arr,0,k-1);
+        reverse(arr,k,n-1);
 
         System.out.println(Arrays.toString(arr));
 

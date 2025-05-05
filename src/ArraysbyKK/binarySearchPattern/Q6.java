@@ -4,58 +4,66 @@ import java.util.Arrays;
 
 public class Q6 {
 
-    static int[] searchRange(int[] arr,int target){
-
-        int[] result={-1,-1};
-
-        result[0]=search(arr,target,true);
-
-        if(result[0]!=-1){
-            result[1]=search(arr,target,false);
-        }
-
-        return result;
-    }
-
-    static int search(int[] arr,int target,boolean findFirstIndex){
+    static int findFirst(int[] arr,int target){
 
         int start=0;
         int end=arr.length-1;
-        int ans=-1;
+        int index=-1;
 
         while (start<=end){
 
             int mid=start+(end-start)/2;
 
-            if(target>arr[mid]){
-                start=mid+1;
-            }
-            else if (target<arr[mid]) {
-
+            if(target==arr[mid]){
+                index=mid;
                 end=mid-1;
-
             }
 
-            else {
-
-                ans=mid;
-
-                if(findFirstIndex){
-
-                    end=mid-1;
-                }
-
-                else {
-                    start=mid+1;
-                }
-            }
+            else if(target>arr[mid]) start=mid+1;
+            else end=mid-1;
         }
 
+        return index;
+    }
 
-        return ans;
+    static int findLast(int[] arr,int target){
+
+        int start=0;
+        int end=arr.length-1;
+        int index=-1;
+
+        while (start<=end){
+
+            int mid=start+(end-start)/2;
+            if(target==arr[mid]){
+
+                index=mid;
+                start=mid+1;
+
+            }
+            else if(target>arr[mid]) start=mid+1;
+            else end=mid-1;
+        }
+
+        return index;
+    }
+
+    static int[] searchRange(int[] nums,int target){
+
+        //Time Complexity (TC): O(log n)
+        //Space Complexity (SC): O(1) — because the result array is of fixed size and doesn't scale with input size.
+
+        int[] result=new int[2];
+        result[0]=findFirst(nums,target);
+        result[1]=findLast(nums,target);
+
+        return result;
+
 
 
     }
+
+
 
     public static void main(String[] args) {
 

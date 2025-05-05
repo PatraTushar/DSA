@@ -1,6 +1,9 @@
 package ArraysbyKK.interviewQuestions;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 public class Q4 {
 
@@ -36,29 +39,42 @@ public class Q4 {
      //   Time Complexity (TC): O(n²)
      //   Space Complexity (SC): O(n)
 
-
-        HashSet<Integer> set=new HashSet<>();
-        int count=0;
-
-      for(int i=0;i<arr.length-1;i++){
-
-          for(int j=i+1;j<arr.length;j++){
-
-              int required=target-(arr[i]+arr[j]);
-
-              if(set.contains(required)){
-                  System.out.println(required+" "+arr[i] +" "+ arr[j]  );
-                  count++;
-              }
-
-          }
-
-          set.add(arr[i]);
+        HashSet<List<Integer>> result=new HashSet<>();
 
 
-      }
+        for(int i=0;i<arr.length-2;i++){
+            HashSet<Integer> seen=new HashSet<>();
 
-      return count;
+            for(int j=i+1;j<arr.length;j++){
+                seen.add(arr[j]);
+
+
+                int required=target-(arr[i]+arr[j]);
+
+                if(seen.contains(required)){
+                    List<Integer> triplets= Arrays.asList(arr[i],arr[j],required);
+                    Collections.sort(triplets);
+                    result.add(triplets);
+
+                }
+
+
+            }
+
+
+        }
+
+        for (List<Integer> triplet : result) {
+            System.out.println(triplet);
+        }
+
+        return result.size();
+
+
+
+
+
+
     }
 
     public static void main(String[] args) {
