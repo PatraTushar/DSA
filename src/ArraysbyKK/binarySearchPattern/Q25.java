@@ -12,7 +12,7 @@ public class Q25 {
 
         for (int i=1;i<arr.length;i++){
 
-            if(position+mid<=arr[i]){
+            if(arr[i]-position>=mid){
                 cowsPlace++;
                 position=arr[i];
             }

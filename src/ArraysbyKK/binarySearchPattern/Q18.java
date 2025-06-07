@@ -19,11 +19,12 @@ public class Q18 {
 
             }
 
-            else if(arr[mid]>target){
-                end=mid-1;
-            }
-            else {
+            else  if(target>arr[mid]){
                 start=mid+1;
+            }
+
+            else {
+                end=mid-1;
             }
         }
 

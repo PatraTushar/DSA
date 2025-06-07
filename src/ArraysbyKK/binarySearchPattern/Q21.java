@@ -13,7 +13,7 @@ public class Q21 {
                 return true;
             }
 
-            else if(matrix[rows][columns]>target){
+            else if(target<matrix[rows][columns]){
                 columns--;
             }
 

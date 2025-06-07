@@ -2,68 +2,71 @@ package ArraysbyKK.binarySearchPattern;
 
 public class Q14 {
 
-    static int findMax(int[] arr){
+    static int findMax(int[] books){
 
         int max=Integer.MIN_VALUE;
 
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]>max){
-                max=arr[i];
-            }
+        for(int pages:books){
+
+            max=Math.max(max,pages);
+
         }
 
         return max;
     }
 
-    static int sumOfArr(int[] arr){
+    static int totalSum(int[] books){
+
         int sum=0;
-        for (int i=0;i<arr.length;i++){
-            sum+=arr[i];
+        for(int pages:books){
+            sum+=pages;
         }
+
         return sum;
     }
 
-    static int isPossible(int[] arr,int mid){
+    static int studentPossibleForTheMid(int[] books,int mid){
 
-        int student=1;
-        int StudentPages=0;
+        int countStudent=1;
+        int pages=0;
 
+        for(int i=0;i<books.length;i++){
 
-        for(int i=0;i<arr.length;i++){
-
-            if(StudentPages+arr[i]<=mid){
-                StudentPages+=arr[i];
-
+            if(pages+books[i]<=mid){
+                pages+=books[i];
             }
             else {
-                student++;
-                StudentPages=arr[i];
+                countStudent++;
+                pages=books[i];
             }
-
         }
-        return student;
+
+        return countStudent;
+
 
     }
 
-    static int bookAllocation(int[] arr,int Student){
+    static int bookAllocation(int[] books,int students){
 
-        int start=findMax(arr);
-        int end=sumOfArr(arr);
-
-
+        int start=findMax(books);
+        int end=totalSum(books);
+        int ans=-1;
 
         while (start<=end){
 
             int mid=start+(end-start)/2;
 
+            int possibleStudent=studentPossibleForTheMid(books,mid);
 
-            int numberOfStudents=isPossible(arr,mid);
-
-            if (numberOfStudents>Student){
+            if(possibleStudent>students){
                 start=mid+1;
+
             }
+
             else {
+
                 end=mid-1;
+
             }
 
 
@@ -73,20 +76,22 @@ public class Q14 {
         return start;
 
 
-
-
     }
+
+
 
     public static void main(String[] args) {
 
-        // bookAllocation problem
-
-        int[] arr={25,46,28,49,24};
-        int Students=4;
-        System.out.println(bookAllocation(arr,Students));
-
+        int[] books={25,46,28,49,24};
+        int students=4;
+        System.out.println(bookAllocation(books,students));
 
 
 
     }
+
+
+
 }
+
+

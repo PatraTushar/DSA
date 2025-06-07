@@ -6,32 +6,22 @@ public class Q12 {
 
         int start=0;
         int end=num.length-1;
-        int min=  Integer.MAX_VALUE;
 
-        while(start<=end){
+        while (start<end){
 
             int mid=start+(end-start)/2;
 
-            if(num[start]<=num[mid]){
-
-                if(num[start]<min){
-                    min=num[start];
-                }
+            if(num[mid]>num[end]){
                 start=mid+1;
             }
 
-            else{
-                if(num[start]<min){
-                    min=num[start];
-                }
+            else {
                 end=mid;
             }
         }
 
+        return num[start];
 
-
-
-        return min;
 
     }
 

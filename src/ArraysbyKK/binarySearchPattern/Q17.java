@@ -16,7 +16,7 @@ public class Q17 {
                 return new int[]{rows,columns};
             }
 
-            else if(arr[rows][columns]>target){
+            else if(target<arr[rows][columns]){
                 columns--;
             }
 

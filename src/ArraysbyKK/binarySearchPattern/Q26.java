@@ -2,11 +2,11 @@ package ArraysbyKK.binarySearchPattern;
 
 public class Q26 {
 
-    static int findMax(int[] arr){
+    static int findMax(int[] piles){
 
         int max=Integer.MIN_VALUE;
 
-        for(int i:arr){
+        for(int i:piles){
             if (i>max){
                 max=i;
             }
@@ -17,13 +17,13 @@ public class Q26 {
 
 
 
-    static int minBananaEaten(int[] arr,int mid){
+    static int hrsTakenToCompleteBananas(int[] piles, int mid){
 
         int  totalHrs=0;
 
-        for(int i=0;i<arr.length;i++){
+        for(int i=0;i<piles.length;i++){
 
-            totalHrs+=Math.ceil((double) arr[i]/mid);
+            totalHrs+=Math.ceil((double) piles[i]/mid);
         }
 
         return totalHrs;
@@ -33,23 +33,23 @@ public class Q26 {
 
     }
 
-    static int kokoEatingBananas(int[] arr,int hrs){
+    static int kokoEatingBananas(int[] piles,int hrs){
 
 
 
         int start=1;
-        int end=findMax(arr);
+        int end=findMax(piles);
 
         while (start<=end){
             int mid=start+(end-start)/2;
 
-            int totalHrs=minBananaEaten(arr,mid);
+            int totalHrs= hrsTakenToCompleteBananas(piles,mid);
 
-            if(totalHrs<=hrs){
-                end=mid-1;
+            if(totalHrs>hrs){
+                start=mid+1;
             }
             else {
-                start=mid+1;
+                end=mid-1;
             }
         }
 
@@ -61,9 +61,9 @@ public class Q26 {
 
         // koko eating bananas leeTCode-->875
 
-        int[] arr={3,6,7,11};
+        int[] piles={3,6,7,11};
         int hrs=8;
-        System.out.println(kokoEatingBananas(arr,hrs));
+        System.out.println(kokoEatingBananas(piles,hrs));
 
 
     }
