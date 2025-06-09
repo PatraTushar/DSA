@@ -10,6 +10,11 @@ public class Q3 {
 
     static List<Integer> Intersection(int[] arr1,int[] arr2){
 
+        // Duplicates
+
+        //Time Complexity (TC): O(n + m)
+        //Space Complexity (SC): O(min(n, m))
+
         int i=0;
         int j=0;
 
@@ -45,7 +50,12 @@ public class Q3 {
         return list;
     }
 
-    static int[] IntersectionWithNodDuplicates(int[] nums1,int[] nums2){
+    static int[] IntersectionWithNoDuplicates(int[] nums1,int[] nums2){
+
+        // No duplicates
+
+        //Time Complexity (TC): O(n log n + m log m)
+        //Space Complexity (SC): O(min(n, m))
 
         Arrays.sort(nums1);
         Arrays.sort(nums2);
@@ -101,9 +111,9 @@ public class Q3 {
         int[] arr1={1,2,2,3,3,4,5,6};
         int[] arr2={2,3,3,5,6,6,7};
 
-//        List<Integer> Ans=Intersection(arr1,arr2);
-//        System.out.println(Ans);
-        int[] intersection=IntersectionWithNodDuplicates(arr1,arr2);
+        List<Integer> Ans=Intersection(arr1,arr2);
+        System.out.println(Ans);
+        int[] intersection=IntersectionWithNoDuplicates(arr1,arr2);
         System.out.println(Arrays.toString(intersection));
 
 

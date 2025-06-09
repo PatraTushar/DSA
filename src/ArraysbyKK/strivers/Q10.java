@@ -13,6 +13,9 @@ public class Q10 {
 
     static int[] sort(int[] arr){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int low=0;
         int mid=0;
         int high=arr.length-1;

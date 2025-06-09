@@ -6,6 +6,9 @@ public class Q9 {
 
     static int subArraySumEqualsK(int[] arr,int k){
 
+        //Time Complexity: O(n)
+        //Space Complexity: O(n)
+
         HashMap<Integer,Integer> map=new HashMap<>();
         int totalSubArray=0;
         int sum=0;

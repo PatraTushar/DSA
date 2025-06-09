@@ -4,6 +4,9 @@ public class Q6 {
 
     static int maxConsecutiveOnes(int[] arr){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int max=0;
         int count=0;
 

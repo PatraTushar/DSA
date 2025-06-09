@@ -4,6 +4,9 @@ public class Q5 {
 
     static int missingNumber(int[] arr){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int n=arr.length;
 
         int totalSum=n*(n+1)/2;

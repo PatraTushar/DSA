@@ -8,6 +8,9 @@ public class Q7 {
 
     static int  numberAppearOnce(int[] arr){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(n)
+
         HashMap<Integer,Integer> map=new HashMap<>();
 
         for (int i=0;i<arr.length;i++){
@@ -38,6 +41,9 @@ public class Q7 {
 
     static int numberAppearOnceI(int[] arr){
 
+        //Time Complexity (TC): O(n + m)
+        //Space Complexity (SC): O(m)
+
         int max=0;
 
         for (int a:arr){
@@ -60,6 +66,19 @@ public class Q7 {
 
     }
 
+    static int numberAppearOnceIII(int[] arr){
+
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
+        int result=0;
+        for (int ele:arr){
+            result^=ele;
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
 
         // find the number that appear once and then other twice
@@ -67,5 +86,6 @@ public class Q7 {
         int[] arr={1,1,2,3,3,4,4};
         System.out.println(numberAppearOnce(arr));
         System.out.println(numberAppearOnceI(arr));
+        System.out.println(numberAppearOnceIII(arr));
     }
 }

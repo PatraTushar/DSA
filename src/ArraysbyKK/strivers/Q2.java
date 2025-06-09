@@ -12,6 +12,9 @@ public class Q2 {
     // Approach 1
     static Set<Integer> union(int[] arr1, int[] arr2){
 
+        //Time Complexity (TC): O(n + m)
+        //Space Complexity (SC): O(n + m)
+
         HashSet<Integer> set=new HashSet<>();
 
         for (int i: arr1){
@@ -33,6 +36,9 @@ public class Q2 {
     // Approach 2       -->          optimal Approach
 
     static List<Integer> unionI(int[] arr1,int[] arr2){
+
+        //Time Complexity (TC): O(n + m)
+        //Space Complexity (SC): O(n + m)
 
         int i=0;
         int j=0;

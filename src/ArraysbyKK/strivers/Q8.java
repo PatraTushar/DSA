@@ -6,6 +6,9 @@ public class Q8 {
 
     static int longestSubArrSumK(int[] arr,int k){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(n)
+
         HashMap<Integer,Integer> map=new HashMap<>();
         int sum=0;
         int maxLength=0;

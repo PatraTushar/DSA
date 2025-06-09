@@ -2,23 +2,31 @@ package ArraysbyKK.strivers;
 
 public class Q4 {
 
-    static int removeDuplicates(int[] nums){
+    static int removeDuplicates(int[] arr){
 
-        int i=0;
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
 
-        for(int j=1;j<nums.length;j++){
+        if(arr.length==0) return 0;
 
-            if(nums[j]!=nums[i]){
-                nums[++i]=nums[j];
+        int pos=1;
+        int prevAns=arr[0];
 
+        for(int i=1;i<arr.length;i++){
+
+            if(arr[i]!=prevAns){
+                arr[pos++]=arr[i];
+                prevAns=arr[i];
             }
 
+
         }
-
-        return i+1;
-
-
+        return pos;
     }
+
+
+
+
 
     public static void main(String[] args) {
 
