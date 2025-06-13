@@ -9,6 +9,9 @@ public class Q19 {
 
     static List<Integer> majorityElement2(int[] nums) {   // better approach
 
+        //Time Complexity: O(n)
+        //Space Complexity: O(n)
+
         int n = nums.length;
 
         HashMap<Integer, Integer> map = new HashMap<>();

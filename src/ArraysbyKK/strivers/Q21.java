@@ -6,56 +6,79 @@ import java.util.List;
 
 public class Q21 {
 
+    static List<List<Integer>> fourSum(int[] arr,int target) {
 
-    static List<List<Integer>> fourSum(int[] nums,int target){
+        //Time Complexity (TC): O(n³)
+        //Space Complexity (SC):
+        //O(1) (excluding the space used for the output list)
+        //O(k) where k is the number of quadruplets in the result.
 
-     //   Time Complexity (TC): O(n^3)
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(arr);
 
-      //  Space Complexity (SC): O(n)
+        int i = 0;
+        int n = arr.length;
 
-        Arrays.sort(nums);
-        List<List<Integer>> result=new ArrayList<>();
+        while (i < n - 3) {
 
-        for(int i=0;i<nums.length;i++){
+            int j = i + 1;
 
-            if(i>0 && nums[i]==nums[i-1] ) continue;
 
-            for(int j=i+1;j<nums.length;j++){
+            while (j < n - 2) {
+                int k = j + 1;
+                int l = n - 1;
 
-                if(j!=i+1 && nums[j]==nums[j-1]) continue;
-                int k=j+1;
-                int l=nums.length-1;
+                while (k < l) {
 
-                while (k<l){
+                    long sum = (long) arr[i] + arr[j] + arr[k] + arr[l];
 
-                    long sum=(long) nums[i]+nums[j]+nums[k]+nums[l];
-
-                    if(sum==target){
-
-                        List<Integer> temp=List.of(nums[i],nums[j],nums[k],nums[l]);
-                        result.add(temp);
+                    if (sum < target) {
                         k++;
+                    }
+                    else if (sum > target) {
                         l--;
-
-                        while (k<l && nums[k]==nums[k-1]) k++;
-                        while (k<l && nums[l]==nums[l+1]) l--;
-
                     }
-
-                    else if(sum<target){
-                        k++;
-
-                    }
-
                     else {
-                        l--;
+
+                        List<Integer> sum4=Arrays.asList(arr[i],arr[j],arr[k],arr[l]);
+                        result.add(sum4);
+
+
+                        int eleK=arr[k];
+                        int eleL=arr[l];
+
+                        while (k<l && eleK==arr[k]){
+                            k++;
+                        }
+
+                        while (k<l && eleL==arr[l]){
+                            l--;
+                        }
+
                     }
                 }
+
+
+                int eleJ=arr[j];
+
+                while (j<n-2 && eleJ==arr[j]){
+                    j++;
+
+                }
             }
+
+            int eleI=arr[i];
+            while (i<n-3 && eleI==arr[i]){
+                i++;
+            }
+
 
         }
 
         return result;
+
+
+
 
 
     }

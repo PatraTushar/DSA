@@ -60,7 +60,7 @@ public class Q14 {
 
     public static void main(String[] args) {
 
-        // Rearrange array elements by sign but there is no equal number og positives and negatives
+        // Rearrange array elements by sign but there is no equal number of positives and negatives
 
         int[] arr={-1,2,3,4,-3,1};
         int[] ans=rearrange(arr);

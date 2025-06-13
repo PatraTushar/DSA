@@ -4,6 +4,9 @@ public class Q12 {
 
     static int maximumSubArray(int[] num){
 
+        //Time Complexity: O(n)
+        //Space Complexity: O(1)
+
         int MAX=Integer.MIN_VALUE;
         int sum=0;
 

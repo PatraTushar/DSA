@@ -26,7 +26,7 @@ public class Q8 {
 
         }
 
-        return arr[start];
+        return start;
 
     }
     public static void main(String[] args) {

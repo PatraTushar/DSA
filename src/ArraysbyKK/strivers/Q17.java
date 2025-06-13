@@ -19,6 +19,7 @@ public class Q17 {
             set.add(num);
         }
 
+
        for(int i:set){
 
            if(!set.contains(i-1)){

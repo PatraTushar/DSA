@@ -4,60 +4,76 @@ import java.util.*;
 
 public class Q20 {
 
- //   Time Complexity (TC): O(n^2)
 
-  //  Space Complexity (SC): O(n)
+    static List<List<Integer>> threeSum(int[] arr){
 
-    static List<List<Integer>> threeSum(int[] nums){
+        //   Time Complexity (TC): O(n^2)
+        //  Space Complexity (SC): O(k)
 
         List<List<Integer>> result=new ArrayList<>();
-        Arrays.sort(nums);
 
-        for(int i=0;i<nums.length;i++){
+        int i=0;
 
-            if(i>0 && nums[i]==nums[i-1]) continue;
+        int n=arr.length;
+
+        Arrays.sort(arr);
+
+
+
+
+        while (i<n-2){
 
             int j=i+1;
-            int k= nums.length-1;
+            int k=n-1;
 
             while (j<k){
 
-                int sum=nums[i]+nums[j]+nums[k];
+                int sum=arr[i]+arr[j]+arr[k];
 
                 if(sum<0){
                     j++;
-
                 }
 
                 else if(sum>0){
                     k--;
-
                 }
 
                 else {
 
-                   List<Integer> temp=List.of(nums[i],nums[j],nums[k]);
-                   result.add(temp);
-                   j++;
-                   k--;
+                    List<Integer> triplets=Arrays.asList(arr[i],arr[j],arr[k]);
+                    result.add(triplets);
 
-                   while (j<k && nums[j]==nums[j-1]) j++;
-                   while (j<k && nums[k]==nums[k+1]) k--;
+                    int eleJ=arr[j];
+                    int eleK=arr[k];
+
+                    while (j<k && arr[j]==eleJ){
+                        j++;
+                    }
+
+                    while (j<k && arr[k]==eleK){
+                        k--;
+
+                    }
+
 
 
 
 
                 }
-
             }
 
 
-
-
+            int eleI=arr[i];
+            while (i<n-2 && arr[i]==eleI){
+                i++;
+            }
 
 
         }
+
         return result;
+
+
 
     }
 

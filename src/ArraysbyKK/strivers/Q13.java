@@ -4,43 +4,10 @@ import java.util.Arrays;
 
 public class Q13 {
 
-    static int[] rearrangeElementsBySign(int[] num){  // bruteForce approach
 
-       // Time Complexity: O(n)
-      //  Space Complexity: O(n)
+    static int[] rearrangeElementsBySign(int[] nums){
 
-        int[] positives=new int[num.length/2];
-        int[] negatives=new int[num.length/2];
-        int[] finalArr=new int[num.length];
-        int a=0;
-        int b=0;
-
-        for(int i=0;i<num.length;i++){
-
-            if(num[i]>0){
-                positives[a]=num[i];
-                a++;
-
-            }
-
-            else{
-                negatives[b]=num[i];
-                b++;
-            }
-
-        }
-
-        for(int i=0;i<num.length/2;i++){
-
-            num[2*i]=positives[i];
-            num[2*i+1]=negatives[i];
-
-        }
-
-        return num;
-    }
-
-    static int[] rearrange(int[] nums){
+        //// condition -> Equal number of positives and negatives bt the relative order are  same
 
         // Time Complexity: O(n)
         //  Space Complexity: O(n)
@@ -74,6 +41,43 @@ public class Q13 {
 
     }
 
+    static int[] rearrangeElementsBySignI(int[] arr){
+
+        // condition -> Equal number of positives and negatives bt the relative order are not same
+
+         // Time Complexity: O(n)
+        //  Space Complexity: O(1)
+
+
+        int i=0;
+        int j=1;
+        int n=arr.length;
+
+        while (i<n && j<n){
+
+            if(arr[i]<0 && arr[j]>0){
+
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+                i+=2;
+                j+=2;
+            }
+
+            else {
+
+                if(arr[i]>0) i+=2;
+                if(arr[j]<0) j+=2;
+
+            }
+        }
+
+        return arr;
+
+
+
+    }
+
 
     public static void main(String[] args) {
 
@@ -82,7 +86,7 @@ public class Q13 {
         int[] arr={3,1,-2,-5,2,-4};
         int[] Ans=rearrangeElementsBySign(arr);
         System.out.println(Arrays.toString(Ans));
-        int[] Ans1=rearrange(arr);
+        int[] Ans1=rearrangeElementsBySignI(arr);
         System.out.println(Arrays.toString(Ans1));
     }
 }
