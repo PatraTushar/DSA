@@ -9,7 +9,6 @@ public class Q27 {
 
         int m=arr1.length;
         int n=arr2.length;
-        int totalLength=m+n;
         int left=k;
 
         if(m>n) return findKthElement(arr2,arr1,k);

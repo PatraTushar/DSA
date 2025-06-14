@@ -65,7 +65,7 @@ public class Q26 {
 
         int n1=nums1.length;
         int n2=nums2.length;
-        int left=(n1+n2+1)/2;
+        int partitions=(n1+n2+1)/2;
         int n=n1+n2;
 
         if (n1>n2) return findMedianOf2SortedArrays(nums2,nums1);
@@ -76,7 +76,7 @@ public class Q26 {
         while (low<=high){
 
             int mid1=low+(high-low)/2;
-            int mid2=left-mid1;
+            int mid2=partitions-mid1;
             int l1=Integer.MIN_VALUE;
             int l2=Integer.MIN_VALUE;
             int r1=Integer.MAX_VALUE;
@@ -111,11 +111,6 @@ public class Q26 {
         }
 
         return 0;
-
-
-
-
-
 
 
 
