@@ -34,13 +34,13 @@ public class Q25 {
 
     }
 
-    static int[] findMissingAndRepeating(int[] arr,int n){  // optimal solution
+    static int[] findMissingAndRepeating(int[] arr,long n){  // optimal solution
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        long s1N=(n*(n+1))/2;
-        long s2N=(n*(n+1)*(2*n+1))/6;
+        long s1N=(n*(n+1))/2;         // sum of n natural number
+        long s2N=(n*(n+1)*(2*n+1))/6;  // sum of square of natural number
         long s1=0;
         long s2=0;
 
