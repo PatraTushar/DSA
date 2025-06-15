@@ -31,7 +31,7 @@ public class Q28 {
         return index ;
     }
 
-    static int findMaximum1sInTheRow(int[][] arr){
+    static int findMaximum1sInTheRow(int[][] arr){  // optimal approach
 
         //Time Complexity: O(m * log n)
         //Space Complexity: O(1)
@@ -53,6 +53,7 @@ public class Q28 {
     }
 
     static int findMAX1s(int[] arr){
+
 
         int low=0;
         int high=arr.length-1;
