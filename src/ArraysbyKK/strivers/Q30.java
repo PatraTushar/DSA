@@ -1,5 +1,6 @@
+package ArraysbyKK.strivers;
 
-public class myPractice {
+public class Q30 {
 
     static int findMedian(int[][] arr){
 
@@ -13,8 +14,8 @@ public class myPractice {
 
         for(int i=0;i<rows;i++){
 
-             low=Math.min(low,arr[i][0]);
-             high=Math.max(high,arr[i][cols-1]);
+            low=Math.min(low,arr[i][0]);
+            high=Math.max(high,arr[i][cols-1]);
 
         }
 
@@ -54,20 +55,20 @@ public class myPractice {
 
 
 
-            while (low < high){
+        while (low < high){
 
-                int mid=low+(high-low)/2;
+            int mid=low+(high-low)/2;
 
-                if(arr[mid]<=target){
-                    low=mid+1;
+            if(arr[mid]<=target){
+                low=mid+1;
 
-                }
-
-                else {
-
-                    high=mid;
-                }
             }
+
+            else {
+
+                high=mid;
+            }
+        }
 
 
 
