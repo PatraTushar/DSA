@@ -27,6 +27,9 @@ public class  Q29 {
 
     static int[] peakElementII(int[][] arr){
 
+        //Time Complexity (TC): O(n * log m)
+        //Space Complexity (SC): O(1)
+
         int low=0;
         int high=arr[0].length-1;
         int rows=arr.length;
