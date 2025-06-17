@@ -51,11 +51,12 @@ public class Q30 {
     static int countLessThanOrEqual(int[] arr,int target){
 
         int low=0;
+
         int high=arr.length-1;
 
 
-
         while (low <= high){
+
 
             int mid=low+(high-low)/2;
 
@@ -66,12 +67,11 @@ public class Q30 {
 
             else {
 
+
                 high=mid-1;
+
             }
         }
-
-
-
 
 
 
