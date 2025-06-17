@@ -1,94 +1,121 @@
-//
-//public class myPractice {
-//
-//<<<<<<< HEAD
-//
-//
-//
-//=======
-//    static int findMedian(int[][] arr){
-//
-//        int rows=arr.length;
-//        int cols=arr[0].length;
-//        int totalLength=rows * cols;
-//        int median =totalLength/2;
-//
-//        int low=Integer.MAX_VALUE;
-//        int high=Integer.MIN_VALUE;
-//
-//        for(int i=0;i<rows;i++){
-//
-//             low=Math.min(low,arr[i][0]);
-//             high=Math.max(high,arr[i][cols-1]);
-//
-//        }
-//
-//
-//        while (low < high){
-//
-//            int mid=low+(high-low)/2;
-//
-//            int count=0;
-//
-//            for(int i=0;i<rows;i++){
-//
-//                count+=countLessThanOrEqual(arr[i],mid);
-//
-//            }
-//
-//            if(count<=median){
-//
-//                low=mid+1;
-//            }
-//
-//            else {
-//
-//                high=mid;
-//            }
-//        }
-//
-//        return low;
-//
-//
-//    }
-//
-//    static int countLessThanOrEqual(int[] arr,int target){
-//
-//        int low=0;
-//        int high=arr.length;
-//
-//
-//
-//            while (low < high){
-//
-//                int mid=low+(high-low)/2;
-//
-//                if(arr[mid]<=target){
-//                    low=mid+1;
-//
-//                }
-//
-//                else {
-//
-//                    high=mid;
-//                }
-//            }
-//
-//
-//
-//
-//
-//
-//
-//        return low;
-//
-//    }
-//    public static void main(String[] args) {
-//
-//        int[][] arr={{1,5,7,9,11},{2,3,4,5,10},{9,10,12,14,16}};
-//        System.out.println(findMedian(arr));
-//
-//
-//    }
-//>>>>>>> 759bf120c8a45db633a72733068bc11475c8c668
-//}
+
+public class myPractice {
+
+
+    public static class Node {
+
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+
+    public static class LinkedList {
+
+        Node head = null;
+        Node tail = null;
+        int size = 0;
+
+        void insertAtTail(int data) {
+
+            Node newNode = new Node(data);
+
+            if (head == null) {
+
+                head = newNode;
+
+            } else {
+
+                tail.next = newNode;
+
+            }
+
+            tail = newNode;
+            size++;
+
+        }
+
+        void insertAtHead(int data) {
+
+            Node newNode = new Node(data);
+
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+
+                newNode.next = head;
+                head = newNode;
+
+
+            }
+
+            size++;
+        }
+
+
+        void insert(int idx, int data) {
+
+            Node newNode = new Node(data);
+            Node temp = head;
+
+            if (idx < 1 && idx == size + 1) {
+
+                throw new IndexOutOfBoundsException(" wrong index ");
+
+            }
+
+            if (idx == 1) {
+                insertAtHead(data);
+                return;
+
+            }
+
+            else {
+
+
+                for (int i = 1; i < idx - 1; i++) {
+
+                    temp = temp.next;
+                }
+
+                Node storeAfterNode = temp.next;
+                temp.next = newNode;
+                newNode.next = storeAfterNode;
+            }
+
+            size++;
+
+
+        }
+
+        int getAt(int idx){
+
+            Node temp=head;
+
+            if(idx<1 || idx>size){
+
+                throw new IndexOutOfBoundsException(" wrong index ");
+
+            }
+
+            for(int i=1;i<idx;i++){
+                temp=temp.next;
+
+            }
+
+            return temp.data;
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+
+}

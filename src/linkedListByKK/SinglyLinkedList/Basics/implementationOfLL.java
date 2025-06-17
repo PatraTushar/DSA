@@ -2,194 +2,189 @@ package linkedListByKK.SinglyLinkedList.Basics;
 
 public class implementationOfLL {
 
-    public static class Node{
+    static class Node {
 
         int data;
         Node next;
 
-        Node(int data){
-            this.data=data;
+        Node(int data) {
+
+            this.data = data;
         }
+
+
     }
 
-    public static class linkedList{
+    public static class LinkedList {
 
-        Node head=null;
-        Node tail=null;
+        Node head = null;
+        Node tail = null;
 
-        int size=0;
+        int size = 0;
 
+        void insertAtTail(int data) {
 
-         void insertAtTail(int data){
+            Node newNode = new Node(data);
 
-             Node temp=new Node(data);
+            if (head == null) {
 
-            if(head==null){
-                head=temp;
+                head = newNode;
 
+            } else {
+
+                tail.next = newNode;
             }
 
-            else{
-                tail.next=temp;
-            }
-
-            tail=temp;
+            tail = newNode;
             size++;
+
+
         }
 
-        void insertAtHead(int data){
+        void insertAtHead(int data) {
 
-             Node temp=new Node(data);
+            Node newNode = new Node(data);
 
-             if(head==null){
-                 head=temp;
-                 tail=temp;
-             }
+            if (head == null) {
 
-             else {
-                 temp.next=head;
-                 head=temp;
-             }
-             size++;
+                head = newNode;
+                tail = newNode;
+            } else {
+
+                newNode.next = head;
+                head = newNode;
+            }
+
+            size++;
+
+
         }
 
-         void insertAt(int idx,int data){
+        void insert(int idx, int data) {
 
-             Node temp=new Node(data);
-             Node t=head;
+            Node temp = head;
+            Node newNode = new Node(data);
 
-             if(idx<0 || idx>size){
-                 System.out.println(" wrong index ");
-                 return;
-             }
+            if (idx < 1 || idx > size+1) {
+                throw new IndexOutOfBoundsException(" wrong index ");
+            }
 
-             if(idx==size){
-                 insertAtTail(data);
-                 return;
-             }
+            if (idx == 1) {
+                insertAtHead(data);
+                return;
+            }
 
-             else if(idx==0){
-                 insertAtHead(data);
-                 return;
-             }
-
-             for(int i=0;i<idx-1;i++){
-                 t=t.next;
-
-             }
-
-             temp.next=t.next;
-             t.next=temp;
-             size++;
-         }
-
-         int getAt(int idx){
-
-             if(idx<0 || idx>=size){
-                 System.out.println(" wrong index ");
-                 return -1;
-             }
-
-             Node temp=head;
-
-             for (int i=0;i<idx;i++){
-                 temp=temp.next;
-             }
-
-             return temp.data;
+            if (idx == size + 1) {
+                insertAtTail(data);
+                return;
+            }
 
 
 
-         }
+                for (int i = 1; i < idx - 1; i++) {
 
-         void deleteAt(int idx){
-             if(idx<0 || idx>=size){
-                 System.out.println(" wrong index ");
-                 return ;
-             }
+                    temp = temp.next;
 
-             Node temp=head;
+                }
 
-             if(idx==0){
-                 head=head.next;
-                 size--;
-                 return;
-
-             }
-
-             for(int i=0;i<idx-1;i++){
-
-                 temp=temp.next;
-
-             }
-
-              if(idx==size-1){
-                  tail=temp;
-                  temp.next=null;
-              }
-
-              else {
-                  temp.next=temp.next.next;
-              }
-
-              size--;
-         }
+                Node storeAfterNode = temp.next;
+                temp.next = newNode;
+                newNode.next = storeAfterNode;
 
 
 
+            size++;
 
-         void display(){
 
-             Node temp=head;
-
-             while (temp!=null){
-                 System.out.print(temp.data +" ");
-                 temp=temp.next;
-             }
-
-             System.out.println();
         }
+
+        int getAt(int idx) {
+            Node temp = head;
+
+            if (idx < 1 || idx >size ) {
+                throw new IndexOutOfBoundsException(" wrong index ");
+            }
+
+
+            for (int i = 1; i < idx; i++) {
+
+                temp = temp.next;
+
+            }
+            return temp.data;
+        }
+
+        void deleteAt(int idx) {
+
+            Node temp = head;
+
+            if (idx < 1 || idx > size ) {
+                throw new IndexOutOfBoundsException(" wrong index ");
+            }
+
+            if (idx == 1) {
+
+                head=head.next;
+
+                if(head==null){
+                    tail=null;
+                }
+
+                size--;
+                return;
+            }
+
+
+            for (int i = 1; i < idx - 1; i++) {
+                temp = temp.next;
+            }
+
+            // If deleting last node, update tail
+            if (temp.next == tail) {
+                tail = temp;
+            }
+
+            temp.next = temp.next.next;
+            size--;
+
+
+        }
+
+
+        void display() {
+
+            Node temp = head;
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+
+            System.out.println();
+        }
+
+
     }
-
-
 
     public static void main(String[] args) {
 
-
-        linkedList ll=new linkedList();
-        ll.insertAtTail(2);
-        ll.display();    //2
-        ll.insertAtTail(5);
+        LinkedList ll = new LinkedList();
         ll.insertAtTail(10);
-        ll.insertAtTail(8);
-        ll.display();    // 2-->5-->10-->8
-        ll.insertAtHead(20);
-        ll.display(); // 20--> 2-->5-->10-->8
-        ll.insertAt(3,100);
-        ll.display(); // 20--> 2-->5-->100-->10-->8
-        ll.insertAt(6,200);
-        ll.display(); // 20--> 2-->5-->100-->10-->8-->200
-       // System.out.println(ll.tail.data);
-        ll.insertAt(0,1000);
-        ll.display();  // 1000-->20--> 2-->5-->100-->10-->8-->200
-        System.out.println(ll.getAt(3));
-        ll.deleteAt(3);
-        ll.display(); //  1000-->20--> 2-->100-->10-->8-->200
-        System.out.println(ll.tail.data);
-        ll.deleteAt(6);
-        ll.display();  //1000-->20--> 2-->100-->10-->8
-        System.out.println(ll.tail.data);
-
-
-
-
-
-
-
-
-
-
+        ll.insertAtTail(100);
+        ll.insertAtTail(1400);
+        ll.insertAtTail(1600);
+        ll.insertAtTail(3300);
+        ll.display();     // 10 100 1400 1600 3300
+        ll.insertAtHead(222);
+        ll.display();    // 222 10 100 1400 1600 3300
+        ll.insert(4, 900);
+        ll.display();     // 222 10 100 900 1400 1600 3300
+        System.out.println(ll.getAt(3)); // 100
+        ll.deleteAt(5);
+        ll.display(); // 222 10 100 900 1600 3300
 
 
     }
+
+
+
 }
