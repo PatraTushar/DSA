@@ -25,12 +25,19 @@ public class Q10 {
 
     static Node deleteLeftMiddle(Node head){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         Node slow=head;
         Node fast=head;
 
         if(fast.next==null) return null;
+        if(fast.next.next==null) {
+            head=head.next;
+            return head;
+        }
 
-        while ( fast.next.next.next!=null && fast.next.next.next.next!=null ){
+        while ( fast.next!=null && fast.next.next!=null && fast.next.next.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }

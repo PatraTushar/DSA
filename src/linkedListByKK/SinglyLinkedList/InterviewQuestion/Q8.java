@@ -24,6 +24,10 @@ public class Q8 {
 
     static Node findMiddle(Node head){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
+
         Node slow=head;
         Node fast=head;
 

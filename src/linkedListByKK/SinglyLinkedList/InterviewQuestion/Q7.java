@@ -24,8 +24,13 @@ public class Q7 {
 
     static Node findMiddle(Node head){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         Node slow=head;
         Node fast=head;
+
+        if(head==null) return null;
 
         while( fast!=null && fast.next!=null){
 

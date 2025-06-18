@@ -48,6 +48,9 @@ public class Q9 {
 
         // Q: Delete the middle element of linked list for odd and right middle for even  (leeTCode->2095)
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         Node a=new Node(1);
         Node b=new Node(5);
         Node c=new Node(10);
