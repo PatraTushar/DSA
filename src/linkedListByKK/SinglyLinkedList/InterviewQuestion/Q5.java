@@ -26,6 +26,10 @@ public class Q5 {
 
     static Node deleteNthNodeFromEnd(Node head,int n){
 
+        if(n==0){
+            throw new NullPointerException(" Not possible ");
+        }
+
         Node slow=head;
         Node fast=head;
 
@@ -75,7 +79,7 @@ public class Q5 {
 //        Node node3rd=deleteNthNode(a,3);
 //        display(node3rd);
 
-        Node node6th=deleteNthNodeFromEnd(a,6);
+        Node node6th=deleteNthNodeFromEnd(a,4);
         display(node6th);
 
 
