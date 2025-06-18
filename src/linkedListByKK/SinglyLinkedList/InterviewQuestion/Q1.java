@@ -25,6 +25,9 @@ public class Q1 {
 
     static void deleteNode(Node node){
 
+        //Time Complexity (TC): O(1)
+        //Space Complexity (SC): O(1)
+
         if (node == null || node.next == null) {
             throw new IllegalArgumentException("Cannot delete the last node using this method.");
         }

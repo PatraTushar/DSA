@@ -26,6 +26,9 @@ public class Q5 {
 
     static Node deleteNthNodeFromEnd(Node head,int n){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         if(n==0){
             throw new NullPointerException(" Not possible ");
         }

@@ -34,6 +34,10 @@ public class Q6 {
     }
 
     static Node intersection(Node head1,Node head2){
+
+        // Time Complexity (TC): O(n + m)
+        //Space Complexity (SC): O(1)
+
         Node temp1=head1;
         Node temp2=head2;
 

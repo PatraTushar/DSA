@@ -27,6 +27,9 @@ public class Q3 {
 
     static Node nthNodeFromLast(Node head,int n){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         if (head == null || n <= 0) {
             throw new IllegalArgumentException("Invalid input: List is empty or n is non-positive.");
         }

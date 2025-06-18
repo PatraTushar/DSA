@@ -27,6 +27,9 @@ public class Q2 {
 
     static Node nthNodeFromEnd(Node head,int n){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int size=0;
         Node temp=head;
         while (temp!=null){

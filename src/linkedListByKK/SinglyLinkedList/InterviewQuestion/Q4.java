@@ -26,6 +26,9 @@ public class Q4 {
 
     static void deleteNthNodeFromEnd(Node head,int n){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         Node slow=head;
         Node fast=head;
 
