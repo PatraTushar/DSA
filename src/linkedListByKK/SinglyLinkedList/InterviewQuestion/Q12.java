@@ -15,6 +15,9 @@ public class Q12 {
 
     static Node cycleInALinkedListII(Node head){
 
+        //Time Complexity: O(N)
+        //Space Complexity: O(1)
+
         Node slow=head;
         Node fast=head;
 
