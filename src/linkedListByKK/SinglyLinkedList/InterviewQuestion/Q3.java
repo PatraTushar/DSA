@@ -27,6 +27,10 @@ public class Q3 {
 
     static Node nthNodeFromLast(Node head,int n){
 
+        if (head == null || n <= 0) {
+            throw new IllegalArgumentException("Invalid input: List is empty or n is non-positive.");
+        }
+
         Node slow=head;
         Node fast=head;
 
