@@ -25,6 +25,9 @@ public class Q15 {
 
     static void oddEvenSplit(Node head){
 
+        //Time Complexity: O(N)
+        //Space Complexity: O(1)
+
 
         Node odd=new Node(-1);
         Node even=new Node(-1);
