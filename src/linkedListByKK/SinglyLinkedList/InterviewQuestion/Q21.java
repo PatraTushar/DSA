@@ -18,7 +18,7 @@ public class Q21 {
 
         Node curr=head;
         Node prev=null;
-        Node agla=null;
+        Node agla;
 
         while (curr!=null){
             agla=curr.next;
@@ -32,6 +32,9 @@ public class Q21 {
 
     static int maxTwinSum(Node head){
 
+        //Time Complexity: O(n)
+        //Space Complexity: O(1)
+
         Node slow=head;
         Node fast=head;
 
@@ -40,8 +43,8 @@ public class Q21 {
             fast=fast.next.next;
         }
 
-        Node temp=reverse(slow.next);
-        slow.next=temp;
+        Node storeNode=reverse(slow.next);
+        slow.next=storeNode;
 
         Node p1=head;
         Node p2=slow.next;

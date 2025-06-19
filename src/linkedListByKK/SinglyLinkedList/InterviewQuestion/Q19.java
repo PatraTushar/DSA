@@ -25,9 +25,9 @@ public class Q19 {
     }
     static Node reverseALL(Node head){
 
-        Node curr=head;
         Node prev=null;
-        Node agla=null;
+        Node curr=head;
+        Node agla;
 
         while(curr!=null){
             agla=curr.next;

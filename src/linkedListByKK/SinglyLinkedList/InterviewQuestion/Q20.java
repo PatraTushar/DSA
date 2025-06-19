@@ -17,7 +17,7 @@ public class Q20 {
 
         Node curr=head;
         Node prev=null;
-        Node agla=null;
+        Node agla;
 
         while (curr!=null){
 
@@ -33,6 +33,9 @@ public class Q20 {
 
 
     static boolean isPalindromeLL(Node head){
+
+        //Time Complexity: O(n)
+        //Space Complexity: O(1)
 
         Node slow=head;
         Node fast=head;

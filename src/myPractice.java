@@ -3,25 +3,25 @@
 
 public class myPractice {
 
-    public static class ListNode {
+    public static class Node {
 
-        int val;
-        ListNode next;
+        int data;
+        Node next;
 
-        ListNode(int data) {
+        Node(int data) {
 
-            this.val = data;
+            this.data = data;
         }
     }
 
 
-    static void display(ListNode head) {
+    static void display(Node head) {
 
-        ListNode temp = head;
+        Node temp = head;
 
         while (temp != null) {
 
-            System.out.print(temp.val + " ");
+            System.out.print(temp.data + " ");
             temp = temp.next;
 
         }
@@ -30,40 +30,56 @@ public class myPractice {
 
     }
 
-    static ListNode removeDuplicates(ListNode head) {
+    static Node reverse(Node head) {
 
-        //Time Complexity: O(n)
-        //Space Complexity: O(1)
+        Node prev = null;
+        Node curr = head;
+        Node agla;
 
-        ListNode dummy=new ListNode(Integer.MIN_VALUE);
-        ListNode t=dummy;
-        ListNode temp=head;
+        while (curr != null) {
 
-        while (temp!=null){
-
-            if(t.val !=temp.val){
-
-                t.next=temp;
-                t=temp;
-                temp=temp.next;
-            }
-
-            else {
-
-                while (t.val ==temp.val){
-                    temp=temp.next;
-                    if(temp==null) break;
-
-                }
-                t.next=temp;
-
-
-            }
+            agla = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = agla;
         }
 
-        return dummy.next;
+        return prev;
 
 
+    }
+
+
+    static int twinSum(Node head) {
+
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast.next != null && fast.next.next != null) {
+
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        Node storeNode = reverse(slow.next);
+        slow.next = storeNode;
+
+        Node pointer1 = head;
+        Node pointer2 = slow.next;
+        int sum = 0;
+
+        while (pointer2 != null) {
+
+            if ((pointer1.data + pointer2.data) > sum) {
+                sum = pointer1.data + pointer2.data;
+            }
+
+            pointer1 = pointer1.next;
+            pointer2 = pointer2.next;
+        }
+
+        return sum;
 
 
     }
@@ -71,18 +87,14 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(1);
-        ListNode b = new ListNode(2);
-        ListNode c = new ListNode(2);
-        ListNode d = new ListNode(3);
-        ListNode e = new ListNode(3);
-        ListNode f = new ListNode(3);
-        ListNode g = new ListNode(4);
-        ListNode h = new ListNode(4);
-        ListNode i = new ListNode(4);
-        ListNode j = new ListNode(5);
-        ListNode k = new ListNode(5);
-        ListNode l = new ListNode(6);
+        Node a = new Node(1);
+        Node b = new Node(10);
+        Node c = new Node(13);
+        Node d = new Node(4);
+        Node e = new Node(5);
+        Node f = new Node(6);
+        Node g = new Node(7);
+        Node h = new Node(2);
 
         a.next = b;
         b.next = c;
@@ -91,14 +103,8 @@ public class myPractice {
         e.next = f;
         f.next = g;
         g.next = h;
-        h.next = i;
-        i.next = j;
-        j.next = k;
-        k.next = l;
 
-        display(a);
-        ListNode Ans=removeDuplicates(a);
-        display(Ans);
+        System.out.println(twinSum(a));
 
 
     }

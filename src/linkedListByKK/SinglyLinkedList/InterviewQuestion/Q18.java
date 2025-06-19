@@ -25,6 +25,9 @@ public class Q18 {
 
     static Node reverse(Node head){
 
+        //Time Complexity: O(n)
+        //Space Complexity: O(1)
+
         if(head.next==null) return head;
 
         Node newHead=reverse(head.next);
