@@ -19,19 +19,39 @@ public class Q17 {
 
         static Node duplicateI(Node head){
 
-        Node temp=head;
+            //Time Complexity: O(n)
+            //Space Complexity: O(1)
 
-        while (temp!=null && temp.next!=null){
-            if(temp.data==temp.next.data){
-                temp.next=temp.next.next;
+            Node dummy=new Node(Integer.MIN_VALUE);
+            Node t=dummy;
+            Node temp=head;
+
+            while (temp!=null){
+
+                if(t.data !=temp.data){
+
+                    t.next=temp;
+                    t=temp;
+                    temp=temp.next;
+                }
+
+                else {
+
+                    while (t.data ==temp.data){
+                        temp=temp.next;
+                        if(temp==null) break;
+
+                    }
+                    t.next=temp;
+
+
+                }
             }
 
-            else {
-                temp=temp.next;
-            }
-        }
+            return dummy.next;
 
-        return head;
+
+
 
 
         }
