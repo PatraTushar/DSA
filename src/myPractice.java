@@ -1,5 +1,6 @@
 import OopsByKK.AccessModifier.Public.A;
 import linkedListByKK.SinglyLinkedList.InterviewQuestion.Q14;
+import linkedListByKK.SinglyLinkedList.InterviewQuestion.Q15;
 
 
 public class myPractice {
@@ -16,44 +17,6 @@ public class myPractice {
     }
 
 
-    static Node merge2SortedLL (Node head1, Node head2){
-
-        Node temp1 = head1;
-        Node temp2 = head2;
-        Node dummy = new Node(-100);
-        Node t = dummy;
-
-
-        while (temp1 != null && temp2 != null) {
-
-            if (temp1.data < temp2.data) {
-
-                t.next = temp1;
-                t = temp1;
-                temp1 = temp1.next;
-            } else {
-
-                t.next = temp2;
-                t = temp2;
-                temp2 = temp2.next;
-            }
-
-
-        }
-
-        if (temp1 == null) {
-
-            t.next = temp2;
-
-        } else {
-            t.next = temp1;
-        }
-
-        return dummy.next;
-
-
-    }
-
     static void display (Node head){
 
         Node temp = head;
@@ -66,6 +29,55 @@ public class myPractice {
         }
 
     }
+
+    static void oddEvenSplit(Node head){
+
+        Node odd=new Node(-1);
+        Node even=new Node(-1);
+
+        Node o1=odd;
+        Node e1=even;
+        Node temp=head;
+
+        while (temp!=null){
+
+            if(temp.data%2!=0){
+
+                o1.next=temp;
+                o1=temp;
+
+
+
+            }
+
+            else {
+
+                e1.next=temp;
+                e1=temp;
+
+
+
+            }
+
+            temp=temp.next;
+        }
+
+
+       o1.next=null;
+        e1.next=null;
+
+        o1=odd.next;
+        e1=even.next;
+
+        display(o1);
+        System.out.println();
+        display(e1);
+
+
+
+
+    }
+
 
 
 
@@ -80,27 +92,26 @@ public class myPractice {
 
         public static void main(String[] args){
 
-            Node a = new Node(1);
-            Node b = new Node(3);
-            Node c = new Node(5);
-            Node d = new Node(8);
+            Node a=new Node(1);
+            Node b=new Node(2);
+            Node c=new Node(3);
+            Node d=new Node(4);
+            Node e=new Node(5);
+            Node f=new Node(6);
+            Node g=new Node(7);
+            Node h=new Node(8);
 
-            a.next = b;
-            b.next = c;
-            c.next = d;
+            a.next=b;
+            b.next=c;
+            c.next=d;
+            d.next=e;
+            e.next=f;
+            f.next=g;
+            g.next=h;
 
-            Node e = new Node(2);
-            Node f = new Node(4);
-            Node g = new Node(6);
-            Node h = new Node(7);
-
-            e.next = f;
-            f.next = g;
-            g.next = h;
-
-            Node Ans=merge2SortedLL(a,e);
-            display(Ans);
-
+            display(a);
+            System.out.println();
+            oddEvenSplit(a);
 
         }
 

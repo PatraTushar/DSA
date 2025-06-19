@@ -16,7 +16,6 @@ public class Q15 {
 
     static void display(Node head){
         Node temp=head;
-        System.out.println(" original list ");
         while (temp!=null){
             System.out.print(temp.data +" ");
             temp=temp.next;
@@ -26,46 +25,50 @@ public class Q15 {
 
     static void oddEvenSplit(Node head){
 
+
+        Node odd=new Node(-1);
+        Node even=new Node(-1);
+
+        Node o1=odd;
+        Node e1=even;
         Node temp=head;
-
-        Node oddList=new Node(0);
-        Node o=oddList;
-
-        Node evenList=new Node(0);
-        Node e=evenList;
 
         while (temp!=null){
 
-            Node newNode=new Node(temp.data);
             if(temp.data%2!=0){
-                o.next=newNode;
-                o=newNode;
+
+                o1.next=temp;
+                o1=temp;
+
+
+
             }
 
             else {
-                e.next=newNode;
-                e=newNode;
+
+                e1.next=temp;
+                e1=temp;
+
+
 
             }
 
             temp=temp.next;
         }
 
-        o=oddList.next;
-        e=evenList.next;
 
-        System.out.println(" Odd linked list ");
-        while (o!=null){
-            System.out.print(o.data +" ");
-            o=o.next;
-        }
+        o1.next=null;
+        e1.next=null;
 
-        System.out.println();
-        System.out.println(" Even linked list");
-        while (e!=null){
-            System.out.print(e.data +" ");
-            e=e.next;
-        }
+        o1=odd.next;
+        e1=even.next;
+
+        System.out.println(" odd list ");
+        display(o1);
+        System.out.println(" even list ");
+        display(e1);
+
+
 
 
 
@@ -91,6 +94,7 @@ public class Q15 {
         f.next=g;
         g.next=h;
 
+        System.out.println(" original list ");
         display(a);
         oddEvenSplit(a);
     }
