@@ -25,7 +25,7 @@ public class Q24 {
     static Node deepCopy(Node head){
 
         Node temp1=head;
-        Node h=new Node(0);
+        Node h=new Node(-1);
         Node temp2=h;
 
         while (temp1!=null){

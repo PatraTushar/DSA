@@ -27,72 +27,62 @@ public class Q23 {
 
     static Node randomPointer(Node head){
 
-        // Deep copy
+        if(head==null) return null;
 
-        Node h=new Node(0);
-        Node t1=head;
-        Node t2=h;
+        // Assign the alternate connections
 
-        while (t1!=null){
-            Node a=new Node(t1.data);
-            t2.next=a;
-            t1=t1.next;
-            t2=a;
+        Node oldTemp = head;
+        Node newTemp;
+
+        while (oldTemp != null) {
+
+            newTemp = new Node(oldTemp.data);
+            newTemp.next = oldTemp.next;
+            oldTemp.next = newTemp;
+            oldTemp = oldTemp.next.next;
+
+
         }
 
-        h=h.next;
-        t1=head;
-        t2=h;
+        // Assign the random pointers
 
-        // Alternate connection
+        oldTemp = head;
+        newTemp = head.next;
 
-        Node temp=new Node(-1);
+        while (oldTemp != null) {
 
-        while (t1!=null){
-            temp.next=t1;
-            t1=t1.next;
-            temp=temp.next;
+            if (oldTemp.random == null) {
+                newTemp.random = null;
 
-            temp.next=t2;
-            t2=t2.next;
-            temp=temp.next;
-        }
-
-        t1=head;
-        t2=h;
-
-
-        // Assigning random pointers
-        while (t1!=null && t2!=null) {
-
-
-            if (t1.random == null) {
-                t2.random = null;
             } else {
-                t2.random = t1.random.next;
 
+                newTemp.random = oldTemp.random.next;
             }
-            t1 = t1.next.next;
-            if (t1 != null) t2 = t2.next.next;
 
+            oldTemp = oldTemp.next.next;
+            if (newTemp.next == null) break;
+            ;
+            newTemp = newTemp.next.next;
         }
 
+        Node dummy = new Node(-1);
+        oldTemp = head;
+        newTemp = head.next;
+        dummy.next = head.next;
 
-        t1=head;
-        t2=h;
+        // separate the connections
 
-        // separating the values
+        while (oldTemp != null) {
 
-        while (t1!=null){
-            t1.next=t2.next;
-            t1=t1.next;
-            if (t1==null) break;
-            t2.next=t1.next;
-            if (t2.next==null) break;
-            t2=t2.next;
+            oldTemp.next = newTemp.next; // restore original list
+            if (newTemp.next != null) {
+                newTemp.next = newTemp.next.next; // connect clone nodes
+            }
+            oldTemp = oldTemp.next;
+            newTemp = newTemp.next;
         }
 
-        return h;
+        return dummy.next;
 
 
 

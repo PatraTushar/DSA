@@ -1,5 +1,4 @@
-
-
+import linkedListByKK.SinglyLinkedList.InterviewQuestion.Q23;
 
 public class myPractice {
 
@@ -7,6 +6,7 @@ public class myPractice {
 
         int data;
         Node next;
+        Node random;
 
         Node(int data) {
 
@@ -32,6 +32,8 @@ public class myPractice {
 
     static Node reverse(Node head) {
 
+        if (head == null) return null;
+
         Node prev = null;
         Node curr = head;
         Node agla;
@@ -49,37 +51,65 @@ public class myPractice {
 
     }
 
+    static Node randomPointers(Node head) {
 
-    static int twinSum(Node head) {
+        if(head==null) return null;
+
+        // Assign the alternate connections
+
+        Node oldTemp = head;
+        Node newTemp;
+
+        while (oldTemp != null) {
+
+            Node newNode = new Node(oldTemp.data);
+            newTemp = newNode;
+            newTemp.next = oldTemp.next;
+            oldTemp.next = newTemp;
+            oldTemp = oldTemp.next.next;
 
 
-        Node slow = head;
-        Node fast = head;
-
-        while (fast.next != null && fast.next.next != null) {
-
-            slow = slow.next;
-            fast = fast.next.next;
         }
 
-        Node storeNode = reverse(slow.next);
-        slow.next = storeNode;
+        // Assign the random pointers
 
-        Node pointer1 = head;
-        Node pointer2 = slow.next;
-        int sum = 0;
+        oldTemp = head;
+        newTemp = head.next;
 
-        while (pointer2 != null) {
+        while (oldTemp != null) {
 
-            if ((pointer1.data + pointer2.data) > sum) {
-                sum = pointer1.data + pointer2.data;
+            if (oldTemp.random == null) {
+                newTemp.random = null;
+
+            } else {
+
+                newTemp.random = oldTemp.random.next;
             }
 
-            pointer1 = pointer1.next;
-            pointer2 = pointer2.next;
+            oldTemp = oldTemp.next.next;
+            if (newTemp.next == null) break;
+            ;
+            newTemp = newTemp.next.next;
         }
 
-        return sum;
+        Node dummy = new Node(-1);
+        oldTemp = head;
+        newTemp = head.next;
+        dummy.next = head.next;
+
+        // separate the connections
+
+        while (oldTemp != null) {
+
+            oldTemp.next = newTemp.next; // restore original list
+            if (newTemp.next != null) {
+                newTemp.next = newTemp.next.next; // connect clone nodes
+            }
+            oldTemp = oldTemp.next;
+            newTemp = newTemp.next;
+        }
+
+        return dummy.next;
 
 
     }
@@ -87,24 +117,26 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        Node a = new Node(1);
-        Node b = new Node(10);
-        Node c = new Node(13);
-        Node d = new Node(4);
-        Node e = new Node(5);
-        Node f = new Node(6);
-        Node g = new Node(7);
-        Node h = new Node(2);
+        Node a = new Node(7);
+        Node b = new Node(13);
+        Node c = new Node(11);
+        Node d = new Node(10);
+        Node e = new Node(1);
 
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
-        e.next = f;
-        f.next = g;
-        g.next = h;
 
-        System.out.println(twinSum(a));
+        a.random = null;
+        b.random = a;
+        c.random = e;
+        d.random = c;
+        e.random = a;
+
+        display(a);
+        Node Ans = randomPointers(a);
+        display(Ans);
 
 
     }
