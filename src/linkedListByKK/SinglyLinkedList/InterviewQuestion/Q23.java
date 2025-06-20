@@ -61,7 +61,6 @@ public class Q23 {
 
             oldTemp = oldTemp.next.next;
             if (newTemp.next == null) break;
-            ;
             newTemp = newTemp.next.next;
         }
 
