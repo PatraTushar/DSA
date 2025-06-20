@@ -23,32 +23,65 @@ public class Q27 {
 
     static Node reverseBetween(Node head, int left, int right) {
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
 
-        Node Dummy=new Node(0);
-        Dummy.next=head;
-        Node t=Dummy;
-        Node temp=head;
+        if(head==null) return null;
 
-        for(int i=0;i<left-1;i++){
-            t=t.next;
-            temp=temp.next;
+
+        Node pointer1 = head;
+
+
+
+        for (int i = 1; i < left-1 ; i++) {
+
+            pointer1 = pointer1.next;
+
         }
 
-        Node curr=temp;
-        Node prev=null;
-        Node Agla=null;
+        Node pointer2;
 
-        for(int i=0;i<right-left+1;i++){
-            Agla=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=Agla;
+        if(left==1){
+            pointer2=pointer1;
         }
 
-        t.next=prev;
-        temp.next=curr;
+        else {
+            pointer2=pointer1.next;
+        }
 
-        return Dummy.next;
+
+
+
+        Node prev = null;
+        Node curr = pointer2;
+        Node Agla;
+
+
+        for (int i = 1; i <= right-left + 1; i++) {
+
+            Agla = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = Agla;
+
+        }
+
+        if(left==1){
+            pointer1.next=curr;
+            return prev;
+        }
+        else {
+
+            pointer1.next = prev;
+            pointer2.next = curr;
+        }
+
+
+        return head;
+
+
+
+
 
     }
 

@@ -1,23 +1,20 @@
-import linkedListByKK.SinglyLinkedList.InterviewQuestion.Q23;
-
 public class myPractice {
 
-    public static class Node {
+    public static class ListNode {
 
         int data;
-        Node next;
-        Node random;
+        ListNode next;
 
-        Node(int data) {
+        ListNode(int data) {
 
             this.data = data;
         }
     }
 
 
-    static void display(Node head) {
+    static void display(ListNode head) {
 
-        Node temp = head;
+        ListNode temp = head;
 
         while (temp != null) {
 
@@ -30,15 +27,15 @@ public class myPractice {
 
     }
 
-    static Node reverse(Node head) {
+    static ListNode reverse(ListNode head) {
 
         if (head == null) return null;
 
-        Node prev = null;
-        Node curr = head;
-        Node agla;
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode agla;
 
-        while (curr != null) {
+        while (curr !=null) {
 
             agla = curr.next;
             curr.next = prev;
@@ -51,42 +48,60 @@ public class myPractice {
 
     }
 
-    static int sumOfSquares(int n){
+    static ListNode reverseLL2(ListNode head, int left, int right) {
 
-        int sum=0;
+        if(head==null) return null;
 
-        while (n!=0){
 
-            int rem=n%10;
-            sum+=rem*rem;
-            n=n/10;
-        }
+        ListNode pointer1 = head;
 
-        return sum;
-    }
 
-    static boolean happyNumber(int n) {
 
-        int slow=n;
-        int fast=sumOfSquares(n);
+        for (int i = 1; i < left-1 ; i++) {
 
-        while (slow!=fast){
-
-            slow=sumOfSquares(fast);
-            fast=sumOfSquares(sumOfSquares(slow));
-
+            pointer1 = pointer1.next;
 
         }
 
-        return slow==1;
+        ListNode pointer2;
+
+        if(left==1){
+            pointer2=pointer1;
+        }
+
+        else {
+            pointer2=pointer1.next;
+        }
 
 
 
 
+        ListNode prev = null;
+        ListNode curr = pointer2;
+        ListNode Agla;
 
 
+        for (int i = 1; i <= right-left + 1; i++) {
+
+            Agla = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = Agla;
+
+        }
+
+        if(left==1){
+            pointer1.next=curr;
+            return prev;
+        }
+        else {
+
+            pointer1.next = prev;
+            pointer2.next = curr;
+        }
 
 
+        return head;
 
 
     }
@@ -94,22 +109,24 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-//        Node a = new Node(7);
-//        Node b = new Node(13);
-//        Node c = new Node(11);
-//        Node d = new Node(10);
-//        Node e = new Node(1);
-//        Node f = new Node(1);
-//
-//        a.next = b;
-//        b.next = c;
-//        c.next = d;
-//        d.next = e;
-//        e.next = f;
+        ListNode a = new ListNode(10);
+        ListNode b = new ListNode(20);
+        ListNode c = new ListNode(30);
+        ListNode d = new ListNode(40);
+        ListNode e = new ListNode(50);
+        ListNode f = new ListNode(60);
+        ListNode g = new ListNode(70);
 
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = f;
+        f.next = g;
 
-        System.out.println(happyNumber(19));
-        System.out.println(happyNumber(89));
+        display(a);
+        ListNode Ans=reverseLL2(a,3,7);
+        display(Ans);
 
 
     }
