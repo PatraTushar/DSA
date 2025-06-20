@@ -52,7 +52,6 @@ public class Q28 {
         //Space Complexity (SC): O(1)
 
 
-       // if (head == null || head.next == null || head.next.next == null) return head;
 
         Node slow=head;
         Node fast=head;
