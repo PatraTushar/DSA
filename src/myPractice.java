@@ -48,60 +48,55 @@ public class myPractice {
 
     }
 
-    static ListNode reverseLL2(ListNode head, int left, int right) {
+    static ListNode reorderList(ListNode head) {
 
-        if(head==null) return null;
+        if (head == null || head.next == null || head.next.next == null) return head;
+
+        ListNode slow=head;
+        ListNode fast=head;
 
 
-        ListNode pointer1 = head;
+        while ( fast.next!=null && fast.next.next!=null){
 
-
-
-        for (int i = 1; i < left-1 ; i++) {
-
-            pointer1 = pointer1.next;
-
-        }
-
-        ListNode pointer2;
-
-        if(left==1){
-            pointer2=pointer1;
-        }
-
-        else {
-            pointer2=pointer1.next;
+            slow=slow.next;
+            fast=fast.next.next;
         }
 
 
+        ListNode rev2ndHalf=reverse(slow.next);
+        slow.next=null;
+
+        ListNode pointer1=head;
+        ListNode pointer2=rev2ndHalf;
+
+        while (pointer2!=null){
+
+            ListNode temp1 = pointer1.next;
+            ListNode temp2 = pointer2.next;
+
+            pointer1.next = pointer2;
+            pointer2.next = temp1;
+
+            pointer1 = temp1;
+            pointer2 = temp2;
 
 
-        ListNode prev = null;
-        ListNode curr = pointer2;
-        ListNode Agla;
 
-
-        for (int i = 1; i <= right-left + 1; i++) {
-
-            Agla = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = Agla;
 
         }
-
-        if(left==1){
-            pointer1.next=curr;
-            return prev;
-        }
-        else {
-
-            pointer1.next = prev;
-            pointer2.next = curr;
-        }
-
 
         return head;
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -125,7 +120,7 @@ public class myPractice {
         f.next = g;
 
         display(a);
-        ListNode Ans=reverseLL2(a,3,7);
+        ListNode Ans=reorderList(a);
         display(Ans);
 
 

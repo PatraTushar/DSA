@@ -48,31 +48,47 @@ public class Q28 {
 
     static void reorderSet(Node head){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
+
+       // if (head == null || head.next == null || head.next.next == null) return head;
+
         Node slow=head;
         Node fast=head;
 
-        while (fast.next!=null && fast.next.next!=null){
+
+        while ( fast.next!=null && fast.next.next!=null){
+
             slow=slow.next;
             fast=fast.next.next;
         }
 
-       Node reverse2ndHalf=reverse(slow.next);
-        slow.next=reverse2ndHalf;
 
-        Node t1=head;
-       Node t2=reverse2ndHalf;
+        Node rev2ndHalf=reverse(slow.next);
+        slow.next=null;
+
+        Node pointer1=head;
+        Node pointer2=rev2ndHalf;
+
+        while (pointer2!=null){
+
+            Node temp1 = pointer1.next;
+            Node temp2 = pointer2.next;
+
+            pointer1.next = pointer2;
+            pointer2.next = temp1;
+
+            pointer1 = temp1;
+            pointer2 = temp2;
 
 
-        while (t2!=null){
-            slow.next=t2.next;
-            t2.next=t1.next;
-            t1.next=t2;
-            t1=t2.next;
-            if(t1 == null) break;
-            t2=slow.next;
+
+
         }
 
         display(head);
+
 
 
     }
