@@ -70,7 +70,9 @@ public class Q28 {
         Node pointer1=head;
         Node pointer2=rev2ndHalf;
 
-        while (pointer2!=null){
+
+
+        while (pointer1 != null &&pointer2!=null){
 
             Node temp1 = pointer1.next;
             Node temp2 = pointer2.next;
