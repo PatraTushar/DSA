@@ -1,20 +1,20 @@
 public class myPractice {
 
-    public static class ListNode {
+    public static class Node {
 
         int data;
-        ListNode next;
+        Node next;
 
-        ListNode(int data) {
+        Node(int data) {
 
             this.data = data;
         }
     }
 
 
-    static void display(ListNode head) {
+    static void display(Node head) {
 
-        ListNode temp = head;
+        Node temp = head;
 
         while (temp != null) {
 
@@ -27,15 +27,15 @@ public class myPractice {
 
     }
 
-    static ListNode reverse(ListNode head) {
+    static Node reverse(Node head) {
 
         if (head == null) return null;
 
-        ListNode prev = null;
-        ListNode curr = head;
-        ListNode agla;
+        Node prev = null;
+        Node curr = head;
+        Node agla;
 
-        while (curr !=null) {
+        while (curr != null) {
 
             agla = curr.next;
             curr.next = prev;
@@ -48,52 +48,64 @@ public class myPractice {
 
     }
 
-    static ListNode reorderList(ListNode head) {
+    static Node findKthNode(Node head,int k){
 
-        if (head == null || head.next == null || head.next.next == null) return head;
-
-        ListNode slow=head;
-        ListNode fast=head;
+        Node temp=head;
 
 
-        while ( fast.next!=null && fast.next.next!=null){
+        for(int i=1;i<k;i++){
 
-            slow=slow.next;
-            fast=fast.next.next;
-        }
+            if(temp==null) return null;
 
 
-        ListNode rev2ndHalf=reverse(slow.next);
-        slow.next=null;
-
-        ListNode pointer1=head;
-        ListNode pointer2=rev2ndHalf;
-
-        while (pointer2!=null){
-
-            ListNode temp1 = pointer1.next;
-            ListNode temp2 = pointer2.next;
-
-            pointer1.next = pointer2;
-            pointer2.next = temp1;
-
-            pointer1 = temp1;
-            pointer2 = temp2;
-
-
+            temp=temp.next;
 
 
         }
 
-        return head;
+        return temp;
+    }
+
+    static Node reverseByKGroups(Node head, int k) {
+
+       Node temp=head;
+       Node prevNode=null;
 
 
+       while (temp!=null){
+
+           Node kthNode=findKthNode(temp,k);
+
+           if(kthNode==null){
+
+               if(prevNode!=null){
+                   prevNode.next=temp;
+               }
+
+               break;
+           }
+
+           Node newNode=kthNode.next;
+           kthNode.next=null;
 
 
+           reverse(temp);
 
+           if(temp==head){
+               head=kthNode;
+           }
 
+           else {
 
+               prevNode.next=kthNode;
 
+           }
+
+           prevNode=temp;
+           temp=newNode;
+       }
+
+       return head;
 
 
 
@@ -104,13 +116,16 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(10);
-        ListNode b = new ListNode(20);
-        ListNode c = new ListNode(30);
-        ListNode d = new ListNode(40);
-        ListNode e = new ListNode(50);
-        ListNode f = new ListNode(60);
-        ListNode g = new ListNode(70);
+        Node a = new Node(10);
+        Node b = new Node(20);
+        Node c = new Node(30);
+        Node d = new Node(40);
+        Node e = new Node(50);
+        Node f = new Node(60);
+        Node g = new Node(70);
+        Node h = new Node(80);
+        Node i = new Node(90);
+        Node j = new Node(100);
 
         a.next = b;
         b.next = c;
@@ -118,9 +133,14 @@ public class myPractice {
         d.next = e;
         e.next = f;
         f.next = g;
+        g.next = h;
+        h.next = i;
+        i.next = j;
+
+        int k=3;
 
         display(a);
-        ListNode Ans=reorderList(a);
+        Node Ans = reverseByKGroups(a,k);
         display(Ans);
 
 
