@@ -48,67 +48,35 @@ public class myPractice {
 
     }
 
-    static Node findKthNode(Node head,int k){
-
-        Node temp=head;
 
 
-        for(int i=1;i<k;i++){
+    static Node deleteFromEnd(Node head, int n) {
 
-            if(temp==null) return null;
+        if(head==null) return null;
+
+        Node slow=head;
+        Node fast=head;
 
 
-            temp=temp.next;
+        for(int i=0;i<n;i++){
 
+            fast=fast.next;
 
         }
 
-        return temp;
-    }
+        if(fast==null) return head.next;
 
-    static Node reverseByKGroups(Node head, int k) {
+        while (fast.next!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
 
-       Node temp=head;
-       Node prevNode=null;
-
-
-       while (temp!=null){
-
-           Node kthNode=findKthNode(temp,k);
-
-           if(kthNode==null){
-
-               if(prevNode!=null){
-                   prevNode.next=temp;
-               }
-
-               break;
-           }
-
-           Node newNode=kthNode.next;
-           kthNode.next=null;
-
-
-           reverse(temp);
-
-           if(temp==head){
-               head=kthNode;
-           }
-
-           else {
-
-               prevNode.next=kthNode;
-
-           }
-
-           prevNode=temp;
-           temp=newNode;
-       }
-
-       return head;
+        if(slow.next==null) return head;
+        slow.next=slow.next.next;
 
 
 
+        return head;
 
 
     }
@@ -137,10 +105,10 @@ public class myPractice {
         h.next = i;
         i.next = j;
 
-        int k=3;
+        int n=10;
 
         display(a);
-        Node Ans = reverseByKGroups(a,k);
+        Node Ans = deleteFromEnd(a,n);
         display(Ans);
 
 

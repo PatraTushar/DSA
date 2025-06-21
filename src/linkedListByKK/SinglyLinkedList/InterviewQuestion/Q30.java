@@ -26,32 +26,38 @@ public class Q30 {
 
     public static Node removeNthFromEnd(Node head, int n) {
 
-        if(head.next==null) return null;
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
 
-        Node temp=head;
-        int length=0;
 
-        while(temp!=null){
-            temp=temp.next;
-            length++;
-        }
 
-        if(length==n) return head.next;
+        if(head==null) return null;
 
-        temp=head;
+        Node slow=head;
+        Node fast=head;
 
-        int t=length-n;
 
-        for(int i=0;i<t-1;i++){
+        for(int i=0;i<n;i++){
 
-            temp=temp.next;
+            fast=fast.next;
 
         }
 
-        temp.next=temp.next.next;
+        if(fast==null) return head.next;
+
+        while (fast.next!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
+
+        if(slow.next==null) return head;
+        slow.next=slow.next.next;
+
 
 
         return head;
+
+
 
     }
 
@@ -73,7 +79,7 @@ public class Q30 {
         d.next=e;
 
         display(a);
-        Node ans=removeNthFromEnd(a,2);
+        Node ans=removeNthFromEnd(a,4);
         display(ans);
 
 

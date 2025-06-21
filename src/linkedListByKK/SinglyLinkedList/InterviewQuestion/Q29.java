@@ -51,6 +51,9 @@ public class Q29 {
 
     static ListNode reverseKthNode(ListNode head, int k){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         ListNode temp=head;
 
         ListNode prevNode=null;
