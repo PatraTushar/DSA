@@ -16,25 +16,30 @@ public class Q1 {
 
     static boolean isPalindrome(Node head){
 
-       Node temp=head;
+        Node temp=head;
+        while (temp.next!=null){
+            temp=temp.next;
+        }
 
-       while (temp.next!=null){
-           temp=temp.next;
-       }
+        Node pointer1=head;
+        Node pointer2=temp;
 
-       Node h=head;
-       Node t=temp;
+        while (pointer1 != null && pointer2 != null && pointer1 != pointer2 && pointer1.prev != pointer2){
 
-       while (h!=t){
-           if (h.data!=t.data){
-               return false;
-           }
 
-           h=h.next;
-           t=t.prev;
-       }
+            if(pointer1.data!=pointer2.data){
+                return false;
+            }
 
-       return true;
+            pointer1=pointer1.next;
+            pointer2=pointer2.prev;
+
+        }
+
+        return true;
+
+
+
     }
 
     public static void main(String[] args) {
