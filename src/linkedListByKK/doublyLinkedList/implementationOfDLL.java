@@ -3,167 +3,231 @@ package linkedListByKK.doublyLinkedList;
 
 public class implementationOfDLL {
 
+
     public static class Node {
 
         int data;
-        Node next;
         Node prev;
+        Node next;
 
         Node(int data) {
+
             this.data = data;
         }
     }
 
-    static void display(Node head) {
+    public static class Dll {
 
-        Node temp = head;
+        Node head = null;
+        Node tail = null;
 
-        while (temp != null) {
-            System.out.print(temp.data + " ");
-            temp = temp.next;
+        int size = 0;
+
+
+        void insertAtTail(int data) {
+
+            Node newNode = new Node(data);
+
+            if (tail == null) {
+
+                head = newNode;
+
+
+            } else {
+
+                tail.next = newNode;
+                newNode.prev = tail;
+
+            }
+
+            tail = newNode;
+
+
+            size++;
+
+
         }
-        System.out.println();
+
+        void insertAtHead(int data) {
+
+            Node newNode = new Node(data);
+
+            if (head == null) {
+
+                head = newNode;
+                tail = newNode;
+
+            } else {
+
+                newNode.next = head;
+                head.prev = newNode;
+                head = newNode;
+            }
+
+            size++;
+
+
+        }
+
+        void insertAtAnyIndex(int idx, int data) {
+
+            if (idx < 0 || idx > size) {
+
+                throw new IndexOutOfBoundsException(" invalid index ");
+            }
+
+            Node newNode = new Node(data);
+
+            if (idx == 0) {
+
+                insertAtHead(data);
+
+
+            } else if (idx == size) {
+
+                insertAtTail(data);
+            } else {
+
+                Node temp = head;
+
+                for (int i = 0; i < idx - 1; i++) {
+
+                    temp = temp.next;
+                }
+
+                newNode.next = temp.next;
+                temp.next = newNode;
+                newNode.prev = temp;
+                newNode.next.prev = newNode;
+
+
+            }
+
+            size++;
+        }
+
+
+        void deleteHead() {
+
+            if (head == null) {
+                System.out.println(" nothing we can delete ");
+                return;
+            }
+
+            if (head == tail) {
+                head = null;
+                tail = null;
+            } else {
+
+                head = head.next;
+                head.prev = null;
+
+            }
+
+            size--;
+
+
+        }
+
+        void deleteTail() {
+
+            if (tail == null) {
+                System.out.println(" nothing we can delete ");
+                return;
+            }
+
+            if (head == tail) {
+
+                head = null;
+                tail = null;
+            } else {
+
+                tail = tail.prev;
+                tail.next = null;
+
+            }
+
+            size--;
+
+
+        }
+
+        void deleteAtAnyIndex(int idx) {
+
+            if (idx < 0 || idx == size) {
+                throw new IndexOutOfBoundsException(" No index  to delete ");
+            }
+
+            if (idx == 0) {
+                deleteHead();
+            } else if (idx == size - 1) {
+
+                deleteTail();
+            } else {
+
+                Node temp = head;
+
+                for (int i = 0; i < idx - 1; i++) {
+
+                    temp = temp.next;
+
+                }
+
+                Node nodeToDelete = temp.next;
+                temp.next = nodeToDelete.next;
+                nodeToDelete.next.prev = temp;
+
+
+            }
+
+            size--;
+        }
+
+
+        void display() {
+
+            Node temp = head;
+
+            while (temp != null) {
+
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+
+            }
+
+            System.out.println();
+
+        }
+
     }
-
-
-    public static Node insertAtHead(Node head, int val) {
-
-        Node temp = new Node(val);
-        temp.next = head;
-        head.prev = temp;
-        head = temp;
-
-        return head;
-    }
-
-    static Node insertAtTail(Node head, int val) {
-
-        Node temp = head;
-
-        while (temp.next != null) {
-            temp = temp.next;
-        }
-
-        Node t = new Node(val);
-        temp.next = t;
-        t.prev = temp;
-
-
-        return head;
-
-
-    }
-
-    static void insertAtAnyIndex(Node head, int index, int val) {
-
-        Node temp = head;
-
-        if (index < 0) {
-            System.out.println(" invalid index ");
-        }
-
-        for (int i = 0; i < index - 1; i++) {
-
-            temp = temp.next;
-        }
-
-
-        Node t = new Node(val);
-
-        temp.next.prev = t;
-        t.prev = temp;
-        t.next = temp.next;
-        temp.next = t;
-
-    }
-
-    static Node deleteHead(Node head){
-
-        if(head==null) return null;
-        head=head.next;
-        head.prev=null;
-        return head;
-
-     }
-
-
-     static void deleteTail(Node head){
-
-         Node temp=head;
-
-         while (temp.next!=null){
-             temp=temp.next;
-         }
-
-         // temp=tail;       if tail is given
-         temp=temp.prev;
-         temp.next=null;
-
-
-
-     }
-
-     static void deleteAtAnyIndex(Node head,int index){
-
-        Node temp=head;
-
-        for(int i=0;i<index-1;i++){
-
-            temp=temp.next;
-        }
-
-        temp.next=temp.next.next;
-        temp.next.prev=temp;
-
-
-
-     }
-
-
-
-
-
-
-
-
 
 
     public static void main(String[] args) {
 
-        Node a=new Node(4);
-        Node b=new Node(10);
-        Node c=new Node(2);
-        Node d=new Node(99);
-        Node e=new Node(13);
-
-        a.prev=null;
-        a.next=b;
-        b.prev=a;
-        b.next=c;
-        c.prev=b;
-        c.next=d;
-        d.prev=c;
-        d.next=e;
-        e.prev=d;
-        e.next=null;
-
-        display(a);
-//        Node newHead=insertAtHead(a,40);
-//        display(newHead);
-//        Node newTail=insertAtTail(a,100);
-//        display(newTail);
-//        insertAtAnyIndex(a,2,200);
-//        display(a);
-
-//       Node deleteH= deleteHead(a);
-//       display(deleteH);
-
-//        deleteTail(a);
-//        display(a);
 
 
-        deleteAtAnyIndex(a,2);
-        display(a);
+        Dll doubly = new Dll();
+        doubly.insertAtTail(10);
+        doubly.insertAtTail(20);
+        doubly.insertAtTail(30);
+        doubly.insertAtTail(40);
+        doubly.display();
+        doubly.insertAtHead(50);
+        doubly.display();
+        doubly.insertAtAnyIndex(3, 100);
+        doubly.display();
+        doubly.insertAtAnyIndex(0, 300);
+        doubly.display();
+        doubly.deleteTail();
+        doubly.display();
+        doubly.deleteHead();
+        doubly.display();
+        doubly.deleteAtAnyIndex(3);
+        doubly.display();
+
 
     }
+
+
+
 }
