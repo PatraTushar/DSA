@@ -15,35 +15,45 @@ public class Q2 {
         }
     }
 
-    static void twoSum(Node head, int target){
-        Node temp=head;
 
-        while (temp.next!=null){
-            temp=temp.next;
+
+        static void twoSum(Node head,int target){
+
+            Node temp=head;
+
+            while (temp.next!=null){
+                temp=temp.next;
+            }
+
+            Node pointer1=head;
+            Node pointer2=temp;
+
+
+            while (pointer1.data < pointer2.data){
+
+                if(pointer1.data + pointer2.data==target){
+                    System.out.println(" pairs found " +pointer1.data+ " "+ pointer2.data);
+                    return;
+                }
+
+                else if(pointer1.data + pointer2.data > target){
+
+                    pointer2=pointer2.prev;
+
+                }
+
+                else {
+
+                    pointer1=pointer1.next;
+                }
+            }
+
+            System.out.println(" No pair found ");
+
+
+
         }
 
-        Node h=head;
-        Node t=temp;
-
-        while (h.data<t.data){
-
-            if(h.data+t.data==target){
-                System.out.print( " pair found " + (h.data +" "+ t.data));
-                return;
-
-            }
-            else if (h.data+t.data>target) {
-                t=t.prev;
-
-            }
-
-            else {
-                h=h.next;
-            }
-        }
-
-        System.out.println(" No pair found ");
-    }
 
 
     public static void main(String[] args) {

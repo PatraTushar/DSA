@@ -14,34 +14,16 @@ public class myPractice {
         }
     }
 
+    static void twoSum(Node head,int target){
 
-    static boolean isPalindrome(Node head){
-
-        Node temp=head;
-        while (temp.next!=null){
-            temp=temp.next;
-        }
-
-        Node pointer1=head;
-        Node pointer2=temp;
-
-        while (pointer1 != null && pointer2 != null && pointer1 != pointer2 && pointer1.prev != pointer2){
-
-
-            if(pointer1.data!=pointer2.data){
-                return false;
-            }
-
-            pointer1=pointer1.next;
-            pointer2=pointer2.prev;
-
-        }
-
-        return true;
 
 
 
     }
+
+
+
+
 
     public static void main(String[] args) {
 
@@ -62,7 +44,9 @@ public class myPractice {
         e.prev = d;
         e.next = null;
 
-        System.out.println(isPalindrome(a));
+        twoSum(a,18);
+
+
 
 
     }
