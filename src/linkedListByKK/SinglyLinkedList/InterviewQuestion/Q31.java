@@ -1,10 +1,9 @@
-import linkedListByKK.doublyLinkedList.Q1;
+package linkedListByKK.SinglyLinkedList.InterviewQuestion;
 
-public class myPractice {
+public class Q31 {
 
     public static class Node {
 
-        Node prev;
         int data;
         Node next;
 
@@ -13,7 +12,6 @@ public class myPractice {
             this.data = data;
         }
     }
-
 
     static Node AddNumbers(Node head1, Node head2) {
 
@@ -42,6 +40,7 @@ public class myPractice {
     }
 
 
+
     static void display(Node head) {
         Node temp = head;
         while (temp != null) {
@@ -52,18 +51,21 @@ public class myPractice {
     }
 
 
+
     public static void main(String[] args) {
+
+        // Add Two Numbers  (leeTCde->2)
 
         Node a = new Node(4);
         Node b = new Node(5);
         Node c = new Node(6);
         Node d = new Node(2);
-        // Node e = new Node(6);
+         Node e = new Node(6);
 
         a.next = b;
         b.next = c;
         c.next = d;
-        // d.next=e;
+         d.next=e;
 
 
         Node f = new Node(4);
@@ -81,6 +83,8 @@ public class myPractice {
         display(Ans);
 
 
-    }
 
+
+
+    }
 }
