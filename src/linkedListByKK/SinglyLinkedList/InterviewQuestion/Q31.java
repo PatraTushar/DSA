@@ -15,6 +15,13 @@ public class Q31 {
 
     static Node AddNumbers(Node head1, Node head2) {
 
+        // Time Complexity (TC): O(max(N, M))
+        //Space Complexity (SC): O(max(N, M))
+        //Where:
+        //N = number of nodes in head1
+        //M = number of nodes in head2
+
+
 
         Node dummy = new Node(-1);
         Node curr = dummy;
