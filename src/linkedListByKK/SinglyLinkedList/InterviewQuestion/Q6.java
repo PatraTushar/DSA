@@ -33,18 +33,18 @@ public class Q6 {
 
     }
 
-    static Node intersection(Node head1,Node head2){
+    static Node findIntersection(Node headA,Node headB){
 
-        // Time Complexity (TC): O(n + m)
-        //Space Complexity (SC): O(1)
+        //Time Complexity: O(n + m)
+        //Space Complexity: O(1)
 
-        Node temp1=head1;
-        Node temp2=head2;
+        Node temp1=headA;
+        Node temp2=headB;
 
         int length1=0;
         int length2=0;
 
-        while(temp1!=null){
+        while (temp1!=null){
             length1++;
             temp1=temp1.next;
         }
@@ -54,32 +54,28 @@ public class Q6 {
             temp2=temp2.next;
         }
 
-//        System.out.println(length1);
-//        System.out.println(length2);
+        if(length1>length2){
 
-        Node slow=head1;
-        Node fast=head2;
+            return findIntersection(headB,headA);
 
-       if(length1>length2){
-           int list1Steps=length1-length2;
-           for(int i=0;i<list1Steps;i++){
-               slow=slow.next;
-           }
-       }
+        }
 
-       else {
-           int list2Steps=length2-length1;
-           for (int i=0;i<list2Steps;i++){
-               fast=fast.next;
-           }
-       }
+        Node slow=headA;
+        Node fast=headB;
 
-       while (slow!=fast){
-           slow=slow.next;
-           fast=fast.next;
-       }
+        int lengthDiff=length2-length1;
 
-       return slow;
+        for(int i=0;i<lengthDiff;i++){
+            fast=fast.next;
+        }
+
+        while (slow!=fast){
+            slow=slow.next;
+            fast=fast.next;
+        }
+
+        return slow;
+
 
 
 
@@ -115,7 +111,7 @@ public class Q6 {
 
 
         display(a,h);
-        Node Ans=intersection(a,h);
+        Node Ans=findIntersection(a,h);
         System.out.println(" Intersection of both linked list is " +Ans.data);
 
     }
