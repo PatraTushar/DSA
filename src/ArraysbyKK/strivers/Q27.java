@@ -9,7 +9,7 @@ public class Q27 {
 
         int m=arr1.length;
         int n=arr2.length;
-        int left=k;
+
 
         if(m>n) return findKthElement(arr2,arr1,k);
 
@@ -19,7 +19,7 @@ public class Q27 {
         while (low<=high){
 
             int mid1=low+(high-low)/2;
-            int mid2=left-mid1;
+            int mid2=k-mid1;
 
             int l1=Integer.MIN_VALUE;
             int l2=Integer.MIN_VALUE;
