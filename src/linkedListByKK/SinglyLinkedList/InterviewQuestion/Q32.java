@@ -1,11 +1,10 @@
-import linkedListByKK.SinglyLinkedList.InterviewQuestion.Q30;
-import linkedListByKK.doublyLinkedList.Q1;
+package linkedListByKK.SinglyLinkedList.InterviewQuestion;
 
-public class myPractice {
+public class Q32 {
 
     public static class Node {
 
-        Node prev;
+
         int data;
         Node next;
 
@@ -17,6 +16,13 @@ public class myPractice {
 
 
     static Node count0s1sAnd2s(Node head){
+
+        // Brute force
+
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
+
 
         int count0=0;
         int count1=0;
@@ -71,6 +77,52 @@ public class myPractice {
 
     }
 
+    static Node Sort0s1s2s(Node head){
+
+        //Time Complexity: O(n)
+        //Space Complexity: O(1)
+
+        if(head==null) return null;
+
+        Node dummy1=new Node(-1);
+        Node d1=dummy1;
+        Node dummy2=new Node(-1);
+        Node d2=dummy2;
+        Node dummy3=new Node(-1);
+        Node d3=dummy3;
+
+        Node temp=head;
+
+        while (temp!=null){
+
+            if(temp.data==0){
+                d1.next=temp;
+                d1=d1.next;
+            }
+
+            else if(temp.data==1){
+                d2.next=temp;
+                d2=d2.next;
+            }
+
+            else {
+
+                d3.next=temp;
+                d3=d3.next;
+
+            }
+
+
+            temp=temp.next;
+        }
+
+        d1.next = (dummy2.next != null) ? dummy2.next : dummy3.next;
+        d2.next = (dummy3.next!=null) ? dummy3.next : null;
+        d3.next = null;
+
+        return dummy1.next;
+    }
+
     static void display(Node head){
 
         Node temp=head;
@@ -100,10 +152,11 @@ public class myPractice {
         e.next = f;
         f.next = g;
         g.next = h;
-       Node Ans= count0s1sAnd2s(a);
-       display(Ans);
+        Node Ans= Sort0s1s2s(a);
+        display(Ans);
 
 
     }
+
 
 }
