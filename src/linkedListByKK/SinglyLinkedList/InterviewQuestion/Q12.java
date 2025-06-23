@@ -33,11 +33,11 @@ public class Q12 {
 
 
 
-        Node temp=head;
+        slow=head;
 
-        while (temp!=slow){
-            temp=temp.next;
+        while (slow!=fast){
             slow=slow.next;
+            fast=fast.next;
         }
         return slow;
     }
