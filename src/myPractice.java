@@ -1,25 +1,25 @@
 public class myPractice {
 
-    public static class ListNode {
+    public static class Node {
 
 
         int data;
-        ListNode next;
+        Node next;
 
-        ListNode(int data) {
+        Node(int data) {
 
             this.data = data;
         }
     }
 
 
-    static ListNode findIntersection(ListNode headA, ListNode headB){
+    static Node findIntersection(Node headA, Node headB){
 
         //Time Complexity: O(n + m)
         //Space Complexity: O(1)
 
-        ListNode temp1=headA;
-        ListNode temp2=headB;
+        Node temp1=headA;
+        Node temp2=headB;
 
         int length1=0;
         int length2=0;
@@ -40,8 +40,8 @@ public class myPractice {
 
         }
 
-        ListNode slow=headA;
-        ListNode fast=headB;
+        Node slow=headA;
+        Node fast=headB;
 
         int lengthDiff=length2-length1;
 
@@ -61,9 +61,9 @@ public class myPractice {
 
 
 
-    static void display(ListNode head){
+    static void display(Node head){
 
-        ListNode temp=head;
+        Node temp=head;
         while (temp!=null){
             System.out.print(temp.data +" ");
             temp=temp.next;
@@ -74,13 +74,13 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        ListNode a=new ListNode(87);
-        ListNode b=new ListNode(100);
-        ListNode c=new ListNode(13);
-        ListNode d=new ListNode(4);
-        ListNode e=new ListNode(5);
-        ListNode f=new ListNode(12);
-        ListNode g=new ListNode(10);
+        Node a=new Node(87);
+        Node b=new Node(100);
+        Node c=new Node(13);
+        Node d=new Node(4);
+        Node e=new Node(5);
+        Node f=new Node(12);
+        Node g=new Node(10);
 
         a.next=b;
         b.next=c;
@@ -89,15 +89,7 @@ public class myPractice {
         e.next=f;
         f.next=g;
 
-        ListNode h=new ListNode(90);
-        ListNode i=new ListNode(9);
-        h.next=i;
-        i.next=e;
 
-        display(a);
-        display(h);
-        ListNode Ans=findIntersection(a,h);
-        System.out.println(Ans.data);
 
 
 
