@@ -77,6 +77,8 @@ public class Q40 {
 
     public static void main(String[] args) {
 
+        // rotate list (leeTCode->61)
+
         ListNode a=new ListNode(1);
         ListNode b=new ListNode(2);
         ListNode c=new ListNode(3);
