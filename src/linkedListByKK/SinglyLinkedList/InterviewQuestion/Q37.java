@@ -18,6 +18,9 @@ public class Q37 {
 
     static Node deleteKeys(Node head,int key){
 
+        //Time Complexity (TC): O(N)
+        //Space Complexity (SC): O(1)
+
         Node temp=head;
 
         while (temp!=null){
@@ -60,6 +63,7 @@ public class Q37 {
 
     public static void main(String[] args) {
 
+        // Delete All occurrences of key in DLL
 
         Node a=new Node(10);
         Node b=new Node(4);
