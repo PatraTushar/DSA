@@ -95,7 +95,7 @@ public class implementationOfLL {
 
         }
 
-        int getAt(int idx){
+       public int getAt(int idx){
 
             Node temp=head;
 
@@ -113,7 +113,7 @@ public class implementationOfLL {
             return temp.data;
         }
 
-        void delete(int idx){
+       public void delete(int idx){
 
             Node temp=head;
 
