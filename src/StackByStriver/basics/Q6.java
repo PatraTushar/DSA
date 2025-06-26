@@ -1,12 +1,13 @@
-package stacksByKK.basics;
-
-import OopsByKK.AccessModifier.Public.B;
+package StackByStriver.basics;
 
 import java.util.Stack;
 
 public class Q6 {
 
     static Stack<Integer> removeFromBottom(Stack<Integer> st){
+
+        //Time Complexity: O(n)
+        //Space Complexity: O(n)
 
         Stack<Integer> rt=new Stack<>();
         while (st.size()>1){
@@ -24,6 +25,9 @@ public class Q6 {
     }
 
     static Stack<Integer> removeFromAnyIdx(Stack<Integer> st,int idx){
+
+        //Time Complexity: O(n)
+        //Space Complexity: O(n)
 
         Stack<Integer> rt=new Stack<>();
         while (st.size()>idx){

@@ -1,31 +1,36 @@
-package stacksByKK.basics;
-
-import OopsByKK.AccessModifier.Public.A;
+package StackByStriver.basics;
 
 import java.util.Stack;
 
 public class Q3 {
 
-    static void insertAtBottomRec(Stack<Integer> st,int val){
+    static Stack<Integer> insertAtBottom(Stack<Integer> st,int value){
 
-        if(st.size()==0){
-            System.out.print(val+" ");
-            st.push(val);
-            return;
+        //Time Complexity: O(n)
+        //Space Complexity: O(n)
+
+        Stack<Integer> rt=new Stack<>();
+        while (st.size()>0){
+            rt.push(st.pop());
         }
 
-        int top=st.pop();
-        insertAtBottomRec(st,val);
-        System.out.print(top +" ");
-        st.push(top);
+        st.push(value);
 
+        while (rt.size()>0){
+            st.push(rt.pop());
+        }
+
+        return st;
 
     }
 
-    static Stack<Integer> insertAtBottom(Stack<Integer> st,int val){
+    static Stack<Integer> insertAtAnyIdx(Stack<Integer> st,int val,int idx){
+
+        // Time Complexity: O(n)
+        //Space Complexity: O(n)
 
         Stack<Integer> rt=new Stack<>();
-        while (!st.isEmpty()){
+        while (st.size()>idx){
             rt.push(st.pop());
         }
 
@@ -39,23 +44,22 @@ public class Q3 {
 
     }
 
-    static Stack<Integer> insertAtAnyIdx(Stack<Integer> st,int val,int idx){
+    static void insertAtBottomRec(Stack<Integer> st,int val){
 
         //Time Complexity: O(n)
-        //Space Complexity: O(n)
+        //Space Complexity: O(n) (due to recursion stack)
 
-        Stack<Integer> rt=new Stack<>();
-        while (st.size()>idx){
-            rt.push(st.pop());
+        if(st.size()==0){
+            System.out.print(val+" ");
+            st.push(val);
+            return;
         }
 
-        st.push(val);
+        int top=st.pop();
+        insertAtBottomRec(st,val);
+        System.out.print(top +" ");
+        st.push(top);
 
-        while (!rt.isEmpty()){
-            st.push(rt.pop());
-        }
-
-        return st;
 
     }
 
@@ -77,6 +81,7 @@ public class Q3 {
         System.out.println(Index);
 
         insertAtBottomRec(st,100);
+
 
 
 

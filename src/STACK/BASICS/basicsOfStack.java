@@ -6,7 +6,7 @@ public class basicsOfStack {
 
     public static void main(String[] args) {
 
-        Stack<Integer> st=new Stack<Integer>();
+        Stack<Integer> st=new Stack<>();
         System.out.println(st.isEmpty());
         System.out.println("size is " +st.size());
         System.out.println(st);
