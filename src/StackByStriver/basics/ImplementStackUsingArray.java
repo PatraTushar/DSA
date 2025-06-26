@@ -10,6 +10,9 @@ public class ImplementStackUsingArray {
 
     public void  push(int val){
 
+        //Time Complexity: O(1)
+        //Space Complexity: O(1)
+
         if(idx==stack.length-1){
             throw new IndexOutOfBoundsException(" element cant be inserted ");
         }
@@ -22,6 +25,10 @@ public class ImplementStackUsingArray {
 
     public int peek(){
 
+        //Time Complexity: O(1)
+        //Space Complexity: O(1)
+
+
         if(idx==-1){
             throw new EmptyStackException();
         }
@@ -31,6 +38,10 @@ public class ImplementStackUsingArray {
 
 
     public int pop(){
+
+        //Time Complexity: O(1)
+        //Space Complexity: O(1)
+
 
         if(idx==-1){
             throw new EmptyStackException();
@@ -43,6 +54,10 @@ public class ImplementStackUsingArray {
 
     public int size(){
 
+        //Time Complexity: O(1)
+        //Space Complexity: O(1)
+
+
         if(idx==-1) return 0;
 
         return idx+1;
@@ -50,11 +65,19 @@ public class ImplementStackUsingArray {
 
     boolean isFull(){
 
+        //Time Complexity: O(1)
+        //Space Complexity: O(1)
+
+
         if(idx==stack.length-1) return true;
         else return false;
     }
 
     void display(){
+
+        //Time Complexity: O(n)
+        //Space Complexity: O(1)
+
 
         for (int i=0;i<=idx;i++){
             System.out.print(stack[i]+" ");
