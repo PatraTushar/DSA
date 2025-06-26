@@ -85,6 +85,21 @@ public class ImplementationQueueUsingArrays {
     }
 
 
+    public void display(){
+
+        if(size==0){
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        for (int i = 0; i < size; i++) {
+            int index = (front + i) % Queue.length;
+            System.out.print(Queue[index] + " ");
+        }
+        System.out.println();
+    }
+
+
 
 
 
@@ -96,6 +111,17 @@ public class ImplementationQueueUsingArrays {
     public static void main(String[] args) {
 
         ImplementationQueueUsingArrays queue=new ImplementationQueueUsingArrays();
+        queue.add(10);
+        queue.add(12);
+        queue.add(14);
+        queue.add(16);
+        queue.add(18);
+        queue.display(); // 10 12 14 16 18
+        queue.remove();
+        queue.display(); // 12 14 16 18
+        System.out.println(queue.size()); // 4
+        System.out.println(queue.peek()); // 12
+
 
 
 
