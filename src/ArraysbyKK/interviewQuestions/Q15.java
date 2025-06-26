@@ -1,6 +1,5 @@
 package ArraysbyKK.interviewQuestions;
 
-import practice.Main;
 
 import java.util.Arrays;
 

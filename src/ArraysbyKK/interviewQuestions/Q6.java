@@ -1,6 +1,6 @@
 package ArraysbyKK.interviewQuestions;
 
-import practice.Main;
+
 
 public class Q6 {
 

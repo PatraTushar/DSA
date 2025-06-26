@@ -1,6 +1,6 @@
 package OopsByKK.streamAPI.LambdaExpression.MethodReference;
 
-import practice.Main;
+//import practice.Main;
 
 import java.util.function.BiFunction;
 

@@ -87,6 +87,10 @@ public class ImplementationQueueUsingArrays {
 
     public void display(){
 
+        // Time Complexity: O(n)
+        //Space Complexity: O(1)
+
+
         if(size==0){
             System.out.println("Queue is empty");
             return;
