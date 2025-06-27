@@ -89,14 +89,14 @@ public class minStackI {
         m.push(15);
         m.push(10);
 
-        // Get top value
-        System.out.println("Top element: " + m.top());     // Should print 10
 
         // Get minimum value
         System.out.println("Minimum so far: " + m.getMin()); // Should print 10
 
         // Pop top element
         m.st.pop(); // Removes 10
+
+        System.out.println("Minimum so far: " + m.getMin());
 
         // Get top and min after pop
         System.out.println("Top after pop: " + m.top());   // Should print 15
