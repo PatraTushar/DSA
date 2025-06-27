@@ -47,7 +47,10 @@ public class ImplementStackUsingArray {
             throw new EmptyStackException();
         }
 
-        return stack[idx--];
+        int top=stack[idx];
+        idx--;
+
+        return top;
 
 
     }
