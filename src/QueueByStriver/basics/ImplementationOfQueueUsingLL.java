@@ -56,6 +56,7 @@ public class ImplementationOfQueueUsingLL {
         int top = head.data;
         head = head.next;
         size--;
+        if(size==0) tail=null;
         return top;
     }
 

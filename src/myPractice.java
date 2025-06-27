@@ -1,75 +1,76 @@
 import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
 
 public class myPractice {
 
+    public static class Node {
 
-    int[] Stack=new int[10];
-    int idx=-1;
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node head = null;
+    Node tail=null;
+
+    int size=0;
 
 
+    public void add(int data){
 
-    public void push(int data){
+        Node newNode=new Node(data);
 
-        if(idx==Stack.length-1){
-            System.out.println(" stack is full ");
-            return;
+        if(size==0){
+            head=newNode;
+
+        }
+        else {
+            tail.next=newNode;
+
+        }
+        tail=newNode;
+        size++;
+    }
+
+    public int remove(){
+
+        if(size==0){
+            throw new NoSuchElementException(" queue is empty ");
         }
 
-
-        idx++;
-        Stack[idx]=data;
-
+        int top= head.data;
+        head=head.next;
+        size--;
+        if(size==0) tail=null;
+        return top ;
     }
 
     public int peek(){
 
-        if(idx==-1){
-            throw new EmptyStackException();
+        if(size==0){
+            throw new NoSuchElementException(" queue is empty ");
         }
 
-        return Stack[idx];
+        return head.data;
+
 
     }
 
-    public int pop(){
 
-        if(idx==-1){
-            throw new EmptyStackException();
-        }
+    public int getSize(){
 
-        int top=Stack[idx];
-        idx--;
+        if(size==0) return 0;
 
-        return top;
+        return size;
     }
 
-    int size(){
+    public boolean isEmpty(){
 
-
-
-        return idx+1;
-
-    }
-
-    boolean isEmpty(){
-
-        if(idx==-1) return true;
-
+        if(size==0) return true;
         return false;
-    }
-
-    void display(){
-
-        if(idx==-1){
-
-            throw new EmptyStackException();
-
-        }
-
-        for(int i=0;i<=idx;i++){
-            System.out.print(Stack[i] +" ");
-        }
-        System.out.println();
     }
 
 
