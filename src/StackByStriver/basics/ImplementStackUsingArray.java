@@ -1,6 +1,7 @@
 package StackByStriver.basics;
 
 import java.util.EmptyStackException;
+import java.util.Stack;
 
 public class ImplementStackUsingArray {
 
@@ -66,14 +67,16 @@ public class ImplementStackUsingArray {
         return idx+1;
     }
 
-    boolean isFull(){
+    boolean isEmpty(){
 
         //Time Complexity: O(1)
         //Space Complexity: O(1)
 
 
-        if(idx==stack.length-1) return true;
+        if(idx==-1) return true;
         else return false;
+
+
     }
 
     void display(){
@@ -104,7 +107,9 @@ public class ImplementStackUsingArray {
         st.display();  // 1 2 3 4
         System.out.println(st.peek()); // 4
         System.out.println(st.size()); // 4
-        System.out.println(st.isFull()); // false
+        System.out.println(st.isEmpty()); // false
+
+
 
 
     }
