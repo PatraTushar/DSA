@@ -78,11 +78,7 @@ public class ImplementStackUsingLL {
         // Time Complexity: O(1)
         //Space Complexity: O(1)
 
-        if(size==0){
-            return true;
-        }
-
-        else return false;
+       return size==0;
     }
 
      void display(){
