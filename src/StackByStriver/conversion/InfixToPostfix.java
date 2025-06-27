@@ -44,14 +44,33 @@ public class InfixToPostfix {
 
                 st.pop();
 
-            } else {
+            }
 
-                while (!st.isEmpty() && precedence(st.peek()) >= precedence(ch)) {
-                    ans += st.pop();
+            else {
+
+                if(ch=='^'){
+
+                    while (!st.isEmpty() && precedence(st.peek())>=precedence(ch)){
+                        ans+=st.pop();
+
+                    }
+
+                }
+
+                else {
+
+                    while (!st.isEmpty() && precedence(st.peek())>precedence(ch)){
+                        ans+=st.pop();
+
+                    }
+
                 }
 
                 st.push(ch);
+
+
             }
+
 
             i++;
 
