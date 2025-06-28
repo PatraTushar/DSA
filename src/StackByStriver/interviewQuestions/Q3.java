@@ -21,8 +21,7 @@ public class Q3 {
                 st.pop();
             }
 
-            if(st.isEmpty()) nge[i]=-1;
-            else nge[i]=st.peek();
+          nge[i]=st.isEmpty() ? -1 : st.peek();
 
             st.push(arr[i]);
         }
