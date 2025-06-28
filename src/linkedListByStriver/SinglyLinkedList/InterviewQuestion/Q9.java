@@ -25,6 +25,8 @@ public class Q9 {
 
     static Node deleteRightMiddle(Node head){
 
+        if(head==null) return null;
+
         Node slow=head;
         Node fast=head;
 
@@ -64,12 +66,8 @@ public class Q9 {
 
         display(a);
         Node Ans=deleteRightMiddle(a);
-        if(Ans==null){
-            System.out.println(" Empty list ");
-        }
-        else {
-            display(a);
-        }
+        display(Ans);
+
 
 
     }
