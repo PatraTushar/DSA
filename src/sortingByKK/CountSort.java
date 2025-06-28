@@ -1,8 +1,8 @@
-package SORTING;
+package sortingByKK;
 
 import java.util.Scanner;
 
-public class COUNTSORT {
+public class CountSort {
 
     static void displayArr(int arr[],int n){
         for(int i=0;i<n;i++){

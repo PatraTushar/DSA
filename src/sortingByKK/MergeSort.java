@@ -1,9 +1,8 @@
-package SORTING;
+package sortingByKK;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
-public class MERGESORT {
+public class MergeSort {
 
     static void merge(int[] arr,int start,int mid,int end){
 

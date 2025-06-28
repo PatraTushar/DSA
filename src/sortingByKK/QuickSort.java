@@ -1,9 +1,9 @@
-package SORTING;
+package sortingByKK;
 
 import java.util.Scanner;
 
 
-public class QUICKSORT {
+public class QuickSort {
 
     static void displayArr(int arr[],int n){
         for(int i=0;i<n;i++){
