@@ -36,6 +36,9 @@ public class Q10 {
 
     static long sumOfSubArrMin(int[] arr){
 
+        //Time Complexity (TC): O(N)
+        //Space Complexity (SC): O(N)
+
         int n=arr.length;
         Stack<Integer> st=new Stack<>();
         int[] pse=new int[n];
@@ -85,6 +88,9 @@ public class Q10 {
     }
 
     static long sumOfSubArrMax(int[] arr){
+
+        //Time Complexity (TC): O(N)
+        //Space Complexity (SC): O(N)
 
         int n=arr.length;
         Stack<Integer> st=new Stack<>();
