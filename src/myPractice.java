@@ -1,32 +1,66 @@
-import java.util.Stack;
+
 
 public class myPractice {
 
-    static int[] nextGreaterElementII(int[] nums){
+    static int[] prefixMax(int[] arr){
 
-        int n=nums.length;
-        Stack<Integer> st=new Stack<>();
-        int[] nge=new int[nums.length];
+        int[] pMax=new int[arr.length];
 
-        for(int i=2*n-1;i>=0;i--){
+        pMax[0]=arr[0];
 
-            while (!st.isEmpty() && st.peek()<=nums[i%n]){
-                st.pop();
-            }
+        for(int i=1;i<arr.length;i++){
 
-            if(st.isEmpty()) nge[i%n]=-1;
-            else nge[i%n]=st.peek();
-            st.push(nums[i%n]);
+            pMax[i]=Math.max(pMax[i-1],arr[i]);
         }
 
-        return nge;
+        return pMax;
+
+
+    }
+
+    static int[] suffixMax(int[] arr){
+
+        int n=arr.length;
+        int[] sMax=new int[n];
+
+        sMax[n-1]=arr[n-1];
+
+        for(int i=n-2;i>=0;i--){
+
+            sMax[i]=Math.max(sMax[i+1],arr[i]);
+        }
+
+        return sMax;
+
 
     }
 
 
+    static int trappingRainWater(int[] height){
 
+        int totalUnits=0;
+
+        int[] leftMax=prefixMax(height);
+        int[] rightMax=suffixMax(height);
+
+        for (int i=0;i<height.length;i++){
+
+            if(height[i]< leftMax[i] && height[i]<rightMax[i]){
+
+                totalUnits+=Math.min(leftMax[i],rightMax[i]) - height[i];
+            }
+        }
+
+        return totalUnits;
+
+
+    }
 
     public static void main(String[] args) {
+
+        int[] arr={0,1,0,2,1,0,1,3,2,1,2,1};
+        System.out.println(trappingRainWater(arr));
+
 
 
 
