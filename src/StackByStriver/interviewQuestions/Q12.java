@@ -7,6 +7,9 @@ public class Q12 {
 
     static int[] asteroidCollision(int[] asteroids){
 
+        //Time Complexity (TC): O(N)
+        //Space Complexity (SC): O(N)
+
 
         if (asteroids == null || asteroids.length == 0) return new int[0];
 
