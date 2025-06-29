@@ -45,19 +45,19 @@ public class Q13 {
 
         }
 
-        int largest=Integer.MIN_VALUE;
+        int largestArea=Integer.MIN_VALUE;
         int sum;
 
         for (int i=0;i<n;i++){
 
             sum=heights[i]*(nse[i]-pse[i]-1);
-            largest=Math.max(largest,sum);
+            largestArea=Math.max(largestArea,sum);
 
 
 
         }
 
-        return largest;
+        return largestArea;
 
 
     }
