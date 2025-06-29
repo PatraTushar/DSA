@@ -9,6 +9,9 @@ public class Q13 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
+        if (heights == null || heights.length == 0) return 0;
+
+
         Stack<Integer> st=new Stack<>();
         int n=heights.length;
         int[] pse=new int[n];
