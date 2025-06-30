@@ -3,17 +3,15 @@ import java.util.Stack;
 
 public class myPractice {
 
+    static int largestRectangleHistogram(int[] arr){
 
-    static int sumOfSubArrMin(int[] arr){
-
-        int n=arr.length;
-        int[] pse=new int[n];
-        int[] nse=new int[n];
         Stack<Integer> st=new Stack<>();
+        int[] pse=new int[arr.length];
+        int[] nse=new int[arr.length];
 
-        for(int i=0;i<n;i++){
+        for(int i=0;i<arr.length;i++){
 
-            while (!st.isEmpty() && arr[st.peek()]>arr[i]){
+            while (!st.isEmpty() && arr[st.peek()]>=arr[i]){
                 st.pop();
             }
 
@@ -23,100 +21,80 @@ public class myPractice {
 
         st.clear();
 
-        for(int i=n-1;i>=0;i--){
+        for(int i=arr.length-1;i>=0;i--){
 
             while (!st.isEmpty() && arr[st.peek()]>=arr[i]){
                 st.pop();
             }
 
-             nse[i]=st.isEmpty() ? n : st.peek();
+            nse[i]=st.isEmpty() ? arr.length : st.peek();
             st.push(i);
         }
 
-        int total=0;
+        int maxArea=0;
+        int sum;
 
+        for(int i=0;i<arr.length;i++){
 
-        for(int i=0;i<n;i++){
-
-            int left=i-pse[i];
-            int right=nse[i]-i;
-            int combine=left * right;
-            total+=combine*arr[i];
+            sum=arr[i]*(nse[i]-pse[i]-1);
+            maxArea=Math.max(sum,maxArea);
 
 
         }
 
-        return total;
-
-
-
-
+        return maxArea;
 
     }
 
-    static int sumOfSubArrMax(int[] arr){
+    static int[][] pSum(char[][] arr){
 
-        int n=arr.length;
-        Stack<Integer> st=new Stack<>();
-        int[] pge=new int[n];
-        int[] nge=new int[n];
+        int rows=arr.length;
+        int cols=arr[0].length;
+        int[][] prefixSum=new int[rows][cols];
 
-        for(int i=0;i<n;i++){
+        for(int j=0;j<cols;j++){
 
-            while (!st.isEmpty() && arr[st.peek()]<=arr[i]){
-                st.pop();
+            int sum=0;
+
+            for (int i=0;i<rows;i++){
+
+                if(arr[i][j]=='1') sum++;
+                else sum=0;
+                prefixSum[i][j]=sum;
+
+
             }
-
-            pge[i]=st.isEmpty() ? -1 : st.peek();
-            st.push(i);
         }
+        return prefixSum;
+    }
 
-        st.clear();
+    static int maximalRectangle(char[][] matrix){
 
-        for (int i=n-1;i>=0;i--){
+        int[][] prefix=pSum(matrix);
+        int rows=matrix.length;
+        int MaxArea=0;
 
-            while (!st.isEmpty() && arr[st.peek()]<=arr[i]){
-                st.pop();
-            }
+        for (int i=0;i<rows;i++){
 
-            nge[i]=st.isEmpty() ? n : st.peek();
-            st.push(i);
-        }
-
-
+            MaxArea=Math.max(MaxArea,largestRectangleHistogram(prefix[i]));
 
 
-        long total=0;
-        int MOD = (int) 1e9 + 7;
 
-        for(int i=0;i<n;i++){
-            long left = i - pge[i];
-            long right = nge[i] - i;
-            total = (total + arr[i] * left * right) % MOD;
 
         }
 
-        return (int) total;
-
+        return MaxArea;
 
 
 
     }
-
-    static int sumOfRanges(int[] arr){
-        return sumOfSubArrMax(arr)-sumOfSubArrMin(arr);
-    }
-
-
-
-
 
 
     public static void main(String[] args) {
 
-        int[] arr={3,1,2,4};
-        int[] arr2={1,1,1};
-        System.out.println(sumOfSubArrMin(arr2));
+        char[][]  matrix = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
+        System.out.println(maximalRectangle(matrix));
+
 
 
 
