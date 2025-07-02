@@ -1,6 +1,8 @@
+package StackByStriver.basics;
+
 import java.util.EmptyStackException;
 
-public class myPractice {
+public class dynamicStackImplementation {
 
     public static class Stack {
 
@@ -15,13 +17,7 @@ public class myPractice {
             //Space Complexity: O(1)
 
             if (idx == stack.length - 1) {
-                int[] dynamicArray=new int[2*stack.length];
-
-                for(int i=0;i<stack.length;i++){
-                    dynamicArray[i]=stack[i];
-                }
-
-                stack=dynamicArray;
+                throw new IndexOutOfBoundsException(" element cant be inserted ");
             }
 
             idx++;
@@ -101,8 +97,19 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-    }
+        Stack st=new Stack();
 
+        st.push(10);
+        st.push(20);
+        st.push(30);
+        st.display();
+        System.out.println("Peek: " + st.peek());
+        System.out.println("Pop: " + st.pop());
+        st.display();
+        System.out.println("Size: " + st.size());
+        System.out.println("IsEmpty: " + st.isEmpty());
+
+    }
 
 
 }
