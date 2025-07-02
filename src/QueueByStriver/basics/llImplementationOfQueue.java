@@ -2,7 +2,7 @@ package QueueByStriver.basics;
 
 import java.util.NoSuchElementException;
 
-public class ImplementationOfQueueUsingLL {
+public class llImplementationOfQueue {
 
     public static class Node {
 
@@ -111,7 +111,7 @@ public class ImplementationOfQueueUsingLL {
 
     public static void main(String[] args) {
 
-        ImplementationOfQueueUsingLL queue = new ImplementationOfQueueUsingLL();
+        llImplementationOfQueue queue = new llImplementationOfQueue();
         queue.add(10);
         queue.add(20);
         queue.add(30);

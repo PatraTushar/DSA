@@ -3,7 +3,7 @@ package QueueByStriver.basics;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class basicsSTL {
+public class queue {
 
     public static void main(String[] args) {
 
