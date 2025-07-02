@@ -1,106 +1,96 @@
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.NoSuchElementException;
 
 public class myPractice {
 
-    static int largestRectangleHistogram(int[] arr){
 
-        Stack<Integer> st=new Stack<>();
-        int[] pse=new int[arr.length];
-        int[] nse=new int[arr.length];
+    int[] arr=new int[10];
+    int size=0;
+    int front=-1;
+    int rear=-1;
 
-        for(int i=0;i<arr.length;i++){
+    public void add(int data){
 
-            while (!st.isEmpty() && arr[st.peek()]>=arr[i]){
-                st.pop();
-            }
-
-            pse[i]=st.isEmpty() ? -1 : st.peek();
-            st.push(i);
+        if(size==arr.length){
+            System.out.println(" insertion not possible ");
+            return;
         }
 
-        st.clear();
+        if(front==-1){
 
-        for(int i=arr.length-1;i>=0;i--){
-
-            while (!st.isEmpty() && arr[st.peek()]>=arr[i]){
-                st.pop();
-            }
-
-            nse[i]=st.isEmpty() ? arr.length : st.peek();
-            st.push(i);
-        }
-
-        int maxArea=0;
-        int sum;
-
-        for(int i=0;i<arr.length;i++){
-
-            sum=arr[i]*(nse[i]-pse[i]-1);
-            maxArea=Math.max(sum,maxArea);
-
+            front=rear=0;
 
         }
 
-        return maxArea;
 
-    }
-
-    static int[][] pSum(char[][] arr){
-
-        int rows=arr.length;
-        int cols=arr[0].length;
-        int[][] prefixSum=new int[rows][cols];
-
-        for(int j=0;j<cols;j++){
-
-            int sum=0;
-
-            for (int i=0;i<rows;i++){
-
-                if(arr[i][j]=='1') sum++;
-                else sum=0;
-                prefixSum[i][j]=sum;
-
-
-            }
-        }
-        return prefixSum;
-    }
-
-    static int maximalRectangle(char[][] matrix){
-
-        int[][] prefix=pSum(matrix);
-        int rows=matrix.length;
-        int MaxArea=0;
-
-        for (int i=0;i<rows;i++){
-
-            MaxArea=Math.max(MaxArea,largestRectangleHistogram(prefix[i]));
-
-
-
-
-        }
-
-        return MaxArea;
+            arr[rear] = data;
+            rear++;
+            size++;
 
 
 
     }
 
+    public int remove(){
+
+        if(front==-1){
+            throw new NoSuchElementException(" queue is empty ");
+        }
+
+       int val=arr[front++];
+        size--;
+
+        if(size==0) front=rear=-1;
+
+        return val;
+
+
+    }
+
+
+    public int peek(){
+
+        if(size==0){
+            throw new NoSuchElementException(" queue is empty ");
+        }
+
+        return arr[front];
+
+
+    }
+
+    void display(){
+
+        if (size == 0) {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        for(int i=front;i<rear;i++){
+            System.out.print(arr[i] +" ");
+        }
+
+        System.out.println();
+    }
+
+
+    public int size(){
+
+        if(size==0){
+            return 0;
+        }
+
+        return size;
+
+    }
+
+
+    public boolean isEmpty(){
+
+        return size==0;
+    }
 
     public static void main(String[] args) {
 
-        char[][]  matrix = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
-        System.out.println(maximalRectangle(matrix));
-
-
-
-
-
-
     }
-
 
 }

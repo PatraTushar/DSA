@@ -1,4 +1,4 @@
-package QUEUE;
+package QueueByStriver.basics;
 
 public class llImplementationOfCQ {
 
