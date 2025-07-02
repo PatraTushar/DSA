@@ -1,118 +1,150 @@
 package QueueByStriver.basics;
 
+import java.util.NoSuchElementException;
+
 public class llImplementationOfCQ {
 
-    public static class Node{
+    public static class Node {
+
         int data;
         Node next;
 
-        Node(int data){
-            this.data=data;
+        Node(int data) {
+
+            this.data = data;
         }
     }
 
-    public static class  LLcq{
 
-        Node head=null;
-        Node tail=null;
+    Node head = null;
+    Node tail = null;
 
-        int size=0;
+    int size=0;
 
-        public void add(int val){
 
-            Node temp=new Node(val);
+    public void add(int data){
 
-            if(size==0){
+        //Time Complexity:O(1)
+        //Space Complexity:O(1)
 
-                head=tail=temp;
+        Node newNode=new Node(data);
 
-            }
-
-            else {
-
-                tail.next=temp;
-                tail=temp;
-                tail.next=head;
-
-            }
-
-            size++;
+        if(head==null){
+            head=tail=newNode;
         }
 
+        else {
 
-        public int remove(){
-
-            if(size==0){
-                System.out.println(" queue is empty ");
-                return -1;
-            }
-
-            int x=head.data;
-            head=head.next;
+            tail.next=newNode;
+            tail=newNode;
             tail.next=head;
-            size--;
-            return x;
 
         }
 
-        public int peek(){
-
-            if(size==0){
-                System.out.println(" queue is empty ");
-                return -1;
-            }
-
-            return head.data;
-
-        }
+        size++;
 
 
-        public boolean isEmpty(){
-
-            if(size==0){
-                return true;
-            }
-
-            else{
-                return false;
-            }
-        }
-
-        public void display(){
-
-            if(size==0){
-                System.out.println(" queue is empty ");
-
-            }
-
-            Node temp=head;
-
-
-            do {
-                System.out.print(temp.data + " ");
-                temp = temp.next;
-            } while (temp != head);
-
-            System.out.println();
-
-
-
-        }
     }
+
+    public int remove(){
+
+        //Time Complexity:O(1)
+        //Space Complexity:O(1)
+
+        if(size==0){
+            throw new NoSuchElementException(" queue is empty ");
+        }
+
+        if(size==1){
+            int val=head.data;
+            head=tail=null;
+            size--;
+            return val;
+        }
+
+        int val=head.data;
+        head=head.next;
+        tail.next=head;
+        size--;
+
+        return val;
+
+
+    }
+
+
+    public int peek(){
+
+        //Time Complexity:O(1)
+        //Space Complexity:O(1)
+
+        if(size==0){
+            throw new NoSuchElementException(" queue is empty ");
+
+        }
+
+        return head.data;
+    }
+
+    public int size(){
+
+        //Time Complexity:O(1)
+        //Space Complexity:O(1)
+
+        if(size==0) return 0;
+
+        return size;
+    }
+
+    public boolean isEmpty(){
+
+        //Time Complexity:O(1)
+        //Space Complexity:O(1)
+
+        return size==0;
+    }
+
+
+    public void display(){
+
+        //Time Complexity:O(n)
+        //Space Complexity:O(1)
+
+        if (head == null) {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        System.out.print(head.data +" ");
+        Node temp=head.next;
+        while (temp!=head){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+
+        System.out.println();
+
+
+
+
+    }
+
+
 
     public static void main(String[] args) {
 
-        LLcq q=new LLcq();
-        System.out.println(q.isEmpty());
+        llImplementationOfCQ q=new llImplementationOfCQ();
+        System.out.println(q.isEmpty());  // true
         q.add(1);
         q.add(2);
         q.add(3);
         q.add(4);
         q.add(5);
-        q.display();
+        q.display();  // 1 2 3 4 5
         q.remove();
-        q.display();
-        System.out.println(q.peek());
+        q.display();  // 2 3 4 5
+        System.out.println(q.peek()); // 2
+        System.out.println(q.isEmpty());  // false
 
 
     }

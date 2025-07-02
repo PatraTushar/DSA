@@ -2,44 +2,62 @@ import java.util.NoSuchElementException;
 
 public class myPractice {
 
+    public static class Node {
 
-    int[] arr=new int[10];
+        int data;
+        Node next;
+
+        Node(int data) {
+
+            this.data = data;
+        }
+    }
+
+
+    Node head = null;
+    Node tail = null;
+
     int size=0;
-    int front=-1;
-    int rear=-1;
+
 
     public void add(int data){
 
-        if(size==arr.length){
-            System.out.println(" insertion not possible ");
-            return;
+        Node newNode=new Node(data);
+
+        if(head==null){
+            head=tail=newNode;
         }
 
-        if(front==-1){
+        else {
 
-            front=rear=0;
+            tail.next=newNode;
+            tail=newNode;
+            tail.next=head;
 
         }
 
-
-            arr[rear] = data;
-            rear++;
-            size++;
-
+        size++;
 
 
     }
 
     public int remove(){
 
-        if(front==-1){
+        if(size==0){
             throw new NoSuchElementException(" queue is empty ");
         }
 
-       int val=arr[front++];
-        size--;
+        if(size==1){
+            int val=head.data;
+            head=tail=null;
+            size--;
+            return val;
+        }
 
-        if(size==0) front=rear=-1;
+        int val=head.data;
+        head=head.next;
+        tail.next=head;
+        size--;
 
         return val;
 
@@ -51,43 +69,46 @@ public class myPractice {
 
         if(size==0){
             throw new NoSuchElementException(" queue is empty ");
+
         }
 
-        return arr[front];
-
-
+        return head.data;
     }
 
-    void display(){
+    public int size(){
 
-        if (size == 0) {
+        if(size==0) return 0;
+
+        return size;
+    }
+
+    public boolean isEmpty(){
+
+       return size==0;
+    }
+
+
+    public void display(){
+
+        if (head == null) {
             System.out.println("Queue is empty");
             return;
         }
 
-        for(int i=front;i<rear;i++){
-            System.out.print(arr[i] +" ");
+        System.out.print(head.data +" ");
+        Node temp=head.next;
+        while (temp!=head){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
         }
 
         System.out.println();
-    }
 
 
-    public int size(){
 
-        if(size==0){
-            return 0;
-        }
-
-        return size;
 
     }
 
-
-    public boolean isEmpty(){
-
-        return size==0;
-    }
 
     public static void main(String[] args) {
 
