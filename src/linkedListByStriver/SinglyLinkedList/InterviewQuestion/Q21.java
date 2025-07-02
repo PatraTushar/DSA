@@ -41,8 +41,8 @@ public class Q21 {
             fast=fast.next.next;
         }
 
-        Node storeNode=reverse(slow.next);
-        slow.next=storeNode;
+        slow.next=reverse(slow.next);
+
 
         Node p1=head;
         Node p2=slow.next;
