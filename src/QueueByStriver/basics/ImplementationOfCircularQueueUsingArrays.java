@@ -2,7 +2,7 @@ package QueueByStriver.basics;
 
 import java.util.NoSuchElementException;
 
-public class ImplementationQueueUsingArrays {
+public class ImplementationOfCircularQueueUsingArrays {
 
     int front=-1;
     int rear=-1;
@@ -117,7 +117,7 @@ public class ImplementationQueueUsingArrays {
 
     public static void main(String[] args) {
 
-        ImplementationQueueUsingArrays queue=new ImplementationQueueUsingArrays();
+        ImplementationOfCircularQueueUsingArrays queue=new ImplementationOfCircularQueueUsingArrays();
         queue.add(10);
         queue.add(12);
         queue.add(14);

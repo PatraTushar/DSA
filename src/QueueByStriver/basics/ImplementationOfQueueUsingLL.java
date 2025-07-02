@@ -1,7 +1,5 @@
 package QueueByStriver.basics;
 
-import QUEUE.llImplementationOfQueue;
-
 import java.util.NoSuchElementException;
 
 public class ImplementationOfQueueUsingLL {

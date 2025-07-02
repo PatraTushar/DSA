@@ -1,4 +1,4 @@
-package QUEUE;
+package QueueByStriver.basics;
 
 import java.util.LinkedList;
 import java.util.Queue;
