@@ -4,101 +4,106 @@ import java.util.NoSuchElementException;
 
 public class ImplementStackUsingLL {
 
-    public static class Node {
+    public static class Stack {
 
-        int data;
-        Node next;
 
-        Node(int data) {
+        public static class Node {
 
-            this.data = data;
+            int data;
+            Node next;
+
+            Node(int data) {
+
+                this.data = data;
+            }
+
+
         }
 
 
-    }
+        Node head = null;
+        int size = 0;
 
 
-    Node head = null;
-    int size = 0;
+        public void push(int data) {
 
+            // Time Complexity: O(1)
+            // Space Complexity: O(1)
 
-    public void push(int data){
-
-          // Time Complexity: O(1)
-        // Space Complexity: O(1)
-
-        Node newNode=new Node(data);
-        newNode.next=head;
-        head=newNode;
-        size++;
-    }
-
-    public int pop(){
-
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
-
-        if(head==null){
-            throw new NoSuchElementException(" Nothing to delete Linked List is empty ");
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+            size++;
         }
 
-        int top=head.data;
-        head=head.next;
-        size--;
+        public int pop() {
 
-        return top;
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
 
-    }
+            if (head == null) {
+                throw new NoSuchElementException(" Nothing to delete Linked List is empty ");
+            }
 
-    public int peek(){
+            int top = head.data;
+            head = head.next;
+            size--;
 
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
+            return top;
 
-        if(head==null){
-            throw new NoSuchElementException(" Nothing to peek Linked List is empty ");
         }
 
-        return head.data;
+        public int peek() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (head == null) {
+                throw new NoSuchElementException(" Nothing to peek Linked List is empty ");
+            }
+
+            return head.data;
 
 
-    }
-
-    int size(){
-
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
-
-        return size;
-    }
-
-
-    boolean isEmpty(){
-
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
-
-       return size==0;
-    }
-
-     void display(){
-
-         // Time Complexity: O(n)
-         //Space Complexity: O(1)
-
-        Node temp=head;
-
-        while (temp!=null){
-            System.out.print(temp.data+" ");
-            temp=temp.next;
         }
-         System.out.println();
+
+        int size() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size;
+        }
+
+
+        boolean isEmpty() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size == 0;
+        }
+
+        void display() {
+
+            // Time Complexity: O(n)
+            //Space Complexity: O(1)
+
+            Node temp = head;
+
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+
     }
 
 
     public static void main(String[] args) {
 
-        ImplementStackUsingLL st=new ImplementStackUsingLL();
+        Stack st=new Stack();
         st.push(10);
         st.push(20);
         st.push(30);

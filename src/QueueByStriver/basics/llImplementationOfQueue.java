@@ -4,114 +4,119 @@ import java.util.NoSuchElementException;
 
 public class llImplementationOfQueue {
 
-    public static class Node {
+    public static class Queue {
 
-        int data;
-        Node next;
 
-        Node(int data) {
+        public static class Node {
 
-            this.data = data;
-        }
-    }
+            int data;
+            Node next;
 
-    Node head = null;
-    Node tail = null;
-    int size = 0;
+            Node(int data) {
 
-    public void add(int data) {
-
-          // Time Complexity: O(1)
-        // Space Complexity: O(1)
-
-        Node newNode = new Node(data);
-
-        if (size == 0) {
-
-            head = tail = newNode;
-
-        } else {
-
-            tail.next = newNode;
-            tail = newNode;
-
+                this.data = data;
+            }
         }
 
-        size++;
+        Node head = null;
+        Node tail = null;
+        int size = 0;
+
+        public void add(int data) {
+
+            // Time Complexity: O(1)
+            // Space Complexity: O(1)
+
+            Node newNode = new Node(data);
+
+            if (size == 0) {
+
+                head = tail = newNode;
+
+            } else {
+
+                tail.next = newNode;
+                tail = newNode;
+
+            }
+
+            size++;
 
 
-    }
-
-    public int remove() {
-
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
-
-        if (size == 0) {
-            throw new NoSuchElementException(" Nothing can be removed Queue is empty ");
         }
 
-        int top = head.data;
-        head = head.next;
-        size--;
-        if(size==0) tail=null;
-        return top;
-    }
+        public int remove() {
 
-    public int peek() {
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
 
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
+            if (size == 0) {
+                throw new NoSuchElementException(" Nothing can be removed Queue is empty ");
+            }
 
-        if (size == 0) {
-            throw new NoSuchElementException(" Nothing can be peek Queue is empty ");
+            int top = head.data;
+            head = head.next;
+            size--;
+            if (size == 0) tail = null;
+            return top;
         }
 
-        return head.data;
+        public int peek() {
 
-    }
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
 
-    public boolean isEmpty() {
+            if (size == 0) {
+                throw new NoSuchElementException(" Nothing can be peek Queue is empty ");
+            }
 
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
+            return head.data;
 
-        if (size == 0) {
-            return true;
-        } else {
-            return false;
         }
 
-    }
+        public boolean isEmpty() {
 
-    public int size(){
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
 
-        // Time Complexity: O(1)
-        //Space Complexity: O(1)
+            if (size == 0) {
+                return true;
+            } else {
+                return false;
+            }
 
-        return size;
-    }
-
-
-    public void display() {
-
-        // Time Complexity: O(n)
-        //Space Complexity: O(1)
-
-        Node temp = head;
-
-        while (temp != null) {
-            System.out.print(temp.data + " ");
-            temp = temp.next;
         }
 
-        System.out.println();
+        public int size() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size;
+        }
+
+
+        public void display() {
+
+            // Time Complexity: O(n)
+            //Space Complexity: O(1)
+
+            Node temp = head;
+
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+
+            System.out.println();
+        }
+
     }
 
 
     public static void main(String[] args) {
 
-        llImplementationOfQueue queue = new llImplementationOfQueue();
+        Queue queue = new Queue();
         queue.add(10);
         queue.add(20);
         queue.add(30);

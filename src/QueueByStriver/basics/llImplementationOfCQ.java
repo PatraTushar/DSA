@@ -4,136 +4,136 @@ import java.util.NoSuchElementException;
 
 public class llImplementationOfCQ {
 
-    public static class Node {
-
-        int data;
-        Node next;
-
-        Node(int data) {
-
-            this.data = data;
-        }
-    }
+    public static class circularQueue {
 
 
-    Node head = null;
-    Node tail = null;
+        public static class Node {
 
-    int size=0;
+            int data;
+            Node next;
 
+            Node(int data) {
 
-    public void add(int data){
-
-        //Time Complexity:O(1)
-        //Space Complexity:O(1)
-
-        Node newNode=new Node(data);
-
-        if(head==null){
-            head=tail=newNode;
+                this.data = data;
+            }
         }
 
-        else {
 
-            tail.next=newNode;
-            tail=newNode;
-            tail.next=head;
+        Node head = null;
+        Node tail = null;
+
+        int size = 0;
+
+
+        public void add(int data) {
+
+            //Time Complexity:O(1)
+            //Space Complexity:O(1)
+
+            Node newNode = new Node(data);
+
+            if (head == null) {
+                head = tail = newNode;
+            } else {
+
+                tail.next = newNode;
+                tail = newNode;
+                tail.next = head;
+
+            }
+
+            size++;
+
 
         }
 
-        size++;
+        public int remove() {
 
+            //Time Complexity:O(1)
+            //Space Complexity:O(1)
 
-    }
+            if (size == 0) {
+                throw new NoSuchElementException(" queue is empty ");
+            }
 
-    public int remove(){
+            if (size == 1) {
+                int val = head.data;
+                head = tail = null;
+                size--;
+                return val;
+            }
 
-        //Time Complexity:O(1)
-        //Space Complexity:O(1)
-
-        if(size==0){
-            throw new NoSuchElementException(" queue is empty ");
-        }
-
-        if(size==1){
-            int val=head.data;
-            head=tail=null;
+            int val = head.data;
+            head = head.next;
+            tail.next = head;
             size--;
+
             return val;
-        }
 
-        int val=head.data;
-        head=head.next;
-        tail.next=head;
-        size--;
-
-        return val;
-
-
-    }
-
-
-    public int peek(){
-
-        //Time Complexity:O(1)
-        //Space Complexity:O(1)
-
-        if(size==0){
-            throw new NoSuchElementException(" queue is empty ");
 
         }
 
-        return head.data;
-    }
 
-    public int size(){
+        public int peek() {
 
-        //Time Complexity:O(1)
-        //Space Complexity:O(1)
+            //Time Complexity:O(1)
+            //Space Complexity:O(1)
 
-        if(size==0) return 0;
+            if (size == 0) {
+                throw new NoSuchElementException(" queue is empty ");
 
-        return size;
-    }
+            }
 
-    public boolean isEmpty(){
-
-        //Time Complexity:O(1)
-        //Space Complexity:O(1)
-
-        return size==0;
-    }
-
-
-    public void display(){
-
-        //Time Complexity:O(n)
-        //Space Complexity:O(1)
-
-        if (head == null) {
-            System.out.println("Queue is empty");
-            return;
+            return head.data;
         }
 
-        System.out.print(head.data +" ");
-        Node temp=head.next;
-        while (temp!=head){
-            System.out.print(temp.data+" ");
-            temp=temp.next;
+        public int size() {
+
+            //Time Complexity:O(1)
+            //Space Complexity:O(1)
+
+            if (size == 0) return 0;
+
+            return size;
         }
 
-        System.out.println();
+        public boolean isEmpty() {
+
+            //Time Complexity:O(1)
+            //Space Complexity:O(1)
+
+            return size == 0;
+        }
 
 
+        public void display() {
+
+            //Time Complexity:O(n)
+            //Space Complexity:O(1)
+
+            if (head == null) {
+                System.out.println("Queue is empty");
+                return;
+            }
+
+            System.out.print(head.data + " ");
+            Node temp = head.next;
+            while (temp != head) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+
+            System.out.println();
 
 
+        }
     }
 
 
 
     public static void main(String[] args) {
 
-        llImplementationOfCQ q=new llImplementationOfCQ();
+        circularQueue q=new circularQueue();
         System.out.println(q.isEmpty());  // true
         q.add(1);
         q.add(2);
