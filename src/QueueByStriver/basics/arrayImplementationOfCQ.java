@@ -88,26 +88,19 @@ public class arrayImplementationOfCQ {
             //Space Complexity: O(1)
 
 
-            if (front == -1) {
-                throw new NoSuchElementException(" queue is empty ");
-            }
+                if(front==-1){
 
-            if (rear >= front) {
-
-                for (int i = front; i <= rear; i++) {
-                    System.out.print(Queue[i] + " ");
-                }
-            } else {
-
-                for (int i = front; i < Queue.length; i++) {
-                    System.out.print(Queue[i] + " ");
+                    throw new NoSuchElementException(" queue is empty ");
                 }
 
-                for (int i = 0; i <= rear; i++) {
-                    System.out.print(Queue[i] + " ");
+                for (int i=0;i<size;i++){
 
+                    int idx=(front+i)%Queue.length;
+                    System.out.print(Queue[idx]+" ");
                 }
-            }
+
+
+
 
             System.out.println();
 
