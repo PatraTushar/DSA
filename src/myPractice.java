@@ -4,76 +4,83 @@ public class myPractice {
 
     public static class Queue{
 
-        int[] Queue=new int[10];
-        int front =-1;
-        int rear=-1;
+
+        public static class Node{
+
+            int data;
+            Node next;
+
+            Node(int data){
+                this.data=data;
+            }
+        }
+
+
+        Node head=null;
+        Node tail=null;
         int size=0;
 
 
         public void add(int data){
 
-            if(size==Queue.length){
-                System.out.println(" queue is full ");
-                return;
-            }
+            Node newNode=new Node(data);
 
-            if(front==-1){
-                front=0;
-                rear=0;
+            if(head==null){
+
+                head=tail=newNode;
+
             }
 
             else {
 
-                rear=(rear+1)%Queue.length;
+                tail.next=newNode;
+                tail=newNode;
+
             }
 
-            Queue[rear]=data;
+            tail.next=head;
             size++;
-
         }
+
 
         public int remove(){
 
-            if(front==-1){
-
+            if(head==null){
                 throw new NoSuchElementException(" queue is empty ");
             }
 
-            int val=Queue[front];
 
-            if(size==1){
-                front=rear=-1;
+            int val=head.data;
+
+            if(head==tail){
+
+                head=tail=null;
             }
 
             else {
 
-                front=(front+1)%Queue.length;
+                head=head.next;
+                tail.next=head;
+
 
             }
 
             size--;
             return val;
+
+
         }
 
 
         public int peek(){
 
-            if(front==-1){
-
+            if(head==null){
                 throw new NoSuchElementException(" queue is empty ");
             }
 
-            return Queue[front];
+            return head.data;
 
 
-        }
-
-
-        public int getSize(){
-
-            if(size==0) return 0;
-
-            return size;
         }
 
         public boolean isEmpty(){
@@ -81,21 +88,29 @@ public class myPractice {
             return size==0;
         }
 
+        public int size(){
+
+            if(size==0) return 0;
+
+            return size;
+        }
+
 
         public void display(){
 
-            if(front==-1){
 
+            if(head==null){
                 throw new NoSuchElementException(" queue is empty ");
             }
 
-           for (int i=0;i<size;i++){
+            Node temp=head;
 
-               int idx=(front+i)%Queue.length;
-               System.out.print(Queue[idx]+" ");
-           }
+            do {
+                System.out.print(temp.data +" ");
+                temp=temp.next;
+            }while (temp!=head);
 
-
+            System.out.println();
         }
     }
 

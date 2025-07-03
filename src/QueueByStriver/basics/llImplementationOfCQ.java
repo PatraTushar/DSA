@@ -1,5 +1,7 @@
 package QueueByStriver.basics;
 
+
+
 import java.util.NoSuchElementException;
 
 public class llImplementationOfCQ {
@@ -111,17 +113,16 @@ public class llImplementationOfCQ {
             //Time Complexity:O(n)
             //Space Complexity:O(1)
 
-            if (head == null) {
-                System.out.println("Queue is empty");
-                return;
+            if(head==null){
+                throw new NoSuchElementException(" queue is empty ");
             }
 
-            System.out.print(head.data + " ");
-            Node temp = head.next;
-            while (temp != head) {
-                System.out.print(temp.data + " ");
-                temp = temp.next;
-            }
+            Node temp=head;
+
+            do {
+                System.out.print(temp.data +" ");
+                temp=temp.next;
+            }while (temp!=head);
 
             System.out.println();
 
