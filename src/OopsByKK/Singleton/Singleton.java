@@ -4,6 +4,8 @@ public class Singleton {
 
     private Singleton(){
 
+        System.out.println(" singleton class is created ");
+
     }
 
     private static Singleton instances;
@@ -21,6 +23,11 @@ public class Singleton {
     }
 
     public static void main(String[] args) {
+
+        Singleton obj1 = Singleton.getInstances();
+        Singleton obj2 = Singleton.getInstances();
+
+        System.out.println(obj1 == obj2);  // ✅ true — same instance
 
 
 
