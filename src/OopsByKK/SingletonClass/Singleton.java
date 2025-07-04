@@ -1,4 +1,4 @@
-package OopsByKK.Singleton;
+package OopsByKK.SingletonClass;
 
 public class Singleton {
 
