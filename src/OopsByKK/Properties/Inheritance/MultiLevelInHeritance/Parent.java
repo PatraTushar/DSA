@@ -21,6 +21,10 @@ public class Parent {
         System.out.println("This is Parent: " + parentName);
     }
 
+    public static void main(String[] args) {
+
+    }
+
 
 
 }

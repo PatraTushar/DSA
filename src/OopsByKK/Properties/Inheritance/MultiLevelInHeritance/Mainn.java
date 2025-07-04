@@ -1,6 +1,6 @@
 package OopsByKK.Properties.Inheritance.MultiLevelInHeritance;
 
-public class Main {
+public class Mainn {
 
     public static void main(String[] args) {
 
@@ -67,5 +67,6 @@ public class Main {
         // GrandChild g4 = new Child(); // ❌ Error
         // Because Child object has no grandchild members
     }
-    }
+}
+
 
