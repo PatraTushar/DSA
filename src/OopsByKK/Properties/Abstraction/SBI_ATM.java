@@ -9,7 +9,6 @@ interface ATMOperations{
 public class SBI_ATM implements ATMOperations {
 
 
-
     private double balance;
 
     public SBI_ATM(double initialBalance) {
