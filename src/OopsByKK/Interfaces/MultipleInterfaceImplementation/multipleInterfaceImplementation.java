@@ -35,6 +35,11 @@ class main{
 
     public static void main(String[] args) {
 
+        Documents doc = new Documents();
+
+        doc.print(); // Output: printing document
+        doc.show();  // Output: showing document
+
 
 
 
