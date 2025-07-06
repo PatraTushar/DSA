@@ -28,5 +28,8 @@ class Frog implements Amphibian {
         Frog frog = new Frog();
         frog.fly();  // Calls the method from Flyable
         frog.swim(); // Calls the method from Swimmable
+
+        Swimmable s=new Frog();
+        s.swim();
     }
 }
