@@ -1,4 +1,4 @@
-package strings;
+package strings.Basics;
 
 
 import java.text.DecimalFormat;
