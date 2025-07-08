@@ -20,6 +20,8 @@ class AnotherClass<X> implements MyInterface<X>{
 
 class concreteClass implements MyInterface<String>{
 
+    // Case 3: Class provides a concrete type to the interface and is not generic itself
+
     public void show(String data){
         System.out.println(data);
     }
