@@ -1,6 +1,4 @@
-package stringsByKK;
-
-import java.util.Arrays;
+package strings;
 
 public class prettyPrinting {
 

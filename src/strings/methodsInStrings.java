@@ -1,4 +1,4 @@
-package stringsByKK;
+package strings;
 
 import java.util.Arrays;
 

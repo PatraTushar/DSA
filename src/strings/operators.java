@@ -1,4 +1,4 @@
-package stringsByKK;
+package strings;
 
 //import ArraysbyKK.ArrayList;
 import java.util.ArrayList;
