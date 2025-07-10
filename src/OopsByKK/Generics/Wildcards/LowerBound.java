@@ -11,6 +11,7 @@ public class LowerBound {
         list.add(100);
         list.add(200);
 
+        System.out.println(list);
 
 
 
@@ -22,6 +23,9 @@ public class LowerBound {
         List<Object> objList = new ArrayList<>();
         addIntegers(numList);
         addIntegers(objList);
+
+
+
 
     }
 }

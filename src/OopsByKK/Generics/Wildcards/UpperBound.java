@@ -17,6 +17,8 @@ public class UpperBound {
         printNumbers(list);
         List<Double> list1=List.of(1.1,2.2,3.3);
         printNumbers(list1);
+        List<Number> list2=List.of(12,46,89);
+        printNumbers(list2);
 
 
 
