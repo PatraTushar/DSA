@@ -4,34 +4,42 @@ public class Q1 {
 
     static int stringCompression(char[] chars) {
 
-     int idx=0;
-     int i=0;
-     int count=0;
-     char currChar=chars[i];
+        int index = 0;
+        int start = 0;
+        int end=0;
+        int count=0;
 
-     while (i< chars.length){
+        while (end<chars.length){
 
-         if(chars[i]==chars[idx]){
+            if(start==end){
+                end++;
+            }
 
-             count++;
-             i++;
-         }
+            else {
 
-         else {
+                count=end-start;
 
-             chars[idx++]=currChar;
-             if(idx<chars.length)  chars[idx++]=(char) count;
-             count=1;
+                if (count>1){
 
-
-         }
-
-
-     }
-
-     return idx;
+                    chars[index++]=(char) start;
+                    chars[index]=(char) count;
+                    start=end;
+                }
 
 
+            }
+        }
+
+        count=end-start;
+
+        if (count>1){
+
+            chars[index++]=(char) start;
+            chars[index]=(char) count;
+
+        }
+
+        return index;
 
     }
 
