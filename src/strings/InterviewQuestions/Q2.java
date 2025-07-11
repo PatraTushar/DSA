@@ -23,6 +23,8 @@ public class Q2 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1832
+
         String str="thequickbrownfoxjumpsoverthelazydog";
         System.out.println(checkIfPangram(str));
 

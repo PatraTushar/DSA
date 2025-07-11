@@ -7,7 +7,7 @@ public class Q1 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        // leeTCode->443
+
 
         int n=chars.length;
         int index=0;
@@ -46,6 +46,8 @@ public class Q1 {
     }
 
     public static void main(String[] args) {
+
+        // leeTCode->443
 
         char[] ch = {'a', 'a', 'b', 'b', 'c', 'c', 'c'};
         System.out.println(stringCompression(ch));
