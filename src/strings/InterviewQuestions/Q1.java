@@ -4,42 +4,44 @@ public class Q1 {
 
     static int stringCompression(char[] chars) {
 
-        int index = 0;
-        int start = 0;
-        int end=0;
-        int count=0;
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
 
-        while (end<chars.length){
+        // leeTCode->443
 
-            if(start==end){
-                end++;
+        int n=chars.length;
+        int index=0;
+        int i=0;
+
+        while (i<n){
+
+            char currChar=chars[i];
+            int count=0;
+
+            while (i<n && currChar==chars[i]){
+                count++;
+                i++;
             }
 
-            else {
+            chars[index++]=currChar;
 
-                count=end-start;
 
-                if (count>1){
+            if(count>1){
 
-                    chars[index++]=(char) start;
-                    chars[index]=(char) count;
-                    start=end;
+                String str=String.valueOf(count);
+                for(char ch : str.toCharArray()){
+
+                    chars[index++]=ch;
+
                 }
 
 
             }
         }
 
-        count=end-start;
-
-        if (count>1){
-
-            chars[index++]=(char) start;
-            chars[index]=(char) count;
-
-        }
-
         return index;
+
+
 
     }
 
