@@ -1,7 +1,6 @@
-package HASHSET.interviewQuestions;
+package Hashset.interviewQuestions;
 
 import java.util.HashSet;
-import java.util.Map;
 
 public class Q2 {
 

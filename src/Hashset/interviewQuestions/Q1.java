@@ -1,4 +1,4 @@
-package HASHSET.interviewQuestions;
+package Hashset.interviewQuestions;
 import java.util.HashSet;
 public class Q1 {
 

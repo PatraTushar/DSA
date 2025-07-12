@@ -1,4 +1,4 @@
-package HASHMAP.IntervieewQuestion;
+package Hashmap.IntervieewQuestion;
 
 import java.util.Arrays;
 import java.util.HashMap;

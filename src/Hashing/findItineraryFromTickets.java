@@ -1,4 +1,4 @@
-package HASHING;
+package Hashing;
 import java.util.HashMap;
 
 public class findItineraryFromTickets {
