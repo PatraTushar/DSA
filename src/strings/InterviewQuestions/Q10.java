@@ -31,6 +31,8 @@ public class Q10 {
 
     public static void main(String[] args) {
 
+        // leeTCode->520
+
         String word = "USA";
         System.out.println(detectCapitalUse(word));
 

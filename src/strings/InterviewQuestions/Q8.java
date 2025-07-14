@@ -31,7 +31,7 @@ public class Q8 {
 
     public static void main(String[] args) {
 
-        //  // leeTCode->1704
+          // leeTCode->1704
 
         String s = "book";
         System.out.println(halvesAreAlike(s));
