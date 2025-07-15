@@ -3,6 +3,8 @@ package OopsByKK.Generics.CustomArrayListWithoutGenerics;
 import java.util.Arrays;
 
 class customArrayList{
+
+    //"Using Object allows you to store any data type just like generics do, but the key drawback is during retrieval — you must perform explicit type casting. With generics, you get compile-time type safety and avoid casting altogether, making your code cleaner and less error-prone."
    private Object[] arr;
    private int size=0;
 
