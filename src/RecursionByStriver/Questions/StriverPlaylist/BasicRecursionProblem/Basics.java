@@ -1,5 +1,7 @@
 package RecursionByStriver.Questions.StriverPlaylist.BasicRecursionProblem;
 
+import java.util.Arrays;
+
 public class Basics {
 
     static void printNames(String str, int n) {
@@ -114,11 +116,103 @@ public class Basics {
 
     }
 
-//    static int[] reverseArray(int[] arr){
-//
-//
-//    }
+    static void reverseArray(int[] arr, int left, int right) {
 
+        // TC: O(n)
+        //SC: O(n) (recursion stack)
+
+        // It is Parametrized Recursion
+
+        if (left >= right) return;
+
+
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+
+
+        reverseArray(arr, left+1, right-1);
+
+
+    }
+
+    static void reverseArrayI(int[] arr,int left,int right){
+
+        // TC: O(n)
+        //SC: O(n) (recursion stack)
+
+        // It is Functional Recursion
+
+        if (left >= right) return;
+
+
+        reverseArray(arr, left+1, right-1);
+
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+
+
+
+    }
+
+    static void reverseArrayII(int[] arr,int i,int n){
+
+        // TC: O(n)
+        //SC: O(n) (recursion stack)
+
+        // It is Functional Recursion
+
+
+        if(i>=n/2) return;
+
+        reverseArrayII(arr,i+1,n);
+
+        int temp=arr[i];
+        arr[i]=arr[n-i-1];
+        arr[n-i-1]=temp;
+
+
+
+
+    }
+
+    // Check if a String is a Palindrome
+
+    static boolean isPalindrome(String str,int left,int right){
+
+        // TC: O(n)
+        //SC: O(n) (recursion stack)
+
+        // It is parametrized Recursion
+
+        if(left>=right) return true;
+
+      if(str.charAt(left)!=str.charAt(right)) return false;
+
+      return isPalindrome(str,left+1,right-1);
+
+
+
+
+    }
+
+    static boolean isPalindromeI(String str,int left,int right){
+
+        // TC: O(n)
+        //SC: O(n) (recursion stack)
+
+        // It is Functional Recursion
+
+        if(left>=right) return true;
+
+
+        return isPalindrome(str,left+1,right-1) && str.charAt(left)==str.charAt(right);
+
+
+
+
+    }
 
 
 
@@ -150,6 +244,24 @@ public class Basics {
         System.out.println(sumOfFirstNNumbers(0, 5));
 
         System.out.println(sumOfFirstNNumbersI(5));
+
+        int[] arr = {10, 20, 30, 40, 50};
+        reverseArray(arr, 0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
+
+        int[] arr2 = {4,67,49,29,55};
+        reverseArrayII(arr2,0,arr2.length);
+        System.out.println(Arrays.toString(arr2));
+
+
+        int[] arr3 = {1, 2, 3, 4, 5};
+        reverseArrayII(arr3,0,arr3.length);
+        System.out.println(Arrays.toString(arr3));
+
+        String s="abccba";
+        System.out.println(isPalindrome(s,0,s.length()-1));
+        System.out.println(isPalindromeI(s,0,s.length()-1));
+
 
 
     }
