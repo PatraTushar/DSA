@@ -1,6 +1,6 @@
 package RecursionByStriver.Questions.StriverPlaylist.BasicRecursionProblem;
 
-public class Q1 {
+public class Basics {
 
     static void printNames(String str, int n) {
 
@@ -34,7 +34,6 @@ public class Q1 {
     }
 
 
-
     // print From  N to 1
     static void printFromNto1(int n) {
 
@@ -49,7 +48,6 @@ public class Q1 {
         System.out.print(n + " ");
         printFromNto1(n - 1);
     }
-
 
 
     // print From 1 to N by BackTrack
@@ -72,19 +70,57 @@ public class Q1 {
 
     // print From N to 1 by BackTrack
 
-    static void printFromNTo1ByBacktrack(int current,int n){
+    static void printFromNTo1ByBacktrack(int current, int n) {
 
         // TC: O(n)
         //SC: O(n) (recursion stack)
 
-        if(n<=0) return;
+        if (n <= 0) return;
 
-        printFromNTo1ByBacktrack(current+1,n-1);
-        System.out.print(current+" ");
-
+        printFromNTo1ByBacktrack(current + 1, n - 1);
+        System.out.print(current + " ");
 
 
     }
+
+    // sum of first N numbers
+
+    static int sumOfFirstNNumbers(int sum, int n) {
+
+        // It is parametrized Recursion
+
+        // TC: O(n)
+        //SC: O(n) (recursion stack)
+
+        if (n <= 0) return sum;
+
+        return sumOfFirstNNumbers(sum + n, n - 1);
+
+
+    }
+
+    // sum of first N numbers
+    static int sumOfFirstNNumbersI(int n) {
+
+        // It is Functional Recursion
+
+        // TC: O(n)
+        //SC: O(n) (recursion stack)
+
+        if (n <= 0) return 0;
+
+        return n + sumOfFirstNNumbersI(n - 1);
+
+
+    }
+
+//    static int[] reverseArray(int[] arr){
+//
+//
+//    }
+
+
+
 
 
     public static void main(String[] args) {
@@ -107,7 +143,13 @@ public class Q1 {
 
         System.out.println();
 
-        printFromNTo1ByBacktrack(1,5);
+        printFromNTo1ByBacktrack(1, 5);
+
+        System.out.println();
+
+        System.out.println(sumOfFirstNNumbers(0, 5));
+
+        System.out.println(sumOfFirstNNumbersI(5));
 
 
     }
