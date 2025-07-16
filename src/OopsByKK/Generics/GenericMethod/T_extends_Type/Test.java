@@ -1,5 +1,6 @@
 package OopsByKK.Generics.GenericMethod.T_extends_Type;
 
+// Custom Type With Interface Bound
 interface Animal{
 
     void speak();
