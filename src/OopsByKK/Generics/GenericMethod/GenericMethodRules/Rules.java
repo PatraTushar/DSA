@@ -178,8 +178,6 @@ public class Rules {
 
         // Show that you can overload a method — one generic, one non-generic.
 
-
-
         public static void printMethod(String value){
 
             System.out.println("String value: " + value);
