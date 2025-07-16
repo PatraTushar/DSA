@@ -20,7 +20,7 @@ public class Rules {
         }
 
 
-        // getLastElement() — Print First Element
+        //  Print First Element
         public static <T> void printFirstElement(T[] arr) {
 
             if (arr != null && arr.length > 0) {
