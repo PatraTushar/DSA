@@ -10,7 +10,7 @@ interface MyInterface<T>{
 
 class AnotherClass<X> implements MyInterface<X>{
 
-    // Case 2: Class defines its own generic type parameter (can have a different name)
+    // Case 2: "The class provides its own type parameter to the interface, and the interface uses that type in its method definition."
 
     public void show(X data){
 
@@ -28,6 +28,8 @@ class concreteClass implements MyInterface<String>{
 }
 public class MyClass<T> implements MyInterface<T> {
 
+    //  Case 1: Class defines the same generic type and passes it to the interface
+
     public void show(T data){
 
         System.out.println(data);
@@ -36,7 +38,7 @@ public class MyClass<T> implements MyInterface<T> {
 
     public static void main(String[] args) {
 
-        //  Case 1: Class defines the same generic type and passes it to the interface
+
 
         MyInterface<String> obj=new MyClass<>();
         obj.show(" Hello world ");
