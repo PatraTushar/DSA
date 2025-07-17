@@ -1,21 +1,57 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class myPractice {
 
-    static List<Integer> findOccurrences(int[] arr,int target,int index,List<Integer> list){
+    static int findTarget(int[] arr, int start, int end, int target) {
 
-        if(index==arr.length) return list;
+        int mid = start + (end - start) / 2;
 
-        if(arr[index]==target) list.add(index);
+        if (start > end) return -1;
 
-        return findOccurrences(arr,target,index+1,list);
+
+        if (arr[mid] == target) return mid;
+
+        if(arr[start]<=arr[mid]){
+
+            if(target>=arr[start] && target<arr[mid]){
+
+                return findTarget(arr,start,mid-1,target);
+
+            }
+
+            else {
+
+                return findTarget(arr,mid+1,end,target);
+            }
+        }
+
+        else {
+
+            if(target>arr[mid] && target<=arr[end]){
+
+                return findTarget(arr,mid+1,end,target);
+            }
+
+            else {
+
+                return findTarget(arr,start,mid-1,target);
+            }
+        }
+
+
+
+
     }
 
     public static void main(String[] args) {
 
+        int[] arr = {5,6,7,8,9,1,2,3};
+        int target = 1;
+        System.out.println(findTarget(arr, 0, arr.length - 1, 6));
+
 
     }
-
 
 
 }
