@@ -67,6 +67,9 @@ public class GenericMethodWithArray {
         System.out.println(getFirst(strArray));
         System.out.println(getFirst(dblArray));
 
+        System.out.println(sum(intArray));
+        System.out.println(sum(dblArray));
+
 
         Integer[] ans=returnArr(intArray);
         System.out.println(Arrays.toString(ans));
