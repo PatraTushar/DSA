@@ -1,46 +1,68 @@
 
-interface Running {
 
-    void run();
+class Alphabet{
 
-}
+    public void a2Z(){
 
-interface Eating {
 
-    void eat();
-}
-
-class Elephant {
-
-    void trunc() {
-
-        System.out.println(" elephant trunc ");
+        System.out.println(" A to Z");
     }
 }
+interface A {
+
+    void showA();
+}
+
+
+interface B{
+
+    void showB();
+}
+
+
+interface combination<T extends Alphabet &  A & B>{
+
+    void comb(T a);
+
+}
+
+
 
 public class myPractice {
 
 
-    public static class GenericClass<T> {
+    public static class finalClass  implements combination<AB>{
 
-     public static <U extends Number> void print(U ele){
-         System.out.println(ele.doubleValue());
-     }
+        @Override
+        public void comb(AB a) {
 
 
+            a.a2Z();
+            a.showA();
+            a.showB();
+        }
     }
 
+    public static class AB extends Alphabet implements A,B{
+
+        @Override
+        public void showA() {
+
+            System.out.println("AB shows A");
+        }
+
+        @Override
+        public void showB() {
+
+            System.out.println(" AB shows B");
+        }
+    }
 
     public static void main(String[] args) {
 
-
-
-
-
-
-
+        combination<AB> obj=new finalClass();
+        obj.comb(new AB());
 
 
     }
-
 }
