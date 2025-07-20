@@ -27,6 +27,8 @@ class Dog extends Animal implements RunnableAnimal{
     public void run() { System.out.println("Dog is running"); }
 
 
+
+
 }
 
 
