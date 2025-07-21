@@ -1,7 +1,8 @@
+package RecursionByStriver.Questions.StriverPlaylist.BasicRecursionProblem;
+
 import java.util.Arrays;
 
-public class myPractice {
-
+public class MergeSort {
 
     static void mergeSort(int[] arr, int start, int end) {
 
@@ -64,9 +65,9 @@ public class myPractice {
         if(start==end) return ;
         int mid=start+(end-start)/2;
 
-         mergesortI(arr,start,mid);
-         mergesortI(arr,mid+1,end);
-          mergeI(arr,start,mid,end);
+        mergesortI(arr,start,mid);
+        mergesortI(arr,mid+1,end);
+        mergeI(arr,start,mid,end);
 
 
     }
@@ -141,6 +142,4 @@ public class myPractice {
 
 
     }
-
-
 }
