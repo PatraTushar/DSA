@@ -120,9 +120,9 @@ public class MergeSort {
             k++;
         }
 
-        for(int idx=0;idx<mergeArray.length;idx++){
+        for(int l=0;l<mergeArray.length;l++){
 
-            arr[start + idx]=mergeArray[idx];
+            arr[start + l]=mergeArray[l];
         }
 
 
