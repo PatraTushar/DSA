@@ -57,12 +57,77 @@ public class Q4 {
         return list;
     }
 
+
+    static List<String> subsetsAscii(String str,String Ans,List<String> list){
+
+
+        //  Time Complexity: O(3^n)
+        // Space Complexity: O(3^n * n)     You're storing 8 strings — and strings take memory per character
+
+        // It is Parametrized Recursion
+
+        if (str.isEmpty()) {
+
+            list.add(Ans);
+            return list;
+
+        }
+
+        char ch = str.charAt(0);
+
+        subsetsAscii(str.substring(1), Ans + ch, list);
+        subsetsAscii(str.substring(1), Ans, list);
+        subsetsAscii(str.substring(1),Ans+(ch+0),list);
+
+
+        return list;
+
+
+
+
+    }
+
+    static List<List<Integer>> subsequence(int[] arr){
+
+        List<List<Integer>> outer=new ArrayList<>();
+        outer.add(new ArrayList<>());
+
+        for(int ele:arr){
+
+            int n=outer.size();
+
+            for(int i=0;i<n;i++){
+
+                List<Integer> inner=new ArrayList<>(outer.get(i));
+                inner.add(ele);
+                outer.add(inner);
+            }
+
+
+        }
+
+        return outer;
+
+
+
+
+    }
+
+
+
     public static void main(String[] args) {
 
         String str = "abc";
+        String str2="ab";
         List<String> subsets = AllSubsets(str, "", new ArrayList<>());
         System.out.println(subsets);
         List<String> subsetsI=AllSubsetsI(str,"");
         System.out.println(subsetsI);
+        List<String> subsetsAscii=subsetsAscii(str2,"",new ArrayList<>());
+        System.out.println(subsetsAscii);
+
+        int[] arr={1,2,3};
+        List<List<Integer>> subsequence=subsequence(arr);
+        System.out.println(subsequence);
     }
 }
