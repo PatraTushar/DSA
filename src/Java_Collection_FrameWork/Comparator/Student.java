@@ -8,24 +8,30 @@ public class Student {
     String name;
     int marks;
 
-    Student(String name,int marks){
+    Student(String name, int marks) {
 
-        this.name=name;
-        this.marks=marks;
+        this.name = name;
+        this.marks = marks;
     }
 
 
-    public String toString(){
+    public String toString() {
 
-        return this.name + " : "+ this.marks;
+        return this.name + " : " + this.marks;
     }
-
-
 
 
 }
 
-class NameComparator implements Comparator<Student>{
+class sortByMarks implements Comparator<Student> {
+
+    @Override
+    public int compare(Student o1, Student o2) {
+        return o1.marks - o2.marks;
+    }
+}
+
+class NameComparator implements Comparator<Student> {
 
 
     public int compare(Student a, Student b) {
@@ -42,6 +48,11 @@ class NameComparator implements Comparator<Student>{
 
         Collections.sort(list, new NameComparator());
         System.out.println(list);
+
+        Student[] arr = new Student[]{new Student("rahul", 100), new Student("Ayush", 80), new Student("charles", 90)};
+        Arrays.sort(arr,new sortByMarks());
+        System.out.println(Arrays.toString(arr));
+
 
 
     }
