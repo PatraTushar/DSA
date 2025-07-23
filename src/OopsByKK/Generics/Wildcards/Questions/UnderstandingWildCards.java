@@ -91,6 +91,9 @@ public class UnderstandingWildCards {
 
         Object obj = list.get(0); // ✅ can read, but only as Object
         // Integer i = list.get(0); // ❌ NOT allowed directly
+        // The list can be of type List<Integer>, List<Number>, or List<Object>.
+        //So you can safely add Integer values to it ✅
+        //But you cannot know what the actual type is while reading from it ❌
     }
 
     // Q6->Write a method copyList that copies all elements from a source list to a destination list using proper wildcards.

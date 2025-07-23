@@ -1,143 +1,30 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class myPractice {
 
 
-    static void mergeSort(int[] arr, int start, int end) {
-
-        //  Time Complexity: O(n²) (in worst case, due to shifting in in-place merge)
-        // Space Complexity: O(1) (in-place, no extra array used)
-
-        if (start == end) return;
-
-        int mid = start + (end - start) / 2;
-
-        mergeSort(arr, start, mid);
-        mergeSort(arr, mid + 1, end);
-        merge(arr, start, mid, end);
 
 
+    static void add(List<? super Number> list){
+
+      list.add(1.5);
+      list.add(2);
+        System.out.println(list);
     }
 
-
-    static void merge(int[] arr, int start, int mid, int end) {
-
-        // in-place
-
-        //  Time Complexity: O(n²) (in worst case, due to shifting in in-place merge)
-        // Space Complexity: O(1) (in-place, no extra array used)
-
-
-        int i = start;
-        int j = mid + 1;
-
-
-        while (i <= mid && j <= end) {
-
-            if(arr[i]<=arr[j]){
-
-                i++;
-            }
-
-            else {
-
-                int value=arr[j];
-                int index=j;
-
-                while (index>i){
-
-                    arr[index]=arr[index-1];
-                    index--;
-                }
-
-                arr[i]=value;
-                i++;
-                mid++;
-                j++;
-            }
-
-        }
-    }
-
-    static void mergesortI(int[] arr,int start,int end){
-
-        if(start==end) return ;
-        int mid=start+(end-start)/2;
-
-         mergesortI(arr,start,mid);
-         mergesortI(arr,mid+1,end);
-          mergeI(arr,start,mid,end);
-
-
-    }
-
-
-    static void mergeI(int[] arr,int start,int mid,int end){
-
-        // using extra array
-
-        //  Time Complexity (TC): O(n)
-        // Space Complexity (SC): O(n)
-
-        int i=start;
-        int j=mid+1;
-        int k=0;
-        int[] mergeArray=new int[end-start+1];
-
-        while (i<=mid && j<=end){
-
-            if(arr[i]<=arr[j]){
-
-                mergeArray[k]=arr[i];
-                i++;
-
-            }
-
-            else {
-
-                mergeArray[k]=arr[j];
-                j++;
-
-            }
-
-            k++;
-
-
-        }
-
-        while (i<=mid){
-
-            mergeArray[k]=arr[i];
-            i++;
-            k++;
-        }
-
-        while (j<=end){
-
-            mergeArray[k]=arr[j];
-            j++;
-            k++;
-        }
-
-        for(int idx=0;idx<mergeArray.length;idx++){
-
-            arr[start + idx]=mergeArray[idx];
-        }
-
-
-    }
 
     public static void main(String[] args) {
 
-        int[] arr = {8, 3, 4, 12, 5, 6};
-        int[] arr1={14,3,7,1,5,4};
+        List<String> obj= List.of("raj","rahul");
 
-        mergeSort(arr,0,arr.length-1);
+        List<Number> obj2=new ArrayList<>();
+        obj2.add(1);
 
-        System.out.println(Arrays.toString(arr));
+       List<Double> obj3=List.of(1.2,2.2,3.3);
 
-        mergesortI(arr1,0,arr1.length-1);
-        System.out.println(Arrays.toString(arr1));
+        add(obj2);
+
 
 
     }
