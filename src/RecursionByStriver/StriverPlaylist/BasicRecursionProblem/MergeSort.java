@@ -77,7 +77,7 @@ public class MergeSort {
 
         // using extra array
 
-        //  Time Complexity (TC): O(n)
+        //  Time Complexity (TC): O(n log n)
         // Space Complexity (SC): O(n)
 
         int i=start;
