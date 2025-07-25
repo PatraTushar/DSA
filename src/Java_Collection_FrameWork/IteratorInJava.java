@@ -13,6 +13,8 @@ public class IteratorInJava {
         list.add("Python");
         list.add("C++");
 
+        System.out.println(list);
+
         Iterator<String> it=list.iterator();
         while (it.hasNext()){
 
