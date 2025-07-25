@@ -2,9 +2,8 @@ package RecursionByStriver.StriverPlaylist.InterviewQuestions;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
 
-public class Q9 {
+public class Q8 {
 
     static void helper(int[] arr, int index, List<Integer> combination, int target, List<List<Integer>> result) {
 
