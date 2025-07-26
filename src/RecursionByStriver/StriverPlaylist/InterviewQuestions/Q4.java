@@ -84,70 +84,8 @@ public class Q4 {
 
     }
 
-    static List<List<Integer>> subsequence(int[] arr) {
-
-        // Time Complexity: O(2ⁿ × n)
-        // Space Complexity: O(2ⁿ × n)
-
-        List<List<Integer>> outer = new ArrayList<>();
-        outer.add(new ArrayList<>());
-
-        for (int ele : arr) {
-
-            int n = outer.size();
-
-            for (int i = 0; i < n; i++) {
-
-                List<Integer> inner = new ArrayList<>(outer.get(i));
-                inner.add(ele);
-                outer.add(inner);
-            }
 
 
-        }
-
-        return outer;
-
-
-    }
-
-
-    static List<List<Integer>> subsequenceWithNoDuplicates(int[] nums) {
-
-        // Time Complexity: O(2ⁿ × n)
-        // Space Complexity: O(2ⁿ × n)
-        Arrays.sort(nums);
-        List<List<Integer>> outer = new ArrayList<>();
-        outer.add(new ArrayList<>());
-        int start ;
-        int end = 0;
-        for (int i = 0; i < nums.length; i++) {
-            start = 0;
-
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                start = end + 1;
-            }
-
-
-            end = outer.size() - 1;
-            int n = outer.size();
-
-            for (int j = start; j < n; j++) {
-
-
-                List<Integer> inner = new ArrayList<>(outer.get(j));
-
-                inner.add(nums[i]);
-                outer.add(inner);
-            }
-
-
-        }
-
-        return outer;
-
-
-    }
 
 
     public static void main(String[] args) {
@@ -161,13 +99,9 @@ public class Q4 {
         List<String> subsetsAscii = subsetsAscii(str2, "", new ArrayList<>());
         System.out.println(subsetsAscii);
 
-        int[] arr = {1, 2, 3};
-        List<List<Integer>> subsequence = subsequence(arr);
-        System.out.println(subsequence);
 
-        int[] arr2 = {1, 2, 2};
-        List<List<Integer>> noDuplicateSubsequence = subsequenceWithNoDuplicates(arr2);
-        System.out.println(noDuplicateSubsequence);
+
+
 
     }
 }
