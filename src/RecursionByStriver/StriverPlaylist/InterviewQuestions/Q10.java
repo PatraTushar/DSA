@@ -35,8 +35,8 @@ public class Q10 {
             return list;
         }
 
-        Helper(arr,index+1,sum,list);
         Helper(arr,index+1,sum+arr[index],list);
+        Helper(arr,index+1,sum,list);
 
 
         return list;
