@@ -7,8 +7,7 @@ public class unionOfTwoArrays {
     static HashSet unionOf2Arr(int arr1[],int arr2[]){
 
         HashSet<Integer> set=new HashSet<>();
-        int n1=arr1.length;
-        int n2= arr2.length;
+
 
         for(int a:arr1){
             set.add(a);
