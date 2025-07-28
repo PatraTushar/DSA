@@ -1,10 +1,13 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+package Hashmap;
 
-public class myPractice {
+import java.util.*;
+
+public class BasicExample {
 
     static int printMaxEle(int[] arr) {
+
+        // Time Complexity: O(n)
+        //Space Complexity: O(n)
 
         Map<Integer, Integer> mp = new HashMap<>();
 
@@ -37,10 +40,10 @@ public class myPractice {
     public static void main(String[] args) {
 
         int[] arr = {12, 2, 5, 5, 12, 2, 12, 5, 5};
-        System.out.println(printMaxEle(arr));
+
+        printMaxEle(arr);
+        System.out.println(" The key with Maximum Frequency is " + printMaxEle(arr));
 
 
     }
-
-
 }
