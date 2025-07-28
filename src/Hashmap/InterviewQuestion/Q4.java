@@ -1,4 +1,4 @@
-package Hashmap.IntervieewQuestion;
+package Hashmap.InterviewQuestion;
 
 import java.util.*;
 
