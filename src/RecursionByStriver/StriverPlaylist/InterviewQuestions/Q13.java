@@ -1,8 +1,9 @@
+package RecursionByStriver.StriverPlaylist.InterviewQuestions;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class myPractice {
+public class Q13 {
 
     static void swap(int[] arr, int i, int j) {
 
@@ -30,7 +31,7 @@ public class myPractice {
 
 
 
-            }
+        }
 
 
 
@@ -49,6 +50,9 @@ public class myPractice {
     }
 
     static List<List<Integer>> permutation(int[] arr) {
+
+        // Time Complexity: O(n × n!)
+        // Space Complexity: O(n × n!)
 
         return Helper(arr,0,new ArrayList<>(),new ArrayList<>());
 
