@@ -3,20 +3,18 @@ package Hashmap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class  Q1 {
+public class Q1 {
 
-    static void HashMapMethods(){
+    static void HashMapMethods() {
 
         //Syntax
-        Map<String,Integer> mp=new HashMap<>();
+        Map<String, Integer> mp = new HashMap<>();
         // Adding Elements
-        mp.put("Akash",21);
-        mp.put("Yash",16);
-        mp.put("Lav",17);
-        mp.put("Rishika",19);
-        mp.put("Harry",18);
-
-
+        mp.put("Akash", 21);
+        mp.put("Yash", 16);
+        mp.put("Lav", 17);
+        mp.put("Rishika", 19);
+        mp.put("Harry", 18);
 
 
         // Getting Value of a key from the HashMap
@@ -25,12 +23,13 @@ public class  Q1 {
 
         //Changing/Updating value of a key in the HashMap
 
-        mp.put("Akash",25); // Akash-->25
+        mp.put("Akash", 25); // Akash-->25
         System.out.println(mp.get("Akash")); //25
 
         //Removing a pair from the Hashmap
 
         System.out.println(mp.remove("Akash")); //25
+        System.out.println(mp);
         System.out.println(mp.remove("Asish")); //null
 
         //Checking if a key is in the HashMap
@@ -40,8 +39,9 @@ public class  Q1 {
 
         // Adding a new entry only if the key doesn't exist already
 
-          mp.putIfAbsent("Yashika",30); // it will enter
-          mp.putIfAbsent("Yash",30);  // it will not enter because Yash is already there
+        mp.putIfAbsent("Yashika", 30); // it will enter
+        mp.putIfAbsent("Yash", 30);  // it will not enter because Yash is already there
+        System.out.println(mp);
 
         // Get all keys in the HashMap
 
@@ -59,9 +59,9 @@ public class  Q1 {
 
 
         // 1 method
-        for(String key : mp.keySet()){
+        for (String key : mp.keySet()) {
 
-            System.out.printf("Age of %s is %d\n", key , mp.get(key));
+            System.out.printf("Age of %s is %d\n", key, mp.get(key));
         }
 
 
@@ -69,26 +69,9 @@ public class  Q1 {
 
         // 2 method
 
-        for(Map.Entry<String,Integer> e : mp.entrySet()){
-            System.out.printf("Age of %s is %d\n",e.getKey(),e.getValue());
+        for (Map.Entry<String, Integer> e : mp.entrySet()) {
+            System.out.printf("Age of %s is %d\n", e.getKey(), e.getValue());
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
