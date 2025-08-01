@@ -5,6 +5,7 @@ import java.util.*;
 public class Q1 {
 
     static boolean isSafe(int row, int col, List<String> board, int n) {
+
         int dupRow = row, dupCol = col;
 
         // Check upper-left diagonal
@@ -14,63 +15,86 @@ public class Q1 {
             col--;
         }
 
-        // Check left
+        // Check upper column (same column but previous rows)
         row = dupRow;
         col = dupCol;
-        while (col >= 0) {
+        while (row >= 0) {
             if (board.get(row).charAt(col) == 'Q') return false;
-            col--;
+            row--;
         }
 
-        // Check lower-left diagonal
+        // Check upper-right diagonal
         row = dupRow;
         col = dupCol;
-        while (row < n && col >= 0) {
+        while (row >= 0 && col < n) {
             if (board.get(row).charAt(col) == 'Q') return false;
-            row++;
-            col--;
+            row--;
+            col++;
         }
 
         return true;
+
+
     }
 
-    static void solve(int col, List<String> board, List<List<String>> ans, int n) {
-        if (col == n) {
-            ans.add(new ArrayList<>(board));
+
+    static void solve(int row, List<String> board, List<List<String>> result, int n) {
+
+
+        if (row >= n) {
+
+            result.add(new ArrayList<>(board));
             return;
+
+
         }
 
-        for (int row = 0; row < n; row++) {
-            if (isSafe(row, col, board, n)) {
-                // Place queen
-                char[] rowChars = board.get(row).toCharArray();
-                rowChars[col] = 'Q';
-                board.set(row, new String(rowChars));
+        for (int col = 0; col < n; col++) {
 
-                solve(col + 1, board, ans, n);
+            if (isSafe(row, col, board, n)) {
+
+                // place queen
+
+
+                char[] rowChars=board.get(row).toCharArray();
+                rowChars[col]='Q';
+                board.set(row,new String(rowChars));
+
+                solve(row+1,board,result,n);
 
                 // Backtrack
                 rowChars[col] = '.';
                 board.set(row, new String(rowChars));
+
+
             }
         }
     }
 
     static List<List<String>> solveNQueens(int n) {
-        List<List<String>> result = new ArrayList<>();
+
+        // Time Complexity (TC): O(N!)
+        // Space Complexity (SC): O(N²)
+
         List<String> board = new ArrayList<>();
-        String rowString = ".".repeat(n);         // This line creates a string of n dots ('.').
+        List<List<String>> result = new ArrayList<>();
+
+        String rowstring = ".".repeat(n);
 
         for (int i = 0; i < n; i++) {
-            board.add(rowString);
+
+            board.add(rowstring);
         }
 
+
         solve(0, board, result, n);
+
         return result;
     }
 
 
     public static void main(String[] args) {
+
 
         int n = 4;
         List<List<String>> res = solveNQueens(n);
