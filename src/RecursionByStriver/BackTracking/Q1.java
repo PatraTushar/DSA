@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Q1 {
 
+
+    // APPROACH 1
     static boolean isSafe(int row, int col, List<String> board, int n) {
 
         int dupRow = row, dupCol = col;
@@ -56,11 +58,11 @@ public class Q1 {
                 // place queen
 
 
-                char[] rowChars=board.get(row).toCharArray();
-                rowChars[col]='Q';
-                board.set(row,new String(rowChars));
+                char[] rowChars = board.get(row).toCharArray();
+                rowChars[col] = 'Q';
+                board.set(row, new String(rowChars));
 
-                solve(row+1,board,result,n);
+                solve(row + 1, board, result, n);
 
                 // Backtrack
                 rowChars[col] = '.';
@@ -73,8 +75,12 @@ public class Q1 {
 
     static List<List<String>> solveNQueens(int n) {
 
-        // Time Complexity (TC): O(N!)
-        // Space Complexity (SC): O(N²)
+        // Time Complexity (TC):  O(N × N!)                         // N options in row 0
+        // Space Complexity (SC): O(N²)                                 //× (N-1) options in row 1
+                                                                     //× (N-2) options in row 2
+                                                                        //...
+                                                                       //× 1 option in row N-1
+
 
         List<String> board = new ArrayList<>();
         List<List<String>> result = new ArrayList<>();
@@ -93,6 +99,76 @@ public class Q1 {
     }
 
 
+    // APPROACH 2
+
+
+    static void solve2(int row, List<String> board, List<List<String>> result, int n, Set<Integer> column, Set<Integer> rightDiagonal, Set<Integer> leftDiagonal) {
+
+
+        if (row >= n) {
+
+            result.add(new ArrayList<>(board));
+            return;
+
+
+        }
+
+        for (int col = 0; col < n; col++) {
+
+              int rightDiagonalConstant=row+col;
+              int leftDiagonalConstant=row-col;
+
+              if(column.contains(col) || rightDiagonal.contains(rightDiagonalConstant) || leftDiagonal.contains(leftDiagonalConstant)) continue;
+
+
+            // Place the queen
+            char[] rowChars = board.get(row).toCharArray();
+            rowChars[col] = 'Q';
+            board.set(row, new String(rowChars));
+
+            // Mark the current column and diagonals as occupied
+            column.add(col);
+            rightDiagonal.add(rightDiagonalConstant);
+            leftDiagonal.add(leftDiagonalConstant);
+
+
+            solve2(row + 1, board, result, n,column,rightDiagonal,leftDiagonal);
+
+            // Backtrack
+            rowChars[col] = '.';
+            board.set(row, new String(rowChars));
+            column.remove(col);
+            rightDiagonal.remove(rightDiagonalConstant);
+            leftDiagonal.remove(leftDiagonalConstant);
+
+
+        }
+    }
+
+    static List<List<String>> solveNQueens2(int n) {
+
+        // Time Complexity (TC): O(N!)
+        // Space Complexity (SC): O(N²)
+
+        List<String> board = new ArrayList<>();
+        List<List<String>> result = new ArrayList<>();
+        Set<Integer> column = new HashSet<>();
+        Set<Integer> rightDiagonal = new HashSet<>();
+        Set<Integer> leftDiagonal = new HashSet<>();
+        String rowstring = ".".repeat(n);
+
+        for (int i = 0; i < n; i++) {
+
+            board.add(rowstring);
+        }
+
+
+        solve2(0, board, result, n, column, rightDiagonal, leftDiagonal);
+
+        return result;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -100,6 +176,20 @@ public class Q1 {
         List<List<String>> res = solveNQueens(n);
 
         for (List<String> solution : res) {
+            for (String row : solution) {
+                System.out.println(row);
+            }
+            System.out.println();
+        }
+
+
+
+        System.out.println("-------------------------------------");
+
+
+        List<List<String>> res1 = solveNQueens2(n);
+
+        for (List<String> solution : res1) {
             for (String row : solution) {
                 System.out.println(row);
             }
