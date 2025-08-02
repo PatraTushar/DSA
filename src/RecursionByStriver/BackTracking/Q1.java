@@ -99,10 +99,10 @@ public class Q1 {
     }
 
 
-    // APPROACH 2
+    // APPROACH 2 (OPTIMAL)
 
 
-    static void solve2(int row, List<String> board, List<List<String>> result, int n, Set<Integer> column, Set<Integer> rightDiagonal, Set<Integer> leftDiagonal) {
+    static void solve2(int row, List<String> board, List<List<String>> result, int n, Set<Integer> verticallyUpward, Set<Integer> rightDiagonal, Set<Integer> leftDiagonal) {
 
 
         if (row >= n) {
@@ -118,26 +118,28 @@ public class Q1 {
               int rightDiagonalConstant=row+col;
               int leftDiagonalConstant=row-col;
 
-              if(column.contains(col) || rightDiagonal.contains(rightDiagonalConstant) || leftDiagonal.contains(leftDiagonalConstant)) continue;
-
+              if(verticallyUpward.contains(col) || rightDiagonal.contains(rightDiagonalConstant) || leftDiagonal.contains(leftDiagonalConstant))
+              {
+                  continue;
+              }
 
             // Place the queen
             char[] rowChars = board.get(row).toCharArray();
             rowChars[col] = 'Q';
             board.set(row, new String(rowChars));
 
-            // Mark the current column and diagonals as occupied
-            column.add(col);
+            // Mark the current verticallyUpward and diagonals as occupied
+            verticallyUpward.add(col);
             rightDiagonal.add(rightDiagonalConstant);
             leftDiagonal.add(leftDiagonalConstant);
 
 
-            solve2(row + 1, board, result, n,column,rightDiagonal,leftDiagonal);
+            solve2(row + 1, board, result, n,verticallyUpward,rightDiagonal,leftDiagonal);
 
             // Backtrack
             rowChars[col] = '.';
             board.set(row, new String(rowChars));
-            column.remove(col);
+            verticallyUpward.remove(col);
             rightDiagonal.remove(rightDiagonalConstant);
             leftDiagonal.remove(leftDiagonalConstant);
 
@@ -152,7 +154,7 @@ public class Q1 {
 
         List<String> board = new ArrayList<>();
         List<List<String>> result = new ArrayList<>();
-        Set<Integer> column = new HashSet<>();
+        Set<Integer> verticallyUpward = new HashSet<>();
         Set<Integer> rightDiagonal = new HashSet<>();
         Set<Integer> leftDiagonal = new HashSet<>();
         String rowstring = ".".repeat(n);
@@ -163,7 +165,7 @@ public class Q1 {
         }
 
 
-        solve2(0, board, result, n, column, rightDiagonal, leftDiagonal);
+        solve2(0, board, result, n, verticallyUpward, rightDiagonal, leftDiagonal);
 
         return result;
     }
