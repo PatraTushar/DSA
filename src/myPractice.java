@@ -1,63 +1,155 @@
-
+import javax.swing.plaf.PanelUI;
+import java.util.Arrays;
 
 public class myPractice {
 
-    interface dog {
 
-        void bark();
+    public static class ArrayList<T> {
 
-        default void dance(){
+        T[] arr;
 
-            System.out.println(" dog dance ");
+        int size;
 
+        int capacity;
 
-        }
-    }
+        public static final int DEFAULT_CAPACITY = 10;
 
-    interface cat extends dog {
+        ArrayList() {
 
-        void meow();
-
-
-
-    }
-
-
-    public static class Animal implements cat {
-
-        @Override
-        public void bark() {
-
-            System.out.println(" Animal bark ");
-        }
-
-        @Override
-        public void meow() {
-
-            System.out.println(" Animal meow ");
+            this.size = 0;
+            this.capacity = DEFAULT_CAPACITY;
+            this.arr = (T[]) new Object[capacity];
         }
 
 
+        private void resize() {
 
+            capacity*=2;
+            T[] newArr=(T[]) new Object[capacity];
+
+            for(int i=0;i<size;i++){
+
+                newArr[i]=arr[i];
+            }
+
+            arr=newArr;
+
+
+        }
+
+
+        public void add(T val) {
+
+            if (size == capacity) {
+
+                resize();
+            }
+
+            arr[size++] = val;
+
+
+        }
+
+        public void remove(int index) {
+
+            if (index < 0 || index >=size) {
+
+                throw new IndexOutOfBoundsException(" Not a valid index ");
+
+            }
+
+
+
+            for(int i=index;i<size-1;i++){
+
+                arr[i]=arr[i+1];
+            }
+
+
+          size--;
+
+
+            if(size<capacity/4 && capacity>DEFAULT_CAPACITY){
+
+                shrink();
+            }
+
+
+        }
+
+        private void shrink(){
+
+            capacity/=2;
+
+            T[] newArr=(T[]) new Object[capacity];
+
+            for(int i=0;i<size;i++){
+
+                newArr[i]=arr[i];
+            }
+
+            arr=newArr;
+        }
+
+        public Object get(int index){
+
+            if (index < 0 || index >=size) {
+
+                throw new IndexOutOfBoundsException(" Not a valid index ");
+
+            }
+
+            return arr[index];
+
+
+        }
+
+
+        public int getSize() {
+            return size;
+        }
+
+        public boolean isEmpty(){
+
+            if(size<=0) return true;
+
+            return false;
+        }
+
+        public String toString(){
+
+            StringBuilder str=new StringBuilder();
+
+            str.append("[");
+
+            for(int i=0;i<size;i++){
+
+                str.append(arr[i]);
+
+                if(i!=size-1) str.append(",");
+            }
+
+            str.append("]");
+
+            return str.toString();
+
+
+        }
     }
 
     public static void main(String[] args) {
 
-        dog obj=new Animal();
-        obj.bark();
-        obj.dance();
+        ArrayList<Integer> obj=new ArrayList<>();
+        obj.add(10);
+        obj.add(100);
+        obj.add(500);
 
-        cat obj2=new Animal();
-        obj2.meow();
-        obj2.bark();
-        obj2.dance();
+        System.out.println(obj.toString());
 
-
-        Animal obj3=new Animal();
-        obj3.bark();
-        obj3.meow();
-        obj3.dance();
-
+//
+//        Integer get1=(Integer) obj.get(0);
+//        String  get2=(String) obj.get(0);
+//        Character get3=(Character) obj.get(0);
 
 
     }
