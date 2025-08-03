@@ -1,5 +1,4 @@
-import javax.swing.plaf.PanelUI;
-import java.util.Arrays;
+
 
 public class myPractice {
 
@@ -14,6 +13,8 @@ public class myPractice {
 
         public static final int DEFAULT_CAPACITY = 10;
 
+
+        @SuppressWarnings("unchecked")
         ArrayList() {
 
             this.size = 0;
@@ -22,6 +23,8 @@ public class myPractice {
         }
 
 
+
+        @SuppressWarnings("unchecked")
         private void resize() {
 
             capacity*=2;
@@ -77,6 +80,8 @@ public class myPractice {
 
         }
 
+
+        @SuppressWarnings("unchecked")
         private void shrink(){
 
             capacity/=2;
