@@ -11,45 +11,45 @@ class Animal {
 
 }
 
-interface RunnableAnimal{
+interface RunnableAnimal {
 
     void run();
 }
 
 
-interface Runner<T extends  Animal & RunnableAnimal>{
+interface Runner<T extends Animal & RunnableAnimal> {
 
     void execute(T animal);
 }
 
-class Dog extends Animal implements RunnableAnimal{
+class Dog extends Animal implements RunnableAnimal {
 
-    public void run() { System.out.println("Dog is running"); }
-
-
+    public void run() {
+        System.out.println("Dog is running");
+    }
 
 
 }
 
 
-class DogRunner implements Runner<Dog>{
+class DogRunner implements Runner<Dog> {
 
-    public void execute(Dog dog){
+    public void execute(Dog dog) {
         dog.eat();
         dog.run();
     }
 }
 
- class Main3{
+class Main3 {
 
-     public static void main(String[] args) {
+    public static void main(String[] args) {
 
-         Dog dog = new Dog();
-         Runner<Dog> runner = new DogRunner();
-         runner.execute(dog);
+        Dog dog = new Dog();
+        Runner<Dog> runner = new DogRunner();
+        runner.execute(dog);
 
 
-     }
+    }
 
 }
 
