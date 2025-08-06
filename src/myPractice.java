@@ -1,87 +1,50 @@
-import javax.swing.event.ListDataListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class myPractice {
 
 
-    static String convertToString(int n) {
+    public static class Student {
 
+        String name;
+        int age;
 
+        Student(String name, int age) {
 
-
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 1; i <= n; i++) {
-
-            sb.append(i);
+            this.name = name;
+            this.age = age;
         }
 
-        return sb.toString();
+        @Override
+        public String toString() {
+            return this.name + " " + this.age;
+        }
     }
 
-    static List<String> permutations(String str, String Ans, List<String> list) {
+    static class sortByName implements Comparator<Student> {
 
-        if (str.isEmpty()) {
-            list.add(Ans);
-            return list;
+        @Override
+        public int compare(Student o1, Student o2) {
+            return o1.name.compareTo(o2.name);
         }
 
-        char ch = str.charAt(0);
-
-        for (int i = 0; i <= Ans.length(); i++) {
-
-            String first = Ans.substring(0, i);
-            String second = Ans.substring(i);
-            permutations(str.substring(1), first + ch + second, list);
-
-        }
-
-        return list;
-
-
-    }
-
-    static String kthPermutation(int n, int k) {
-
-        // Time Complexity: O(n! × n + n! log n!)
-        //Space Complexity: O(n!)
-
-        String ans = convertToString(n);
-
-        List<String> list = permutations(ans, "", new ArrayList<>());
-
-        Collections.sort(list);
-
-        for (int i = 0; i < list.size(); i++) {
-
-            if (i == k - 1) {
-
-                return list.get(i);
-
-
-            }
-
-
-        }
-
-
-        return "";
 
     }
 
 
     public static void main(String[] args) {
 
-        int n = 3;
-        int k = 3;
+        List<Student> list = new ArrayList<>();
+        list.add(new Student("bob", 45));
+        list.add(new Student("Alice", 23));
+        list.add(new Student("ror", 9));
+        list.add(new Student("tom", 12));
 
+        Collections.sort(list, new sortByName());
+        System.out.println(list);
 
-        System.out.println();
-
-        String  result=kthPermutation(n,k);
-        System.out.println(result);
 
     }
 

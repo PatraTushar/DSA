@@ -37,6 +37,18 @@ class sortByName implements Comparator<Student>{
 
 
 }
+
+// // comparator to sort bt age
+
+class sortByAge implements Comparator<Student>{
+
+    @Override
+    public int compare(Student o1, Student o2) {
+        return o1.rollNumber-o2.rollNumber;
+    }
+}
+
+
 public class practical {
 
     public static void main(String[] args) {
@@ -48,6 +60,9 @@ public class practical {
 
         Collections.sort(list,new sortByName());
         System.out.println(list);
+
+//        Collections.sort(list,new sortByAge());
+//        System.out.println(list);
 
 
 
