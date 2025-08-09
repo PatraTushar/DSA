@@ -1,4 +1,4 @@
-package OopsByKK.AnnonymousInnerClass;
+package OopsByKK.AnonymousInnerClass;
 
 
 // Returning an Anonymous Inner Class from a Method

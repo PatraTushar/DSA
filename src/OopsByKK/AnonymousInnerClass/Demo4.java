@@ -1,4 +1,4 @@
-package OopsByKK.AnnonymousInnerClass;
+package OopsByKK.AnonymousInnerClass;
 
 
 // Anonymous Inner Class with Generics

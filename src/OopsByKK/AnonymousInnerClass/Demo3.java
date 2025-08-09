@@ -1,4 +1,4 @@
-package OopsByKK.AnnonymousInnerClass;
+package OopsByKK.AnonymousInnerClass;
 
 // Capturing Variables from Outer Scope
 public class Demo3 {
