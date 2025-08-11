@@ -42,6 +42,10 @@ public class Q5 {
 
 
     public static int[] maxSlidingWindow(int[] nums, int k) {
+
+        // Time Complexity: O(n)
+        //Space Complexity: O(n - k + 1) + O(k)    // Deque stores indices of current window elements, keeping them in decreasing order; max size is window size k
+
         if (nums == null || k <= 0) return new int[0];
 
         int n = nums.length;
@@ -55,7 +59,7 @@ public class Q5 {
             }
 
             // Remove indices whose values are less than nums[i] (back of deque)
-            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+            while (!deque.isEmpty() &&   nums[i] > nums[deque.peekLast()]) {
                 deque.pollLast();
             }
 

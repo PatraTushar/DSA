@@ -1,4 +1,3 @@
-import java.util.*;
 
 public class myPractice {
 
@@ -7,8 +6,10 @@ public class myPractice {
 
     }
 
-
 }
+
+
+
 
 
 
