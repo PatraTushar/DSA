@@ -35,6 +35,8 @@ public class Q4 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1423
+
         int[] arr={6,2,3,4,7,2,1,7,1};
         int k=4;
         System.out.println(maxScore(arr,k));
