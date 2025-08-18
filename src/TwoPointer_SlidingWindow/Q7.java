@@ -93,6 +93,8 @@ public class Q7 {
 
     public static void main(String[] args) {
 
+        // leeTCode->904
+
         int[] arr = {3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4};
         System.out.println(totalFruits(arr));
         System.out.println(totalFruitsI(arr));
