@@ -69,6 +69,8 @@ public class Q8 {
 
                 map.put(s.charAt(left), map.get(s.charAt(left)) - 1);
 
+
+
                 if (map.get(s.charAt(left)) == 0) {
                     map.remove(s.charAt(left));
                 }
