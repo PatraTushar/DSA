@@ -88,6 +88,8 @@ public class Q8 {
 
     public static void main(String[] args) {
 
+        // leeTCode->340
+
         String s = "aaabbccd";
         int k = 2;
         System.out.println(KLongestSubstring(s, k));

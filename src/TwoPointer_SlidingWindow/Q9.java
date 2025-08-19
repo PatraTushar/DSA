@@ -82,6 +82,8 @@ public class Q9 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1358
+
         String s = "bbacba";
         System.out.println(numberOfSubstrings(s));
         System.out.println(numberOfSubstringsI(s));
