@@ -42,6 +42,8 @@ public class Q11 {
 
     public static void main(String[] args) {
 
+        // leeTCode->930
+
         int[] arr = {1, 0, 1, 0, 1};
         int goal = 2;
         System.out.println(subArraysWithSum(arr, goal));
