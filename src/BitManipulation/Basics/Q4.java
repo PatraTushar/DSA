@@ -4,6 +4,9 @@ public class Q4 {
 
     static boolean checkIthBitIsSet(int n,int i){
 
+        //  Time Complexity: O(1)
+        //  Space Complexity: O(1)
+
         // USING LEFT SHIFT OPERATOR
 
         // ith bit 1=set(true)
@@ -15,6 +18,9 @@ public class Q4 {
     }
 
     static boolean checkIthBitIsSetI(int n,int i){
+
+        //  Time Complexity: O(1)
+        //  Space Complexity: O(1)
 
         // USING RIGHT SHIFT OPERATOR
 
