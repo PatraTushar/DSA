@@ -23,6 +23,8 @@ public class Q1 {
 
     public static void main(String[] args) {
 
+        // leeTCode->2220
+
         int start = 0;
         int goal = 7;
         System.out.println(minimumFlips(start,goal));
