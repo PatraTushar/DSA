@@ -28,19 +28,29 @@ public class StreamDemo {
         // 1.From collection
 
         List<Integer> list=Arrays.asList(1,2,3,4,5);
-        Stream<Integer> stream=list.stream();
+        list.stream().forEach(System.out::print);
+
+        System.out.println();
 
         // 2.From Arrays
         String[] array={"a","b","c"};
-        Stream<String> stream1=Arrays.stream(array);
+        Arrays.stream(array).forEach(System.out::println);
 
         // 3.Using Stream.of()
-        Stream<String> stream2=Stream.of("a","b","c");
+        Stream.of("a","b","c").forEach(System.out::print);
+
+        System.out.println();
 
         // Infinite streams
-        Stream<Integer> generate=Stream.generate(()->1).limit(100);
+
         List<Integer> collect=Stream.iterate(1,x->x+1).limit(100).collect(Collectors.toList());
         System.out.print(collect);
+
+        System.out.println();
+
+        List<Double> list1= Stream.generate(Math::random).limit(10).collect(Collectors.toList());
+        System.out.println(list1);
+
 
 
 
