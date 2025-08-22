@@ -10,13 +10,30 @@ public class myPractice {
 
     public static void main(String[] args) {
 
+        List<List<String>> listOfLists=Arrays.asList(
+                Arrays.asList("apple","banana"),
+                Arrays.asList("orange","kiwi"),
+                Arrays.asList("pear","grapes")
+        );
 
-        String[] array={"a","b","c"};
-      Arrays.stream(array).forEach( System.out::println);
+        System.out.println(listOfLists.get(0).get(1));
+
+        System.out.println( listOfLists.stream().flatMap(e->e.stream().map(String::toUpperCase)).toList());
 
 
-       List<Double> list= Stream.generate(Math::random).limit(10).collect(Collectors.toList());
-        System.out.println(list);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
