@@ -94,6 +94,12 @@ public class intermediateOperation {
 
         System.out.println( listOfLists.stream().flatMap(e->e.stream().map(String::toUpperCase)).toList());
 
+        List<String> allFruits=listOfLists.stream().flatMap(List::stream).collect(Collectors.toList());
+        System.out.println(allFruits);
+
+        List<String> allFruits1=listOfLists.stream().flatMap(List::stream).collect(Collectors.toList());
+        System.out.println(allFruits1);
+
         List<String> sentences=Arrays.asList(
                 "Hello world ",
                 "java Streams are powerful",

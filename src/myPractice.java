@@ -18,7 +18,11 @@ public class myPractice {
 
         System.out.println(listOfLists.get(0).get(1));
 
+
         System.out.println( listOfLists.stream().flatMap(e->e.stream().map(String::toUpperCase)).toList());
+
+        List<String> allFruits=listOfLists.stream().flatMap(e->e.stream()).collect(Collectors.toList());
+        System.out.println(allFruits);
 
 
 
