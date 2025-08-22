@@ -44,9 +44,8 @@ public class StreamDemo {
         // Infinite streams
 
         List<Integer> collect=Stream.iterate(1,x->x+1).limit(100).collect(Collectors.toList());
-        System.out.print(collect);
+        System.out.println(collect);
 
-        System.out.println();
 
         List<Double> list1= Stream.generate(Math::random).limit(10).collect(Collectors.toList());
         System.out.println(list1);
