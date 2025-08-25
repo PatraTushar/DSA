@@ -1,7 +1,6 @@
 package OopsByKK.Multithreding;
 
 
-
 // 1 : Extending The Thread Class
 class MyThread extends Thread {
 
@@ -61,10 +60,6 @@ public class ThreadCreation {
 
         // Runnable is a functional interface (@FunctionalInterface).
         //So we can use a lambda to define run().
-
-
-
-
 
 
     }
