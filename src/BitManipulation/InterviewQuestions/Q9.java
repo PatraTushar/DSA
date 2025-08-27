@@ -45,9 +45,9 @@ public class Q9 {
 
         int[] result = new int[n + 1];
 
-        result[0] = 0;
 
-        for (int i = 1; i <= n; i++) {
+
+        for (int i =0; i <= n; i++) {
 
 
             if ((i & 1) == 0) {   // even
@@ -68,6 +68,8 @@ public class Q9 {
     }
 
     public static void main(String[] args) {
+
+        // leeTCode->338
 
         int n = 2;
         int[] ans = countBits(n);
