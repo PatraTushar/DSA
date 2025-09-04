@@ -74,6 +74,7 @@ public class Q21 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1442
 
         int[] arr = {2, 3, 1, 6, 7};
         System.out.println(countTriplets(arr));
