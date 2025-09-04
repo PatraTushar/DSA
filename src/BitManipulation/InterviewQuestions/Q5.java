@@ -60,7 +60,7 @@ public class Q5 {
             XOR^=arr[i];
         }
 
-        int rightMost=(XOR & -XOR) ;
+        int rightMost=(XOR & (XOR-1))^XOR ;
 
         int bucket1=0;
         int bucket2=0;
