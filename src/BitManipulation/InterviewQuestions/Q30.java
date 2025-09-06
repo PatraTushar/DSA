@@ -81,6 +81,7 @@ public class Q30 {
     }
 
 
+    // OPTIMAL SOLUTION
     static int xorAllNumII(int[] num1, int[] num2) {
 
         // Time Complexity : O(m+ n)
