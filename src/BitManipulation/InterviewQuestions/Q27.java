@@ -47,7 +47,7 @@ public class Q27 {
     static int minimumSubArrayLength(int[] arr, int k) {
 
         // Time Complexity : O(n)
-        // Space Complexity : O()
+        // Space Complexity : O(1)
 
         // leeTCode->3097
 
@@ -80,7 +80,10 @@ public class Q27 {
 
         int[] arr = {2, 1, 8};
         int k = 10;
+        int[] arr1={3,3,3,2,1,5,5};
+        int k1=6;
         System.out.println(minimumSubArrayLength(arr, k));
+        System.out.println(minimumSubArrayLength(arr1,k1));
 
     }
 }
