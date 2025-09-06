@@ -15,7 +15,7 @@ public class Q27 {
         }
     }
 
-    static void removeBit(int n, int[] result) {
+    static void removeNum(int n, int[] result) {
 
         for (int i = 0; i < 32; i++) {
 
@@ -63,7 +63,7 @@ public class Q27 {
             while (left <= right && calcOr(bitCount) >= k) {
 
                 length = Math.min(length, right - left + 1);
-                removeBit(arr[left], bitCount);
+                removeNum(arr[left], bitCount);
                 left++;
 
             }
