@@ -10,14 +10,14 @@ public class Q26 {
         // Space Complexity : O(1)
 
 
-        long ans = x;
+        long num = x;
 
         for (int i = 1; i < n; i++) {
 
-            ans = (ans + 1) | x;
+            num = (num + 1) | x;
         }
 
-        return ans;
+        return num;
     }
 
     public static void main(String[] args) {
