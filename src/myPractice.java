@@ -10,44 +10,31 @@ public class myPractice {
     }
 
 
-    static void selectionSort(int[] arr) {
+    static void insertionSort(int[] arr) {
 
         int n = arr.length;
-        int maxEleIndex;
 
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < n ; i++) {
 
-             maxEleIndex = 0;
+            int j=i;
 
-            for (int j = 1; j < n-i; j++) {
+            while (j>0 && arr[j]<arr[j-1]){
 
-                if (arr[j] > arr[maxEleIndex]) {
-
-                    maxEleIndex = j;
-                }
-
-
+                swap(arr,j,j-1);
+                j--;
             }
-
-
-            int last=n-i-1;
-            swap(arr,maxEleIndex,last);
-
-
-
 
         }
 
         System.out.println(Arrays.toString(arr));
-
-
     }
 
 
     public static void main(String[] args) {
 
         int[] arr = {5, 3, 8, 4, 2};
-        selectionSort(arr);
+        insertionSort(arr);
+
 
     }
 

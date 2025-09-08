@@ -14,24 +14,27 @@ public class InsertionSort {
 
     static void insertionSort(int arr[]){
 
-        for(int i=0;i<arr.length-1;i++){
+        // Time Complexity : O(n²)
+        // Space Complexity : O(1)
 
-            for(int j=i+1;j>0;j--){
+        int n = arr.length;
 
-                if(arr[j]<arr[j-1]){
+        for (int i = 0; i < n ; i++) {
 
-                    swap(arr,j,j-1);
+            int j=i;
 
-                }
+            while (j>0 && arr[j]<arr[j-1]){
 
-                else {
-                    break;
-                }
+                swap(arr,j,j-1);
+                j--;
             }
+
         }
 
         System.out.println(Arrays.toString(arr));
     }
+
+
 
     public static void main(String[] args) {
 
