@@ -1,13 +1,53 @@
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class myPractice {
 
+    static void swap(int[] arr, int i, int j) {
+
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+
+    static void selectionSort(int[] arr) {
+
+        int n = arr.length;
+        int maxEleIndex;
+
+        for (int i = 0; i < n - 1; i++) {
+
+             maxEleIndex = 0;
+
+            for (int j = 1; j < n-i; j++) {
+
+                if (arr[j] > arr[maxEleIndex]) {
+
+                    maxEleIndex = j;
+                }
+
+
+            }
+
+
+            int last=n-i-1;
+            swap(arr,maxEleIndex,last);
+
+
+
+
+        }
+
+        System.out.println(Arrays.toString(arr));
+
+
+    }
+
 
     public static void main(String[] args) {
+
+        int[] arr = {5, 3, 8, 4, 2};
+        selectionSort(arr);
 
     }
 

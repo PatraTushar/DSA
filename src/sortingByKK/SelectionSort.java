@@ -4,37 +4,42 @@ import java.util.Arrays;
 
 public class SelectionSort {
 
-    static void swap(int arr[],int a,int b){
+    static void swap(int[] arr, int i, int j) {
 
-        int temp=arr[a];
-        arr[a]=arr[b];
-        arr[b]=temp;
-
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
-    static int max(int arr[],int start,int end){
 
-        int max=start;
+    static void selectionSort(int[] arr) {
 
-        for(int i=start;i<=end;i++){
+        // Time Complexity : O(n²)
+        // Space Complexity : O(1)
 
-            if(arr[i]>arr[max]){
-                max=i;
+        int n = arr.length;
+        int maxEleIndex;
+
+        for (int i = 0; i < n - 1; i++) {
+
+            maxEleIndex = 0;
+
+            for (int j = 1; j < n-i; j++) {
+
+                if (arr[j] > arr[maxEleIndex]) {
+
+                    maxEleIndex = j;
+                }
+
+
             }
 
-        }
 
-        return max;
-    }
+            int last=n-i-1;
+            swap(arr,maxEleIndex,last);
 
-    static void selection(int arr[]){
 
-        for(int i=0;i<arr.length-1;i++){
 
-            // find the maximum from the array and put at its correct position
-            int Last=arr.length-i-1;
-            int findMax=max(arr,0, Last);
-            swap(arr,findMax,Last);
 
         }
 
@@ -43,9 +48,12 @@ public class SelectionSort {
 
     }
 
+
+
+
     public static void main(String[] args) {
 
         int arr[]={29,10,14,37,13};
-        selection(arr);
+        selectionSort(arr);
     }
 }

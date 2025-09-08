@@ -14,6 +14,9 @@ public class BubbleSort {
 
     static void bubbleSort(int arr[]){
 
+        // Time Complexity : O(n²)
+        // Space Complexity : O(1)
+
         boolean swapped;
 
         for(int i=0;i<arr.length-1;i++){
