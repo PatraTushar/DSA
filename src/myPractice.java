@@ -3,69 +3,33 @@ import java.util.Arrays;
 public class myPractice {
 
 
-    static int findMax(int[] arr) {
+    static void swap(int[] arr, int i, int j) {
 
-        int max = Integer.MIN_VALUE;
-
-        for (int ele : arr) {
-
-            if (ele > max) {
-
-                max = ele;
-            }
-        }
-
-
-        return max;
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
-    static void countSort(int[] arr, int pos) {
+    static void bubbleSort(int[] arr) {
 
         int n = arr.length;
-        int[] freq = new int[10];
-        int m = freq.length;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 1; i++) {
 
-            int digit = (arr[i] / pos) % 10;
+            boolean swapped = false;
 
-            freq[digit]++;
-        }
+            for (int j = 1; j < n-i; j++) {
 
+                if (arr[j] < arr[j - 1]) {
 
-        for (int i = 1; i < m; i++) {
-
-            freq[i] = freq[i - 1] + freq[i];
+                    swap(arr, j, j - 1);
+                    swapped = true;
+                }
 
 
-        }
+            }
 
-        int[] result=new int[n];
-
-        for (int i=n-1;i>=0;i--){
-
-            int digit=(arr[i]/pos)%10;
-            result[freq[digit]-1]=arr[i];
-            freq[digit]--;
-
-
-        }
-
-        for (int i=0;i<n;i++){
-
-            arr[i]=result[i];
-        }
-    }
-
-
-    static void radixSort(int[] arr) {
-
-        int maxVal = findMax(arr);
-
-        for (int pos = 1; maxVal / pos > 0; pos *= 10) {
-
-            countSort(arr, pos);
-
+            if(!swapped) break;
         }
 
         System.out.println(Arrays.toString(arr));
@@ -76,9 +40,9 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        int[] arr = {170, 45, 75, 90, 802, 2};
-        radixSort(arr);
 
+        int arr[] = {5, 3, 8, 6, 2};
+        bubbleSort(arr);
 
     }
 
