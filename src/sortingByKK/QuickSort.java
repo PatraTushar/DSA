@@ -1,90 +1,78 @@
 package sortingByKK;
 
-import java.util.Scanner;
 
+import java.util.Arrays;
 
 public class QuickSort {
 
-    static void displayArr(int arr[],int n){
-        for(int i=0;i<n;i++){
-            System.out.print(arr[i] +" ");
-        }
+
+    static void swap(int[] arr, int i, int j) {
+
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
-    static  void swap(int arr[],int x,int y){
-        int temp=arr[x];
-        arr[x]=arr[y];
-        arr[y]=temp;
-    }
 
-    static int partition(int arr[],int start,int end) {
+    static int findPartitionIndex(int[] arr, int low, int high) {
 
-        int pivot = arr[start];
-        int count = 0;
 
-        for (int i = start + 1; i <= end; i++) {
-            if (arr[i] <= pivot) {
-                count++;
-            }
-        }
+        int pivot = arr[low];
+        int i = low;
+        int j = high;
 
-        int pivotidx = start + count;
-        swap(arr,start,pivotidx);
+        while (i < j) {
 
-        int i = start, j = end;
 
-        while (i < pivotidx && j > pivotidx) {
-            while (arr[i] <= pivot) {
+            while (i <= high && arr[i] <= pivot) {
+
                 i++;
             }
 
-            while (arr[j] > pivot) {
+            while (j >= low && arr[j] > pivot) {
+
                 j--;
+
+
             }
 
-            if(i<pivotidx && j>pivotidx){
-                swap(arr,i,j);
-                i++;
-                j--;
-            }
+            if (i < j) swap(arr, i, j);
+
 
         }
-        return pivotidx;
+
+        swap(arr, low, j);
+
+        return j;
+
+
     }
 
 
+    static void quickSort(int[] arr, int low, int high) {
 
-    static void Quicksort(int arr[],int start,int end){
-        if(start>=end) return;
-        int pi = partition(arr, start, end);
-        Quicksort(arr, start, pi-1);
-        Quicksort(arr,pi+1,end);
+        // Time Complexity: O(n log n)
+        //  Space Complexity: O(log n)   // recursion stack
+
+        if (low < high) {
+
+            int partitionIndex = findPartitionIndex(arr, low, high);
+            quickSort(arr, low, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, high);
+
+
+        }
+
 
     }
+
 
     public static void main(String[] args) {
 
-        Scanner sc=new Scanner(System.in);
+        int[] arr = {4, 6, 2, 5, 7, 9, 1, 3};
+        quickSort(arr, 0, arr.length - 1);
+        System.out.println(Arrays.toString(arr));
 
-
-        System.out.println(" enter size of the array ");
-        int n=sc.nextInt();
-        int arr[]=new int[n];
-
-        System.out.println(" enter " + n + " elements ");
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-        }
-
-        System.out.println(" before sorting ");
-        displayArr(arr,n);
-
-        System.out.println();
-
-        Quicksort(arr,0,n-1);
-
-        System.out.println(" after sorting ");
-        displayArr(arr,n);
 
     }
 }

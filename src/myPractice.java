@@ -2,68 +2,68 @@ import java.util.Arrays;
 
 public class myPractice {
 
+    static void swap(int[] arr, int i, int j) {
 
-    static void merge(int[] arr, int start, int mid, int end) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 
 
-        int[] newArr = new int[end - start + 1];
-        int i = start;
-        int j = mid + 1;
-        int k = 0;
+    static int findPartitionIndex(int[] arr, int low, int high) {
 
-        while (i <= mid && j <= end) {
 
-            if (arr[i] <= arr[j]) {
+        int pivot = arr[low];
+        int i = low;
+        int j = high;
 
-                newArr[k++] = arr[i];
+        while (i < j) {
+
+
+            while (i <= high && arr[i] <= pivot) {
+
                 i++;
-
-            } else {
-
-                newArr[k++] = arr[j];
-                j++;
             }
+
+            while (j >= low && arr[j] > pivot) {
+
+                j--;
+
+
+            }
+
+            if (i < j) swap(arr, i, j);
+
+
         }
 
+        swap(arr, low, j);
 
-        while (i <= mid) {
-
-            newArr[k++] = arr[i++];
-
-        }
-
-        while (j <= end) {
-
-            newArr[k++] = arr[j++];
-        }
+        return j;
 
 
-        for (int a = 0; a < newArr.length; a++) {
+    }
 
-            arr[ start+ a] = newArr[a];
+
+    static void quickSort(int[] arr, int low, int high) {
+
+        if (low < high) {
+
+            int partitionIndex = findPartitionIndex(arr, low, high);
+            quickSort(arr, low, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, high);
+
+
         }
 
 
     }
 
-    static void mergesort(int[] arr, int start, int end) {
-
-        if (start == end) return;
-
-        int mid = start + (end - start) / 2;
-
-        mergesort(arr, start, mid);
-        mergesort(arr, mid + 1, end);
-        merge(arr, start, mid, end);
-
-
-    }
 
     public static void main(String[] args) {
 
-
-        int[] arr = {1, 8, 4, 7, 6, 3, 9, 2, 5};
-        mergesort(arr, 0, arr.length - 1);
+        int[] arr = {4, 6, 2, 5, 7, 9, 1, 3};
+        quickSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
 
 
