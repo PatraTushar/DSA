@@ -57,7 +57,8 @@ public class CountSort {
 
     public static void main(String[] args) {
 
-        int arr[] = {5, 3, 8, 6, 2};
+      //  int arr[] = {5, 3, 8, 6, 2};
+        int arr[] = {-1,-5,1,8,6,4,3,3};
         countSort(arr);
 
 
