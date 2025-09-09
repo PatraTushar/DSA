@@ -1,59 +1,71 @@
-import OopsByKK.Generics.GenricClass.Pair;
-
 import java.util.Arrays;
 
 public class myPractice {
 
 
-    static void swap(int[] arr, int i, int j) {
-
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
+    static void merge(int[] arr, int start, int mid, int end) {
 
 
-    static void countSort(int[] arr) {
+        int[] newArr = new int[end - start + 1];
+        int i = start;
+        int j = mid + 1;
+        int k = 0;
 
-        int n = arr.length;
+        while (i <= mid && j <= end) {
 
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
+            if (arr[i] <= arr[j]) {
 
-        for (int i = 0; i < n; i++) {
+                newArr[k++] = arr[i];
+                i++;
 
-            if (arr[i] > max) max = arr[i];
-            if (arr[i] < min) min = arr[i];
-        }
+            } else {
 
-        int range=max-min+1;
-
-        int[] freq=new int[range];
-
-        for (int i=0;i<n;i++){
-
-            freq[arr[i]]++;
-        }
-
-        for (int i=0;i<freq.length;i++){
-
-            for (int j=0;j<freq[i];j++){
-
-
-
-
+                newArr[k++] = arr[j];
+                j++;
             }
         }
 
 
+        while (i <= mid) {
+
+            newArr[k++] = arr[i++];
+
+        }
+
+        while (j <= end) {
+
+            newArr[k++] = arr[j++];
+        }
+
+
+        for (int a = 0; a < newArr.length; a++) {
+
+            arr[ start+ a] = newArr[a];
+        }
+
+
     }
 
+    static void mergesort(int[] arr, int start, int end) {
+
+        if (start == end) return;
+
+        int mid = start + (end - start) / 2;
+
+        mergesort(arr, start, mid);
+        mergesort(arr, mid + 1, end);
+        merge(arr, start, mid, end);
+
+
+    }
 
     public static void main(String[] args) {
 
 
-        int arr[] = {5, 3, 8, 6, 2};
-        countSort(arr);
+        int[] arr = {1, 8, 4, 7, 6, 3, 9, 2, 5};
+        mergesort(arr, 0, arr.length - 1);
+        System.out.println(Arrays.toString(arr));
+
 
     }
 
