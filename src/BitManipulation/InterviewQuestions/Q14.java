@@ -2,7 +2,7 @@ package BitManipulation.InterviewQuestions;
 
 public class Q14 {
 
-    static int minimumOneBotOperation(int n){
+    static int minimumOneBitOperation(int n){
 
         //  Time Complexity: O(log n)
         //  Space Complexity: O(1)
@@ -23,8 +23,8 @@ public class Q14 {
         // leeTCode->1611
 
         int n=6;
-        System.out.println(minimumOneBotOperation(n));
-        System.out.println(minimumOneBotOperation(45));
+        System.out.println(minimumOneBitOperation(n));
+        System.out.println(minimumOneBitOperation(45));
 
 
     }
