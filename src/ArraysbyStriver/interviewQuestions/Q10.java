@@ -12,6 +12,9 @@ public class Q10 {
 
     static void reverse(int[] arr){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
         int i=0;
         int j= arr.length-1;
 

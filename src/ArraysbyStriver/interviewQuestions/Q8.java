@@ -4,6 +4,9 @@ public class Q8 {
 
     static void swap(int a,int b){
 
+        //Time Complexity (TC): O(1)
+        //Space Complexity (SC): O(1)
+
         System.out.println(" before swapping " +a + " " + b);
 
         int temp=a;
