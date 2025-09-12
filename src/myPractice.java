@@ -1,53 +1,81 @@
 import OopsByKK.AccessModifier.Public.A;
+import OopsByKK.AccessModifier.Public.B;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class myPractice {
 
-    static void swap(int[] arr, int a, int b) {
+    static void swap(int[][] arr, int i, int j) {
 
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
+        int temp = arr[i][j];
+        arr[i][j] = arr[j][i];
+        arr[j][i] = temp;
     }
 
 
-    static void reverse(int[] arr, int i, int j) {
+    static int[][] func(int n) {
 
 
-        while (i < j) {
+        int[][] result = new int[n][n];
 
-            swap(arr, i, j);
-            i++;
-            j--;
+        int TopRow = 0;
+        int BottomRow = n - 1;
+        int LeftCol = 0;
+        int RightCol = n - 1;
+        int num=1;
+
+
+        while (TopRow <= BottomRow && LeftCol <= RightCol) {
+
+
+
+            for (int i = LeftCol; i <= RightCol; i++) {
+
+              result[TopRow][i]=num++;
+
+            }
+
+            TopRow++;
+
+
+            for (int i = TopRow; i <= BottomRow; i++) {
+
+                result[i][RightCol]=num++;
+
+            }
+
+            RightCol--;
+
+            if (TopRow <= BottomRow && LeftCol <= RightCol) {
+
+                for (int i = RightCol; i >= LeftCol; i--) {
+
+                    result[BottomRow][i]=num++;
+                }
+
+                BottomRow--;
+
+
+            }
+
+
+            if (TopRow <= BottomRow && LeftCol <= RightCol) {
+
+                for (int i = BottomRow; i >= TopRow; i--) {
+
+                    result[i][LeftCol]=num++;
+                }
+
+                LeftCol++;
+
+            }
+
+
         }
 
-
-    }
-
-
-    static boolean func(int[] arr) {
-
-
-        int n = arr.length;
-        int prefixSum = 0;
-        int suffixSum = 0;
-
-        for (int i = n - 1; i >= 0; i--) {
-
-            suffixSum += arr[i];
-        }
-
-
-        for (int i = 0; i < n; i++) {
-
-            prefixSum+=arr[i];
-
-            if (prefixSum== (suffixSum-prefixSum)) return true;
-
-        }
-
-        return false;
+        return result;
 
 
     }
@@ -55,10 +83,13 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        int[] arr = {5, 3, 2, 6, 3, 1};
-        int[] arr1 = {1, 3, 2, 4, 5};
-        System.out.println(func(arr));
-        System.out.println(func(arr1));
+
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};  // square matrix
+
+
+        int[][] ans = func(3);
+        System.out.println(Arrays.deepToString(ans));
+
 
     }
 

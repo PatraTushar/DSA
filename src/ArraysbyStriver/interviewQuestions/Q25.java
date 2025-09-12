@@ -6,6 +6,9 @@ public class Q25 {
 
     static int[][] spiralMatrixII(int n){
 
+        //Time Complexity (TC): O(n²)
+        //Space Complexity (SC): O(n²)
+
         int[][] newMatrix=new int[n][n];
 
         int number=1;
