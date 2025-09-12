@@ -15,6 +15,10 @@ public class Q15 {
 
     static int[] sorted(int[] arr){
 
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(n)
+
+
         int n=arr.length;
         int i=0;
         int j=n-1;

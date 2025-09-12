@@ -1,3 +1,5 @@
+import OopsByKK.AccessModifier.Public.A;
+
 import java.util.Arrays;
 
 public class myPractice {
@@ -24,22 +26,28 @@ public class myPractice {
     }
 
 
-    static void func(int[] arr) {
+    static boolean func(int[] arr) {
 
-        int i = 0;
-        int j = arr.length - 1;
 
-        while (i < j) {
+        int n = arr.length;
+        int prefixSum = 0;
+        int suffixSum = 0;
 
-            if (arr[i]  == 1 && arr[j]  == 0) {
+        for (int i = n - 1; i >= 0; i--) {
 
-                swap(arr, i, j);
-            } else if (arr[i]  == 0) i++;
-
-            else j--;
+            suffixSum += arr[i];
         }
 
-        System.out.println(Arrays.toString(arr));
+
+        for (int i = 0; i < n; i++) {
+
+            prefixSum+=arr[i];
+
+            if (prefixSum== (suffixSum-prefixSum)) return true;
+
+        }
+
+        return false;
 
 
     }
@@ -47,9 +55,10 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        int[] arr = {1, 0,0,1,0,1,1,0,0};
-        func(arr);
-
+        int[] arr = {5, 3, 2, 6, 3, 1};
+        int[] arr1 = {1, 3, 2, 4, 5};
+        System.out.println(func(arr));
+        System.out.println(func(arr1));
 
     }
 
