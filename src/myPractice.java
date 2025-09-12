@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.HashSet;
 
 public class myPractice {
 
@@ -14,8 +13,6 @@ public class myPractice {
     static void reverse(int[] arr, int i, int j) {
 
 
-
-
         while (i < j) {
 
             swap(arr, i, j);
@@ -24,30 +21,34 @@ public class myPractice {
         }
 
 
-
     }
 
 
-    static void rotate(int[] arr, int k) {
+    static void func(int[] arr) {
 
-        int n = arr.length;
+        int i = 0;
+        int j = arr.length - 1;
 
-        k = k % n;
+        while (i < j) {
 
+            if (arr[i]  == 1 && arr[j]  == 0) {
 
-        reverse(arr,0,n-1);
-        reverse(arr,0,k-1);
-        reverse(arr,k,n-1);
+                swap(arr, i, j);
+            } else if (arr[i]  == 0) i++;
+
+            else j--;
+        }
 
         System.out.println(Arrays.toString(arr));
+
 
     }
 
 
     public static void main(String[] args) {
 
-        int[] arr = {1, 2, 3, 4, 5};
-        rotate(arr,7);
+        int[] arr = {1, 0,0,1,0,1,1,0,0};
+        func(arr);
 
 
     }
