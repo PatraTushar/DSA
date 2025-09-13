@@ -4,75 +4,86 @@ import java.util.Arrays;
 
 public class Q6 {
 
-    static int findFirst(int[] arr,int target){
+    static int findFirst(int[] arr, int target) {
 
-        int start=0;
-        int end=arr.length-1;
-        int index=-1;
+        int start = 0;
+        int end = arr.length - 1;
+        int index = -1;
 
-        while (start<=end){
+        while (start <= end) {
 
-            int mid=start+(end-start)/2;
+            int mid = start + (end - start) / 2;
 
-            if(target==arr[mid]){
-                index=mid;
-                end=mid-1;
-            }
+            if (arr[mid] == target) {
 
-            else if(target>arr[mid]) start=mid+1;
-            else end=mid-1;
+                index = mid;
+                end = mid - 1;
+            } else if (target > arr[mid]) {
+
+                start = mid + 1;
+            } else end = mid - 1;
+
+
         }
 
         return index;
+
+
     }
 
-    static int findLast(int[] arr,int target){
 
-        int start=0;
-        int end=arr.length-1;
-        int index=-1;
+    static int findLast(int[] arr, int target) {
 
-        while (start<=end){
+        int start = 0;
+        int end = arr.length - 1;
+        int ans = -1;
 
-            int mid=start+(end-start)/2;
-            if(target==arr[mid]){
+        while (start <= end) {
 
-                index=mid;
-                start=mid+1;
+            int mid = start + (end - start) / 2;
 
-            }
-            else if(target>arr[mid]) start=mid+1;
-            else end=mid-1;
+            if (arr[mid] == target) {
+
+                ans = mid;
+                start = mid + 1;
+            } else if (target > arr[mid]) {
+
+                start = mid + 1;
+            } else end = mid - 1;
+
+
         }
 
-        return index;
+        return ans;
+
+
     }
 
-    static int[] searchRange(int[] nums,int target){
+    static int[] searchInRange(int[] arr, int target) {
 
-        //Time Complexity (TC): O(log n)
-        //Space Complexity (SC): O(1) — because the result array is of fixed size and doesn't scale with input size.
+        // Time Complexity: O(log n)
+        // Space Complexity: O(1)
 
-        int[] result=new int[2];
-        result[0]=findFirst(nums,target);
-        result[1]=findLast(nums,target);
+        if (arr.length == 0) return new int[]{-1, -1};
+
+        int[] result = new int[2];
+        result[0] = findFirst(arr, target);
+        result[1] = findLast(arr, target);
 
         return result;
 
 
-
     }
-
 
 
     public static void main(String[] args) {
 
         // find the first and last position of element in sorted array   (leeTCode->34)
 
-        int[] arr={5,7,7,8,8,10};
-        int target=8;
+        int[] arr = {5, 7, 7, 8, 8, 10};
+        int target = 8;
 
-        int[] finalAns=searchRange(arr,target);
+        int[] finalAns = searchInRange(arr, target);
         System.out.println(Arrays.toString(finalAns));
     }
 }

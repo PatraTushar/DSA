@@ -2,6 +2,7 @@ package ArraysbyStriver.binarySearchPattern;
 
 interface MountainArray {
     int get(int index);
+
     int length();
 }
 
@@ -51,6 +52,10 @@ public class Q9 {
     }
 
     public static int findInMountainArray(int target, MountainArray mountainArr) {
+
+        // Time Complexity: O(log n)
+        // Space Complexity: O(1)
+
         int start = 0;
         int end = mountainArr.length() - 1;
 

@@ -1,7 +1,6 @@
-import java.util.Arrays;
+package ArraysbyStriver.binarySearchPattern;
 
-public class myPractice {
-
+public class Q27 {
 
     static int binarySearch(int[] arr, int target, int start, int end, boolean isAsc) {
 
@@ -91,14 +90,3 @@ public class myPractice {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-

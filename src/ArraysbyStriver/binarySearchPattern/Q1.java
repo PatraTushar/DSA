@@ -4,6 +4,9 @@ public class Q1 {
 
     static int binarySearch(int[] arr,int target){
 
+        // Time Complexity: O(log n)
+        // Space Complexity: O(1)
+
         int start=0;
         int end=arr.length-1;
 
