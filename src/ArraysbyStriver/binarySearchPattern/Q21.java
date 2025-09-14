@@ -4,6 +4,9 @@ public class Q21 {
 
     static boolean searchMatrix(int[][] matrix, int target) {
 
+        // Time Complexity: O(rows + col)
+        // Space Complexity: O(1)
+
         int rows=0;
         int columns=matrix[rows].length-1;
 
