@@ -4,28 +4,29 @@ public class Q13 {
 
     static int rotationCount(int[] num){
 
-        int start=0;
-        int end=num.length-1;
+        // Time Complexity: O(log n)
+        // Space Complexity: O(1)
 
 
-        while(start<end){
 
-            int mid=start+(end-start)/2;
+        int start = 0;
+        int end = num.length - 1;
 
-           if(num[mid]>num[end]){
-               start=mid+1;
-           }
+        while (start != end) {
 
-           else {
-               end=mid;
-           }
+            int mid = start + (end - start) / 2;
+
+
+            if (num[start] >= num[end] && num[start] <= num[mid]) {
+
+                start = mid + 1;
+
+            } else end = mid;
+
+
         }
 
-
-
-
-        return start;
-
+        return end;
 
 
     }
