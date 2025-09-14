@@ -2,23 +2,25 @@ package ArraysbyStriver.binarySearchPattern;
 
 public class Q19 {
 
-    static int squareRoot(int x){
+    static int squareRoot(int x) {
 
-        int start=1;
-        int end=x;
-
-        while (start<=end){
-
-            int mid=start+(end-start)/2;
-            long midSqr=(long)mid*mid;
+        // Time Complexity: O(log x)
+        // Space Complexity: O(1)
 
 
-            if(midSqr>x){
-                end=mid-1;
-            }
+        int start = 1;
+        int end = x;
 
-            else {
-                start=mid+1;
+        while (start <= end) {
+
+            int mid = start + (end - start) / 2;
+            long midSqr = (long) mid * mid;
+
+
+            if (midSqr > x) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
             }
         }
 
@@ -27,7 +29,7 @@ public class Q19 {
 
     public static void main(String[] args) {
 
-        int x=11;
+        int x = 11;
         System.out.println(squareRoot(x));
 
     }

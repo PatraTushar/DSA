@@ -44,6 +44,11 @@ public class Q16 {
 
     static int splitArray(int[] num, int k) {
 
+        // Time Complexity: O(n)+O(n)+O(n⋅log(sum−max))=O(n⋅log(sum−max))
+        // Space Complexity: O(1)
+
+
+
         int start=findMax(num);
         int end=sumOfArr(num);
 

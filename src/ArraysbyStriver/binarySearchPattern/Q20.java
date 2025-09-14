@@ -4,24 +4,21 @@ public class Q20 {
 
     static boolean Search(int[][] arr,int target){
 
-        int rows=arr.length;
-        int columns=arr[0].length;
-        int start=0;
-        int end=rows*columns-1;
+        // Time Complexity: O(rows + col)
+        // Space Complexity: O(1)
 
-        while (start<=end){
 
-            int mid=start+(end-start)/2;
-            int midElement=arr[mid/columns][mid%columns];
+        int rows = 0;
+        int cols = arr[0].length - 1;
 
-            if(target==midElement) return true;
+        while (rows < arr.length && cols >= 0) {
 
-            else if(target<midElement){
-                end=mid-1;
-            }
-            else {
-                start=mid+1;
-            }
+            if (arr[rows][cols] == target) return true;
+
+            else if (arr[rows][cols] > target) {
+
+                cols--;
+            } else rows++;
         }
 
         return false;
