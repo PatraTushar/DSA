@@ -2,73 +2,85 @@ package ArraysbyStriver.binarySearchPattern;
 
 public class Q14 {
 
-    static int findMax(int[] books){
+    static int findMax(int[] arr) {
 
-        int max=Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
 
-        for(int pages:books){
+        for (int ele : arr) {
 
-            max=Math.max(max,pages);
+            if (ele > max) {
+
+                max = ele;
+            }
+
 
         }
 
         return max;
     }
 
-    static int totalSum(int[] books){
+    static int findSum(int[] arr) {
 
-        int sum=0;
-        for(int pages:books){
-            sum+=pages;
+        int sum = 0;
+        for (int ele : arr) {
+
+            sum += ele;
+
+
         }
 
         return sum;
     }
 
-    static int studentPossibleForTheMid(int[] books,int mid){
+    static int isValid(int[] arr, int pages) {
 
-        int countStudent=1;
-        int pages=0;
+        int initialPages = 0;
+        int initialStudent = 1;
 
-        for(int i=0;i<books.length;i++){
+        for (int ele : arr) {
 
-            if(pages+books[i]<=mid){
-                pages+=books[i];
+
+            if (initialPages + ele <= pages) {
+
+                initialPages += ele;
+            } else {
+
+                initialStudent++;
+                initialPages = ele;
             }
-            else {
-                countStudent++;
-                pages=books[i];
-            }
+
+
         }
 
-        return countStudent;
+
+        return initialStudent;
 
 
     }
 
-    static int bookAllocation(int[] books,int students){
 
-        int start=findMax(books);
-        int end=totalSum(books);
-        int ans=-1;
+    static int bookAllocations(int[] books, int students) {
 
-        while (start<=end){
+        // Time Complexity: O(n)+O(n)+O(n⋅log(sum−max))=O(n⋅log(sum−max))
+        // Space Complexity: O(1)
 
-            int mid=start+(end-start)/2;
+        if (students > books.length) return -1;
 
-            int possibleStudent=studentPossibleForTheMid(books,mid);
+        int start = findMax(books);
+        int end = findSum(books);
 
-            if(possibleStudent>students){
-                start=mid+1;
+        while (start <= end) {
 
-            }
+            int mid = start + (end - start) / 2;
 
-            else {
+            int validStudent = isValid(books, mid);
 
-                end=mid-1;
 
-            }
+            if (validStudent > students) {
 
+                start = mid + 1;
+
+            } else end = mid - 1;
 
 
         }
@@ -80,16 +92,16 @@ public class Q14 {
 
 
 
+
+
     public static void main(String[] args) {
 
-        int[] books={25,46,28,49,24};
-        int students=4;
-        System.out.println(bookAllocation(books,students));
-
+        int[] books = {25, 46, 28, 49, 24};
+        int students = 4;
+        System.out.println(bookAllocations(books, students));
 
 
     }
-
 
 
 }

@@ -2,67 +2,85 @@ package ArraysbyStriver.binarySearchPattern;
 
 public class Q15 {
 
-    static int findMax(int[] arr){
+    static int findMax(int[] arr) {
 
-        int max=Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
 
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]>max){
-                max=arr[i];
+        for (int ele : arr) {
+
+            if (ele > max) {
+
+                max = ele;
             }
+
+
         }
 
         return max;
     }
 
-    static int sumOfArr(int[] arr){
-        int sum=0;
-        for (int i=0;i<arr.length;i++){
-            sum+=arr[i];
+    static int findSum(int[] arr) {
+
+        int sum = 0;
+        for (int ele : arr) {
+
+            sum += ele;
+
+
         }
+
         return sum;
     }
 
-    static int requiredPainter(int[] arr,int mid){
+    static int isValid(int[] boards, int maxTime) {
 
-        int painter=1;
-        int totalPaint=0;
+        int initialBoard = 0;
+        int initialPainter = 1;
 
-        for(int i=0;i<arr.length;i++){
+        for (int ele : boards) {
 
-            if(totalPaint+arr[i]<=mid){
-                totalPaint+=arr[i];
+
+            if (initialBoard + ele <= maxTime) {
+
+                initialBoard += ele;
+            } else {
+
+                initialPainter++;
+                initialBoard = ele;
             }
-            else {
-                painter++;
-                totalPaint=arr[i];
-            }
+
+
         }
 
-        return painter;
+
+        return initialPainter;
+
 
     }
 
 
-    static int PainterPartition(int[] arr,int PaintersAllowed){
+    static int painterPartition(int[] boards, int numPainters) {
 
-        int start=findMax(arr);
-        int end=sumOfArr(arr);
+        // Time Complexity: O(n)+O(n)+O(n⋅log(sum−max))=O(n⋅log(sum−max))
+        // Space Complexity: O(1)
 
-        while (start<=end){
+        if (numPainters > boards.length) return -1;
 
-            int mid=start+(end-start)/2;
+        int start = findMax(boards);
+        int end = findSum(boards);
 
-            int totalPainters=requiredPainter(arr,mid);
+        while (start <= end) {
 
-            if(totalPainters>PaintersAllowed){
-                start=mid+1;
+            int mid = start + (end - start) / 2;
 
-            }
+            int paintersNeeded = isValid(boards, mid);
 
-            else {
-                end=mid-1;
-            }
+
+            if (paintersNeeded > numPainters) {
+
+                start = mid + 1;
+
+            } else end = mid - 1;
 
 
         }
@@ -76,8 +94,8 @@ public class Q15 {
 
         // Painter Partition Problem
 
-        int[] arr={10,20,10,10};
-        int PainterAllowed=2;
-        System.out.println(PainterPartition(arr,PainterAllowed));
+        int[] boards = {10, 20, 10, 10};
+        int painter = 2;
+        System.out.println(painterPartition(boards, painter));
     }
 }
