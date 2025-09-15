@@ -51,6 +51,9 @@ public class Q22 {
 
     static int minChocolates(int[] arr,int students){
 
+        // Time Complexity: O(n.log(sum-max))
+        // Space Complexity: O(1)
+
         if(students>arr.length) return -1;
 
         int start=findMax(arr);

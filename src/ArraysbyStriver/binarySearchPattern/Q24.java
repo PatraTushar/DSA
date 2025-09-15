@@ -1,92 +1,93 @@
 package ArraysbyStriver.binarySearchPattern;
 
 public class Q24 {
-    static int findMax(int[] arr){
 
-        int max=Integer.MIN_VALUE;
 
-        for(int a:arr){
-            if(a>max){
-                max=a;
+
+    static int findMax(int[] weights) {
+
+        int max = Integer.MIN_VALUE;
+
+        for (int ele : weights) {
+
+            if (ele > max) {
+
+                max = ele;
             }
+
+
         }
 
         return max;
     }
 
-    static int findSum(int[] arr){
+    static int findSum(int[] weights) {
 
-        int sum=0;
-        for(int a: arr){
-            sum+=a;
+        int sum = 0;
+
+        for (int ele : weights) {
+
+            sum += ele;
         }
+
         return sum;
     }
 
-    static int isPossible(int[] arr,int mid){
 
-        int noOfDays=1;
-        int capacity=0;
+    static int calculateDays(int[] weights, int mid) {
 
-        for(int i=0;i<arr.length;i++){
+        int initialWeight = 0;
+        int possibleDays = 1;
 
-            if(capacity+arr[i]<=mid){
+        for (int weight : weights) {
 
-                capacity+=arr[i];
+            if (initialWeight + weight <= mid) {
+
+                initialWeight += weight;
+
+            } else {
+
+                possibleDays++;
+                initialWeight = weight;
 
             }
-
-            else {
-                noOfDays++;
-                capacity=arr[i];
-            }
-
         }
 
-        return noOfDays;
-
-
+        return possibleDays;
     }
 
-    static int leastCapacity(int[] arr,int days){
+    static int shipWithInDDays(int[] weights, int days) {
 
-        if(days>arr.length) return -1;
+        // Time Complexity: O(n.log(sum-max))
+        // Space Complexity: O(1)
 
-        int start=findMax(arr);
-       int end=findSum(arr);
+        if (days > weights.length) return -1;
 
+        int start = findMax(weights);
+        int end = findSum(weights);
 
+        while (start <= end) {
 
-        while (start<=end){
+            int mid = start + (end - start) / 2;
 
-            int mid=start+(end-start)/2;
+            int daysPossible = calculateDays(weights, mid);
 
-            int totalDays=isPossible(arr,mid);
+            if (daysPossible > days) {
 
-            if(totalDays>days){
+                start = mid + 1;
+            } else end = mid - 1;
 
-                start=mid+1;
-
-
-            }
-
-            else {
-
-
-                end=mid-1;
-
-            }
         }
+
         return start;
     }
-
     public static void main(String[] args) {
 
         // least capacity to ship packages within d days (leeTCode-->1011)
 
-        int[] arr={1,2,3,4,5,6,7,8,9,10};
-        int days=5;
-        System.out.println(leastCapacity(arr,days));
+        int[] weight = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int days = 5;
+        System.out.println(shipWithInDDays(weight, days));
 
     }
 }
