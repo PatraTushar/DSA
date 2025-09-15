@@ -1,75 +1,51 @@
 public class myPractice {
 
-
-    static int findMax(int[] weights) {
+    static int findMax(int[] arr) {
 
         int max = Integer.MIN_VALUE;
 
-        for (int ele : weights) {
+        for (int ele : arr) {
 
             if (ele > max) {
 
                 max = ele;
             }
 
-
         }
 
         return max;
     }
 
-    static int findSum(int[] weights) {
 
-        int sum = 0;
+    static int calculateHours(int[] piles, int mid) {
 
-        for (int ele : weights) {
+        int totalHrs = 0;
 
-            sum += ele;
+        for (int ele : piles) {
+
+            totalHrs += Math.ceil((double) ele / mid);
         }
 
-        return sum;
+        return totalHrs;
     }
 
 
-    static int calculateDays(int[] weights, int mid) {
+    static int minEatingSpeed(int[] piles, int hrs) {
 
-        int initialWeight = 0;
-        int possibleDays = 1;
-
-        for (int weight : weights) {
-
-            if (initialWeight + weight <= mid) {
-
-                initialWeight += weight;
-
-            } else {
-
-                possibleDays++;
-                initialWeight = weight;
-
-            }
-        }
-
-        return possibleDays;
-    }
-
-    static int shipWithInDDays(int[] weights, int days) {
-
-        if (days > weights.length) return -1;
-
-        int start = findMax(weights);
-        int end = findSum(weights);
+        int start = 1;
+        int end = findMax(piles);
 
         while (start <= end) {
 
             int mid = start + (end - start) / 2;
 
-            int daysPossible = calculateDays(weights, mid);
+            int hrsTaken = calculateHours(piles, mid);
 
-            if (daysPossible > days) {
+            if (hrsTaken > hrs) {
 
                 start = mid + 1;
             } else end = mid - 1;
+
 
         }
 
@@ -78,9 +54,9 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        int[] weight = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int days = 5;
-        System.out.println(shipWithInDDays(weight, days));
+        int[] piles = {3, 6, 7, 11};
+        int hrs = 8;
+        System.out.println(minEatingSpeed(piles, hrs));
 
     }
 }

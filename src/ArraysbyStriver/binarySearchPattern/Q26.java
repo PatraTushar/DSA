@@ -2,69 +2,67 @@ package ArraysbyStriver.binarySearchPattern;
 
 public class Q26 {
 
-    static int findMax(int[] piles){
+    static int findMax(int[] arr) {
 
-        int max=Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
 
-        for(int i:piles){
-            if (i>max){
-                max=i;
+        for (int ele : arr) {
+
+            if (ele > max) {
+
+                max = ele;
             }
+
         }
 
         return max;
     }
 
 
+    static int calculateHours(int[] piles, int mid) {
 
-    static int hrsTakenToCompleteBananas(int[] piles, int mid){
+        int totalHrs = 0;
 
-        int  totalHrs=0;
+        for (int ele : piles) {
 
-        for(int i=0;i<piles.length;i++){
-
-            totalHrs+=Math.ceil((double) piles[i]/mid);
+            totalHrs += Math.ceil((double) ele / mid);
         }
 
         return totalHrs;
-
-
-
-
     }
 
-    static int kokoEatingBananas(int[] piles,int hrs){
+
+    static int minEatingSpeed(int[] piles, int hrs) {
+
+        // Time Complexity: O(n.log(max(piles)-1))
+        // Space Complexity: O(1)
 
 
+        int start = 1;
+        int end = findMax(piles);
 
-        int start=1;
-        int end=findMax(piles);
+        while (start <= end) {
 
-        while (start<=end){
-            int mid=start+(end-start)/2;
+            int mid = start + (end - start) / 2;
 
-            int totalHrs= hrsTakenToCompleteBananas(piles,mid);
+            int hrsTaken = calculateHours(piles, mid);
 
-            if(totalHrs>hrs){
-                start=mid+1;
-            }
-            else {
-                end=mid-1;
-            }
+            if (hrsTaken > hrs) {
+
+                start = mid + 1;
+            } else end = mid - 1;
+
+
         }
 
         return start;
     }
 
-
     public static void main(String[] args) {
 
-        // koko eating bananas leeTCode-->875
-
-        int[] piles={3,6,7,11};
-        int hrs=8;
-        System.out.println(kokoEatingBananas(piles,hrs));
-
+        int[] piles = {3, 6, 7, 11};
+        int hrs = 8;
+        System.out.println(minEatingSpeed(piles, hrs));
 
     }
 }

@@ -5,70 +5,68 @@ import java.util.Arrays;
 
 public class Q25 {
 
-    static int totalCows(int[] arr,int mid){
+    static int totalCows(int[] stalls, int mid) {
 
-        int cowsPlace=1;
-        int position=arr[0];
+        int cowPlaced = 1;
+        int position = stalls[0];
 
-        for (int i=1;i<arr.length;i++){
+        for (int i = 1; i < stalls.length; i++) {
 
-            if(arr[i]-position>=mid){
-                cowsPlace++;
-                position=arr[i];
+            if (stalls[i] - position >= mid) {
+
+                cowPlaced++;
+                position = stalls[i];
             }
 
+
         }
-        return cowsPlace;
+
+        return cowPlaced;
 
 
     }
 
 
+    static int AggressiveCows(int[] stalls, int cows) {
 
+        // Time Complexity: O(n.log(n)+n⋅log(max(stalls)-1))
+        // Space Complexity: O(1)
 
+        Arrays.sort(stalls);
 
-    static int AggressiveCows(int[] arr,int cows){
+        if (cows > stalls.length) return -1;
 
-        if(cows>arr.length) return -1;
+        int n = stalls.length;
 
+        int start = 1;
+        int end = stalls[n - 1] - stalls[0];
 
-        int n=arr.length;
+        while (start <= end) {
 
-        int start=1;
-        int end=arr[n-1]-arr[0];
+            int mid = start + (end - start) / 2;
 
-        while (start<=end){
+            int placesCow = totalCows(stalls, mid);
 
-            int mid=start+(end-start)/2;
+            if (placesCow >= cows) {
 
-          int placedCow=totalCows(arr,mid);
-
-            if(placedCow<cows){
-                end=mid-1;
-            }
-
-            else {
-                start=mid+1;
-            }
+                start = mid + 1;
+            } else end = mid - 1;
 
 
         }
 
         return end;
 
+
     }
-
-
-
 
     public static void main(String[] args) {
 
         // Aggressive cows
 
-        int[] arr={0,3,4,7,10,9};
-        int cows=4;
-        Arrays.sort(arr);
-        System.out.println(AggressiveCows(arr,cows));
+        int[] arr = {0, 3, 4, 7, 10, 9};
+        int cows = 4;
+        System.out.println(AggressiveCows(arr, cows));
 
 
     }
