@@ -38,12 +38,57 @@ public class Q8 {
         return maxLength;
     }
 
+
+    static int longest(int[] arr,int k){
+
+        //Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(1)
+
+        // only for positive input
+
+
+        int n = arr.length;
+        int sum = 0;
+        int maxLength = 0;
+
+
+        int left = 0;
+
+        for (int right = 0; right < n; right++) {
+
+            sum += arr[right];
+
+            if (sum == k) {
+
+                maxLength = Math.max(maxLength, right - left + 1);
+
+
+            }
+
+            while (sum > k) {
+
+                sum -= arr[left];
+                left++;
+            }
+
+
+            maxLength = Math.max(maxLength, right - left + 1);
+
+
+        }
+
+        return maxLength;
+
+
+    }
+
     public static void main(String[] args) {
 
         // Longest subArray with sum k (Positives)
 
         int[] arr={1,2,3,1,1,1,1,4,2,3};
         System.out.println(longestSubArrSumK(arr,3));
+        System.out.println(longest(arr,3));
 
 
 

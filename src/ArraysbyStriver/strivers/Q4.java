@@ -2,27 +2,37 @@ package ArraysbyStriver.strivers;
 
 public class Q4 {
 
-    static int removeDuplicates(int[] arr){
+    static int removeDuplicates(int[] arr) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        if(arr.length==0) return 0;
+        int n = arr.length;
 
-        int pos=1;
-        int prevAns=arr[0];
+        if (arr.length < 1) return 0;
 
-        for(int i=1;i<arr.length;i++){
 
-            if(arr[i]!=prevAns){
-                arr[pos++]=arr[i];
-                prevAns=arr[i];
+        int count = 1;
+        int j = 1;
+
+        for (int i = 1; i < n; i++) {
+
+            if (arr[i] != arr[i - 1]) {
+
+                arr[j] = arr[i];
+                j++;
+                count++;
+
             }
 
 
         }
-        return pos;
+
+
+        return count;
+
     }
+
 
 
 

@@ -6,69 +6,81 @@ import java.util.List;
 
 public class Q3 {
 
-    static List<Integer> Intersection(int[] arr1,int[] arr2){
+    static List<Integer> Intersection(int[] arr1, int[] arr2) {
 
-        // Duplicates
+         // intersection of 2 sorted arrays with Duplicates
 
-        //Time Complexity (TC): O(n + m)
+        //Time Complexity (TC): O(m + n)
         //Space Complexity (SC): O(min(n, m))
 
-        int i=0;
-        int j=0;
+        int m = arr1.length;
+        int n = arr2.length;
 
-        ArrayList<Integer> list=new ArrayList<>();
+        int i = 0;
+        int j = 0;
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        while (i < m && j < n) {
+
+            if (arr1[i] < arr2[j]) {
+
+                i++;
+            } else if (arr1[i] > arr2[j]) {
+
+                j++;
 
 
-        while (i<arr1.length && j<arr2.length){
+            } else {
 
-            if(arr1[i]==arr2[j]){
-                list.add(arr1[i]);
+
+                result.add(arr1[i]);
+
+
                 i++;
                 j++;
 
 
             }
-
-
-            else if(arr1[i]<arr2[j]) {
-                i++;
-
-            }
-
-            else {
-                j++;
-            }
-
-
-
-
         }
 
 
-        return list;
+        return result;
+
     }
 
-    static int[] IntersectionWithNoDuplicates(int[] nums1,int[] nums2){
+    static ArrayList<Integer> IntersectionWithNoDuplicates(int[] arr1, int[] arr2) {
 
-        // No duplicates
+        // intersection of 2 sorted arrays without duplicates
 
-        //Time Complexity (TC): O(n log n + m log m)
+
+
+        //Time Complexity (TC): O(m + n)
         //Space Complexity (SC): O(min(n, m))
 
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        int i=0;
-        int j=0;
+        int m = arr1.length;
+        int n = arr2.length;
 
-        ArrayList<Integer> list=new ArrayList<>();
+        int i = 0;
+        int j = 0;
 
-        while (i<nums1.length && j<nums2.length){
+        ArrayList<Integer> result = new ArrayList<>();
 
-            if(nums1[i]==nums2[j]){
+        while (i < m && j < n) {
 
-                if(list.isEmpty() || list.get(list.size()-1)!=nums1[i]){
-                    list.add(nums1[i]);
+            if (arr1[i] < arr2[j]) {
 
+                i++;
+            } else if (arr1[i] > arr2[j]) {
+
+                j++;
+
+
+            } else {
+
+                if (result.isEmpty() || arr1[i] != result.get(result.size() - 1)) {
+
+                    result.add(arr1[i]);
                 }
 
                 i++;
@@ -76,44 +88,85 @@ public class Q3 {
 
 
             }
-
-
-            else if(nums1[i]<nums2[j]) {
-                i++;
-
-            }
-
-            else {
-                j++;
-            }
-
-
-
-
         }
 
-
-        int[] result=new int[list.size()];
-
-        for(int k=0;k<list.size();k++){
-            result[k]=list.get(k);
-        }
 
         return result;
+
+
+    }
+
+
+    static int intersect(int[] arr1,int[] arr2){
+
+        // intersection of 2 unsorted arrays without duplicates
+
+        //Time Complexity (TC): O(m log m + n log n)
+        //Space Complexity (SC): O(min(n, m))
+
+
+        int m=arr1.length;
+        int n=arr2.length;
+
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        int i = 0;
+        int j = 0;
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+
+        while (i < m && j < n) {
+
+            if (arr1[i] < arr2[j]) {
+
+                i++;
+            } else if (arr1[i] > arr2[j]) {
+
+                j++;
+
+
+            } else {
+
+                if (result.isEmpty() || arr1[i] != result.get(result.size() - 1)) {
+
+                    result.add(arr1[i]);
+                }
+
+                i++;
+                j++;
+
+
+            }
+        }
+
+
+        return result.size() ;
+
+
+
+
+
     }
 
     public static void main(String[] args) {
 
-        // intersection of 2 arrays
 
-        int[] arr1={1,2,2,3,3,4,5,6};
-        int[] arr2={2,3,3,5,6,6,7};
 
-        List<Integer> Ans=Intersection(arr1,arr2);
+        int[] arr1 = {1, 2, 2, 3, 3, 4, 5, 6};
+        int[] arr2 = {2, 3, 3, 5, 6, 6, 7};
+
+        List<Integer> Ans = Intersection(arr1, arr2);
         System.out.println(Ans);
-        int[] intersection=IntersectionWithNoDuplicates(arr1,arr2);
-        System.out.println(Arrays.toString(intersection));
+        ArrayList<Integer> intersection = IntersectionWithNoDuplicates(arr1, arr2);
+        System.out.println(intersection);
 
+
+        int[] a={1,2,4,3,5,6};
+        int[] b={3,4,5,6,7};
+
+        System.out.println(intersect(a,b));
 
     }
 }

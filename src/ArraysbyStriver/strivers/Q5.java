@@ -7,18 +7,29 @@ public class Q5 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int n=arr.length;
+        int n = arr.length;
 
-        int totalSum=n*(n+1)/2;
+        int sumOfN = 0;
 
-        int sum=0;
+        for (int i = 1; i <= n; i++) {
 
-        for(int i=0;i<arr.length;i++){
-            sum+=arr[i];
+            sumOfN += i;
         }
 
-        int missing=totalSum-sum;
-        return missing;
+
+        int sumOfArr = 0;
+
+        for (int ele : arr) {
+
+            sumOfArr += ele;
+
+
+        }
+
+        return sumOfN - sumOfArr;
+
+
+
     }
 
     public static void main(String[] args) {

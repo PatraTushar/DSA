@@ -7,24 +7,27 @@ public class Q6 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int max=0;
-        int count=0;
+        int max1s = Integer.MIN_VALUE;
+        int count1s = 0;
 
-        for(int i=0;i<arr.length;i++){
+        for (int ele : arr) {
 
-            if(arr[i]==1){
-                count++;
+            if (ele == 1) {
 
+                count1s++;
+            } else {
+
+                max1s = Math.max(max1s, count1s);
+                count1s = 0;
             }
-            else {
-               max=Math.max(max,count);
-                count=0;
-            }
-
         }
 
-        max=Math.max(max,count);
-        return max;
+
+        max1s=Math.max(max1s,count1s);
+
+        return max1s;
+
+
     }
 
     public static void main(String[] args) {
