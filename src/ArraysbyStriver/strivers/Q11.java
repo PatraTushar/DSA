@@ -38,39 +38,39 @@ public class Q11 {
 
     }
 
-    static int majorityElementI(int[] nums){
+    static int majorityElementI(int[] arr) {
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        int count=0;
-        int element=0;
+        int ele = 0;
+        int count = 0;
 
-        for(int i=0;i<nums.length;i++){
+        for (int num : arr) {
 
-            if(count==0){
+            if (count == 0) {
+
+                ele = num;
+                count++;
+            } else if (ele == num) {
 
                 count++;
-                element=nums[i];
-            }
+            } else {
 
-            else if(nums[i]==element){
-                count++;
-            }
-
-            else{
                 count--;
             }
+
+
         }
 
-        return element;
+        return ele;
     }
 
     public static void main(String[] args) {
 
         // majority element (leeTCode-->169)
 
-        int[] arr={2,2,3,3,1,2,2};
+        int[] arr = {2, 2, 3, 3, 1, 2, 2};
         System.out.println(majorityElement(arr));
         System.out.println(majorityElementI(arr));
     }

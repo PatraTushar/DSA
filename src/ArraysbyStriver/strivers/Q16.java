@@ -1,6 +1,7 @@
 package ArraysbyStriver.strivers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Q16 {
 
@@ -9,20 +10,28 @@ public class Q16 {
        // Time Complexity: O(n)
       //  Space Complexity: O(n)
 
-        ArrayList<Integer> list=new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        int n = arr.length;
 
-        int max=Integer.MIN_VALUE;
+        result.add(arr[n - 1]);
 
-        for(int i=arr.length-1;i>=0;i--){
+        int max = arr[n - 1];
 
-            if(arr[i]>max){
-                max=arr[i];
-                list.add(arr[i]);
+        for (int i = n - 2; i >= 0; i--) {
+
+            if (arr[i] >= max) {
+
+                result.add(arr[i]);
+                max = arr[i];
+
 
             }
         }
 
-        return list;
+        Collections.reverse(result);
+        return result;
+
+
 
 
     }

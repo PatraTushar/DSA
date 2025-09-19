@@ -7,25 +7,22 @@ public class Q12 {
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        int MAX=Integer.MIN_VALUE;
-        int sum=0;
+        int maxSum = Integer.MIN_VALUE;
+        int sum = 0;
 
-        for(int i=0;i<num.length;i++){
+        for (int ele : num) {
 
-            sum+=num[i];
+            sum += ele;
 
-            if(sum>MAX){
-                MAX=sum;
-            }
+            maxSum = Math.max(sum, maxSum);
 
-            if(sum<0){
-                sum=0;
-            }
+            if (sum < 0) sum = 0;
 
 
         }
 
-        return MAX;
+        return maxSum;
+
     }
 
     public static void main(String[] args) {
