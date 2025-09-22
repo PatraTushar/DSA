@@ -44,10 +44,12 @@ public class Q25 {
         long s1=0;
         long s2=0;
 
-        for(int i=0;i<arr.length;i++){
-            s1+=arr[i];
-            s2+=(long) arr[i]*(long) arr[i];
+        for (int ele : arr) {
+
+            s1 += ele;
+            s2 += (long) ele * (long) ele;
         }
+
 
         long val1=s1-s1N; // x-y   //-4
         long val2=s2-s2N;         //-24
