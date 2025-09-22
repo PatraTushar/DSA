@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Q21 {
 
-    static List<List<Integer>> fourSum(int[] arr,int target) {
+    static List<List<Integer>> fourSum(int[] arr, int target) {
 
-        //Time Complexity (TC): O(n³)
+        //Time Complexity (TC): O(n log n + n³) = O(n³)
         //Space Complexity (SC):
         //O(1) (excluding the space used for the output list)
         //O(k) where k is the number of quadruplets in the result.
@@ -16,15 +16,20 @@ public class Q21 {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(arr);
 
-        int i = 0;
+
         int n = arr.length;
+
+        if (n < 4) return result;
+
+        int i = 0;
+
 
         while (i < n - 3) {
 
             int j = i + 1;
 
-
             while (j < n - 2) {
+
                 int k = j + 1;
                 int l = n - 1;
 
@@ -33,63 +38,49 @@ public class Q21 {
                     long sum = (long) arr[i] + arr[j] + arr[k] + arr[l];
 
                     if (sum < target) {
+
                         k++;
-                    }
-                    else if (sum > target) {
+                    } else if (sum > target) {
+
                         l--;
-                    }
-                    else {
+                    } else {
 
-                        List<Integer> sum4=Arrays.asList(arr[i],arr[j],arr[k],arr[l]);
-                        result.add(sum4);
+                        List<Integer> quadruplets = Arrays.asList(arr[i], arr[j], arr[k], arr[l]);
+                        result.add(quadruplets);
 
 
-                        int eleK=arr[k];
-                        int eleL=arr[l];
+                        int eleK = arr[k];
+                        int eleL = arr[l];
 
-                        while (k<l && eleK==arr[k]){
-                            k++;
-                        }
-
-                        while (k<l && eleL==arr[l]){
-                            l--;
-                        }
+                        while (k < l && eleK == arr[k]) k++;
+                        while (k < l && eleL == arr[l]) l--;
 
                     }
-                }
-
-
-                int eleJ=arr[j];
-
-                while (j<n-2 && eleJ==arr[j]){
-                    j++;
 
                 }
+
+                int eleJ = arr[j];
+                while (j < n - 2 && eleJ == arr[j]) j++;
+
+
             }
 
-            int eleI=arr[i];
-            while (i<n-3 && eleI==arr[i]){
-                i++;
-            }
-
-
+            int eleI = arr[i];
+            while (i < n - 3 && eleI == arr[i]) i++;
         }
 
         return result;
-
-
-
 
 
     }
 
     public static void main(String[] args) {
 
-        // 4 sum (leeTCode->15)
+        // 4 sum (leeTCode->18)
 
-        int[] arr={1,1,1,2,2,2,3,3,3,4,4,4,5,5};
-        int target=8;
-        List<List<Integer>> ans=fourSum(arr,target);
+        int[] arr = {1, 0, -1, 0, -2, 2};
+        int target = 0;
+        List<List<Integer>> ans = fourSum(arr, target);
         System.out.println(ans);
 
     }

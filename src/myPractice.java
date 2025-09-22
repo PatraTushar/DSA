@@ -2,75 +2,62 @@ import java.util.*;
 
 public class myPractice {
 
-    static void setRowZeroes(int[][] arr, int row, int col) {
 
-        for (int i = 0; i < col; i++) {
+    static List<List<Integer>> threeSum(int[] arr) {
 
-           if (arr[row][i] !=0) arr[row][i] = -1;
-        }
+        Arrays.sort(arr);
 
+        int n = arr.length;
+        int i = 0;
 
-    }
-
-
-    static void setColsZeroes(int[][] arr, int row, int col) {
-
-        for (int i = 0; i < row; i++) {
-
-           if (arr[i][col]!=0)arr[i][col] = -1;
-        }
+        List<List<Integer>> result = new ArrayList<>();
 
 
-    }
+        while (i < n - 2) {
 
-    static int[][] func(int[][] arr) {
+            int j = i + 1;
+            int k = n - 1;
 
-        int rows = arr.length ;
-        int cols = arr[0].length ;
+            while (j < k) {
 
-        for (int i = 0; i < rows; i++) {
+                int sum = arr[i] + arr[j] + arr[k];
 
-            for (int j = 0; j < cols; j++) {
+                if (sum < 0) {
 
-                if (arr[i][j] == 0) {
+                    j++;
+                } else if (sum > 0) {
 
-                    setRowZeroes(arr, i, cols);
-                    setColsZeroes(arr, rows, j);
+                    k--;
+                } else {
 
+                    List<Integer> triplets = Arrays.asList(arr[i], arr[j], arr[k]);
+                    result.add(triplets);
 
+                    int eleJ = arr[j];
+                    int eleK = arr[k];
+
+                    while (j < k && arr[j] == eleJ) j++;
+                    while (j < k && arr[k] == eleK) k--;
                 }
             }
+
+            int eleI = arr[i];
+            while (i < j && eleI == arr[i]) i++;
+
+
         }
 
-
-        for (int i = 0; i < rows; i++) {
-
-            for (int j = 0; j < cols; j++) {
-
-                if (arr[i][j] == -1) {
-
-                    arr[i][j] = 0;
-
-
-                }
-            }
-        }
-
-
-        return arr;
-
-
+        return result;
     }
-
 
     public static void main(String[] args) {
 
-        int[][] arr = {{1, 1, 1, 1}, {1, 0, 0, 1}, {1, 1, 0, 1}, {1, 1, 1, 1}};
-        int[][] ans=func(arr);
-        System.out.println(Arrays.deepToString(ans));
-
-
+        int[] arr = {-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> ans = threeSum(arr);
+        System.out.println(ans);
     }
+
+
 }
 
 

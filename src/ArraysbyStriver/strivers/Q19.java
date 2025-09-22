@@ -38,55 +38,59 @@ public class Q19 {
 
     }
 
-    static List<Integer> majorityElementII(int[] nums) {  // optimal approach
+    static List<Integer> majorityElementII(int[] arr) {  // optimal approach
 
-       // Time Complexity: O(n)
+        // Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        int n= nums.length;
+        int n = arr.length;
+        int ele1 = 0;
+        int count1 = 0;
+        int ele2 = 0;
+        int count2 = 0;
         List<Integer> result = new ArrayList<>();
 
+        for (int num : arr) {
 
-        int count1 = 0;
-        int count2 = 0;
-        int element1 = Integer.MIN_VALUE;
-        int element2 = Integer.MIN_VALUE;
+            if (num == ele1) {
 
-        for (int i = 0; i < nums.length; i++) {
-
-            if (count1 == 0 && nums[i] != element2) {
                 count1++;
-                element1 = nums[i];
 
-            } else if (count2 == 0 && nums[i] != element1) {
+
+            } else if (num == ele2) {
+
                 count2++;
-                element2 = nums[i];
+            } else if (count1 == 0) {
 
-            } else if (element1 == nums[i]) {
+                ele1 = num;
                 count1++;
-            } else if (element2 == nums[i]) {
-                count2++;
+            } else if (count2 == 0) {
 
+                ele2 = num;
+                count2++;
             } else {
+
                 count1--;
                 count2--;
             }
+
         }
+
 
         count1 = 0;
         count2 = 0;
 
-        for(int i=0;i<nums.length;i++){
+        for (int num : arr) {
 
-            if(element1==nums[i]) count1++;
-            if(element2==nums[i]) count2++;
-
+            if (num == ele1) count1++;
+            if (num == ele2) count2++;
         }
 
-        int min=n/3;
+        int majority = n / 3;
 
-        if(count1>min)result.add(element1);
-        if(count2>min)result.add(element2);
+        if (count1 > majority) result.add(ele1);
+        if (count2 > majority) result.add(ele2);
+
 
         return result;
 

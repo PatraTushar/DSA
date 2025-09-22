@@ -5,74 +5,58 @@ import java.util.*;
 public class Q20 {
 
 
-    static List<List<Integer>> threeSum(int[] arr){
+    static List<List<Integer>> threeSum(int[] arr) {
 
-        //   Time Complexity (TC): O(n^2)
+        //   Time Complexity (TC): O(n log n + n^2)=O(n^2)
         //  Space Complexity (SC): O(k)
-
-        List<List<Integer>> result=new ArrayList<>();
-
-        int i=0;
-
-        int n=arr.length;
 
         Arrays.sort(arr);
 
+        int n = arr.length;
 
 
+        int i = 0;
 
-        while (i<n-2){
+        List<List<Integer>> result = new ArrayList<>();
 
-            int j=i+1;
-            int k=n-1;
+        if (n < 3) return result;
 
-            while (j<k){
 
-                int sum=arr[i]+arr[j]+arr[k];
+        while (i < n - 2) {
 
-                if(sum<0){
+            int j = i + 1;
+            int k = n - 1;
+
+            while (j < k) {
+
+                int sum = arr[i] + arr[j] + arr[k];
+
+                if (sum < 0) {
+
                     j++;
-                }
+                } else if (sum > 0) {
 
-                else if(sum>0){
                     k--;
-                }
+                } else {
 
-                else {
-
-                    List<Integer> triplets=Arrays.asList(arr[i],arr[j],arr[k]);
+                    List<Integer> triplets = Arrays.asList(arr[i], arr[j], arr[k]);
                     result.add(triplets);
 
-                    int eleJ=arr[j];
-                    int eleK=arr[k];
+                    int eleJ = arr[j];
+                    int eleK = arr[k];
 
-                    while (j<k && arr[j]==eleJ){
-                        j++;
-                    }
-
-                    while (j<k && arr[k]==eleK){
-                        k--;
-
-                    }
-
-
-
-
-
+                    while (j < k && arr[j] == eleJ) j++;
+                    while (j < k && arr[k] == eleK) k--;
                 }
             }
 
-
-            int eleI=arr[i];
-            while (i<n-2 && arr[i]==eleI){
-                i++;
-            }
+            int eleI = arr[i];
+            while (i < j && eleI == arr[i]) i++;
 
 
         }
 
         return result;
-
 
 
     }
@@ -81,8 +65,8 @@ public class Q20 {
 
         // 3 sum (leeTCode->15)
 
-        int[] arr={-1,0,1,2,-1,4};
-        List<List<Integer>> ans=threeSum(arr);
+        int[] arr = {-1, 0, 1, 2, -1, 4};
+        List<List<Integer>> ans = threeSum(arr);
         System.out.println(ans);
     }
 }
