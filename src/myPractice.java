@@ -2,61 +2,81 @@ import java.util.*;
 
 public class myPractice {
 
+    static void swap(int[] arr1, int[] arr2, int left, int right) {
 
-    static List<List<Integer>> threeSum(int[] arr) {
+        if (arr1[left] > arr2[right]) {
 
-        Arrays.sort(arr);
-
-        int n = arr.length;
-        int i = 0;
-
-        List<List<Integer>> result = new ArrayList<>();
+            int temp = arr1[left];
+            arr1[left] = arr2[right];
+            arr2[right] = temp;
+        }
 
 
-        while (i < n - 2) {
+    }
 
-            int j = i + 1;
-            int k = n - 1;
+    static void merge(int[] a, int[] b) {
 
-            while (j < k) {
+        int m = a.length;
+        int n = b.length;
 
-                int sum = arr[i] + arr[j] + arr[k];
+        int length = m + n;
+        int gap = length / 2 + length % 2;
 
-                if (sum < 0) {
 
-                    j++;
-                } else if (sum > 0) {
+        while (gap >0) {
 
-                    k--;
+            int left = 0;
+            int right = gap;
+
+
+            while (right < length) {
+
+                // one pointer is in arr1 and one pointer is in arr2
+
+                if (left < m && right < m) {
+
+                    swap(a, a, left, right);
+
+
+                } else if (left < m && right >= m) {
+
+                    swap(a, b, left, right - m);
+
+
                 } else {
 
-                    List<Integer> triplets = Arrays.asList(arr[i], arr[j], arr[k]);
-                    result.add(triplets);
+                    swap(b, b, right - m, right - m);
 
-                    int eleJ = arr[j];
-                    int eleK = arr[k];
 
-                    while (j < k && arr[j] == eleJ) j++;
-                    while (j < k && arr[k] == eleK) k--;
                 }
+
+                left++;
+                right++;
+
+
             }
 
-            int eleI = arr[i];
-            while (i < j && eleI == arr[i]) i++;
-
+            if (gap==1 ) break;
+            gap = gap / 2 + gap % 2;
 
         }
 
-        return result;
+        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(b));
+
+
     }
+
 
     public static void main(String[] args) {
 
-        int[] arr = {-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> ans = threeSum(arr);
-        System.out.println(ans);
-    }
+        int[] arr1 = {2, 4, 7, 10};
+        int[] arr2 = {2, 3};
+        merge(arr1, arr2);
 
+
+
+    }
 
 }
 

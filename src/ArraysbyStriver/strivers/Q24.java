@@ -6,25 +6,23 @@ public class Q24 {
 
     static void mergeI(int[] arr1, int m, int[] arr2, int n) {   // brute force approach
 
-      //  Time Complexity: O(m + n)
-      //  Space Complexity: O(m + n)
+        //  Time Complexity: O(m + n)
+        //  Space Complexity: O(m + n)
 
-        int[] result=new int[m+n];
+        int[] result = new int[m + n];
 
-        int i=0;
-        int j=0;
-        int k=0;
+        int i = 0;
+        int j = 0;
+        int k = 0;
 
-        while(i<m && j<n){
-            if(arr1[i]<=arr2[j]){
+        while (i < m && j < n) {
+            if (arr1[i] <= arr2[j]) {
 
-                result[k]=arr1[i];
+                result[k] = arr1[i];
                 i++;
 
-            }
-
-            else{
-                result[k]=arr2[j];
+            } else {
+                result[k] = arr2[j];
                 j++;
 
             }
@@ -33,15 +31,14 @@ public class Q24 {
         }
 
 
-
-        while(i<m){
-            result[k]=arr1[i];
+        while (i < m) {
+            result[k] = arr1[i];
             i++;
             k++;
         }
 
-        while(j<n){
-            result[k]=arr2[j];
+        while (j < n) {
+            result[k] = arr2[j];
             j++;
             k++;
         }
@@ -53,30 +50,27 @@ public class Q24 {
         System.out.println(Arrays.toString(arr1));
 
 
-
     }
 
-    static void mergeII(int[] arr1,int m,int[] arr2,int n){
+    static void mergeII(int[] arr1, int m, int[] arr2, int n) {
 
         // Optimal solution of leeTCode 88
 
         //Time Complexity: O(m + n)
         //Space Complexity: O(1)
 
-        int i=m-1;
-        int j=n-1;
-        int k=m+n-1;
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
 
-        while (i>=0 && j>=0){
+        while (i >= 0 && j >= 0) {
 
-            if(arr1[i]>arr2[j]){
-                arr1[k]=arr1[i];
+            if (arr1[i] > arr2[j]) {
+                arr1[k] = arr1[i];
                 i--;
-            }
+            } else {
 
-            else {
-
-                arr1[k]=arr2[j];
+                arr1[k] = arr2[j];
                 j--;
             }
             k--;
@@ -85,16 +79,16 @@ public class Q24 {
         System.out.println(Arrays.toString(arr1));
     }
 
-    static void swapIfGreater(int[] arr1,int[] arr2,int i,int j){
+    static void swapIfGreater(int[] arr1, int[] arr2, int i, int j) {
 
-        if(arr1[i]>arr2[j]){
-            int temp=arr1[i];
-            arr1[i]=arr2[j];
-            arr2[j]=temp;
+        if (arr1[i] > arr2[j]) {
+            int temp = arr1[i];
+            arr1[i] = arr2[j];
+            arr2[j] = temp;
         }
     }
 
-    static void merge(int[] arr1,int[] arr2,int m,int n){
+    static void merge(int[] arr1, int[] arr2, int m, int n) {
 
         //TC = O((m + n) * log(m + n))
         //SC = O(1)
@@ -106,16 +100,16 @@ public class Q24 {
         //Using the Gap Method (Shell Sort concept) to do this in-place (i.e., without using extra space)
         //Ensuring the final result is sorted across both arrays
 
-        int length=m+n;
-        int gap=(length/2)+(length%2);
+        int length = m + n;
+        int gap = (length / 2) + (length % 2);
 
 
-        while (gap>0){
+        while (gap > 0) {
 
-            int left=0;
-            int right=gap;
+            int left = 0;
+            int right = gap;
 
-            while (right<length){
+            while (right < length) {
 
 
                 // Case 1: both pointers in arr1
@@ -137,9 +131,8 @@ public class Q24 {
                 right++;
             }
 
-            if(gap==1) break;
-            gap=(gap/2)+(gap%2);
-
+            if (gap == 1) break;
+            gap = (gap / 2) + (gap % 2);
 
 
         }
@@ -151,21 +144,15 @@ public class Q24 {
     }
 
 
-
-
-
-
     public static void main(String[] args) {
 
         // merge sorted array (leeTCode->88)
-        int[] arr1={1,2,3,0,0,0};
-        int m=3;
-        int[] arr2={2,5,6};
-        int n=3;
-        merge(arr1,arr2,m,n);
-        mergeII(arr1,m,arr2,n);
-
-
+        int[] arr1 = {1, 2, 3, 0, 0, 0};
+        int m = 3;
+        int[] arr2 = {2, 5, 6};
+        int n = 3;
+        merge(arr1, arr2, m, n);
+        mergeII(arr1, m, arr2, n);
 
 
     }
