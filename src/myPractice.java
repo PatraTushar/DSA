@@ -3,45 +3,57 @@ import java.util.*;
 public class myPractice {
 
 
-    static ArrayList<Integer> func(int[] arr) {
+    static int findKth(int[] arr1, int[] arr2, int k) {
 
-        long n = arr.length;
-        ArrayList<Integer> result = new ArrayList<>();
+        int m = arr1.length;
+        int n = arr2.length;
 
-        long s1 = 0;
-        long s1n = (n * (n + 1)) / 2;
-        long s2 = 0;
-        long s2n = (n * (n + 1) * (2 * n + 1)) / 6;
+        if (m > n) return findKth(arr2, arr1, k);
 
 
-        for (int ele : arr) {
+        int low = Math.max(0, k - n);
+        int high = Math.min(k, m);
 
-            s1 += ele;
-            s2 += (long) ele * (long) ele;
+        while (low <= high) {
+
+            int mid1 = low + (high - low) / 2;
+            int mid2 = k - mid1;
+
+            int l1 = mid1 > 0 ? arr1[mid1 - 1] : Integer.MIN_VALUE;
+            int l2 = mid2 > 0 ? arr2[mid2 - 1] : Integer.MIN_VALUE;
+            int r1 = mid1 < m ? arr1[mid1] : Integer.MAX_VALUE;
+            int r2 = mid2 < n ? arr2[mid2] : Integer.MAX_VALUE;
+
+            if (l1 <= r2 && l2 <= r1) {
+
+                return Math.max(l1, l2);
+
+
+            } else if (l1 > r2) {
+
+                high = mid1 - 1;
+            } else {
+
+                low = mid1 + 1;
+            }
+
         }
 
-
-        long val1 = s1 - s1n;
-        long val2 = s2 - s2n;
-        val2 = val2 / val1;
-
-        long x = (val1 + val2) / 2;
-        long y = x - val1;
-
-        result.add((int) x);
-        result.add((int) y);
-        return result;
+        return 0;
 
 
     }
+
 
     public static void main(String[] args) {
 
-        int[] arr = {4, 3, 6, 2, 1, 1};
+
+        int[] arr1 = {2, 3, 6, 7, 9};
+        int[] arr2 = {1, 4, 8, 10};
+        System.out.println(findKth(arr1, arr2, 5));
 
 
     }
-
 }
 
 

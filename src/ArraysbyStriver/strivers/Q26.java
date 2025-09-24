@@ -2,117 +2,105 @@ package ArraysbyStriver.strivers;
 
 public class Q26 {
 
-    static double findMedianSortedArrays(int[] nums1, int[] nums2) {    //brute force approach
+    static double findMedianSortedArrays(int[] arr1, int[] arr2) {    //brute force approach
 
         //Time Complexity: O(m + n)
-       // Space Complexity: O(m + n)
+        // Space Complexity: O(m + n)
 
-        int m=nums1.length;
-        int n=nums2.length;
-        int[] result=new int[m+n];
-        int i=0;
-        int j=0;
-        int k=0;
+        int m = arr1.length;
+        int n = arr2.length;
 
-        while(i<m && j<n){
+        int[] result = new int[m + n];
 
-            if(nums1[i]<=nums2[j]){
-                result[k]=nums1[i];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < m && j < n) {
+
+            if (arr1[i] <= arr2[j]) {
+
+                result[k++] = arr1[i];
                 i++;
+            } else {
 
-            }
-
-            else{
-
-                result[k]=nums2[j];
+                result[k++] = arr2[j];
                 j++;
-
             }
-            k++;
+
+
         }
 
-        while(i<m){
-            result[k]=nums1[i];
-            i++;
-            k++;
+
+        while (i < m) {
+
+            result[k++] = arr1[i++];
         }
 
-        while(j<n){
-
-            result[k]=nums2[j];
-            j++;
-            k++;
+        while (j < n) {
+            result[k++] = arr2[j++];
         }
 
-        int a=result.length;
 
-        if(a%2==0){
+        int length = result.length;
 
-            long mid1=result[a/2];
-            long mid2=(result[a/2-1]);
+        if (length % 2 == 0) {
 
-            return (mid1+mid2)/2.0;
+            int mid1 = (length / 2) - 1;
+            int mid2 = (length / 2);
+
+
+            return (result[mid1] + result[mid2]) / 2.0;
         }
 
-        return result[a/2];
 
+        return result[length / 2];
     }
 
-    static double findMedianOf2SortedArrays(int[] nums1,int[] nums2){  // optimal approach
+    static double findMedianOf2SortedArrays(int[] arr1, int[] arr2) {  // optimal approach
 
-       // Time Complexity: O(log min(n1,n2))
-       // Space Complexity: O(1)
+        // Time Complexity: O(log min(n1,n2))
+        // Space Complexity: O(1)
 
-        int n1=nums1.length;
-        int n2=nums2.length;
-        int partitions=(n1+n2+1)/2;
-        int n=n1+n2;
+        int m = arr1.length;
 
-        if (n1>n2) return findMedianOf2SortedArrays(nums2,nums1);
+        int n = arr2.length;
 
-        int low=0;
-        int high=n1;
+        if (m > n) return findMedianOf2SortedArrays(arr2, arr1);
 
-        while (low<=high){
-
-            int mid1=low+(high-low)/2;
-            int mid2=partitions-mid1;
-            int l1=Integer.MIN_VALUE;
-            int l2=Integer.MIN_VALUE;
-            int r1=Integer.MAX_VALUE;
-            int r2=Integer.MAX_VALUE;
-
-            if(mid1<n1) r1=nums1[mid1];
-            if(mid2<n2) r2=nums2[mid2];
-            if(mid1>0) l1=nums1[mid1-1];
-            if(mid2>0) l2=nums2[mid2-1];
-
-            if(l1<=r2 && l2<=r1){
-
-                if(n%2!=0){
-                    return Math.max(l1,l2);
-                }
-
-                else {
-
-                    return (double) ( Math.max(l1,l2)+  Math.min(r1,r2))/2.0;
-
-                }
-
-            }
-
-            else if(l1>r2) high=mid1-1;
-
-            else low=mid1+1;
+        int length = m + n;
+        int partition = (length + 1) / 2;
 
 
+        int low = 0;
+        int high = m;
+
+        while (low <= high) {
+
+
+            int mid1 = low + (high - low) / 2;
+            int mid2 = partition - mid1;
+
+
+            int l1 = mid1 > 0 ? arr1[mid1 - 1] : Integer.MIN_VALUE;
+            int l2 = mid2 > 0 ? arr2[mid2 - 1] : Integer.MIN_VALUE;
+            int r1 = mid1 < m ? arr1[mid1] : Integer.MAX_VALUE;
+            int r2 = mid2 < n ? arr2[mid2] : Integer.MAX_VALUE;
+
+
+            if (l1 <= r2 && l2 <= r1) {
+
+                if (length % 2 == 0) return (double) (Math.max(l1, l2) + Math.min(r1, r2)) / 2.0;
+
+                else return Math.max(l1, l2);
+            } else if (l2 > r1) low = mid1 + 1;
+
+            else high = mid1 - 1;
 
 
         }
 
         return 0;
-
-
 
 
     }
@@ -121,14 +109,13 @@ public class Q26 {
 
         // median of 2 sorted arrays
 
-        int[] arr1={1,3,4,7,10,12};
-        int[] arr2={2,3,6,15};
+        int[] arr1 = {1, 3, 4, 7, 10, 12};
+        int[] arr2 = {2, 3, 6, 15};
 
 
-
-        double ans=findMedianSortedArrays(arr1,arr2);
+        double ans = findMedianSortedArrays(arr1, arr2);
         System.out.println(ans);
-        double result=findMedianOf2SortedArrays(arr1,arr2);
+        double result = findMedianOf2SortedArrays(arr1, arr2);
         System.out.println(result);
 
     }
