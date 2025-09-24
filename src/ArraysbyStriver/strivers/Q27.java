@@ -31,6 +31,7 @@ public class Q27 {
                 return Math.max(l1, l2);
 
 
+
             } else if (l1 > r2) {
 
                 high = mid1 - 1;
