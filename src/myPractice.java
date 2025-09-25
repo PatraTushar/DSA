@@ -2,40 +2,21 @@ import java.util.*;
 
 public class myPractice {
 
+    static int maxCountOf1sInTheRow(int[] arr, int cols) {
 
-    static int findKth(int[] arr1, int[] arr2, int k) {
-
-        int m = arr1.length;
-        int n = arr2.length;
-
-        if (m > n) return findKth(arr2, arr1, k);
-
-
-        int low = Math.max(0, k - n);
-        int high = Math.min(k, m);
+        int low = 0;
+        int high = cols-1;
 
         while (low <= high) {
 
-            int mid1 = low + (high - low) / 2;
-            int mid2 = k - mid1;
+            int mid = low + (high - low) / 2;
 
-            int l1 = mid1 > 0 ? arr1[mid1 - 1] : Integer.MIN_VALUE;
-            int l2 = mid2 > 0 ? arr2[mid2 - 1] : Integer.MIN_VALUE;
-            int r1 = mid1 < m ? arr1[mid1] : Integer.MAX_VALUE;
-            int r2 = mid2 < n ? arr2[mid2] : Integer.MAX_VALUE;
+            if ((mid == 0 || arr[mid - 1] == 0) && arr[mid] == 1) return arr.length - mid;
 
-            if (l1 <= r2 && l2 <= r1) {
+            else if (arr[mid] == 1) high = mid - 1;
 
-                return Math.max(l1, l2);
+            else low = mid + 1;
 
-
-            } else if (l1 > r2) {
-
-                high = mid1 - 1;
-            } else {
-
-                low = mid1 + 1;
-            }
 
         }
 
@@ -45,12 +26,34 @@ public class myPractice {
     }
 
 
+    static int maximum1s(int[][] arr) {
+
+        int rows = arr.length;
+        int cols = arr[0].length;
+        int rowIndex = -1;
+        int max1s = 0;
+
+        for (int i = 0; i < rows; i++) {
+
+            int currentRowOnes = maxCountOf1sInTheRow(arr[i], cols);
+
+            if (currentRowOnes > max1s) {
+
+                max1s = currentRowOnes;
+                rowIndex = i;
+            }
+
+
+        }
+
+        return rowIndex;
+    }
+
+
     public static void main(String[] args) {
 
-
-        int[] arr1 = {2, 3, 6, 7, 9};
-        int[] arr2 = {1, 4, 8, 10};
-        System.out.println(findKth(arr1, arr2, 5));
+        int[][] arr = {{0, 0, 1, 1, 1}, {0, 0, 0, 0, 0}, {0, 1, 1, 1, 1}, {0, 0, 0, 0, 0}, {0, 1, 1, 1, 1}};
+        System.out.println(maximum1s(arr));
 
 
     }
