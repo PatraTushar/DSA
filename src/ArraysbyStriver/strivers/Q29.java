@@ -4,59 +4,56 @@ import java.util.Arrays;
 
 public class  Q29 {
 
-    static int findMAxInWhichRow(int[][] arr, int rows, int cols){
+    static int findMaxInColumn(int[][] arr, int rows, int colIndex) {
 
-        int max=Integer.MIN_VALUE;
-        int row=-1;
+        int maxRow = -1;
+        int max = Integer.MIN_VALUE;
 
-        for(int i=0;i<rows;i++){
+        for (int i = 0; i < rows; i++) {
 
-            if(arr[i][cols]>max){
-                max=arr[i][cols];
-                row=i;
+            if (arr[i][colIndex] > max) {
+
+                max = arr[i][colIndex];
+                maxRow = i;
             }
-
-
-
         }
 
-        return row;
-
-
+        return maxRow;
     }
 
-    static int[] peakElementII(int[][] arr){
 
-        //Time Complexity (TC): O(n * log m)
+    static int[] peakElementII(int[][] mat){
+
+        //Time Complexity (TC): O(row * log (cols)
         //Space Complexity (SC): O(1)
 
-        int low=0;
-        int high=arr[0].length-1;
-        int rows=arr.length;
-        int cols=arr[0].length;
+        int rows = mat.length;
+        int cols = mat[0].length;
 
-        while (low <= high){
+        int low = 0;
+        int high = cols - 1;
 
-            int mid=low+(high-low)/2;
+        while (low <= high) {
 
-            int rowHasMax= findMAxInWhichRow(arr,rows,mid);
+            int mid = low + (high - low) / 2;
 
-            if((mid==0 || arr[rowHasMax][mid]>arr[rowHasMax][mid-1]) && (mid==cols-1 || arr[rowHasMax][mid] >arr[rowHasMax][mid+1])){
+            int maxRow = findMaxInColumn(mat, rows, mid);
 
-                return new int[]{rowHasMax,mid};
 
-            }
+            if ((mid == 0 || mat[maxRow][mid] > mat[maxRow][mid - 1]) && (mid == cols - 1 || mat[maxRow][mid] > mat[maxRow][mid + 1])) {
 
-            else if(arr[rowHasMax][mid]>arr[rowHasMax][mid+1]){
-                high=mid;
-            }
+                return new int[]{maxRow, mid};
 
-            else {
-                low=mid+1;
-            }
+
+            } else if (mat[maxRow][mid] > mat[maxRow][mid + 1]) {
+
+                high = mid;
+            } else low = mid + 1;
         }
 
-        return new int[]{-1,-1};
+        return new int[]{-1, -1};
+
+
     }
 
 
