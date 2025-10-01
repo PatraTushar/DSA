@@ -43,16 +43,16 @@ public class Q11 {
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        int ele = 0;
+        int majority = 0;
         int count = 0;
 
         for (int num : arr) {
 
             if (count == 0) {
 
-                ele = num;
+                majority = num;
                 count++;
-            } else if (ele == num) {
+            } else if (majority == num) {
 
                 count++;
             } else {
@@ -63,7 +63,7 @@ public class Q11 {
 
         }
 
-        return ele;
+        return majority;
     }
 
     public static void main(String[] args) {
