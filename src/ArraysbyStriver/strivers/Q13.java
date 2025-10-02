@@ -49,25 +49,25 @@ public class Q13 {
         //  Space Complexity: O(1)
 
 
-        int i=0;
-        int j=1;
+        int positive=0;
+        int negative=1;
         int n=arr.length;
 
-        while (i<n && j<n){
+        while (positive<n && negative<n){
 
-            if(arr[i]<0 && arr[j]>0){
+            if(arr[positive]<0 && arr[negative]>0){
 
-                int temp=arr[i];
-                arr[i]=arr[j];
-                arr[j]=temp;
-                i+=2;
-                j+=2;
+                int temp=arr[positive];
+                arr[positive]=arr[negative];
+                arr[negative]=temp;
+                positive+=2;
+                negative+=2;
             }
 
             else {
 
-                if(arr[i]>0) i+=2;
-                if(arr[j]<0) j+=2;
+                if(arr[positive]>0) positive+=2;
+                if(arr[negative]<0) negative+=2;
 
             }
         }
@@ -83,7 +83,7 @@ public class Q13 {
 
         // Rearrange array elements by sign and there is equal number of positives and negatives
 
-        int[] arr={3,1,-2,-5,2,-4};
+        int[] arr={3, 1,2,-12,-5,-4};
         int[] Ans=rearrangeElementsBySign(arr);
         System.out.println(Arrays.toString(Ans));
         int[] Ans1=rearrangeElementsBySignI(arr);

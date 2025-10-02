@@ -77,6 +77,7 @@ public class Q23 {
         int m = a.length;
         int n = b.length;
 
+
         int length = m + n;
         int gap = length / 2 + length % 2;
 
