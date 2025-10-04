@@ -1,10 +1,16 @@
+package ArraysbyStriver.strivers;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class myPractice {
+public class Q32 {
+
 
     static int[][] merge(int[][] intervals) {
+
+        // Time Complexity (TC): O(n log n)
+        //Space Complexity (SC): O(n)
 
         int n = intervals.length;
 
@@ -33,26 +39,21 @@ public class myPractice {
 
         }
 
-        return merge.toArray(new int[merge.size()][]);
+        return merge.toArray(new int[merge.size()][]);              // This converts that List of arrays into an array of arrays.
+
+
 
 
     }
 
-
     public static void main(String[] args) {
 
+        // merge overlapping intervals (leeTCode->56)
+
         int[][] intervals = {{1, 3}, {2, 6}, {8, 9}, {9, 11}, {8, 10}, {2, 4}, {15, 18}, {16, 17}};
-        int[][] ans = merge(intervals);
+       int[][] ans= merge(intervals);
         System.out.println(Arrays.deepToString(ans));
 
 
     }
 }
-
-
-
-
-
-
-
-
