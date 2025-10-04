@@ -1,42 +1,51 @@
-import java.util.Arrays;
+
 
 public class myPractice {
 
+    static int trappingRainWater(int[] heights) {
 
-    static int[] func(int[] arr) {
 
-        int n = arr.length;
+        int n = heights.length;
 
-        int NthSum = n * (n + 1) / 2;
-        int sqrOfNthSum = n * (n + 1) * (2 * n + 1) / 6;
-        int sumOfArr = 0;
-        int sqrSumOfArr = 0;
+        int leftMax = 0;
+        int rightMax = 0;
+        int totalUnits = 0;
 
-        for (int ele : arr) {
+        int left = 0;
+        int right = n - 1;
 
-            sumOfArr += ele;
-            sqrSumOfArr += ele * ele;
+        while (left < right) {
+
+
+            if (heights[left] <= heights[right]) {
+
+                if (leftMax > heights[left]) totalUnits += leftMax - heights[left];
+                else leftMax = heights[left];
+
+                left++;
+
+            } else {
+
+                if (rightMax > heights[right]) totalUnits += rightMax - heights[right];
+                else rightMax = heights[right];
+
+                right--;
+
+
+            }
 
         }
 
+        return totalUnits;
 
-        int val1 = NthSum - sumOfArr;
-        int val2 = sqrOfNthSum - sqrSumOfArr;
-        val2 = val2 / val1;
-
-        int x = (val1 + val2) / 2;
-        int y = x - val1;
-
-        return new int[]{x, y};
 
     }
 
+
     public static void main(String[] args) {
 
-        int[] arr = {4, 3, 6, 2, 1, 1};
-        int[] ans=func(arr);
-        System.out.println(Arrays.toString(ans));
-
+        int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        System.out.println(trappingRainWater(height));
 
     }
 }
