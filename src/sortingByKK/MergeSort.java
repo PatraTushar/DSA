@@ -4,75 +4,71 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-    static void merge(int[] arr,int start,int mid,int end){
+    static int merge(int[] arr, int start, int mid, int end) {
 
-       // Time Complexity: O(n log n)
-      //  Space Complexity: O(n)
+        int count = 0;
+        int left = start;
+        int right = mid + 1;
+        int[] mergedArray = new int[end - start + 1];
+        int k = 0;
 
-        int[] newArr=new int[end-start+1];
+        while (left <= mid && right <= end) {
 
-        int i=start;
-        int j=mid+1;
-        int k=0;
+            if (arr[left] <= arr[right]) mergedArray[k++] = arr[left++];
 
-        while (i<=mid && j<=end ) {
+            else {
 
-            if (arr[i] <= arr[j]) {
-                newArr[k] = arr[i];
-                i++;
+                mergedArray[k++] = arr[right++];
+                count += mid - left + 1;
 
-            } else {
-                newArr[k] = arr[j];
-                j++;
 
             }
+        }
 
-            k++;
+        while (left <= mid) {
+
+            mergedArray[k++] = arr[left++];
+        }
+
+        while (right <= end) {
+
+            mergedArray[k++] = arr[right++];
         }
 
 
-        while (i<=mid){
-            newArr[k]=arr[i];
-            i++;
-            k++;
-        }
-        while (j<=end){
-            newArr[k]=arr[j];
-            j++;
-            k++;
+        for (int i = 0; i < mergedArray.length; i++) {
+
+            arr[start + i] = mergedArray[i];
+
+
         }
 
-        for(int a=0;a<newArr.length;a++){
-            arr[start+a]=newArr[a];
-        }
-
+        return count;
 
 
     }
 
+    static void mergeSort(int[] arr, int start, int end) {
 
-    static void mergeSort(int[] arr,int start,int end){
+        // Time Complexity: O(n log n)
+        //  Space Complexity: O(n)
 
-        if(start>=end) return;
+        if (start >= end) return;
 
+        int mid = start + (end - start) / 2;
 
-        int mid=start+(end-start)/2;
-
-        mergeSort(arr,start,mid);
-        mergeSort(arr,mid+1,end);
-        merge(arr,start,mid,end);
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid + 1, end);
+        merge(arr, start, mid, end);
 
 
     }
 
 
     public static void main(String[] args) {
-        int[] arr={11,1,10,9,6,8,4,2,5,3,7};
-        mergeSort(arr,0, arr.length-1);
+        int[] arr = {11, 1, 10, 9, 6, 8, 4, 2, 5, 3, 7};
+        mergeSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
-
-
-
 
 
     }

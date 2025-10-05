@@ -1,38 +1,41 @@
-public class myPractice {
+package ArraysbyStriver.strivers;
 
-    static int possiblePairs(int[] arr, int start, int mid, int end) {
+public class Q33 {
 
 
-        int right = mid + 1;
+    // Brute Force Approach
+    static int countInversion(int[] arr) {
+
+        // Time Complexity (TC): O(n²)
+        //Space Complexity (SC): O(1)
+
+        int n = arr.length;
+
         int count = 0;
 
-        for (int i = start; i <= mid; i++) {
+        for (int i = 0; i < n - 1; i++) {
 
-            while (right <= end && arr[i] > (2 * arr[right])) {
+            for (int j = i + 1; j < n; j++) {
 
-                right++;
-
+                if (arr[i] > arr[j]) count++;
 
             }
-
-            count += right - (mid + 1);
 
 
         }
 
         return count;
+
+
     }
 
     static int merge(int[] arr, int start, int mid, int end) {
 
-        int pairs = 0;
+        int count = 0;
         int left = start;
         int right = mid + 1;
         int[] mergedArray = new int[end - start + 1];
         int k = 0;
-
-        pairs += possiblePairs(arr, start, mid, end);
-
 
         while (left <= mid && right <= end) {
 
@@ -40,7 +43,7 @@ public class myPractice {
 
             else {
 
-
+                count += mid - left + 1;
                 mergedArray[k++] = arr[right++];
             }
         }
@@ -63,7 +66,7 @@ public class myPractice {
 
         }
 
-        return pairs;
+        return count;
 
 
     }
@@ -86,27 +89,22 @@ public class myPractice {
     }
 
 
-    static int reversePairs(int[] nums) {
 
+    // Optimal Solution
+    static int countInversionI(int[] arr) {
 
-        return mergeSort(nums, 0, nums.length - 1);
+        // Time Complexity (TC): O(n log n)
+        //Space Complexity (SC): O(n)
 
+        return mergeSort(arr,0,arr.length-1);
     }
-
 
     public static void main(String[] args) {
 
-        int[] arr = {40, 25, 19, 12, 9, 6, 2};
+        int[] arr = {5, 3, 2, 4, 1};
+        System.out.println(countInversion(arr));
+        System.out.println(countInversionI(arr));
 
-        System.out.println(reversePairs(arr));
 
     }
 }
-
-
-
-
-
-
-
-

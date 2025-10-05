@@ -1,6 +1,9 @@
-public class myPractice {
+package ArraysbyStriver.strivers;
 
-    static int possiblePairs(int[] arr, int start, int mid, int end) {
+public class Q34 {
+
+
+    static long possiblePairs(int[] arr, int start, int mid, int end) {
 
 
         int right = mid + 1;
@@ -8,7 +11,7 @@ public class myPractice {
 
         for (int i = start; i <= mid; i++) {
 
-            while (right <= end && arr[i] > (2 * arr[right])) {
+            while (right <= end && (long)arr[i] > (2L * arr[right])) {
 
                 right++;
 
@@ -23,7 +26,7 @@ public class myPractice {
         return count;
     }
 
-    static int merge(int[] arr, int start, int mid, int end) {
+    static long merge(int[] arr, int start, int mid, int end) {
 
         int pairs = 0;
         int left = start;
@@ -68,7 +71,7 @@ public class myPractice {
 
     }
 
-    static int mergeSort(int[] arr, int start, int end) {
+    static long mergeSort(int[] arr, int start, int end) {
 
 
         int count = 0;
@@ -86,27 +89,23 @@ public class myPractice {
     }
 
 
-    static int reversePairs(int[] nums) {
+    static int reversePairs(int[] arr) {
+
+        // Time Complexity (TC): O(n log n)
+        //Space Complexity (SC): O(1)
 
 
-        return mergeSort(nums, 0, nums.length - 1);
+        return (int) mergeSort(arr, 0, arr.length - 1);
 
     }
 
 
     public static void main(String[] args) {
 
-        int[] arr = {40, 25, 19, 12, 9, 6, 2};
+        // leeTCode->493
 
+        int[] arr = {40, 25, 19, 12, 9, 6, 2};
         System.out.println(reversePairs(arr));
 
     }
 }
-
-
-
-
-
-
-
-
