@@ -1,6 +1,6 @@
 package ArraysbyStriver.strivers;
 
-import java.util.Arrays;
+
 
 public class Q37 {
 
@@ -12,18 +12,18 @@ public class Q37 {
 
         int n = prices.length;
         int minimal = prices[0];
-        int profit = 0;
+        int maxProfit = 0;
 
         for (int i = 1; i < n; i++) {
 
             int cost = prices[i] - minimal;
-            profit = Math.max(cost, profit);
+            maxProfit = Math.max(cost, maxProfit);
             minimal = Math.min(minimal, prices[i]);
 
 
         }
 
-        return profit;
+        return maxProfit;
     }
 
     public static void main(String[] args) {
