@@ -7,34 +7,36 @@ public class Q20 {
 
     static void multiplication(int[][] arr1,int[][] arr2){
 
-        int  r1=arr1.length;
-        int c1=arr1[0].length;
-        int r2=arr2.length;
-        int c2=arr2[0].length;
+        //Time Complexity (TC): O(row1 * cols2 * cols1)
+        //Space Complexity (SC): O(rows1 * cols2 )
 
-        int[][] result=new int[r1][c2];
+        int rows1 = arr1.length;
+        int cols1 = arr1[0].length;
+        int rows2 = arr2.length;
+        int cols2 = arr2[0].length;
 
-         //Time Complexity (TC): O(r1 * c2 * c1)
-        // Space Complexity (SC): O(r1 * c2)
+        int[][] multiplication = new int[rows1][cols2];
 
-        if (c1 != r2) {
+        if (cols1 != rows2) {
             System.out.println("Matrix multiplication not possible: The number of columns in arr1 must equal the number of rows in arr2.");
             return;
         }
 
 
-        for(int i=0;i<r1;i++){
-            for(int j=0;j<c2;j++){
+        for (int i = 0; i < rows1; i++) {
 
-              for(int k=0;k<c1;k++){
+            for (int j = 0; j < cols2; j++) {
 
-                  result[i][j]+=arr1[i][k]*arr2[k][j];
-              }
+                for (int k = 0; k < cols1; k++) {
+
+                    multiplication[i][j] += arr1[i][k] * arr2[k][j];
+                }
+
 
             }
         }
 
-        System.out.println(Arrays.deepToString(result));
+        System.out.println(Arrays.deepToString(multiplication));
 
     }
 

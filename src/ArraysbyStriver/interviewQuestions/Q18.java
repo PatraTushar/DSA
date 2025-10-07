@@ -7,24 +7,29 @@ public class Q18 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int n=arr.length;
-        int prefixSum=0;
-        int suffixSum=0;
-        for(int i=n-1;i>=0;i--){
-            suffixSum+=arr[i];
-        }
+        int n = arr.length;
 
-        for (int i=0;i<n-1;i++){
+        int prefix = 0;
 
-            prefixSum+=arr[i];
-            if(prefixSum==(suffixSum-prefixSum)) return true;
+
+        for (int i = 0; i < n; i++) {
+
+            prefix += arr[i];
 
 
         }
+
+        int suffix = 0;
+
+        for (int i = n - 1; i >= 0; i--) {
+
+            suffix += arr[i];
+            if (suffix == (prefix - suffix)) return true;
+
+        }
+
 
         return false;
-
-
 
 
     }

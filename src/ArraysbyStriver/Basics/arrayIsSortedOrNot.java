@@ -2,45 +2,43 @@ package ArraysbyStriver.Basics;
 
 public class arrayIsSortedOrNot {
 
-    // sorted in ascending
+    static boolean isSorted(int[] arr) {
 
-    static boolean isSorted(int arr[]){
-        for(int i=1;i<arr.length;i++){
-            if(arr[i]>=arr[i-1]){
+        if (isAsc(arr)) return true;
+        if (isDesc(arr)) return true;
 
-            }
-            else {
-                return false;
-            }
+        return false;
 
+
+    }
+
+    static boolean isAsc(int[] arr) {
+
+        for (int i = 0; i < arr.length - 1; i++) {
+
+            if (arr[i] > arr[i + 1]) return false;
         }
 
         return true;
     }
 
-    // sorted in descending
 
-    static boolean sorted(int arr[]){
+    static boolean isDesc(int[] arr) {
 
-        for(int i=1;i<arr.length;i++){
-            if(arr[i]<=arr[i-1]){
+        for (int i = 0; i < arr.length - 1; i++) {
 
-            }
-
-            else{
-                return false;
-            }
+            if (arr[i] < arr[i + 1]) return false;
         }
 
         return true;
-
     }
+
 
     public static void main(String[] args) {
 
-        int arr[]={1,2,3,3,4,5,6,7};
+        int[] arr = {5, 4, 3, 2, 1};
         System.out.println(isSorted(arr));
-        int num[]={9,8,7,7,6,5,4,3};
-        System.out.println(sorted(num));
+
+
     }
 }

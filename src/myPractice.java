@@ -1,108 +1,73 @@
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class myPractice {
 
-    static int possiblePairs(int[] arr, int start, int mid, int end) {
+
+    static void swap(int[] arr, int i, int j) {
+
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 
 
-        int right = mid + 1;
-        int count = 0;
+    static void reverse(int[] arr, int i, int j) {
 
-        for (int i = start; i <= mid; i++) {
+        while (i < j) {
 
-            while (right <= end && arr[i] > (2 * arr[right])) {
+            swap(arr, i, j);
+            i++;
+            j--;
+        }
+    }
 
-                right++;
+
+
+
+
+    static int[][] rotate90(int[][] arr) {
+
+        int rows = arr.length;
+        int cols = arr[0].length;
+
+        // find transpose
+
+        for (int i = 0; i < rows; i++) {
+
+            for (int j = i + 1; j < cols; j++) {
+
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
 
 
             }
 
-            count += right - (mid + 1);
-
 
         }
 
-        return count;
+
+        // reverse each row
+
+        for (int i = 0; i < rows; i++) {
+
+            reverse(arr[i], 0, cols - 1);
+
+        }
+
+        return arr;
     }
-
-    static int merge(int[] arr, int start, int mid, int end) {
-
-        int pairs = 0;
-        int left = start;
-        int right = mid + 1;
-        int[] mergedArray = new int[end - start + 1];
-        int k = 0;
-
-        pairs += possiblePairs(arr, start, mid, end);
-
-
-        while (left <= mid && right <= end) {
-
-            if (arr[left] <= arr[right]) mergedArray[k++] = arr[left++];
-
-            else {
-
-
-                mergedArray[k++] = arr[right++];
-            }
-        }
-
-        while (left <= mid) {
-
-            mergedArray[k++] = arr[left++];
-        }
-
-        while (right <= end) {
-
-            mergedArray[k++] = arr[right++];
-        }
-
-
-        for (int i = 0; i < mergedArray.length; i++) {
-
-            arr[start + i] = mergedArray[i];
-
-
-        }
-
-        return pairs;
-
-
-    }
-
-    static int mergeSort(int[] arr, int start, int end) {
-
-
-        int count = 0;
-        if (start >= end) return count;
-
-        int mid = start + (end - start) / 2;
-
-        count += mergeSort(arr, start, mid);
-        count += mergeSort(arr, mid + 1, end);
-        count += merge(arr, start, mid, end);
-
-        return count;
-
-
-    }
-
-
-    static int reversePairs(int[] nums) {
-
-
-        return mergeSort(nums, 0, nums.length - 1);
-
-    }
-
 
     public static void main(String[] args) {
 
-        int[] arr = {40, 25, 19, 12, 9, 6, 2};
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int[][] ans = rotate90(arr);
+        System.out.println(Arrays.deepToString(ans));
 
-        System.out.println(reversePairs(arr));
 
     }
 }
-
 
 
 
