@@ -9,57 +9,70 @@ public class Q25 {
         //Time Complexity (TC): O(n²)
         //Space Complexity (SC): O(n²)
 
-        int[][] newMatrix=new int[n][n];
+        int[][] result = new int[n][n];
 
-        int number=1;
-        int topRow=0;
-        int bottomRow=n-1;
-        int leftColumn=0;
-        int rightColumn=n-1;
+        int rows = result.length;
+        int cols = result[0].length;
 
-        while(topRow<=bottomRow && leftColumn<=rightColumn){
+        int topRow = 0;
+        int bottomRow = rows - 1;
+        int leftCol = 0;
+        int rightCol = cols - 1;
+        int num = 1;
 
-            for(int i=leftColumn;i<=rightColumn;i++){
 
-                newMatrix[topRow][i]=number++;
+        while (topRow <= bottomRow && leftCol <= rightCol) {
+
+
+            for (int i = leftCol; i <= rightCol; i++) {
+
+
+                result[topRow][i] = num++;
+
             }
 
             topRow++;
 
-            for(int i=topRow;i<=bottomRow;i++){
 
-                newMatrix[i][rightColumn]=number++;
+            for (int i = topRow; i <= bottomRow; i++) {
+
+
+                result[i][rightCol] = num++;
+
             }
 
-            rightColumn--;
+            rightCol--;
 
-            if(topRow<=bottomRow && leftColumn<=rightColumn){
 
-                for(int i=rightColumn;i>=leftColumn;i--){
+            if (topRow <= bottomRow && leftCol <= rightCol) {
 
-                    newMatrix[bottomRow][i]=number++;
+                for (int i = rightCol; i >= leftCol; i--) {
 
+
+                    result[bottomRow][i] = num++;
                 }
 
                 bottomRow--;
+
+
             }
 
 
-            if(topRow<=bottomRow && leftColumn<=rightColumn){
+            if (topRow <= bottomRow && leftCol <= rightCol) {
 
-                for(int i=bottomRow;i>=topRow;i--){
+                for (int i = bottomRow; i >= topRow; i--) {
 
-                    newMatrix[i][leftColumn]=number++;
+                    result[i][leftCol] = num++;
 
                 }
 
-                leftColumn++;
+                leftCol++;
             }
+
 
         }
 
-        return newMatrix;
-
+        return result;
     }
     public static void main(String[] args) {
 

@@ -5,25 +5,28 @@ import java.util.List;
 
 public class Q24 {
 
-    static List<Integer> spiralOrder(int[][] matrix){
+    static List<Integer> spiral(int[][] matrix) {
 
-        //Time Complexity (TC): O(n × m)
+        //Time Complexity (TC): O(rows × cols)
         //Space Complexity (SC): O(n × m) — for the output list (excluding input matrix)
 
 
-       List<Integer> list=new ArrayList<>();
+        int rows = matrix.length;
+        int cols = matrix[0].length;
 
-        int topRow=0;
-        int bottomRow=matrix.length-1;
-        int leftColumn=0;
-        int rightColumn=matrix[0].length-1;
+        List<Integer> list = new ArrayList<>();
+
+        int topRow = 0;
+        int bottomRow = rows - 1;
+        int leftColumn = 0;
+        int rightColumn = cols - 1;
 
 
-        while (topRow<=bottomRow && leftColumn<=rightColumn){
+        while (topRow <= bottomRow && leftColumn <= rightColumn) {
 
             // 1. Traverse Top Row (→)
 
-            for (int i=leftColumn;i<=rightColumn;i++){
+            for (int i = leftColumn; i <= rightColumn; i++) {
                 list.add(matrix[topRow][i]);
             }
 
@@ -31,7 +34,7 @@ public class Q24 {
 
             //2. Traverse Right Column (↓)
 
-            for(int i=topRow;i<=bottomRow;i++){
+            for (int i = topRow; i <= bottomRow; i++) {
                 list.add(matrix[i][rightColumn]);
             }
             rightColumn--;
@@ -39,7 +42,7 @@ public class Q24 {
 
             //  3. Traverse Bottom Row (←) [check needed]
 
-            if(topRow<=bottomRow && leftColumn<=rightColumn) {
+            if (topRow <= bottomRow && leftColumn <= rightColumn) {
 
 
                 for (int i = rightColumn; i >= leftColumn; i--) {
@@ -50,9 +53,9 @@ public class Q24 {
 
             }
 
-          // 4. Traverse Left Column (↑) [check needed]
+            // 4. Traverse Left Column (↑) [check needed]
 
-            if( topRow<=bottomRow && leftColumn<=rightColumn ) {
+            if (topRow <= bottomRow && leftColumn <= rightColumn) {
 
                 for (int i = bottomRow; i >= topRow; i--) {
                     list.add(matrix[i][leftColumn]);
@@ -68,8 +71,8 @@ public class Q24 {
 
         // Q: Given a n*m matrix A .return all elements of matrix  in spiral order  (leeTCode-->54)
 
-        int[][] arr={{1,2,3},{4,5,6},{7,8,9}};
-        List<Integer> ans=spiralOrder(arr);
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        List<Integer> ans = spiral(arr);
         System.out.println(ans);
     }
 }

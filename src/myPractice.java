@@ -1,68 +1,83 @@
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.List;
 
 public class myPractice {
 
-
-    static void swap(int[] arr, int i, int j) {
-
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
+    static int[][] spiralOrder(int n) {
 
 
-    static void reverse(int[] arr, int i, int j) {
+        int[][] result = new int[n][n];
 
-        while (i < j) {
+        int rows = result.length;
+        int cols = result[0].length;
 
-            swap(arr, i, j);
-            i++;
-            j--;
-        }
-    }
-
-
-
+        int topRow = 0;
+        int bottomRow = rows - 1;
+        int leftCol = 0;
+        int rightCol = cols - 1;
+        int num = 1;
 
 
-    static int[][] rotate90(int[][] arr) {
+        while (topRow <= bottomRow && leftCol <= rightCol) {
 
-        int rows = arr.length;
-        int cols = arr[0].length;
 
-        // find transpose
+            for (int i = leftCol; i <= rightCol; i++) {
 
-        for (int i = 0; i < rows; i++) {
 
-            for (int j = i + 1; j < cols; j++) {
+                result[topRow][i] = num++;
 
-                int temp = arr[i][j];
-                arr[i][j] = arr[j][i];
-                arr[j][i] = temp;
+            }
+
+            topRow++;
+
+
+            for (int i = topRow; i <= bottomRow; i++) {
+
+
+                result[i][rightCol] = num++;
+
+            }
+
+            rightCol--;
+
+
+            if (topRow <= bottomRow && leftCol <= rightCol) {
+
+                for (int i = rightCol; i >= leftCol; i--) {
+
+
+                    result[bottomRow][i] = num++;
+                }
+
+                bottomRow--;
 
 
             }
 
 
+            if (topRow <= bottomRow && leftCol <= rightCol) {
+
+                for (int i = bottomRow; i >= topRow; i--) {
+
+                    result[i][leftCol] = num++;
+
+                }
+
+                leftCol++;
+            }
+
+
         }
 
-
-        // reverse each row
-
-        for (int i = 0; i < rows; i++) {
-
-            reverse(arr[i], 0, cols - 1);
-
-        }
-
-        return arr;
+        return result;
     }
+
 
     public static void main(String[] args) {
 
-        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        int[][] ans = rotate90(arr);
+
+        int[][] ans = spiralOrder(3);
         System.out.println(Arrays.deepToString(ans));
 
 

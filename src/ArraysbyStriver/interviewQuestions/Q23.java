@@ -8,48 +8,30 @@ public class Q23 {
     //Time Complexity: O(n^2)
     //Space Complexity: O(n^2)
 
-    static int[][] pascal(int n) {
-
-        int[][] ans = new int[n][];
 
 
-        for (int i = 0; i < n; i++) {
-
-            ans[i] = new int[i + 1];
-            ans[i][0] = ans[i][i] = 1;
+    static int pascalTriangleI(int rows, int cols) {   //  row=5 col=3
 
 
-            for (int j = 1; j < i; j++) {
-
-                ans[i][j] = ans[i - 1][j] + ans[i - 1][j - 1];
 
 
-            }
-        }
-
-
-        return ans;
-
-
-    }
-
-    static int pascalTriangleI(int row, int col) {   //  row=5 col=3
-
-
-        // Time Complexity: O(c)
+        // Time Complexity: O(cols)
         //  Space Complexity: O(1)
 
         // TYPE 1->Given row and col and tell the element at that place
 
-        int n = row - 1;
-        int c = col - 1;
+        rows = rows - 1;
+        cols = cols - 1;
 
         int result = 1;
 
-        for (int i = 0; i < c; i++) {
+        for (int i = 1; i <= cols; i++) {
 
-            result = result * (n - i);
-            result = result / (i + 1);
+
+            result *= (rows - i + 1);
+            result = result / i;
+
+
         }
 
         return result;
@@ -58,54 +40,50 @@ public class Q23 {
     }
 
 
-    static List<Integer> pascalTriangleII(int n) {
+    static List<Integer> pascalTriangleII(int row) {
 
         // Type 2->Print the nth row of pascal triangle
 
-        // Time Complexity: O(n)
-        //  Space Complexity: O(n)
+        // Time Complexity: O(row)
+        //  Space Complexity: O(row)
 
-        List<Integer> result = new ArrayList<>();
+        List<Integer> nthRow = new ArrayList<>();
 
-        int ans = 1;
-        result.add(ans);
 
-        for (int i = 1; i < n; i++) {
+        long result = 1;
 
-            ans = ans * (n - i);
-            ans = ans / i;
-            result.add(ans);
+        nthRow.add((int) result);
+
+
+        for (int i = 1; i <= row; i++) {
+
+            result *= (row - i + 1);
+            result = result / i;
+            nthRow.add((int) result);
 
 
         }
 
-        return result;
+
+        return nthRow;
     }
 
-    static List<List<Integer>> pascalTriangleIII(int n) {
+    static List<List<Integer>> pascalTriangleIII(int numRows) {
 
         //Type 3-> you are given n  and  u have  to print the entire pascal triangle
 
+        // Time Complexity: O(n²)
+        //Space Complexity: O(n²)
+
         List<List<Integer>> result = new ArrayList<>();
 
-        for (int i = 0; i < n; i++) {
 
-            List<Integer> tempList = new ArrayList<>();
+        for (int i = 1; i <= numRows; i++) {
 
-            for (int j = 0; j < i + 1; j++) {
-
-                if (j == 0 || j == i) {
-                    tempList.add(1);
-                } else {
-                    int val = result.get(i - 1).get(j - 1) + result.get(i - 1).get(j);
-                    tempList.add(val);
-                }
-
-            }
-
-            result.add(tempList);
+            result.add(pascalTriangleII(i));
 
         }
+
         return result;
 
 
