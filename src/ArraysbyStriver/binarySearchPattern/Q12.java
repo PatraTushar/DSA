@@ -2,31 +2,31 @@ package ArraysbyStriver.binarySearchPattern;
 
 public class Q12 {
 
-    static int findMin(int[] num) {
+    static int findMin(int[] arr) {
 
         // Time Complexity: O(log n)
         // Space Complexity: O(1)
 
 
 
-        int start = 0;
-        int end = num.length - 1;
+        int low = 0;
+        int high = arr.length - 1;
 
-        while (start != end) {
+        while (low != high) {
 
-            int mid = start + (end - start) / 2;
+            int mid = low + (high - low) / 2;
 
 
-            if (num[start] >= num[end] && num[start] <= num[mid]) {
+            if (arr[low] >= arr[high] && arr[low] <= arr[mid]) {
 
-                start = mid + 1;
+                low = mid + 1;
 
-            } else end = mid;
+            } else high = mid;
 
 
         }
 
-        return num[start];
+        return arr[low];
 
 
 

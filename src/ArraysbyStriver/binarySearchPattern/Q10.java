@@ -24,19 +24,20 @@ public class Q10 {
 
     static int findPivotIndex(int[] arr) {
 
-        int start = 0;
-        int end = arr.length - 1;
+        int n = arr.length;
+        int low = 0;
+        int high = n - 1;
 
-        while (start != end) {
+        while (low != high) {
 
-            int mid = start + (end - start) / 2;
+            int mid = low + (high - low) / 2;
 
-            if (arr[start] < arr[mid]) start = mid;
+            if (arr[low] < arr[mid]) low = mid;
 
-            else end = mid;
+            else high = mid;
         }
 
-        return start;
+        return low;
     }
 
 
@@ -51,11 +52,8 @@ public class Q10 {
         int firstPart = binarySearch(arr, 0, pivotIndex, target);
         int secondPart = binarySearch(arr, pivotIndex + 1, n - 1, target);
 
-        if (firstPart == -1 && secondPart == -1) return -1;
-
         if (firstPart != -1) return firstPart;
-
-        return secondPart;
+        else return secondPart;
 
     }
 
