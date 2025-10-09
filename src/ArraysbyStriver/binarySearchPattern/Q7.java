@@ -30,23 +30,23 @@ public class Q7 {
         // Time Complexity: O(log n)
         // Space Complexity: O(1)
 
-        int start = 0;
-        int end = 1;
+        int n = arr.length;
 
-        while (end < arr.length && arr[end] < target) {
+        int low = 0;
+        int high = 1;
 
-            start = end + 1;
-            end = (2 * start) + 1;
+        while (high < n && target > arr[high]) {
 
-            if (start >= arr.length) return -1;
-            if (end >= arr.length) end = arr.length - 1;
+            low = high + 1;
+            high = (2 * low) + 1;
 
+            if (low >= n) return -1;
+            if (high >= n) high = n - 1;
 
         }
 
 
-        return binarySearch(arr, start, end, target);
-
+        return binarySearch(arr, target, low, high);
 
     }
 

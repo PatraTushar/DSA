@@ -8,26 +8,24 @@ public class Q5 {
         //Space Complexity (SC): O(1)
 
         int n = letters.length;
-        int start = 0;
-        int end = letters.length - 1;
-        char ans = 0;
 
-        if (target > letters[n - 1] || target == letters[n - 1]) return letters[start];
+        int low = 0;
+        int high = n - 1;
 
-        while (start <= end) {
-
-            int mid = start + (end - start) / 2;
+        if (target > letters[n - 1] || target == letters[n - 1]) return letters[low];
 
 
-            if (letters[mid] > target) {
+        while (low <= high) {
 
-                ans = letters[mid];
-                end = mid - 1;
-            } else start = mid + 1;
+            int mid = low + (high - low) / 2;
+
+            if (target < letters[mid]) high = mid - 1;
+
+            else low = mid + 1;
         }
 
+        return letters[low];
 
-        return ans;
 
     }
 

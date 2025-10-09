@@ -8,22 +8,23 @@ public class Q3 {
         //Space Complexity (SC): O(1)
 
         int n = arr.length;
-        int start = 0;
-        int end = n - 1;
+        int low = 0;
+        int high = n - 1;
 
-        while (start <= end) {
+        while (low <= high) {
 
-            int mid = start + (end - start) / 2;
+            int mid = low + (high - low) / 2;
 
             if (arr[mid] == target) return arr[mid];
 
-            else if (arr[mid] > target) {
+            else if (target > arr[mid]) low = mid + 1;
 
-                end = mid - 1;
-            } else start = mid + 1;
+            else high = mid - 1;
+
+
         }
 
-        return target > arr[n - 1] ? -1 : arr[start];
+        return target > arr[n - 1] ? -1 : arr[low];
     }
 
     public static void main(String[] args) {
