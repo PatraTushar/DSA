@@ -2,45 +2,44 @@ package ArraysbyStriver.binarySearchPattern;
 
 public class Q22 {
 
-    static int findMax(int[] arr){
+    static int findMax(int[] arr) {
 
-        int max=Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
 
-        for(int A:arr){
+        for (int ele : arr) {
 
-            if(A>max){
-                max=A;
+            if (ele > max) {
+                max = ele;
             }
         }
 
         return max;
     }
 
-    static int findSum(int[] arr){
+    static int findSum(int[] arr) {
 
-        int sum=0;
+        int sum = 0;
 
-        for(int A:arr){
-            sum+=A;
+        for (int ele : arr) {
+            sum += ele;
         }
         return sum;
     }
 
-    static int countStudents(int[] arr,int mid){
+    static int countStudents(int[] arr, int mid) {
 
-        int totalStudent=1;
-        int totalSum=0;
+        int totalStudent = 1;
+        int totalSum = 0;
 
 
-        for(int i=0;i<arr.length;i++){
+        for (int i = 0; i < arr.length; i++) {
 
-            if(totalSum+arr[i]<=mid){
-                totalSum+=arr[i];
+            if (totalSum + arr[i] <= mid) {
+                totalSum += arr[i];
 
-            }
-            else {
+            } else {
                 totalStudent++;
-                totalSum=arr[i];
+                totalSum = arr[i];
             }
 
         }
@@ -49,28 +48,26 @@ public class Q22 {
 
     }
 
-    static int minChocolates(int[] arr,int students){
+    static int minChocolates(int[] arr, int students) {
 
         // Time Complexity: O(n.log(sum-max))
         // Space Complexity: O(1)
 
-        if(students>arr.length) return -1;
+        if (students > arr.length) return -1;
 
-        int start=findMax(arr);
-        int end=findSum(arr);
+        int start = findMax(arr);
+        int end = findSum(arr);
 
-        while (start<=end){
+        while (start <= end) {
 
-            int mid=start+(end-start)/2;
+            int mid = start + (end - start) / 2;
 
-            int totalStudents=countStudents(arr,mid);
+            int totalStudents = countStudents(arr, mid);
 
-            if(totalStudents>students){
-                start=mid+1;
-            }
-
-            else {
-                end=mid-1;
+            if (totalStudents > students) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
             }
         }
 
@@ -79,8 +76,8 @@ public class Q22 {
 
     public static void main(String[] args) {
 
-        int[] arr={12,34,67,90};
-        int students=2;
-        System.out.println(minChocolates(arr,students));
+        int[] arr = {12, 34, 67, 90};
+        int students = 2;
+        System.out.println(minChocolates(arr, students));
     }
 }
