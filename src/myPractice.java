@@ -1,24 +1,50 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class myPractice {
 
-    static int KthMissing(int[] arr, int k) {
+    static void swap(int[] arr, int i, int j) {
+
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+
+    static int longestSubArrSumK(int[] arr, int k) {
 
         int n = arr.length;
 
-        int low = 0;
-        int high = n - 1;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        while (low <= high) {
+        int sum = 0;
+        int maxLength = 0;
 
-            int mid = low + (high - low) / 2;
+        for (int i = 0; i < n; i++) {
 
-            int missing = arr[mid] - (mid + 1);
+            sum += arr[i];
 
-            if (missing < k) low = mid + 1;
+            if (sum == k) {
 
-            else high = mid - 1;
+                maxLength = Math.max(maxLength, i + 1);
+            }
+
+            if (map.containsKey(sum - k)) {
+
+                int length = i - map.get(sum - k);
+                maxLength = Math.max(length, maxLength);
+
+
+            }
+
+
+            map.put(sum, i);
+
+
         }
 
-        return low + k;
+        return maxLength;
 
 
     }
@@ -26,9 +52,9 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 3, 4, 7, 11};
-        int k = 5;
-        System.out.println(KthMissing(arr, k));
+        int[] arr = {3, 1, 1, 1};
+        System.out.println(longestSubArrSumK(arr, 3));
+
 
     }
 }
