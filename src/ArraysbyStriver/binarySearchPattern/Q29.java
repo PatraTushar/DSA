@@ -21,7 +21,7 @@ public class Q29 {
     }
 
 
-    static int findKthPositiveI(int[] arr, int k) {
+    static int kthMissing(int[] arr, int k) {
 
         // leeTCode->1539
 
@@ -48,7 +48,7 @@ public class Q29 {
         }
 
 
-        return (high + 1 + k);
+        return (low + k);
 
 
     }
@@ -58,7 +58,7 @@ public class Q29 {
 
         int[] arr = {2, 3, 4, 7, 11};
         int k = 5;
-        System.out.println(findKthPositiveI(arr, k));
+        System.out.println(kthMissing(arr, k));
 
 
     }
