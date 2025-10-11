@@ -2,34 +2,38 @@ import java.util.Arrays;
 
 public class myPractice {
 
-    static int[] findTarget(int[][] arr, int target) {
+    static int findSingleElement(int[] arr) {
 
-        int rows = arr.length;
-        int cols = arr[0].length;
+        int n = arr.length;
 
-        int i = 0;
-        int j = cols - 1;
+        if (n == 1) return arr[0];
+        if (arr[0] != arr[1]) return arr[0];
+        if (arr[n - 1] != arr[n - 2]) return arr[n - 1];
 
-        while (i < rows && j >= 0) {
+        int low = 1;
+        int high = n - 1;
 
-            if (arr[i][j] == target) return new int[]{i, j};
+        while (low <= high) {
 
-            else if (arr[i][j] < target) i++;
+            int mid = low + (high - low) / 2;
 
-            else j--;
+            if (arr[mid] != arr[mid - 1] && arr[mid] != arr[mid + 1]) return arr[mid];
+
+            else if ((mid % 2 != 0 && arr[mid] == arr[mid - 1]) || (mid % 2 == 0 && arr[mid] == arr[mid + 1]))
+                low = mid + 1;
+
+            else high = mid - 1;
 
         }
 
-        return new int[]{-1, -1};
+        return -1;
     }
 
 
     public static void main(String[] args) {
 
-        int[][] arr = {{10, 20, 30, 40}, {15, 25, 35, 45}, {28, 29, 37, 49}, {33, 34, 38, 50}};
-        int target = 37;
-        int[] ans = findTarget(arr, target);
-        System.out.println(Arrays.toString(ans));
+        int[] arr = {1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6};
+        System.out.println(findSingleElement(arr));
 
     }
 }

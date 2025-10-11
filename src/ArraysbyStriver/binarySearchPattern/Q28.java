@@ -16,7 +16,7 @@ public class Q28 {
 
 
         int start = 1;
-        int end = arr.length - 2;
+        int end = n - 2;
 
         while (start <= end) {
 
