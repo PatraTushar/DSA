@@ -2,68 +2,70 @@ package ArraysbyStriver.strivers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Q14 {
 
-    static int[] rearrange(int[] arr){
+    static int[] rearrange(int[] arr) {
 
-     //   Time Complexity: O(n)
-       // Space Complexity: O(n)
+        //   Time Complexity: O(n)
+        // Space Complexity: O(n)
 
-        ArrayList<Integer> positives=new ArrayList<>();
-        ArrayList<Integer> negatives=new ArrayList<>();
+        List<Integer> positives = new ArrayList<>();
+        List<Integer> negatives = new ArrayList<>();
 
-        for(int i=0;i<arr.length;i++){
+        for (int ele : arr) {
 
-            if(arr[i]>0){
-                positives.add(arr[i]);
-            }
+            if (ele > 0) positives.add(ele);
+            else negatives.add(ele);
 
-            else {
-                negatives.add(arr[i]);
-            }
         }
 
-      if(positives.size()>negatives.size()){
-
-          for(int i=0;i<negatives.size();i++){
-              arr[2*i]=positives.get(i);
-              arr[2*i+1]=negatives.get(i);
-          }
-
-          int index=negatives.size()*2;
-          for(int i=negatives.size();i<positives.size();i++){
-              arr[index]=positives.get(i);
-              index++;
-          }
-
-      }
-
-      else {
-
-          for(int i=0;i<positives.size();i++){
-              arr[2*i]=positives.get(i);
-              arr[2*i+1]=negatives.get(i);
-          }
-
-          int index=positives.size()*2;
-          for(int i=positives.size();i<negatives.size();i++){
-              arr[index]=negatives.get(i);
-              index++;
-          }
+        int m = positives.size();
+        int n = negatives.size();
+        int[] result = new int[m + n];
 
 
-      }
+        int i = 0;
+        int j = 0;
+        int k = 0;
 
-        return arr;
+
+        while (i < m && j < n) {
+
+            result[k++] = positives.get(i);
+            result[k++] = negatives.get(j);
+
+            i++;
+            j++;
+
+
+        }
+
+
+        while (i < positives.size()) {
+
+
+            result[k++] = positives.get(i);
+            i++;
+        }
+
+
+        while (j < negatives.size()) {
+
+            result[k++] = negatives.get(j);
+            j++;
+        }
+
+        return result;
     }
 
     public static void main(String[] args) {
 
         // Rearrange array elements by sign but there is no equal number of positives and negatives
 
-        int[] arr={-1,2,3,4,-3,1};
-        int[] ans=rearrange(arr);
+        int[] arr = {-1, 2, 3, 4, -3, 1};
+        int[] ans = rearrange(arr);
         System.out.println(Arrays.toString(ans));
 
     }

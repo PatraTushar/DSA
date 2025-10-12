@@ -4,8 +4,15 @@ import java.util.Arrays;
 
 public class Q13 {
 
+    static void swap(int[] arr, int i, int j) {
 
-    static int[] rearrangeElementsBySign(int[] nums){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+
+    static int[] rearrangeElementsBySign(int[] arr) {
 
         //// condition -> Equal number of positives and negatives bt the relative order are  same
 
@@ -13,23 +20,22 @@ public class Q13 {
         //  Space Complexity: O(n)
 
 
-        int[] result=new int[nums.length];
-        int positiveIndex=0;
-        int negativeIndex=1;
+        int[] result = new int[arr.length];
+        int positiveIndex = 0;
+        int negativeIndex = 1;
 
 
-        for(int i=0;i<nums.length;i++){
+        for (int i = 0; i < arr.length; i++) {
 
-            if(nums[i]>0){
+            if (arr[i] > 0) {
 
-                result[positiveIndex]=nums[i];
-                positiveIndex+=2;
+                result[positiveIndex] = arr[i];
+                positiveIndex += 2;
 
-            }
-            else{
+            } else {
 
-                result[negativeIndex]=nums[i];
-                negativeIndex+=2;
+                result[negativeIndex] = arr[i];
+                negativeIndex += 2;
 
 
             }
@@ -38,42 +44,36 @@ public class Q13 {
         return result;
 
 
-
     }
 
-    static int[] rearrangeElementsBySignI(int[] arr){
+    static int[] rearrangeElementsBySignI(int[] arr) {
 
         // condition -> Equal number of positives and negatives bt the relative order are not same
 
-         // Time Complexity: O(n)
+        // Time Complexity: O(n)
         //  Space Complexity: O(1)
 
 
-        int positive=0;
-        int negative=1;
-        int n=arr.length;
+        int positive = 0;
+        int negative = 1;
+        int n = arr.length;
 
-        while (positive<n && negative<n){
+        while (positive < n - 1 && negative < n) {
 
-            if(arr[positive]<0 && arr[negative]>0){
+            if (arr[positive] > 0) positive += 2;
 
-                int temp=arr[positive];
-                arr[positive]=arr[negative];
-                arr[negative]=temp;
-                positive+=2;
-                negative+=2;
-            }
+            else if (arr[negative] < 0) negative += 2;
 
             else {
 
-                if(arr[positive]>0) positive+=2;
-                if(arr[negative]<0) negative+=2;
+                swap(arr, positive, negative);
+                positive += 2;
+                negative += 2;
+
 
             }
         }
-
         return arr;
-
 
 
     }
@@ -83,10 +83,10 @@ public class Q13 {
 
         // Rearrange array elements by sign and there is equal number of positives and negatives
 
-        int[] arr={3, 1,2,-12,-5,-4};
-        int[] Ans=rearrangeElementsBySign(arr);
+        int[] arr = {3, 1, 2, -12, -5, -4};
+        int[] Ans = rearrangeElementsBySign(arr);
         System.out.println(Arrays.toString(Ans));
-        int[] Ans1=rearrangeElementsBySignI(arr);
+        int[] Ans1 = rearrangeElementsBySignI(arr);
         System.out.println(Arrays.toString(Ans1));
     }
 }

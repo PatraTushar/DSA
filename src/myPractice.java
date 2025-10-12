@@ -1,59 +1,50 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class myPractice {
 
-    static void swap(int[] arr, int i, int j) {
 
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
+    static int longestConsecutiveSubsequence(int[] arr) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        int longest = Integer.MIN_VALUE;
 
 
-    static int longestSubArrSumK(int[] arr, int k) {
+        for (int ele : arr) {
 
-        int n = arr.length;
+            set.add(ele);
+        }
 
-        HashMap<Integer, Integer> map = new HashMap<>();
 
-        int sum = 0;
-        int maxLength = 0;
+        for (int ele : arr) {
 
-        for (int i = 0; i < n; i++) {
 
-            sum += arr[i];
+            if (!set.contains(ele - 1)) {
 
-            if (sum == k) {
+                int currNum = ele;
+                int length = 1;
 
-                maxLength = Math.max(maxLength, i + 1);
+                while (set.contains(currNum + 1)) {
+
+
+                    length++;
+                    currNum++;
+                }
+
+                longest = Math.max(longest, length);
             }
-
-            if (map.containsKey(sum - k)) {
-
-                int length = i - map.get(sum - k);
-                maxLength = Math.max(length, maxLength);
-
-
-            }
-
-
-            map.put(sum, i);
 
 
         }
 
-        return maxLength;
-
+        return longest;
 
     }
 
-
     public static void main(String[] args) {
 
-        int[] arr = {3, 1, 1, 1};
-        System.out.println(longestSubArrSumK(arr, 3));
+        int[] arr = {102, 4, 100, 1, 101, 3, 2, 1, 1};
+        System.out.println(longestConsecutiveSubsequence(arr));
 
 
     }

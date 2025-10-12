@@ -1,46 +1,42 @@
 package ArraysbyStriver.strivers;
 
 
-
-
 import java.util.HashSet;
 
 public class Q17 {
 
-    static int longestConsecutiveSubsequence(int[] arr){
+    static int longestConsecutiveSubsequence(int[] arr) {
 
         // Time Complexity: O(n)
         // Space Complexity: O(n)
 
-        HashSet<Integer> set=new HashSet<>();
-        int longest=Integer.MIN_VALUE;
+        HashSet<Integer> set = new HashSet<>();
+        int longest = Integer.MIN_VALUE;
 
-        for(int num:arr){
+        for (int num : arr) {
             set.add(num);
         }
 
 
-       for(int i:set){
+        for (int ele : set) {
 
-           if(!set.contains(i-1)){
-               int currNum=i;
-               int count=1;
+            if (!set.contains(ele - 1)) {
+                int currNum = ele;
+                int count = 1;
 
-               while (set.contains(currNum+1)){
-                   currNum++;
-                   count++;
-               }
+                while (set.contains(currNum + 1)) {
+                    currNum++;
+                    count++;
+                }
 
-               longest=Math.max(longest,count);
+                longest = Math.max(longest, count);
 
-           }
-
-
+            }
 
 
-       }
+        }
 
-       return longest;
+        return longest;
 
 
     }
@@ -50,8 +46,7 @@ public class Q17 {
         // Longest consecutive subsequence (leeTCode->128)
 
 
-
-        int[] arr={102,4,100,1,101,3,2,1,1};
+        int[] arr = {102, 4, 100, 1, 101, 3, 2, 1, 1};
         System.out.println(longestConsecutiveSubsequence(arr));
 
 
