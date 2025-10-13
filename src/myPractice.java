@@ -3,48 +3,44 @@ import java.util.*;
 public class myPractice {
 
 
-    static int longestConsecutiveSubsequence(int[] arr) {
+    static void merge(int[] arr1, int m, int[] arr2, int n) {
 
-        HashSet<Integer> set = new HashSet<>();
+        int length = m + n;
+        int i = m - 1;
+        int j = n - 1;
+        int k = length - 1;
 
-        int longest = Integer.MIN_VALUE;
+        while (i >= 0 && j >= 0) {
 
+            if (arr1[i] >= arr2[j]) {
 
-        for (int ele : arr) {
+                arr1[k--] = arr1[i--];
+            } else {
 
-            set.add(ele);
-        }
-
-
-        for (int ele : arr) {
-
-
-            if (!set.contains(ele - 1)) {
-
-                int currNum = ele;
-                int length = 1;
-
-                while (set.contains(currNum + 1)) {
-
-
-                    length++;
-                    currNum++;
-                }
-
-                longest = Math.max(longest, length);
+                arr1[k--] = arr2[j--];
             }
 
 
         }
 
-        return longest;
+        while (j >= 0) {
+
+            arr1[k--] = arr2[j--];
+        }
+
+        System.out.println(Arrays.toString(arr1));
+
 
     }
 
     public static void main(String[] args) {
 
-        int[] arr = {102, 4, 100, 1, 101, 3, 2, 1, 1};
-        System.out.println(longestConsecutiveSubsequence(arr));
+        // merge sorted array (leeTCode->88)
+        int[] arr1 = {1, 2, 3, 0, 0, 0};
+        int m = 3;
+        int[] arr2 = {2, 5, 6};
+        int n = 3;
+        merge(arr1, m, arr2, n);
 
 
     }
