@@ -1,50 +1,45 @@
-import java.util.*;
+import java.util.Arrays;
 
 public class myPractice {
 
 
-    static void merge(int[] arr1, int m, int[] arr2, int n) {
+    static int kthMissing(int[] arr, int k) {
 
-        int length = m + n;
-        int i = m - 1;
-        int j = n - 1;
-        int k = length - 1;
+        int low = 0;
+        int high = arr.length - 1;
 
-        while (i >= 0 && j >= 0) {
+        while (low <= high) {
 
-            if (arr1[i] >= arr2[j]) {
-
-                arr1[k--] = arr1[i--];
-            } else {
-
-                arr1[k--] = arr2[j--];
-            }
+            int mid = low + (high - low) / 2;
+            int missing = arr[mid] - (mid + 1);
 
 
+            if (missing < k) {
+
+                low = mid + 1;
+            } else high = mid - 1;
         }
 
-        while (j >= 0) {
-
-            arr1[k--] = arr2[j--];
-        }
-
-        System.out.println(Arrays.toString(arr1));
+        return k + low;
 
 
     }
 
     public static void main(String[] args) {
 
-        // merge sorted array (leeTCode->88)
-        int[] arr1 = {1, 2, 3, 0, 0, 0};
-        int m = 3;
-        int[] arr2 = {2, 5, 6};
-        int n = 3;
-        merge(arr1, m, arr2, n);
+        int[] arr = {2, 3, 4, 7, 11};
+        int k = 5;
+        System.out.println(kthMissing(arr, k));
 
 
     }
 }
+
+
+
+
+
+
 
 
 
