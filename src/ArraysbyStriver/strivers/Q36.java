@@ -1,92 +1,37 @@
 package ArraysbyStriver.strivers;
 
-import java.util.Arrays;
+
 
 public class Q36 {
 
-    static void swap(int[] arr, int i, int j) {
-
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    static void reverse(int[] arr, int i, int j) {
-
-        while (i < j) {
-
-            swap(arr, i, j);
-            i++;
-            j--;
-        }
-    }
-
-    static int findClosest(int[] arr, int index) {
-
-        int n = arr.length;
-
-        if (index <= 0 || index >= n) return -1;
-        int target = arr[index - 1];
-        int closest = Integer.MAX_VALUE;
-        int closestIndex = -1;
-
-        for (int j = index; j < n; j++) {
-
-            if (arr[j] > target && arr[j] <= closest) {
-
-                closest = arr[j];
-                closestIndex = j;
-            }
-
-
-        }
-
-        return closestIndex;
-
-
-    }
-
-
-    static void nextPermutation(int[] arr) {
+    static int maxProfit(int[] prices) {
 
         // Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int n = arr.length;
-        int pivotIndex = -1;
 
-        for (int i = n - 1; i > 0; i--) {
+        int n = prices.length;
+        int minimal = prices[0];
+        int maxProfit = 0;
 
-            if (arr[i] > arr[i - 1]) {
+        for (int i = 1; i < n; i++) {
 
-                pivotIndex = i - 1;
-                break;
+            int cost = prices[i] - minimal;
+            maxProfit = Math.max(cost, maxProfit);
+            minimal = Math.min(minimal, prices[i]);
 
-            }
+
         }
 
-
-        if (pivotIndex != -1) {
-
-            int swappingIndex = findClosest(arr, pivotIndex + 1);
-
-            swap(arr, pivotIndex, swappingIndex);
-
-            reverse(arr, pivotIndex + 1, n - 1);
-        } else {
-
-            reverse(arr, 0, n - 1);
-        }
-
-        System.out.println(Arrays.toString(arr));
-
-
+        return maxProfit;
     }
 
     public static void main(String[] args) {
 
-        int[] arr = {1,3,2};
-        nextPermutation(arr);
+        // leeTCode->121
+
+        int[] arr = {7, 1, 5, 3, 6, 4};
+        System.out.println(maxProfit(arr));
 
     }
 }
