@@ -9,34 +9,32 @@ public class Q1 {
         //Time Complexity: O(n)
         //Space Complexity: O(n)
 
-        int i = 0;
         int n = s.length();
-
         Stack<Character> st = new Stack<>();
 
-        while (i < n) {
+        for (int i = 0; i < n; i++) {
 
             char ch = s.charAt(i);
 
-            if (ch == '{' || ch == '(' || ch == '[') {
+            if (ch == '[' || ch == '{' || ch == '(') {
 
                 st.push(ch);
-            }
-            else {
 
-                if(st.isEmpty()) return false;
+            } else {
 
-                char top=st.peek();
+                if (st.isEmpty()) return false;
 
-                if (ch == ')' && top == '(' || ch == '}' && top == '{' || ch == ']' && top == '[')
+
+                if (ch == ']' && st.peek() == '[' || ch == '}' && st.peek() == '{' || ch == ')' && st.peek() == '(') {
+
                     st.pop();
+                } else {
 
-                else return false;
+                    return false;
+                }
 
 
             }
-            i++;
-
 
         }
 
@@ -53,8 +51,6 @@ public class Q1 {
 
 
     }
-
-
 
 
 }

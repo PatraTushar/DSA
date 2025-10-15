@@ -21,7 +21,7 @@ public class Q15 {
         }
     }
 
-    static int findClosest(int[] arr, int index) {
+    static int findGreaterClosest(int[] arr, int index) {
 
         int n = arr.length;
 
@@ -68,7 +68,7 @@ public class Q15 {
 
         if (pivotIndex != -1) {
 
-            int swappingIndex = findClosest(arr, pivotIndex + 1);
+            int swappingIndex = findGreaterClosest(arr, pivotIndex + 1);
 
             swap(arr, pivotIndex, swappingIndex);
 
@@ -84,10 +84,9 @@ public class Q15 {
     }
 
 
-
     public static void main(String[] args) {
 
-        int[] arr = {1,3,2};
+        int[] arr = {1, 3, 2};
         nextPermutation(arr);
     }
 }

@@ -22,7 +22,7 @@ public class minStackI {
             st.push((long) val);
         } else {
 
-            if (val > min) st.push((long)val);
+            if (val > min) st.push((long) val);
             else {
                 st.push(2L * val - min);
                 min = val;
@@ -59,19 +59,19 @@ public class minStackI {
         // Time Complexity : O(1)
         // Space Complexity : O(n)
 
-        if(st.isEmpty()){
+        if (st.isEmpty()) {
             return -1;
         }
 
-        long top=st.peek();
+        long top = st.peek();
 
-        if(min < top) return (int) top;
+        if (top > min) return (int) top;
 
-        return (int) min;
+        else return (int) min;
 
     }
 
-    public int getMin(){
+    public int getMin() {
 
         // Time Complexity : O(1)
         // Space Complexity : O(n)
@@ -82,7 +82,7 @@ public class minStackI {
 
     public static void main(String[] args) {
 
-        minStackI m=new minStackI();
+        minStackI m = new minStackI();
 
         // Push some values
         m.push(12);
@@ -94,14 +94,13 @@ public class minStackI {
         System.out.println("Minimum so far: " + m.getMin()); // Should print 10
 
         // Pop top element
-        m.st.pop(); // Removes 10
+        m.pop(); // Removes 10
 
         System.out.println("Minimum so far: " + m.getMin());
 
         // Get top and min after pop
         System.out.println("Top after pop: " + m.top());   // Should print 15
         System.out.println("Min after pop: " + m.getMin()); // Should print 12
-
 
 
     }
