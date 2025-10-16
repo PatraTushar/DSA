@@ -1,6 +1,6 @@
-import java.util.Arrays;
+package StackByStriver.interviewQuestions;
 
-public class myPractice {
+public class Q18 {
 
     static void swap(int[] arr, int i, int j) {
 
@@ -46,6 +46,9 @@ public class myPractice {
 
 
     static int nextGreaterElement(int n) {
+
+        // Time Complexity (TC): O(length)
+        //Space Complexity (SC): O(length)
 
         String s = Integer.toString(n);
 
@@ -95,7 +98,6 @@ public class myPractice {
 
     }
 
-
     public static void main(String[] args) {
 
         System.out.println(nextGreaterElement(12));
@@ -103,16 +105,3 @@ public class myPractice {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
