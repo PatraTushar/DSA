@@ -45,7 +45,7 @@ public class Q18 {
     }
 
 
-    static int nextGreaterElement(int n) {
+    static int nextGreaterElementIII(int n) {
 
         // Time Complexity (TC): O(length)
         //Space Complexity (SC): O(length)
@@ -100,7 +100,9 @@ public class Q18 {
 
     public static void main(String[] args) {
 
-        System.out.println(nextGreaterElement(12));
+        // leeTCode->556
+
+        System.out.println(nextGreaterElementIII(12));
 
 
     }
