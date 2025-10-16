@@ -43,29 +43,29 @@ public class Q2 {
 
     }
 
-    static int[] nextGreaterElementI(int[] nums1, int[] nums2) {
+    static int[] nextGreaterElementI(int[] arr1, int[] arr2) {
 
         //  Time Complexity (TC): O(n)
         // Space Complexity (SC): O(n)
 
 
-        int m = nums1.length;
-        int n = nums2.length;
+        int m = arr1.length;
+        int n = arr2.length;
         int[] result = new int[m];
         HashMap<Integer, Integer> map = new HashMap<>();
-        int[] nge = findNGE(nums2);
+        int[] nge = findNGE(arr2);
 
         for (int i = 0; i < n; i++) {
 
 
-            map.put(nums2[i], nge[i]);
+            map.put(arr2[i], nge[i]);
 
         }
 
 
         for (int i = 0; i < m; i++) {
 
-            result[i] = map.get(nums1[i]);
+            result[i] = map.get(arr1[i]);
 
 
         }
@@ -80,9 +80,9 @@ public class Q2 {
 
         // leeTCode->496
 
-        int[] nums1 = {4, 1, 2};
-        int[] nums2 = {1, 3, 4, 2};
-        int[] ans = nextGreaterElementI(nums1, nums2);
+        int[] arr1 = {4, 1, 2};
+        int[] arr2 = {1, 3, 4, 2};
+        int[] ans = nextGreaterElementI(arr1, arr2);
         System.out.println(Arrays.toString(ans));
 
 
