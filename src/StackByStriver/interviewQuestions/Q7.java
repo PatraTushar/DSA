@@ -104,6 +104,9 @@ public class Q7 {
 
     static int sumSubArrayMinII(int[] arr) {
 
+        // Time Complexity: O(n)
+        // Space Complexity: O(n)
+
         int n = arr.length;
         int MOD = (int) 1e9 + 7;
         int[] pse = findPSE(arr);
