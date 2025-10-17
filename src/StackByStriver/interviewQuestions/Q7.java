@@ -39,31 +39,22 @@ public class Q7 {
         Stack<Integer> st = new Stack<>();
         int[] pse = new int[n];
 
-        st.push(0);
-        pse[0] = -1;
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 0; i < n; i++) {
 
-            if (arr[st.peek()] <= arr[i]) {
+            while (!st.isEmpty() && arr[st.peek()] > arr[i]) {
 
-                pse[i] = st.peek();
-            } else {
-
-                while (!st.isEmpty() && arr[st.peek()] > arr[i]) {
-
-                    st.pop();
-                }
-
-                if (!st.isEmpty()) pse[i] = st.peek();
-                else pse[i] = -1;
+                st.pop();
             }
 
+            pse[i] = st.isEmpty() ? -1 : st.peek();
+
             st.push(i);
+
 
         }
 
         return pse;
-
 
     }
 
@@ -75,25 +66,14 @@ public class Q7 {
         Stack<Integer> st = new Stack<>();
         int[] nse = new int[n];
 
-        st.push(n - 1);
-        nse[n - 1] = n;
+        for (int i = n - 1; i >= 0; i--) {
 
-        for (int i = n - 2; i >= 0; i--) {
+            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
 
-            if (arr[st.peek()] < arr[i]) {
-
-                nse[i] = st.peek();
-            } else {
-
-                while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
-
-                    st.pop();
-                }
-
-                if (!st.isEmpty()) nse[i] = st.peek();
-                else nse[i] = n;
+                st.pop();
             }
 
+            nse[i] = st.isEmpty() ? n : st.peek();
             st.push(i);
 
         }
@@ -129,14 +109,10 @@ public class Q7 {
     }
 
 
-
-
-
-
     public static void main(String[] args) {
 
-        int[] arr = {71,55,82,55};
-      //  System.out.println(sumSubArrayMin(arr));
+        int[] arr = {71, 55, 82, 55};
+        //  System.out.println(sumSubArrayMin(arr));
         System.out.println(sumSubArrayMinII(arr));
 
 

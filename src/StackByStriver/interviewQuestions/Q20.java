@@ -10,28 +10,20 @@ public class Q20 {
         Stack<Integer> st = new Stack<>();
         int[] pge = new int[n];
 
-        st.push(0);
-        pge[0] = -1;
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 0; i < n; i++) {
 
-            if (arr[st.peek()] >= arr[i]) {
+            while (!st.isEmpty() && arr[st.peek()] <= arr[i]) {
 
-                pge[i] = st.peek();
-
-            } else {
-
-                while (!st.isEmpty() && arr[st.peek()] < arr[i]) {
-
-                    st.pop();
-                }
-
-                if (!st.isEmpty()) pge[i] = st.peek();
-                else pge[i] = -1;
+                st.pop();
             }
 
+            pge[i] = st.isEmpty() ? -1 : st.peek();
             st.push(i);
+
+
         }
+
 
         return pge;
     }
@@ -43,26 +35,15 @@ public class Q20 {
         Stack<Integer> st = new Stack<>();
         int[] nge = new int[n];
 
-        st.push(n - 1);
-        nge[n - 1] = n;
 
-        for (int i = n - 2; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
 
-            if (arr[st.peek()] > arr[i]) {
+            while (!st.isEmpty() && arr[st.peek()] < arr[i]) {
 
-                nge[i] = st.peek();
-
-            } else {
-
-                while (!st.isEmpty() && arr[st.peek()] <= arr[i]) {
-
-                    st.pop();
-                }
-
-                if (!st.isEmpty()) nge[i] = st.peek();
-                else nge[i] = n;
+                st.pop();
             }
 
+            nge[i] = st.isEmpty() ? n : st.peek();
             st.push(i);
         }
 
