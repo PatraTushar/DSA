@@ -1,107 +1,67 @@
+import java.util.Arrays;
 import java.util.Stack;
 
 public class myPractice {
 
 
-    static int[] findPSE(int[] arr) {
+    static int[] asteroidCollision(int[] asteroids) {
 
-        int n = arr.length;
-
+        int n = asteroids.length;
         Stack<Integer> st = new Stack<>();
-        int[] pse = new int[n];
 
-        st.push(0);
-        pse[0] = -1;
+        if (n == 0) return new int[0];
 
-        for (int i = 1; i < n; i++) {
+        for (int ele : asteroids) {
 
-            if (arr[st.peek()] <= arr[i]) {
+            boolean destroyed = false;
 
-                pse[i] = st.peek();
-            } else {
+            while (!st.isEmpty() && ele < 0 && st.peek() > 0) {
 
-                while (!st.isEmpty() && arr[st.peek()] > arr[i]) {
+                if (Math.abs(st.peek()) < Math.abs(ele)) {
 
                     st.pop();
-                }
-
-                if (!st.isEmpty()) pse[i] = st.peek();
-                else pse[i] = -1;
-            }
-
-            st.push(i);
-
-        }
-
-        return pse;
 
 
-    }
+                } else if (Math.abs(st.peek()) > Math.abs(ele)) {
+
+                    destroyed = true;
+                    break;
 
 
-    static int[] findNSE(int[] arr) {
+                } else {
 
-        int n = arr.length;
-
-        Stack<Integer> st = new Stack<>();
-        int[] nse = new int[n];
-
-        st.push(n - 1);
-        nse[n - 1] = n;
-
-        for (int i = n - 2; i >= 0; i--) {
-
-            if (arr[st.peek()] < arr[i]) {
-
-                nse[i] = st.peek();
-            } else {
-
-                while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
-
+                    destroyed = true;
                     st.pop();
+                    break;
+
                 }
 
-                if (!st.isEmpty()) nse[i] = st.peek();
-                else nse[i] = n;
+
             }
 
-            st.push(i);
+
+            if (!destroyed) st.push(ele);
 
         }
 
-        return nse;
 
-    }
+        int length = st.size();
+        int[] result = new int[length];
+        for (int i = length - 1; i >= 0; i--) {
 
-
-    static int sumOfSubArrayMinimums(int[] arr) {
-
-        int n = arr.length;
-        int MOD = (int) 1e9 + 7;
-        int[] pse = findPSE(arr);
-        int[] nse = findNSE(arr);
-
-        long sum = 0;
-
-
-        for (int i = 0; i < n; i++) {
-
-            long left = i - pse[i];
-            long right = nse[i] - i;
-            sum = (sum + arr[i] * left * right) % MOD;
-
+            result[i] = st.pop();
 
         }
 
-        return (int) sum;
-
+        return result;
     }
 
 
     public static void main(String[] args) {
 
-        int[] arr = {71,55,82,55};
-        System.out.println(sumOfSubArrayMinimums(arr));
+        int[] asteroids = {4, 7, 1, 1, 2, -3, -7, 17, 15, -16};
+        int[] ans = asteroidCollision(asteroids);
+        System.out.println(Arrays.toString(ans));
 
 
     }
