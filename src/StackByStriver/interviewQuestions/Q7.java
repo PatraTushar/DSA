@@ -32,12 +32,20 @@ public class Q7 {
 
     }
 
-    static int[] findPSE(int[] arr) {
+
+
+
+    static int sumSubArrayMinII(int[] arr) {
+
+        // Time Complexity: O(n)
+        // Space Complexity: O(n)
 
         int n = arr.length;
+        int MOD = (int) 1e9 + 7;
+        int[] pse = new int[n];
+        int[] nse = new int[n];
 
         Stack<Integer> st = new Stack<>();
-        int[] pse = new int[n];
 
 
         for (int i = 0; i < n; i++) {
@@ -54,17 +62,7 @@ public class Q7 {
 
         }
 
-        return pse;
-
-    }
-
-
-    static int[] findNSE(int[] arr) {
-
-        int n = arr.length;
-
-        Stack<Integer> st = new Stack<>();
-        int[] nse = new int[n];
+        st.clear();
 
         for (int i = n - 1; i >= 0; i--) {
 
@@ -78,19 +76,9 @@ public class Q7 {
 
         }
 
-        return nse;
 
-    }
 
-    static int sumSubArrayMinII(int[] arr) {
 
-        // Time Complexity: O(n)
-        // Space Complexity: O(n)
-
-        int n = arr.length;
-        int MOD = (int) 1e9 + 7;
-        int[] pse = findPSE(arr);
-        int[] nse = findNSE(arr);
 
         long sum = 0;
 
