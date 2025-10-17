@@ -1,104 +1,107 @@
-import java.util.Arrays;
+import java.util.Stack;
 
 public class myPractice {
 
-    static void swap(int[] arr, int i, int j) {
 
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    static void reverse(int[] arr, int i, int j) {
-
-        while (i < j) {
-
-            swap(arr, i, j);
-            i++;
-            j--;
-        }
-    }
-
-
-    static int findGreaterClosest(int[] arr, int index) {
+    static int[] findPSE(int[] arr) {
 
         int n = arr.length;
 
-        if (index <= 0 || index >= n) return -1;
-        int target = arr[index - 1];
-        int closest = Integer.MAX_VALUE;
-        int closestIndex = -1;
+        Stack<Integer> st = new Stack<>();
+        int[] pse = new int[n];
 
-        for (int i = index; i < n; i++) {
+        st.push(0);
+        pse[0] = -1;
 
-            if (arr[i] > target && arr[i] <= closest) {
+        for (int i = 1; i < n; i++) {
 
-                closest = arr[i];
-                closestIndex = i;
+            if (arr[st.peek()] <= arr[i]) {
+
+                pse[i] = st.peek();
+            } else {
+
+                while (!st.isEmpty() && arr[st.peek()] > arr[i]) {
+
+                    st.pop();
+                }
+
+                if (!st.isEmpty()) pse[i] = st.peek();
+                else pse[i] = -1;
             }
+
+            st.push(i);
 
         }
 
-        return closestIndex;
+        return pse;
 
 
     }
 
 
-    static int nextGreaterElement(int n) {
+    static int[] findNSE(int[] arr) {
 
-        String s = Integer.toString(n);
+        int n = arr.length;
 
-        int length = s.length();
+        Stack<Integer> st = new Stack<>();
+        int[] nse = new int[n];
 
-        int[] digit = new int[length];
+        st.push(n - 1);
+        nse[n - 1] = n;
 
+        for (int i = n - 2; i >= 0; i--) {
 
-        for (int i = 0; i < length; i++) {
+            if (arr[st.peek()] < arr[i]) {
 
-            digit[i] = s.charAt(i) - '0';
-        }
+                nse[i] = st.peek();
+            } else {
 
-        int pivotIndex = -1;
+                while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
 
-        for (int i = length - 1; i > 0; i--) {
+                    st.pop();
+                }
 
-            if (digit[i] > digit[i - 1]) {
-
-                pivotIndex = i - 1;
-                break;
-
+                if (!st.isEmpty()) nse[i] = st.peek();
+                else nse[i] = n;
             }
 
+            st.push(i);
+
         }
 
+        return nse;
 
-        if (pivotIndex != -1) {
-
-            int swappingIndex = findGreaterClosest(digit, pivotIndex + 1);
-
-            swap(digit, pivotIndex, swappingIndex);
-
-            reverse(digit, pivotIndex + 1, length - 1);
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int ele : digit) sb.append(ele);
-
-            long val = Long.parseLong(sb.toString());
-
-            return (val <= Integer.MAX_VALUE) ? (int) val : -1;
+    }
 
 
-        } else return -1;
+    static int sumOfSubArrayMinimums(int[] arr) {
 
+        int n = arr.length;
+        int MOD = (int) 1e9 + 7;
+        int[] pse = findPSE(arr);
+        int[] nse = findNSE(arr);
+
+        long sum = 0;
+
+
+        for (int i = 0; i < n; i++) {
+
+            long left = i - pse[i];
+            long right = nse[i] - i;
+            sum = (sum + arr[i] * left * right) % MOD;
+
+
+        }
+
+        return (int) sum;
 
     }
 
 
     public static void main(String[] args) {
 
-        System.out.println(nextGreaterElement(12));
+        int[] arr = {71,55,82,55};
+        System.out.println(sumOfSubArrayMinimums(arr));
 
 
     }
