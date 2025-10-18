@@ -1,122 +1,41 @@
 import java.util.Arrays;
 import java.util.Stack;
 
+
 public class myPractice {
 
+    static int[] stockSpanner(int[] arr) {
 
-    static int largestRectangleHistogram(int[] heights) {
-
-        int n = heights.length;
-        int[] pse = new int[n];
-        int[] nse = new int[n];
+        int n = arr.length;
         Stack<Integer> st = new Stack<>();
-
-        if (n == 0) return 0;
+        int[] sSpan = new int[n];
 
         for (int i = 0; i < n; i++) {
 
-            while (!st.isEmpty() && heights[st.peek()] > heights[i]) {
+            while (!st.isEmpty() && arr[st.peek()] <= arr[i]) {
+
 
                 st.pop();
+
+
             }
 
-            pse[i] = st.isEmpty() ? -1 : st.peek();
-            st.push(i);
+            sSpan[i] = st.isEmpty() ? i + 1 : (i - st.peek());
 
-
-        }
-
-        st.clear();
-
-
-        for (int i = n - 1; i >= 0; i--) {
-
-            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
-
-                st.pop();
-            }
-
-            nse[i] = st.isEmpty() ? n : st.peek();
             st.push(i);
 
         }
 
-
-        int largestArea = Integer.MIN_VALUE;
-        int sum;
-
-
-        for (int i = 0; i < n; i++) {
-
-            sum = heights[i] * (nse[i] - pse[i] - 1);
-            largestArea = Math.max(sum, largestArea);
-
-
-        }
-
-        return largestArea;
-
-
-    }
-
-
-    static int[][] prefixSum(char[][] arr) {
-
-        int rows = arr.length;
-        int cols = arr[0].length;
-        int[][] pSum = new int[rows][cols];
-
-        for (int j = 0; j < cols; j++) {
-
-            int sum = 0;
-
-            for (int i = 0; i < rows; i++) {
-
-                sum += arr[i][j] - '0';
-
-                if (arr[i][j] == '0') sum = 0;
-
-                pSum[i][j] = sum;
-
-
-            }
-
-        }
-
-        return pSum;
-
-
-    }
-
-
-    static int maximalRectangle(char[][] arr) {
-
-
-        int rows = arr.length;
-
-
-        int[][] prefixSum = prefixSum(arr);
-
-        int maxArea = 0;
-
-
-        for (int i = 0; i < rows; i++) {
-
-
-            maxArea = Math.max(maxArea, largestRectangleHistogram(prefixSum[i]));
-
-        }
-
-        return maxArea;
-
-
+        return sSpan;
     }
 
 
     public static void main(String[] args) {
 
-        char[][] matrix = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
-        System.out.println(maximalRectangle(matrix));
+
+        int[] stock = {100, 80, 60, 70, 60, 75, 85};
+        int[] ans=stockSpanner(stock);
+        System.out.println(Arrays.toString(ans));
 
 
     }

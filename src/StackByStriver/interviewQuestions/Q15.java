@@ -6,54 +6,58 @@ import java.util.Stack;
 
 public class Q15 {
 
-    static String removeKDigits(String num,int k){
+    static String removeKDigits(String num, int k) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
-        char[] digits=num.toCharArray();
-        Stack<Character> st=new Stack<>();
 
-        for(char ele : digits){
+        Stack<Character> st = new Stack<>();
+        int removed = 0;
 
-            while (!st.isEmpty() && k>0 && st.peek()>ele){
+        for (char ch : num.toCharArray()) {
+
+
+            while (!st.isEmpty() && (st.peek() > ch && removed < k)) {
+
                 st.pop();
-                k--;
+                removed++;
             }
 
-            st.push(ele);
+            st.push(ch);
+
+
         }
 
-        while (!st.isEmpty() && k>0){
+        while (!st.isEmpty() && removed < k) {
+
             st.pop();
-            k--;
+            removed++;
+
         }
 
 
-        StringBuilder sb=new StringBuilder();
-
-        for(char ele : st){
-
-            sb.append(ele);
-        }
-
-        while (sb.length()>0 && sb.charAt(0)=='0'){
-            sb.deleteCharAt(0);
-        }
+        StringBuilder sb = new StringBuilder();
 
 
-        return sb.length()==0 ? "0" : sb.toString();
+        for (char ch : st) sb.append(ch);
 
 
+        while (sb.length() > 0 && sb.charAt(0) == '0') sb.deleteCharAt(0);
+
+        if (sb.length()==0) return "0";
+
+
+        return sb.toString();
 
 
     }
 
     public static void main(String[] args) {
 
-        String str="1432219";
-        int k=3;
-        String Ans=removeKDigits(str,k);
+        String str = "1432219";
+        int k = 3;
+        String Ans = removeKDigits(str, k);
         System.out.println(Ans);
 
 

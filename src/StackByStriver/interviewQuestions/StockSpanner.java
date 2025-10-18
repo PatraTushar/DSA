@@ -9,13 +9,13 @@ public class StockSpanner {
 
     private Stack<int[]> stack;
 
-    public StockSpanner(){
+    public StockSpanner() {
 
-        stack=new Stack<>();
+        stack = new Stack<>();
 
     }
 
-    public int next(int price){
+    public int next(int price) {
 
         //✅ Time Complexity:
         //Amortized O(1) per call to next(price)
@@ -24,39 +24,37 @@ public class StockSpanner {
         //O(n)
         //where n is the number of calls to next(), since each entry is pushed to the stack at most once.
 
-        int span=1;
+        int span = 1;
 
-        while (!stack.isEmpty() && stack.peek()[0]<=price){
+        while (!stack.isEmpty() && stack.peek()[0] <= price) {
 
-            span+=stack.pop()[1];
+            span += stack.pop()[1];
 
         }
 
-        stack.push(new int[]{price,span});
+        stack.push(new int[]{price, span});
 
         return span;
 
 
-
-
-
     }
 
-    static int[] stockSpanI(int[] arr){
+    static int[] stockSpanI(int[] arr) {
 
         // Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
-        int[] sSpan=new int[arr.length];
-        Stack<Integer> st=new Stack<>();
+        int n = arr.length;
+        int[] sSpan = new int[n];
+        Stack<Integer> st = new Stack<>();
 
-        for (int i=0;i<arr.length;i++){
+        for (int i = 0; i < n; i++) {
 
-            while (!st.isEmpty() && arr[st.peek()]<=arr[i]){
+            while (!st.isEmpty() && arr[st.peek()] <= arr[i]) {
                 st.pop();
             }
 
-            sSpan[i]=st.isEmpty() ? (i+1) : i-st.peek();
+            sSpan[i] = st.isEmpty() ? (i + 1) : i - st.peek();
             st.push(i);
 
         }
@@ -66,7 +64,7 @@ public class StockSpanner {
 
     public static void main(String[] args) {
 
-        StockSpanner ss=new StockSpanner();
+        StockSpanner ss = new StockSpanner();
         System.out.println(ss.next(100)); // 1
         System.out.println(ss.next(80));  // 1
         System.out.println(ss.next(60));  // 1
@@ -75,14 +73,9 @@ public class StockSpanner {
         System.out.println(ss.next(75));  // 4
         System.out.println(ss.next(85));  // 6
 
-        int[] arr={100,80,60,70,60,75,85};
-        int[] ans=stockSpanI(arr);
+        int[] arr = {100, 80, 60, 70, 60, 75, 85};
+        int[] ans = stockSpanI(arr);
         System.out.println(Arrays.toString(ans));
-
-
-
-
-
 
 
     }
