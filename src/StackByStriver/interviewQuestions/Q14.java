@@ -4,27 +4,23 @@ import java.util.Stack;
 
 public class Q14 {
 
-    static int largestRectangleHistogram(int[] heights){
+    static int largestRectangleHistogram(int[] heights) {
 
-        //Time Complexity (TC): O(n)
-        //Space Complexity (SC): O(n)
+        int n = heights.length;
+        int[] pse = new int[n];
+        int[] nse = new int[n];
+        Stack<Integer> st = new Stack<>();
 
-        if (heights == null || heights.length == 0) return 0;
+        if (n == 0) return 0;
 
+        for (int i = 0; i < n; i++) {
 
-        Stack<Integer> st=new Stack<>();
-        int n=heights.length;
-        int[] pse=new int[n];
-        int[] nse=new int[n];
+            while (!st.isEmpty() && heights[st.peek()] > heights[i]) {
 
-
-        for(int i=0;i<n;i++){
-
-            while (!st.isEmpty() && heights[st.peek()]>=heights[i]){
                 st.pop();
             }
 
-            pse[i]=st.isEmpty() ? -1 : st.peek();
+            pse[i] = st.isEmpty() ? -1 : st.peek();
             st.push(i);
 
 
@@ -33,26 +29,27 @@ public class Q14 {
         st.clear();
 
 
-        for(int i=n-1;i>=0;i--){
+        for (int i = n - 1; i >= 0; i--) {
 
-            while (!st.isEmpty() && heights[st.peek()]>=heights[i]){
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
+
                 st.pop();
             }
 
-            nse[i]=st.isEmpty() ? n : st.peek();
+            nse[i] = st.isEmpty() ? n : st.peek();
             st.push(i);
-
 
         }
 
-        int largestArea=Integer.MIN_VALUE;
+
+        int largestArea = Integer.MIN_VALUE;
         int sum;
 
-        for (int i=0;i<n;i++){
 
-            sum=heights[i]*(nse[i]-pse[i]-1);
-            largestArea=Math.max(largestArea,sum);
+        for (int i = 0; i < n; i++) {
 
+            sum = heights[i] * (nse[i] - pse[i] - 1);
+            largestArea = Math.max(sum, largestArea);
 
 
         }
@@ -67,43 +64,47 @@ public class Q14 {
 
         int rows = arr.length;
         int cols = arr[0].length;
-        int[][] prefixSum = new int[rows][cols];
+        int[][] pSum = new int[rows][cols];
 
+        for (int j = 0; j < cols; j++) {
 
-        for(int j=0;j<cols;j++){
+            int sum = 0;
 
-            int sum=0;
+            for (int i = 0; i < rows; i++) {
 
-            for (int i=0;i<rows;i++){
+                sum += arr[i][j] - '0';
 
-                if (arr[i][j] == '1') sum++;
-                else sum = 0;
-                prefixSum[i][j] = sum;
+                if (arr[i][j] == '0') sum = 0;
 
-
+                pSum[i][j] = sum;
 
 
             }
+
         }
 
-        return prefixSum;
+        return pSum;
+
+
     }
 
-    static int maximalRectangle(char[][] matrix) {
+    static int maximalRectangle(char[][] arr) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
+        int rows = arr.length;
 
 
-        int maxArea=0;
-        int rows=matrix.length;
-        int[][] pSum=prefixSum(matrix);
+        int[][] prefixSum = prefixSum(arr);
 
-        for(int i=0;i<rows;i++){
+        int maxArea = 0;
 
-            maxArea=Math.max(maxArea,largestRectangleHistogram(pSum[i]));
+
+        for (int i = 0; i < rows; i++) {
+
+
+            maxArea = Math.max(maxArea, largestRectangleHistogram(prefixSum[i]));
 
         }
 
@@ -112,9 +113,10 @@ public class Q14 {
 
     }
 
+
     public static void main(String[] args) {
 
-      char[][]  matrix = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
+        char[][] matrix = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
         System.out.println(maximalRectangle(matrix));
 
 

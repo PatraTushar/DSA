@@ -4,64 +4,119 @@ import java.util.Stack;
 public class myPractice {
 
 
-    static int[] asteroidCollision(int[] asteroids) {
+    static int largestRectangleHistogram(int[] heights) {
 
-        int n = asteroids.length;
+        int n = heights.length;
+        int[] pse = new int[n];
+        int[] nse = new int[n];
         Stack<Integer> st = new Stack<>();
 
-        if (n == 0) return new int[0];
+        if (n == 0) return 0;
 
-        for (int ele : asteroids) {
+        for (int i = 0; i < n; i++) {
 
-            boolean destroyed = false;
+            while (!st.isEmpty() && heights[st.peek()] > heights[i]) {
 
-            while (!st.isEmpty() && ele < 0 && st.peek() > 0) {
+                st.pop();
+            }
 
-                if (Math.abs(st.peek()) < Math.abs(ele)) {
-
-                    st.pop();
-
-
-                } else if (Math.abs(st.peek()) > Math.abs(ele)) {
-
-                    destroyed = true;
-                    break;
+            pse[i] = st.isEmpty() ? -1 : st.peek();
+            st.push(i);
 
 
-                } else {
+        }
 
-                    destroyed = true;
-                    st.pop();
-                    break;
+        st.clear();
 
-                }
+
+        for (int i = n - 1; i >= 0; i--) {
+
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
+
+                st.pop();
+            }
+
+            nse[i] = st.isEmpty() ? n : st.peek();
+            st.push(i);
+
+        }
+
+
+        int largestArea = Integer.MIN_VALUE;
+        int sum;
+
+
+        for (int i = 0; i < n; i++) {
+
+            sum = heights[i] * (nse[i] - pse[i] - 1);
+            largestArea = Math.max(sum, largestArea);
+
+
+        }
+
+        return largestArea;
+
+
+    }
+
+
+    static int[][] prefixSum(char[][] arr) {
+
+        int rows = arr.length;
+        int cols = arr[0].length;
+        int[][] pSum = new int[rows][cols];
+
+        for (int j = 0; j < cols; j++) {
+
+            int sum = 0;
+
+            for (int i = 0; i < rows; i++) {
+
+                sum += arr[i][j] - '0';
+
+                if (arr[i][j] == '0') sum = 0;
+
+                pSum[i][j] = sum;
 
 
             }
 
+        }
 
-            if (!destroyed) st.push(ele);
+        return pSum;
+
+
+    }
+
+
+    static int maximalRectangle(char[][] arr) {
+
+
+        int rows = arr.length;
+
+
+        int[][] prefixSum = prefixSum(arr);
+
+        int maxArea = 0;
+
+
+        for (int i = 0; i < rows; i++) {
+
+
+            maxArea = Math.max(maxArea, largestRectangleHistogram(prefixSum[i]));
 
         }
 
+        return maxArea;
 
-        int length = st.size();
-        int[] result = new int[length];
-        for (int i = length - 1; i >= 0; i--) {
 
-            result[i] = st.pop();
-
-        }
-
-        return result;
     }
 
 
     public static void main(String[] args) {
 
-        int[] asteroids = {4, 7, 1, 1, 2, -3, -7, 17, 15, -16};
-        int[] ans = asteroidCollision(asteroids);
-        System.out.println(Arrays.toString(ans));
+        char[][] matrix = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
+        System.out.println(maximalRectangle(matrix));
 
 
     }
