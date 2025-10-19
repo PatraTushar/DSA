@@ -15,6 +15,7 @@ public class Q27 {
 
         int n = arr.length;
         int[] result = new int[n];
+        Arrays.fill(result,Integer.MIN_VALUE);
 
 
         for (int i = 0; i < n; i++) {
