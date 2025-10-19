@@ -1,41 +1,45 @@
-import java.util.Arrays;
 import java.util.Stack;
-
 
 public class myPractice {
 
-    static int[] stockSpanner(int[] arr) {
+    static Stack<Integer> push(int[] arr, int n) {
 
-        int n = arr.length;
         Stack<Integer> st = new Stack<>();
-        int[] sSpan = new int[n];
 
         for (int i = 0; i < n; i++) {
 
-            while (!st.isEmpty() && arr[st.peek()] <= arr[i]) {
+            if (st.isEmpty()) st.push(arr[i]);
 
+            else {
 
-                st.pop();
+                if (arr[i] < st.peek()) st.push(arr[i]);
 
-
+                else st.push(st.peek());
             }
-
-            sSpan[i] = st.isEmpty() ? i + 1 : (i - st.peek());
-
-            st.push(i);
 
         }
 
-        return sSpan;
+        return st;
+
+    }
+
+    static void getMin(Stack<Integer> st) {
+
+        while (!st.isEmpty()) {
+
+            System.out.print(st.pop() + " " );
+        }
+
+
     }
 
 
     public static void main(String[] args) {
 
-
-        int[] stock = {100, 80, 60, 70, 60, 75, 85};
-        int[] ans=stockSpanner(stock);
-        System.out.println(Arrays.toString(ans));
+        int[] arr = {2, 1, 3, 5, 0, 6};
+        int n = 6;
+        Stack<Integer> st = push(arr, n);
+        getMin(st);
 
 
     }
