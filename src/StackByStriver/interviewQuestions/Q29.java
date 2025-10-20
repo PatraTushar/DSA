@@ -25,11 +25,7 @@ class twoStack {
 
     void push1(int x) {
 
-        if (top1 + 1 == top2) {
-
-
-            return;
-        }
+        if (top1 + 1 == top2) return;
 
         arr[++top1] = x;
 
@@ -38,12 +34,7 @@ class twoStack {
 
     void push2(int x) {
 
-        if (top2 - 1 == top1) {
-
-            return;
-
-
-        }
+        if (top2 - 1 == top1) return;
 
         arr[--top2] = x;
 
