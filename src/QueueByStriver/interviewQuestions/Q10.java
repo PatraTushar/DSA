@@ -38,13 +38,39 @@ public class Q10 {
 
     }
 
+    static int timeRequiredToBuyI(int[] tickets, int k) {
+
+        // Time Complexity: O(n)
+        //Space Complexity: O(1)
+
+
+        int n = tickets.length;
+        int time = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            if (i <= k) {
+
+                time += Math.min(tickets[i], tickets[k]);
+            } else time += Math.min(tickets[k]-1,tickets[i]);
+
+        }
+
+        return time;
+
+    }
+
 
     public static void main(String[] args) {
 
 
-        int[] arr = {1, 5, 2, 3, 7};
+        // leeTCode->2073
+
+        int[] arr1 = {1, 5, 2, 3, 7};
+        int[] arr2 = {1, 5, 2, 3, 7};
         int k = 2;
-        System.out.println(timeRequiredToBuy(arr, k));
+        System.out.println(timeRequiredToBuy(arr1, k));
+        System.out.println(timeRequiredToBuyI(arr2, k));
 
     }
 }
