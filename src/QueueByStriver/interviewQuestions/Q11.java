@@ -44,7 +44,7 @@ public class Q11 {
 
         List<Integer> ans = new ArrayList<>();
 
-        while (k > 0) {
+        while (!q.isEmpty() && k > 0) {
 
             int val = q.peek();
             ans.add(val);
