@@ -17,8 +17,10 @@ public class Q7 {
 
         while (!q.isEmpty()) {
 
+            System.out.println(q.peek());
             arr[i++] = q.poll();
         }
+
 
 
 

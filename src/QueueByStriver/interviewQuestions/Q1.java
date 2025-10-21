@@ -21,20 +21,18 @@ public class Q1 {
         }
 
 
-        while (!st.isEmpty()){
+        while (!st.isEmpty()) {
             q.add(st.pop());
         }
 
-        int remainingToReverse=q.size()-k;
+        int remaining = q.size() - k;
 
-        for(int i=0;i<remainingToReverse;i++){
+        for (int i = 0; i < remaining; i++) {
 
             q.add(q.remove());
         }
 
         return q;
-
-
 
 
     }
