@@ -5,20 +5,19 @@ import java.util.Queue;
 
 public class Q13 {
 
-    static String firstRepeatingCharacter(String str) {
+    static String firstNonRepeatingCharacter(String s) {
 
         // Time Complexity: O(n)
-        //Space Complexity: O(1)
+        //Space Complexity: O(n) + O(1) = O(n)
 
-
-        int n = str.length();
-        int[] count = new int[25];
+        int n = s.length();
+        int[] count = new int[26];
         Queue<Character> q = new LinkedList<>();
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < n; i++) {
 
-            char ch = str.charAt(i);
+            char ch = s.charAt(i);
 
             q.add(ch);
             count[ch - 'a']++;
@@ -51,7 +50,7 @@ public class Q13 {
     public static void main(String[] args) {
 
         String str = "ababdc";
-        System.out.println(firstRepeatingCharacter(str));
+        System.out.println(firstNonRepeatingCharacter(str));
 
     }
 }
