@@ -15,22 +15,22 @@ public class Q19 {
         int[] result = new int[n];
         Arrays.fill(result, -1);
 
-        Stack<Integer> currStack = new Stack<>();
-        Stack<Integer> prevStack = new Stack<>();
-        Stack<Integer> tempStack = new Stack<>();
+        Stack<Integer> currStack = new Stack<>();    // Waiting for 1st greater element
+        Stack<Integer> prevStack = new Stack<>();   // Waiting for 2nd greater element
+        Stack<Integer> tempStack = new Stack<>();   // Temporary stack to maintain order when moving from currStack → prevStack
 
         for (int i = 0; i < n; i++) {
 
             int currentVal = nums[i];
 
-            while (!prevStack.isEmpty() &&  currentVal >  nums[prevStack.peek()]) {
+            while (!prevStack.isEmpty() && currentVal > nums[prevStack.peek()]) {
 
                 int indexToUpdate = prevStack.pop();
                 result[indexToUpdate] = currentVal;
 
             }
 
-            while (!currStack.isEmpty() &&   currentVal > nums[currStack.peek()]) {
+            while (!currStack.isEmpty() && currentVal > nums[currStack.peek()]) {
                 tempStack.push(currStack.pop());
             }
 
