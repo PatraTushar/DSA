@@ -75,30 +75,30 @@ public class Q15 {
         return totalFlips;
     }
 
-    static int minKBitFlipsII(int[] nums, int k) {
+    static int minKBitFlipsII(int[] arr, int k) {
 
         // Time Complexity: O(n)
         //Space Complexity:  O(1)
 
-        int n = nums.length;
+        int n = arr.length;
         int totalFlips = 0;
         int flipCount = 0;
 
 
         for (int i = 0; i < n; i++) {
 
-            if (i >= k && nums[i - k] == -1) {
+            if (i >= k && arr[i - k] == -1) {
 
                 flipCount--;
 
             }
 
 
-            if (flipCount % 2 == nums[i]) {
+            if (flipCount % 2 == arr[i]) {
 
                 if (i + k > n) return -1;
 
-                nums[i] = -1;
+                arr[i] = -1;
                 flipCount++;
                 totalFlips++;
 
