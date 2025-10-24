@@ -6,12 +6,12 @@ import java.util.Stack;
 
 public class Q19 {
 
-    static int[] nextGreaterElementIV(int[] arr) {
+    static int[] nextGreaterElementIV(int[] nums) {
 
         // Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
-        int n = arr.length;
+        int n = nums.length;
         int[] result = new int[n];
         Arrays.fill(result, -1);
 
@@ -21,16 +21,16 @@ public class Q19 {
 
         for (int i = 0; i < n; i++) {
 
-            int currentVal = arr[i];
+            int currentVal = nums[i];
 
-            while (!prevStack.isEmpty() && arr[prevStack.peek()] < currentVal) {
+            while (!prevStack.isEmpty() &&  currentVal >  nums[prevStack.peek()]) {
 
                 int indexToUpdate = prevStack.pop();
                 result[indexToUpdate] = currentVal;
 
             }
 
-            while (!currStack.isEmpty() && arr[currStack.peek()] < currentVal) {
+            while (!currStack.isEmpty() &&   currentVal > nums[currStack.peek()]) {
                 tempStack.push(currStack.pop());
             }
 
