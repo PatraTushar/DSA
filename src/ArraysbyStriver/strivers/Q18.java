@@ -5,196 +5,177 @@ import java.util.Arrays;
 public class Q18 {
 
 
-    static void setRowZero(int arr[][],int rows){
+    static void setRowZeroes(int[][] arr, int rows) {
 
-        for(int i=0;i<arr[0].length;i++){  //column
+        int cols = arr[0].length;
 
-            if(arr[rows][i]!=0){
-                arr[rows][i]=-1;
-            }
+        for (int i = 0; i < cols; i++) {
+
+            arr[rows][i] = 0;
         }
+
+
     }
 
-    static void setColumnZero(int[][] arr,int columns){
 
-        for(int i=0;i<arr.length;i++){  // row
+    static void setColsZeroes(int[][] arr, int cols) {
 
-            if(arr[i][columns]!=0){
-                arr[i][columns]=-1;
-            }
+        int rows = arr.length;
 
+        for (int i = 0; i < rows; i++) {
 
+            arr[i][cols] = 0;
 
         }
+
+
     }
 
-    static int[][] setMatrixZeroes(int[][] arr){
+    static void setMatrixZeroes(int[][] arr) {
 
         // brute force which may not work for all cases
-        //  Time Complexity (TC): O((n × m) × (n + m))
+        //  Time Complexity (TC): O((rows * cols) × (rows + cols))
         //  Space Complexity (SC): O(1)
 
-        int rows=arr.length;
-        int columns=arr[0].length;
 
-        for(int i=0;i<rows;i++){
+        int rows = arr.length;
+        int cols = arr[0].length;
 
-            for(int j=0;j<columns;j++){
+        for (int i = 0; i < rows; i++) {
 
-                if(arr[i][j]==0){
+            for (int j = 0; j < cols; j++) {
 
-                    setRowZero(arr,i);
-                    setColumnZero(arr,j);
+                if (arr[i][j] == 0) {
+
+                    arr[i][j] = -1;
                 }
             }
         }
 
+        for (int i = 0; i < rows; i++) {
 
-        for(int i=0;i< rows;i++){
-            for(int j=0;j<columns;j++){
+            for (int j = 0; j < cols; j++) {
 
-                if(arr[i][j]==-1){
-                    arr[i][j]=0;
+                if (arr[i][j] == -1) {
+
+                    setRowZeroes(arr, i);
+                    setColsZeroes(arr, j);
+
                 }
+
             }
-        }
 
-        return arr;
-    }
-
-    static void setMatrixZeroesI(int[][] arr){  // better solution
-
-       // Time Complexity: O(m × n)
-      //  Space Complexity: O(m + n)
-
-
-
-
-        int[] rows=new int[arr.length];
-        int[] columns=new int[arr[0].length];
-
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr[i].length;j++){
-
-                if(arr[i][j]==0){
-                    rows[i]=1;
-                    columns[j]=1;
-                }
-            }
-        }
-
-        for(int i=0;i<arr.length;i++){
-
-            for(int j=0;j< arr[0].length;j++){
-
-                if(rows[i]==1 || columns[j]==1){
-                    arr[i][j]=0;
-                }
-            }
         }
 
         System.out.println(Arrays.deepToString(arr));
+
     }
 
-    static void setMatrixZeroesII(int[][] matrix){   // optimal solution
 
-       // Time Complexity: O(m × n)
-        //Space Complexity: O(1)
+    // optimal solution
+    static void setMatrixZeroesI(int[][] matrix) {
 
-        int rows=matrix.length;
-        int cols=matrix[0].length;
+        //  Time Complexity (TC): O(rows * cols)
+        //  Space Complexity (SC): O(1)
 
-      int firstRowZero=1;
-      int firstColumnZero=1;
 
-        // Step 1: Check if first row has any zeros
-        for(int j=0;j<cols;j++){
+        int rows = matrix.length;
+        int cols = matrix[0].length;
 
-            if(matrix[0][j]==0){
-                firstRowZero=0;
+
+        boolean firstRowZeroes = false;
+        boolean firstColsZeroes = false;
+
+        // Check if first row contains any zero
+
+        for (int j = 0; j < cols; j++) {
+
+            if (matrix[0][j] == 0) {
+
+                firstRowZeroes = true;
                 break;
             }
+
         }
 
-        // Step 2: Check if first column has any zeros
+        // Check if first column contains any zero
 
-        for(int i=0;i<rows;i++){
+        for (int i = 0; i < rows; i++) {
 
-            if(matrix[i][0]==0){
-                firstColumnZero=0;
+            if (matrix[i][0] == 0) {
+
+                firstColsZeroes = true;
                 break;
+
             }
         }
 
 
-        // Step 3: Use first row and column to mark zeros (start from 1)
+        // Use first row and column as markers
 
-        for(int i=1;i<rows;i++){
+        for (int i = 1; i < rows; i++) {
 
-            for(int j=1;j<cols;j++){
+            for (int j = 1; j < cols; j++) {
 
-                if(matrix[i][j]==0){
-                    matrix[i][0]=0;
-                    matrix[0][j]=0;
+
+                if (matrix[i][j] == 0) {
+
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
                 }
+
             }
         }
 
 
-        // Step 4: Set elements to 0 based on marks (start from 1)
-        for(int i=1;i<rows;i++){
-            for(int j=1;j<cols;j++){
+        // Set matrix cells to zero based on markers
 
-                if(matrix[i][0]==0 || matrix[0][j]==0){
+        for (int i = 1; i < rows; i++) {
 
-                    matrix[i][j]=0;
+            for (int j = 1; j < cols; j++) {
 
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
 
+                    matrix[i][j] = 0;
                 }
+
+            }
+
+
+        }
+
+        // Zero out first row if needed
+
+        if (firstRowZeroes) {
+
+            for (int j = 0; j < cols; j++) {
+
+                matrix[0][j] = 0;
             }
         }
 
-        // Step 5: Zero out first row if needed
-        if(firstRowZero==0){
-            for (int j=0;j<cols;j++){
-                matrix[0][j]=0;
+        // Zero out first column if needed
+
+        if (firstColsZeroes) {
+
+            for (int i = 0; i < rows; i++) {
+
+                matrix[i][0] = 0;
             }
         }
 
-        // Step 6: Zero out first column if needed
-
-        if(firstColumnZero==0){
-            for(int i=0;i<rows;i++){
-                matrix[i][0]=0;
-            }
-        }
 
         System.out.println(Arrays.deepToString(matrix));
 
-
-
-
-
-
-
-
-        }
-
-
-
-
+    }
 
 
     public static void main(String[] args) {
 
-        int[][] arr={{1,1,1,1},{1,0,0,1},{1,1,0,1},{1,1,1,1}};
-
-//        int[][] ans=setMatrixZeroes(arr);
-//        System.out.println(Arrays.deepToString(ans));
-//        setMatrixZeroesI(arr);
-        setMatrixZeroesII(arr);
-
-
+        int[][] arr = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+        setMatrixZeroes(arr);
+        int[][] arr1 = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+        setMatrixZeroesI(arr1);
 
     }
 }
