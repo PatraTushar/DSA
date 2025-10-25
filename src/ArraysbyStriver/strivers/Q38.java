@@ -1,13 +1,8 @@
+package ArraysbyStriver.strivers;
 
-
-public class myPractice {
-
+public class Q38 {
 
     public static void main(String[] args) {
 
-
-
-
     }
 }
-
