@@ -25,7 +25,7 @@ public class PrefixToPostfix {
 
                 String operand1 = st.pop();
                 String operand2 = st.pop();
-                String result = operand1 + operand2 + ch;
+                String result =  operand1 + operand2 + ch ;
                 st.push(result);
 
             }

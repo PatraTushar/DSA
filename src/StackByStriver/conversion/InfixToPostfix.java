@@ -15,19 +15,19 @@ public class InfixToPostfix {
     }
 
 
-    static String evaluation(String s) {
+    static String evaluation(String exp) {
 
         // Time Complexity (TC): O(n)
         // Space Complexity (SC): O(n)
 
 
-        int length = s.length();
+        int length = exp.length();
         Stack<Character> st = new Stack<>();
         StringBuilder postfix = new StringBuilder();
 
         for (int i = 0; i < length; i++) {
 
-            char ch = s.charAt(i);
+            char ch = exp.charAt(i);
 
             if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
 
@@ -50,7 +50,7 @@ public class InfixToPostfix {
 
                 if (ch == '^') {
 
-                    while (!st.isEmpty() && precedence(st.peek()) >= precedence(ch)) {
+                    while (!st.isEmpty() && precedence(st.peek()) > precedence(ch)) {
 
                         postfix.append(st.pop());
 

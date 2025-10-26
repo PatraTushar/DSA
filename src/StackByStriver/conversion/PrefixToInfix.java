@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class PrefixToInfix {
 
-    static String evaluation(String prefix){
+    static String evaluation(String prefix) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
@@ -13,7 +13,7 @@ public class PrefixToInfix {
         int length = prefix.length();
         Stack<String> st = new Stack<>();
 
-        for (int i = length-1; i >=0; i--) {
+        for (int i = length - 1; i >= 0; i--) {
 
             char ch = prefix.charAt(i);
 
@@ -25,7 +25,7 @@ public class PrefixToInfix {
 
                 String operand1 = st.pop();
                 String operand2 = st.pop();
-                String result = operand1 + operand2 + ch ;
+                String result = "(" + operand1 + ch + operand2 + ")";
                 st.push(result);
 
             }
@@ -39,7 +39,7 @@ public class PrefixToInfix {
 
     public static void main(String[] args) {
 
-        String prefix="*+PQ-MN";
+        String prefix = "*+PQ-MN";
         System.out.println(evaluation(prefix));
 
 
