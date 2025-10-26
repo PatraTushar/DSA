@@ -5,19 +5,20 @@ public class myPractice {
 
 
     // DYNAMIC STACK IMPLEMENTATION
-    public static class Stack {
+    public static class Stack<T> {
 
-        int[] stack;
+        T[] stack;
         int size;
         int index;
         int capacity;
 
         int DEFAULT_CAPACITY = 10;
 
+        @SuppressWarnings("unchecked")
         Stack() {
 
             capacity = DEFAULT_CAPACITY;
-            stack = new int[capacity];
+            stack = (T[]) new Object[capacity];
             index = -1;
             size = 0;
         }
@@ -34,10 +35,11 @@ public class myPractice {
         }
 
 
+        @SuppressWarnings("unchecked")
         public void resize() {
 
             capacity *= 2;
-            int[] newStack = new int[capacity];
+            T[] newStack =(T[]) new Object[capacity];
 
             for (int i = 0; i < stack.length; i++) {
 
@@ -50,7 +52,7 @@ public class myPractice {
         }
 
 
-        public void push(int val) {
+        public void push(T val) {
 
             if (isFull()) resize();
 
@@ -60,7 +62,7 @@ public class myPractice {
         }
 
 
-        public int pop() {
+        public T pop() {
 
             if (isEmpty()) {
 
@@ -68,7 +70,7 @@ public class myPractice {
             }
 
 
-            int top = stack[index];
+            T top = stack[index];
 
             index--;
             size--;
@@ -80,11 +82,12 @@ public class myPractice {
 
         }
 
+        @SuppressWarnings("unchecked")
         public void shrink() {
 
             capacity /= 2;
 
-            int[] newStack = new int[capacity];
+            T[] newStack = (T[])new Object[capacity];
 
             for (int i = 0; i < stack.length; i++) {
 
@@ -96,7 +99,7 @@ public class myPractice {
         }
 
 
-        public int peek() {
+        public T peek() {
 
             if (isEmpty()) {
 
@@ -123,7 +126,7 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        Stack st = new Stack();
+        Stack<Integer> st = new Stack();
 
         st.push(10);
         st.push(20);

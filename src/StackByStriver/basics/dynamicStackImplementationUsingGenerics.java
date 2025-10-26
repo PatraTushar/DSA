@@ -2,61 +2,45 @@ package StackByStriver.basics;
 
 import java.util.EmptyStackException;
 
+public class dynamicStackImplementationUsingGenerics {
 
-// DYNAMIC STACK IMPLEMENTATION
-public class dynamicStackImplementation {
+    // DYNAMIC STACK IMPLEMENTATION USING GENERICS
 
-    public static class Stack {
+    public static class Stack<T> {
 
-        int[] stack;
+        T[] stack;
         int size;
         int index;
         int capacity;
 
         int DEFAULT_CAPACITY = 10;
 
+        @SuppressWarnings("unchecked")
         Stack() {
 
             capacity = DEFAULT_CAPACITY;
-            stack = new int[capacity];
+            stack = (T[]) new Object[capacity];
             index = -1;
             size = 0;
         }
 
 
-        int getSize() {
-
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
-
-            return size;
-        }
-
-
         public boolean isEmpty() {
-
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
 
             return size == 0;
         }
 
         public boolean isFull() {
 
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
-
             return size == capacity;
         }
 
 
+        @SuppressWarnings("unchecked")
         public void resize() {
 
-            //Time Complexity: O(n)
-            //Space Complexity: O(n)
-
             capacity *= 2;
-            int[] newStack = new int[capacity];
+            T[] newStack = (T[]) new Object[capacity];
 
             for (int i = 0; i < stack.length; i++) {
 
@@ -69,10 +53,7 @@ public class dynamicStackImplementation {
         }
 
 
-        public void push(int val) {
-
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
+        public void push(T val) {
 
             if (isFull()) resize();
 
@@ -82,10 +63,7 @@ public class dynamicStackImplementation {
         }
 
 
-        public int pop() {
-
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
+        public T pop() {
 
             if (isEmpty()) {
 
@@ -93,7 +71,7 @@ public class dynamicStackImplementation {
             }
 
 
-            int top = stack[index];
+            T top = stack[index];
 
             index--;
             size--;
@@ -105,14 +83,12 @@ public class dynamicStackImplementation {
 
         }
 
+        @SuppressWarnings("unchecked")
         public void shrink() {
-
-            //Time Complexity: O(n)
-            //Space Complexity: O(n)
 
             capacity /= 2;
 
-            int[] newStack = new int[capacity];
+            T[] newStack = (T[]) new Object[capacity];
 
             for (int i = 0; i < stack.length; i++) {
 
@@ -124,10 +100,7 @@ public class dynamicStackImplementation {
         }
 
 
-        public int peek() {
-
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
+        public T peek() {
 
             if (isEmpty()) {
 
@@ -139,9 +112,6 @@ public class dynamicStackImplementation {
 
         public void display() {
 
-            //Time Complexity: O(n)
-            //Space Complexity: O(n)
-
             for (int i = 0; i < size; i++) {
 
                 System.out.print(stack[i] + " ");
@@ -152,24 +122,22 @@ public class dynamicStackImplementation {
 
         }
 
+        public static void main(String[] args) {
+
+            Stack<Integer> st = new Stack();
+
+            st.push(10);
+            st.push(20);
+            st.push(30);
+            st.push(40);
+            st.push(50);
+            st.display();
+            System.out.println(st.isFull());
+            System.out.println(st.isEmpty());
+            System.out.println(st.peek());
+            System.out.println(st.pop());
+            st.display();
+        }
 
     }
-
-    public static void main(String[] args) {
-
-        Stack st = new Stack();
-
-        st.push(10);
-        st.push(20);
-        st.push(30);
-        st.display();
-        System.out.println("Peek: " + st.peek());
-        System.out.println("Pop: " + st.pop());
-        st.display();
-        System.out.println("Size: " + st.getSize());
-        System.out.println("IsEmpty: " + st.isEmpty());
-
-    }
-
-
 }
