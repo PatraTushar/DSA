@@ -1,43 +1,142 @@
-import java.util.Stack;
+import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
 
 public class myPractice {
 
-    static String evaluation(String prefix) {
-        
 
-        int length = prefix.length();
-        Stack<String> st = new Stack<>();
+    // DYNAMIC STACK IMPLEMENTATION
+    public static class Stack {
 
-        for (int i = length-1; i >=0; i--) {
+        int[] stack;
+        int size;
+        int index;
+        int capacity;
 
-            char ch = prefix.charAt(i);
+        int DEFAULT_CAPACITY = 10;
 
-            if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
+        Stack() {
 
-                st.push(ch + "");
+            capacity = DEFAULT_CAPACITY;
+            stack = new int[capacity];
+            index = -1;
+            size = 0;
+        }
 
-            } else {
 
-                String operand1 = st.pop();
-                String operand2 = st.pop();
-                String result = operand1 + operand2 + ch ;
-                st.push(result);
+        public boolean isEmpty() {
+
+            return size == 0;
+        }
+
+        public boolean isFull() {
+
+            return size == capacity;
+        }
+
+
+        public void resize() {
+
+            capacity *= 2;
+            int[] newStack = new int[capacity];
+
+            for (int i = 0; i < stack.length; i++) {
+
+                newStack[i] = stack[i];
 
             }
+
+            stack = newStack;
+
+        }
+
+
+        public void push(int val) {
+
+            if (isFull()) resize();
+
+            stack[++index] = val;
+            size++;
+
+        }
+
+
+        public int pop() {
+
+            if (isEmpty()) {
+
+                throw new EmptyStackException();
+            }
+
+
+            int top = stack[index];
+
+            index--;
+            size--;
+
+            if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
+
+            return top;
 
 
         }
 
-        return st.peek();
+        public void shrink() {
+
+            capacity /= 2;
+
+            int[] newStack = new int[capacity];
+
+            for (int i = 0; i < stack.length; i++) {
+
+                newStack[i] = stack[i];
+
+            }
+
+            stack = newStack;
+        }
+
+
+        public int peek() {
+
+            if (isEmpty()) {
+
+                throw new EmptyStackException();
+            }
+
+            return stack[index];
+        }
+
+        public void display() {
+
+            for (int i = 0; i < size; i++) {
+
+                System.out.print(stack[i] + " ");
+            }
+
+            System.out.println();
+
+
+        }
 
     }
 
 
     public static void main(String[] args) {
 
+        Stack st = new Stack();
 
-        String postfix = "/-AB*+DEF";
-        System.out.println(evaluation(postfix));
+        st.push(10);
+        st.push(20);
+        st.push(30);
+        st.push(40);
+        st.push(50);
+        st.display();
+        System.out.println(st.isFull());
+        System.out.println(st.isEmpty());
+        System.out.println(st.peek());
+        System.out.println(st.pop());
+        st.display();
+
 
     }
 }
