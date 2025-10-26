@@ -4,59 +4,57 @@ public class myPractice {
 
     public static class Queue {
 
-        int[] Queue;
-        int front;
-        int rear;
+        public static class Node {
 
-        int size;
+            int data;
+            Node next;
 
-        int capacity;
+            Node(int data) {
 
-        int DEFAULT_CAPACITY = 10;
+                this.data = data;
 
 
-        Queue() {
-
-            capacity = DEFAULT_CAPACITY;
-            Queue = new int[capacity];
-            front = -1;
-            rear = -1;
-            size = 0;
+            }
 
         }
 
+        Node head;
+        Node tail;
+        int size;
+
+        Queue() {
+
+            head = null;
+            tail = null;
+            size = 0;
+
+
+        }
 
         public boolean isEmpty() {
 
             return size == 0;
         }
 
-        public boolean isFull() {
-
-            return size == capacity;
-        }
-
         public int getSize() {
-
             return size;
         }
 
-
         public void add(int val) {
 
-            if (isFull()) {
-
-                throw new IllegalStateException();
-            }
+            Node temp = new Node(val);
 
             if (isEmpty()) {
 
-                front = rear = 0;
+                head = tail = temp;
 
+
+            } else {
+
+                tail.next = temp;
+                tail = temp;
             }
 
-
-            Queue[rear++] = val;
             size++;
 
 
@@ -70,31 +68,34 @@ public class myPractice {
                 return null;
             }
 
-            int top = Queue[front];
-            front++;
+            int top = head.data;
+            head = head.next;
             size--;
 
             return top;
         }
 
+
         public Integer peek() {
 
             if (isEmpty()) return null;
 
-            return Queue[front];
+            return head.data;
         }
-
 
         public void display() {
 
-            for (int i = front; i < rear; i++) {
+            Node temp = head;
 
-                System.out.print(Queue[i] + " ");
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
             }
 
             System.out.println();
-
         }
+
+
     }
 
     public static void main(String[] args) {
@@ -107,17 +108,17 @@ public class myPractice {
         q.add(50);
         q.add(60);
         q.add(70);
+        q.add(80);
+        q.add(90);
+        q.add(100);
         q.display();
         System.out.println(q.isEmpty());
-        System.out.println(q.isFull());
+        System.out.println(q.getSize());
         System.out.println(q.poll());
         q.display();
         System.out.println(q.peek());
-        System.out.println(q.getSize());
-
 
     }
-
 
 }
 
