@@ -5,18 +5,18 @@ import java.util.Stack;
 
 public class PrefixToInfix {
 
-    static String evaluation(String prefix){
+    static String evaluation(String exp){
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
-        int i=prefix.length()-1;
+        int i=exp.length()-1;
 
         Stack<String> st=new Stack<>();
 
         while (i>=0){
 
-            char ch=prefix.charAt(i);
+            char ch=exp.charAt(i);
 
 
             if((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || ch>='0' && ch<='9'){

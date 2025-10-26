@@ -50,7 +50,7 @@ public class InfixToPostfix {
 
                 if (ch == '^') {
 
-                    while (!st.isEmpty() && precedence(st.peek()) > precedence(ch)) {
+                    while (!st.isEmpty() && precedence(st.peek()) >= precedence(ch)) {
 
                         postfix.append(st.pop());
 

@@ -2,14 +2,14 @@ import java.util.Stack;
 
 public class myPractice {
 
-    static String evaluation(String postfix) {
+    static String evaluation(String prefix) {
 
-        int length = postfix.length();
+        int length = prefix.length();
         Stack<String> st = new Stack<>();
 
-        for (int i = 0; i < length; i++) {
+        for (int i = length - 1; i >= 0; i--) {
 
-            char ch = postfix.charAt(i);
+            char ch = prefix.charAt(i);
 
             if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
 
@@ -17,8 +17,8 @@ public class myPractice {
 
             } else {
 
-                String operand2 = st.pop();
                 String operand1 = st.pop();
+                String operand2 = st.pop();
                 String result = "(" + operand1 + ch + operand2 + ")";
                 st.push(result);
 
@@ -35,7 +35,7 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-        String postfix = "AB-DE+F*/";
+        String postfix = "*+PQ-MN";
         System.out.println(evaluation(postfix));
 
     }
