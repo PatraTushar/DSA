@@ -4,33 +4,32 @@ import java.util.Stack;
 
 public class PostfixToPrefix {
 
-    static String evaluation(String postfix){
+    static String evaluation(String postfix) {
 
-        Stack<String> st=new Stack<>();
-        int i=0;
-        int n=postfix.length();
+        // Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(n)
 
-        while (i<n){
+        int length = postfix.length();
+        Stack<String> st = new Stack<>();
 
-            // Time Complexity (TC): O(n)
-            //Space Complexity (SC): O(n)
+        for (int i = 0; i < length; i++) {
+
+            char ch = postfix.charAt(i);
+
+            if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
+
+                st.push(ch + "");
+
+            } else {
 
 
-            char ch=postfix.charAt(i);
-
-            if((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || ch>='0' && ch<='9'){
-
-                st.push(ch +"");
-            }
-
-            else {
-
-                String val2=st.pop();
-                String val1=st.pop();
-                String result= ch + val1 + val2  ;
+                String operand2 = st.pop();
+                String operand1 = st.pop();
+                String result = ch + operand1 + operand2;
                 st.push(result);
+
             }
-            i++;
+
 
         }
 
@@ -39,7 +38,7 @@ public class PostfixToPrefix {
 
     public static void main(String[] args) {
 
-        String postfix="AB-DE+F*/";
+        String postfix = "AB-DE+F*/";
         System.out.println(evaluation(postfix));
     }
 }

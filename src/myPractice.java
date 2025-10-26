@@ -3,11 +3,12 @@ import java.util.Stack;
 public class myPractice {
 
     static String evaluation(String prefix) {
+        
 
         int length = prefix.length();
         Stack<String> st = new Stack<>();
 
-        for (int i = length - 1; i >= 0; i--) {
+        for (int i = length-1; i >=0; i--) {
 
             char ch = prefix.charAt(i);
 
@@ -19,7 +20,7 @@ public class myPractice {
 
                 String operand1 = st.pop();
                 String operand2 = st.pop();
-                String result = "(" + operand1 + ch + operand2 + ")";
+                String result = operand1 + operand2 + ch ;
                 st.push(result);
 
             }
@@ -35,7 +36,7 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-        String postfix = "*+PQ-MN";
+        String postfix = "/-AB*+DEF";
         System.out.println(evaluation(postfix));
 
     }

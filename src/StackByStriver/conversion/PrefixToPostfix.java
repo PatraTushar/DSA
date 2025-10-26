@@ -6,35 +6,34 @@ public class PrefixToPostfix {
 
     static String evaluation(String prefix){
 
-        Stack<String> st=new Stack<>();
-        int i=prefix.length()-1;
+        // Time Complexity (TC): O(n)
+        //Space Complexity (SC): O(n)
 
+        int length = prefix.length();
+        Stack<String> st = new Stack<>();
 
-        while (i>=0){
+        for (int i = length-1; i >=0; i--) {
 
-            // Time Complexity (TC): O(n)
-            //Space Complexity (SC): O(n)
+            char ch = prefix.charAt(i);
 
+            if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
 
-            char ch=prefix.charAt(i);
+                st.push(ch + "");
 
-            if((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || ch>='0' && ch<='9'){
+            } else {
 
-                st.push(ch +"");
-            }
-
-            else {
-
-                String val1=st.pop();
-                String val2=st.pop();
-                String result=  val1 + val2 + ch ;
+                String operand1 = st.pop();
+                String operand2 = st.pop();
+                String result = operand1 + operand2 + ch ;
                 st.push(result);
+
             }
-            i--;
+
 
         }
 
         return st.peek();
+
     }
 
     public static void main(String[] args) {
