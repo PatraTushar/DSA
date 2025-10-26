@@ -1,113 +1,123 @@
 package QueueByStriver.basics;
 
-import java.util.NoSuchElementException;
 
 public class arrayImplementationOfQueue {
 
     public static class Queue {
 
-        int[] arr = new int[10];
-        int size = 0;
-        int front = -1;
-        int rear = -1;
+        int[] Queue;
+        int front;
+        int rear;
 
-        public void add(int data) {
+        int size;
 
-            //Time Complexity:O(1)
-            //Space Complexity:O(1)
+        int capacity;
 
-            if (size == arr.length) {
-                System.out.println(" insertion not possible ");
-                return;
-            }
-
-            if (front == -1) {
-
-                front = rear = 0;
-
-            }
+        int DEFAULT_CAPACITY = 10;
 
 
-            arr[rear] = data;
-            rear++;
-            size++;
+        Queue() {
 
-
-        }
-
-        public int remove() {
-
-            //Time Complexity:O(1)
-            //Space Complexity:O(1)
-
-            if (front == -1) {
-                throw new NoSuchElementException(" queue is empty ");
-            }
-
-            int val = arr[front++];
-            size--;
-
-            if (size == 0) front = rear = -1;
-
-            return val;
-
-
-        }
-
-
-        public int peek() {
-
-            //Time Complexity:O(1)
-            //Space Complexity:O(1)
-
-            if (size == 0) {
-                throw new NoSuchElementException(" queue is empty ");
-            }
-
-            return arr[front];
-
-
-        }
-
-        void display() {
-
-            //Time Complexity:O(n)
-            //Space Complexity:O(1)
-
-            if (size == 0) {
-                System.out.println("Queue is empty");
-                return;
-            }
-
-            for (int i = front; i < rear; i++) {
-                System.out.print(arr[i] + " ");
-            }
-
-            System.out.println();
-        }
-
-
-        public int size() {
-
-            //Time Complexity:O(1)
-            //Space Complexity:O(1)
-
-            if (size == 0) {
-                return 0;
-            }
-
-            return size;
+            capacity = DEFAULT_CAPACITY;
+            Queue = new int[capacity];
+            front = -1;
+            rear = -1;
+            size = 0;
 
         }
 
 
         public boolean isEmpty() {
 
-            //Time Complexity:O(1)
-            //Space Complexity:O(1)
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
 
             return size == 0;
         }
+
+        public boolean isFull() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size == capacity;
+        }
+
+        public int getSize() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size;
+        }
+
+
+        public void add(int val) {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (isFull()) {
+
+                throw new IllegalStateException();
+            }
+
+            if (isEmpty()) {
+
+                front = rear = 0;
+
+            }
+
+
+            Queue[rear++] = val;
+            size++;
+
+
+        }
+
+
+        public Integer poll() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (isEmpty()) {
+
+                return null;
+            }
+
+            int top = Queue[front];
+            front++;
+            size--;
+
+            return top;
+        }
+
+        public Integer peek() {
+
+            // Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (isEmpty()) return null;
+
+            return Queue[front];
+        }
+
+
+        public void display() {
+
+            // Time Complexity: O(n)
+            //Space Complexity: O(1)
+
+            for (int i = front; i < rear; i++) {
+
+                System.out.print(Queue[i] + " ");
+            }
+
+            System.out.println();
+
+        }
+
 
     }
 
@@ -116,15 +126,20 @@ public class arrayImplementationOfQueue {
 
         Queue q = new Queue();
 
+        q.add(10);
+        q.add(20);
+        q.add(30);
+        q.add(40);
+        q.add(50);
+        q.add(60);
+        q.add(70);
         q.display();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        q.add(4);
-        q.display();   // 1 2 3 4
-        q.remove();
-        q.display();   // 2 3 4
-        System.out.println(q.peek());  // 2
+        System.out.println(q.isEmpty());
+        System.out.println(q.isFull());
+        System.out.println(q.poll());
+        q.display();
+        System.out.println(q.peek());
+        System.out.println(q.getSize());
 
     }
 }

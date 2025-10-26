@@ -1,33 +1,39 @@
-import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
 
 public class myPractice {
 
-    public static class Stack {
+    public static class Queue {
 
-        Node head;
-        Node tail;
+        int[] Queue;
+        int front;
+        int rear;
 
         int size;
 
-        public static class Node {
+        int capacity;
 
-            int data;
-            Node next;
+        int DEFAULT_CAPACITY = 10;
 
 
-            Node(int data) {
+        Queue() {
 
-                this.data = data;
-            }
-        }
-
-        Stack() {
-
-            head = null;
-            tail = null;
+            capacity = DEFAULT_CAPACITY;
+            Queue = new int[capacity];
+            front = -1;
+            rear = -1;
             size = 0;
 
+        }
 
+
+        public boolean isEmpty() {
+
+            return size == 0;
+        }
+
+        public boolean isFull() {
+
+            return size == capacity;
         }
 
         public int getSize() {
@@ -35,94 +41,83 @@ public class myPractice {
             return size;
         }
 
-        public boolean isEmpty() {
 
-            return size == 0;
-        }
+        public void add(int val) {
 
+            if (isFull()) {
 
-        public void push(int val) {
-
-            Node temp = new Node(val);
+                throw new IllegalStateException();
+            }
 
             if (isEmpty()) {
 
-                head = tail = temp;
-
-
-            } else {
-
-                temp.next = head;
-                head = temp;
-
+                front = rear = 0;
 
             }
 
+
+            Queue[rear++] = val;
             size++;
 
 
         }
 
 
-        public int pop() {
+        public Integer poll() {
 
             if (isEmpty()) {
 
-                throw new EmptyStackException();
+                return null;
             }
 
-
-            int top = head.data;
-            head = head.next;
+            int top = Queue[front];
+            front++;
             size--;
 
             return top;
-
         }
 
-        public int peek() {
+        public Integer peek() {
 
-            if (isEmpty()) {
+            if (isEmpty()) return null;
 
-                throw new EmptyStackException();
-            }
-
-            return head.data;
+            return Queue[front];
         }
+
 
         public void display() {
 
-            Node temp = head;
-            while (temp != null) {
+            for (int i = front; i < rear; i++) {
 
-                System.out.print(temp.data + " ");
-                temp = temp.next;
+                System.out.print(Queue[i] + " ");
             }
 
             System.out.println();
+
         }
     }
 
     public static void main(String[] args) {
 
-        Stack st = new Stack();
-
-        st.push(10);
-        st.push(20);
-        st.push(30);
-        st.push(40);
-        st.push(50);
-        st.display();
-        System.out.println(st.getSize());
-        System.out.println(st.pop());
-        System.out.println(st.getSize());
-        st.display();
-        System.out.println(st.peek());
-        System.out.println(st.isEmpty());
-
+        Queue q = new Queue();
+        q.add(10);
+        q.add(20);
+        q.add(30);
+        q.add(40);
+        q.add(50);
+        q.add(60);
+        q.add(70);
+        q.display();
+        System.out.println(q.isEmpty());
+        System.out.println(q.isFull());
+        System.out.println(q.poll());
+        q.display();
+        System.out.println(q.peek());
+        System.out.println(q.getSize());
 
 
     }
+
 
 }
 
