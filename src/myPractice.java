@@ -1,68 +1,70 @@
 import java.util.EmptyStackException;
-import java.util.NoSuchElementException;
 
 public class myPractice {
 
+    public static class Stack {
 
-    // DYNAMIC STACK IMPLEMENTATION
-    public static class Stack<T> {
+        Node head;
+        Node tail;
 
-        T[] stack;
         int size;
-        int index;
-        int capacity;
 
-        int DEFAULT_CAPACITY = 10;
+        public static class Node {
 
-        @SuppressWarnings("unchecked")
-        Stack() {
+            int data;
+            Node next;
 
-            capacity = DEFAULT_CAPACITY;
-            stack = (T[]) new Object[capacity];
-            index = -1;
-            size = 0;
+
+            Node(int data) {
+
+                this.data = data;
+            }
         }
 
+        Stack() {
+
+            head = null;
+            tail = null;
+            size = 0;
+
+
+        }
+
+        public int getSize() {
+
+            return size;
+        }
 
         public boolean isEmpty() {
 
             return size == 0;
         }
 
-        public boolean isFull() {
 
-            return size == capacity;
-        }
+        public void push(int val) {
+
+            Node temp = new Node(val);
+
+            if (isEmpty()) {
+
+                head = tail = temp;
 
 
-        @SuppressWarnings("unchecked")
-        public void resize() {
+            } else {
 
-            capacity *= 2;
-            T[] newStack =(T[]) new Object[capacity];
+                temp.next = head;
+                head = temp;
 
-            for (int i = 0; i < stack.length; i++) {
-
-                newStack[i] = stack[i];
 
             }
 
-            stack = newStack;
-
-        }
-
-
-        public void push(T val) {
-
-            if (isFull()) resize();
-
-            stack[++index] = val;
             size++;
 
+
         }
 
 
-        public T pop() {
+        public int pop() {
 
             if (isEmpty()) {
 
@@ -70,63 +72,40 @@ public class myPractice {
             }
 
 
-            T top = stack[index];
-
-            index--;
+            int top = head.data;
+            head = head.next;
             size--;
-
-            if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
 
             return top;
 
-
         }
 
-        @SuppressWarnings("unchecked")
-        public void shrink() {
-
-            capacity /= 2;
-
-            T[] newStack = (T[])new Object[capacity];
-
-            for (int i = 0; i < stack.length; i++) {
-
-                newStack[i] = stack[i];
-
-            }
-
-            stack = newStack;
-        }
-
-
-        public T peek() {
+        public int peek() {
 
             if (isEmpty()) {
 
                 throw new EmptyStackException();
             }
 
-            return stack[index];
+            return head.data;
         }
 
         public void display() {
 
-            for (int i = 0; i < size; i++) {
+            Node temp = head;
+            while (temp != null) {
 
-                System.out.print(stack[i] + " ");
+                System.out.print(temp.data + " ");
+                temp = temp.next;
             }
 
             System.out.println();
-
-
         }
-
     }
-
 
     public static void main(String[] args) {
 
-        Stack<Integer> st = new Stack();
+        Stack st = new Stack();
 
         st.push(10);
         st.push(20);
@@ -134,13 +113,16 @@ public class myPractice {
         st.push(40);
         st.push(50);
         st.display();
-        System.out.println(st.isFull());
-        System.out.println(st.isEmpty());
-        System.out.println(st.peek());
+        System.out.println(st.getSize());
         System.out.println(st.pop());
+        System.out.println(st.getSize());
         st.display();
+        System.out.println(st.peek());
+        System.out.println(st.isEmpty());
+
 
 
     }
+
 }
 

@@ -7,9 +7,46 @@ public class ImplementStackUsingArray {
 
     public static class Stack {
 
+        int[] stack;
+        int size;
+        int index;
+        int capacity;
 
-        int idx = -1;
-        int[] stack = new int[10];
+        int DEFAULT_CAPACITY = 10;
+
+        Stack() {
+
+            capacity = DEFAULT_CAPACITY;
+            stack = new int[capacity];
+            index = -1;
+            size = 0;
+        }
+
+
+        int getSize() {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size;
+        }
+
+
+        public boolean isEmpty() {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size == 0;
+        }
+
+        public boolean isFull() {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size == capacity;
+        }
 
 
         public void push(int val) {
@@ -17,27 +54,10 @@ public class ImplementStackUsingArray {
             //Time Complexity: O(1)
             //Space Complexity: O(1)
 
-            if (idx == stack.length - 1) {
-                throw new IndexOutOfBoundsException(" element cant be inserted ");
-            }
 
-            idx++;
-            stack[idx] = val;
+            stack[++index] = val;
+            size++;
 
-
-        }
-
-        public int peek() {
-
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
-
-
-            if (idx == -1) {
-                throw new EmptyStackException();
-            }
-
-            return stack[idx];
         }
 
 
@@ -46,61 +66,60 @@ public class ImplementStackUsingArray {
             //Time Complexity: O(1)
             //Space Complexity: O(1)
 
+            if (isEmpty()) {
 
-            if (idx == -1) {
                 throw new EmptyStackException();
             }
 
-            int top = stack[idx];
-            idx--;
+
+            int top = stack[index];
+
+            index--;
+            size--;
+
 
             return top;
 
 
         }
 
-        public int size() {
+
+        public int peek() {
 
             //Time Complexity: O(1)
             //Space Complexity: O(1)
 
+            if (isEmpty()) {
 
-            if (idx == -1) return 0;
+                throw new EmptyStackException();
+            }
 
-            return idx + 1;
+            return stack[index];
         }
 
-        boolean isEmpty() {
-
-            //Time Complexity: O(1)
-            //Space Complexity: O(1)
-
-
-            if (idx == -1) return true;
-            else return false;
-
-
-        }
-
-        void display() {
+        public void display() {
 
             //Time Complexity: O(n)
-            //Space Complexity: O(1)
+            //Space Complexity: O(n)
 
+            for (int i = 0; i < size; i++) {
 
-            for (int i = 0; i <= idx; i++) {
                 System.out.print(stack[i] + " ");
             }
 
             System.out.println();
+
+
         }
+
+
     }
 
 
     public static void main(String[] args) {
 
 
-        Stack st=new Stack();
+        Stack st = new Stack();
         st.push(1);
         st.push(2);
         st.push(3);
@@ -110,10 +129,8 @@ public class ImplementStackUsingArray {
         st.pop();
         st.display();  // 1 2 3 4
         System.out.println(st.peek()); // 4
-        System.out.println(st.size()); // 4
+        System.out.println(st.getSize()); // 4
         System.out.println(st.isEmpty()); // false
-
-
 
 
     }
