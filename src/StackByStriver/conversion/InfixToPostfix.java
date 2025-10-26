@@ -14,75 +14,71 @@ public class InfixToPostfix {
 
     }
 
-    @SuppressWarnings("StringConcatenationInLoop")
 
-    static String evaluation(String infix) {
+    static String evaluation(String s) {
 
         // Time Complexity (TC): O(n)
         // Space Complexity (SC): O(n)
 
-        int i = 0;
-        int n = infix.length();
+
+        int length = s.length();
         Stack<Character> st = new Stack<>();
-        String ans = "";
+        StringBuilder postfix = new StringBuilder();
 
-        while (i < n) {
+        for (int i = 0; i < length; i++) {
 
-            char ch = infix.charAt(i);
+            char ch = s.charAt(i);
 
             if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
 
-                ans += ch;
+                postfix.append(ch);
             } else if (ch == '(') {
+
                 st.push(ch);
+
 
             } else if (ch == ')') {
 
-                while (!st.isEmpty() && st.peek() != '(') {
-                    ans += st.pop();
+                while (st.peek() != '(') {
+
+                    postfix.append(st.pop());
                 }
 
                 st.pop();
 
-            }
+            } else {
 
-            else {
+                if (ch == '^') {
 
-                if(ch=='^'){
+                    while (!st.isEmpty() && precedence(st.peek()) > precedence(ch)) {
 
-                    while (!st.isEmpty() && precedence(st.peek())>=precedence(ch)){
-                        ans+=st.pop();
+                        postfix.append(st.pop());
+
 
                     }
 
-                }
 
-                else {
+                } else {
 
-                    while (!st.isEmpty() && precedence(st.peek())>precedence(ch)){
-                        ans+=st.pop();
+                    while (!st.isEmpty() && precedence(st.peek()) >= precedence(ch)) {
 
+                        postfix.append(st.pop());
                     }
 
                 }
 
                 st.push(ch);
 
-
             }
 
-
-            i++;
-
-
         }
+
 
         while (!st.isEmpty()) {
-            ans += st.pop();
+
+            postfix.append(st.pop());
         }
-
-        return ans;
-
+        return postfix.toString();
 
     }
 

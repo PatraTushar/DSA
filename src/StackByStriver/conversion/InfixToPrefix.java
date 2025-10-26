@@ -48,12 +48,12 @@ public class InfixToPrefix {
     // step:3 conversion of infix to postfix
 
     @SuppressWarnings("StringConcatenationInLoop")
-    static String conversion(String str) {
+    static String conversion(String s) {
 
         //Time Complexity (TC): O(n)
         // Space Complexity (SC): O(n)
 
-        StringBuilder fullyRev = changeBrackets(str);
+        StringBuilder fullyRev = changeBrackets(s);
 
         int i = 0;
         int n = fullyRev.length();
@@ -80,14 +80,14 @@ public class InfixToPrefix {
 
                 if (ch == '^') {
 
-                    while (!st.isEmpty() && precedence(st.peek()) >= precedence(ch)) {
+                    while (!st.isEmpty() && precedence(st.peek()) > precedence(ch)) {
                         ans += st.pop();
                     }
 
                 }
                 else {
 
-                    while (!st.isEmpty() && precedence(st.peek()) > precedence(ch)) {
+                    while (!st.isEmpty() && precedence(st.peek()) >= precedence(ch)) {
                         ans += st.pop();
                     }
 
