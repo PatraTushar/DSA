@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class PrefixToPostfix {
 
-    static String evaluation(String prefix){
+    static String evaluation(String prefix) {
 
         // Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
@@ -12,7 +12,7 @@ public class PrefixToPostfix {
         int length = prefix.length();
         Stack<String> st = new Stack<>();
 
-        for (int i = length-1; i >=0; i--) {
+        for (int i = length - 1; i >= 0; i--) {
 
             char ch = prefix.charAt(i);
 
@@ -22,9 +22,10 @@ public class PrefixToPostfix {
 
             } else {
 
+
                 String operand1 = st.pop();
                 String operand2 = st.pop();
-                String result = operand1 + operand2 + ch ;
+                String result = operand1 + operand2 + ch;
                 st.push(result);
 
             }
@@ -38,7 +39,7 @@ public class PrefixToPostfix {
 
     public static void main(String[] args) {
 
-        String prefix="/-AB*+DEF";
+        String prefix = "/-AB*+DEF";
         System.out.println(evaluation(prefix));
     }
 }

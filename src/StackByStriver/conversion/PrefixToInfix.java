@@ -5,40 +5,36 @@ import java.util.Stack;
 
 public class PrefixToInfix {
 
-    static String evaluation(String exp){
+    static String evaluation(String prefix){
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
-        int i=exp.length()-1;
+        int length = prefix.length();
+        Stack<String> st = new Stack<>();
 
-        Stack<String> st=new Stack<>();
+        for (int i = length-1; i >=0; i--) {
 
-        while (i>=0){
+            char ch = prefix.charAt(i);
 
-            char ch=exp.charAt(i);
+            if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
 
+                st.push(ch + "");
 
-            if((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || ch>='0' && ch<='9'){
+            } else {
 
-                st.push(ch +"");
-            }
-
-            else {
-
-                String val1=st.pop();
-                String val2=st.pop();
-                String result="("+ val1 + ch + val2 +")";
+                String operand1 = st.pop();
+                String operand2 = st.pop();
+                String result = operand1 + operand2 + ch ;
                 st.push(result);
+
             }
-
-            i--;
-
 
 
         }
 
         return st.peek();
+
     }
 
     public static void main(String[] args) {
