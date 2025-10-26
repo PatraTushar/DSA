@@ -4,35 +4,33 @@ import java.util.Stack;
 
 public class PostfixToInfix {
 
-    static String evaluation(String postfix){
+    static String evaluation(String postfix) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(n)
 
 
-        Stack<String> st=new Stack<>();
+        int length = postfix.length();
+        Stack<String> st = new Stack<>();
 
-        int i=0;
-        int n=postfix.length();
+        for (int i = 0; i < length; i++) {
 
-        while (i<n){
+            char ch = postfix.charAt(i);
 
-            char ch=postfix.charAt(i);
+            if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
 
-            if(ch>='A' && ch<='Z'  || ch>='a' && ch<='z' || ch>='0' && ch<='9'){
+                st.push(ch + "");
 
-                st.push(ch +"");
-            }
+            } else {
 
-            else {
-
-                String val2=st.pop();
-                String val1=st.pop();
-                String result="(" + val1 + ch + val2 + ")";
+                String operand2 = st.pop();
+                String operand1 = st.pop();
+                String result = "(" + operand1 + ch + operand2 + ")";
                 st.push(result);
 
             }
-            i++;
+
+
         }
 
         return st.peek();
@@ -42,12 +40,8 @@ public class PostfixToInfix {
 
     public static void main(String[] args) {
 
-        String postfix="AB-DE+F*/";
+        String postfix = "AB-DE+F*/";
         System.out.println(evaluation(postfix));
-
-
-
-
 
 
     }
