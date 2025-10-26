@@ -65,13 +65,10 @@ public class arrayImplementationOfQueue {
             if (isEmpty()) {
 
                 front = rear = 0;
-
             }
-
 
             Queue[rear++] = val;
             size++;
-
 
         }
 
@@ -86,11 +83,15 @@ public class arrayImplementationOfQueue {
                 return null;
             }
 
+
             int top = Queue[front];
             front++;
             size--;
 
+
             return top;
+
+
         }
 
         public Integer peek() {
@@ -115,7 +116,6 @@ public class arrayImplementationOfQueue {
             }
 
             System.out.println();
-
         }
 
 
@@ -123,6 +123,8 @@ public class arrayImplementationOfQueue {
 
 
     public static void main(String[] args) {
+
+        // It is not recommended because of wastage of space instead use circular queue
 
         Queue q = new Queue();
 
