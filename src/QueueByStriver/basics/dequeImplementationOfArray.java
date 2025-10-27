@@ -1,159 +1,253 @@
 package QueueByStriver.basics;
 
+
+
 public class dequeImplementationOfArray {
 
-    private int[] arr;
-    private int front;
-    private int rear;
+    public static class DEQUE {
 
-    private int size;
-    private int capacity;
+        int[] Deque;
+        int front;
+        int rear;
 
+        int capacity;
 
-    public dequeImplementationOfArray(int capacity) {
+        int size;
 
-        this.capacity = capacity;
-        arr = new int[capacity];
-        front = -1;
-        rear = -1;
-        size = 0;
-    }
+        int DEFAULT_CAPACITY = 10;
 
-    public boolean isEmpty() {
+        DEQUE() {
 
-        return size == 0;
-    }
-
-    public boolean isFull() {
-
-        return size == capacity;
-    }
-
-
-    public int size() {
-
-        return size;
-    }
-
-
-    public void offerFirst(int data) {
-
-        if (isFull()) {
-
-            System.out.println(" Deque is full ");
-            return;
+            capacity = DEFAULT_CAPACITY;
+            Deque = new int[capacity];
+            front = -1;
+            rear = -1;
+            size = 0;
         }
 
-        if (isEmpty()) {
-
-            front = rear = 0;
-        } else {
-
-            front = (front - 1 + capacity) % capacity;
+        public boolean isEmpty() {
 
 
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            return size == 0;
         }
 
-        arr[front] = data;
-        size++;
 
+        public boolean isFull() {
 
-    }
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
 
-
-    public void offerLast(int data) {
-
-        if (isFull()) {
-
-            System.out.println(" Deque is full ");
-            return;
+            return size == capacity;
         }
 
-        if (isEmpty()) {
+        public int getSize() {
 
-            front = rear = 0;
-        } else {
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
 
-            rear = (rear + 1) % capacity;
+            return size;
+        }
+
+        public void resize() {
+
+            //Time Complexity: O(n)
+            //Space Complexity: O(n)
+
+            capacity *= 2;
+            int[] newDeque = new int[capacity];
+
+            for (int i = 0; i < size; i++) {
+
+
+                // Calculate current index in the old circular array
+                int oldIndex = (front + i) % (capacity / 2);
+                // Copy to the start of the new array
+                newDeque[i] = Deque[oldIndex];
+
+            }
+
+            Deque = newDeque;
+
+            front = 0;
+            rear = size - 1;
+
 
         }
 
-        arr[rear] = data;
-        size++;
-    }
+
+        public void offerFirst(int val) {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
 
 
-    public Integer pollFirst() {
+            if (isFull()) {
 
-        if (isEmpty()) return null;
+                System.out.println(" deque is full ");
+                return;
+            }
 
-        int val = arr[front];
+            if (isEmpty()) {
 
-        front = (front + 1) % capacity;
-        size--;
+                front = rear = 0;
 
-        if (size == 0) {
+            } else {
 
-            front = rear = -1;
+                front = (front - 1 + capacity) % capacity;
+
+
+            }
+
+            Deque[front] = val;
+            size++;
+
+            if (size == capacity) resize();
+
+
         }
 
-        return val;
-    }
+        public void offerLast(int val) {
 
-    public Integer pollLast() {
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
 
-        if (isEmpty()) return null;
+            if (isFull()) {
 
-        int val = arr[rear];
-        rear = (rear - 1 + capacity) % capacity;
-        size--;
+                System.out.println(" deque is full return ");
+                return;
+            }
 
-        if (size == 0) {
+            if (isEmpty()) {
 
-            front = rear = -1;
+                front = rear = 0;
+            } else {
+
+                rear = (rear + 1) % capacity;
+            }
+
+            Deque[rear] = val;
+            size++;
+
+            if (size == capacity) resize();
         }
 
-        return val;
-    }
+
+        public void shrink() {
 
 
-    public Integer peekFirst() {
+            //Time Complexity: O(n)
+            //Space Complexity: O(n)
 
-        if (isEmpty()) return null;
-        return arr[front];
-    }
+            capacity /= 2;
 
+            int[] newDeque = new int[capacity];
 
-    public Integer peekLast() {
-
-        if (isEmpty()) return null;
-
-        return arr[rear];
-    }
+            for (int i = 0; i < size; i++) {
 
 
-    public void display(){
+                // Calculate current index in the old circular array
+                int oldIndex = (front + i) % (capacity * 2);
+                // Copy to the start of the new array
+                newDeque[i] = Deque[oldIndex];
 
-        if (isEmpty()){
+            }
 
-            System.out.println(" Deque is empty ");
-            return;
+            Deque = newDeque;
+
+            front = 0;
+            rear = size - 1;
+
         }
 
-        int i=front;
 
-        for (int count = 0; count < size; count++) {
-            System.out.print(arr[i] + " ");
-            i = (i + 1) % capacity; // move circularly
+        public Integer pollFirst() {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (isEmpty()) {
+
+                return null;
+            }
+
+            int top = Deque[front];
+
+            front = (front + 1) % capacity;
+            size--;
+
+            if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
+
+            return top;
         }
-        System.out.println();
+
+
+        public Integer pollLast() {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (isEmpty()) {
+
+                return null;
+            }
+
+            int top = Deque[rear];
+
+            rear = (rear - 1 + capacity) % capacity;
+            size--;
+
+            if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
+
+            return top;
+        }
+
+
+        public Integer peekFirst() {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (isEmpty()) return null;
+
+            return Deque[front];
+        }
+
+        public Integer peekLast() {
+
+            //Time Complexity: O(1)
+            //Space Complexity: O(1)
+
+            if (isEmpty()) return null;
+
+            return Deque[rear];
+
+
+        }
+
+        public void display() {
+
+            //Time Complexity: O(n)
+            //Space Complexity: O(1)
+
+            for (int i = 0; i < size; i++) {
+                int index = (front + i) % capacity;
+                System.out.print(Deque[index] + " ");
+            }
+
+            System.out.println();
+
+        }
+
+
     }
 
 
     public static void main(String[] args) {
 
-        dequeImplementationOfArray dq=new dequeImplementationOfArray(5);
-
+        DEQUE dq = new DEQUE();
 
         // Add elements to front and rear
         dq.offerLast(10);  // Deque: 10
@@ -178,7 +272,7 @@ public class dequeImplementationOfArray {
         dq.display();     // Output: 5 10
 
         // Size and empty check
-        System.out.println("Deque size: " + dq.size());          // 2
+        System.out.println("Deque size: " + dq.getSize());          // 2
         System.out.println("Is deque empty? " + dq.isEmpty());   // false
 
         // Add more elements to test circular behavior
