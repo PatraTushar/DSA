@@ -2,7 +2,7 @@ package QueueByStriver.basics;
 
 public class implementQueueUsingDeque {
 
-    public dequeImplementationOfArray.DEQUE deque;
+    private dequeImplementationOfArray.DEQUE deque;
 
     implementQueueUsingDeque() {
 
