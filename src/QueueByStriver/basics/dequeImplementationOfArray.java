@@ -2,7 +2,8 @@ package QueueByStriver.basics;
 
 
 
-public class dequeImplementationOfArray {
+
+public  class dequeImplementationOfArray {
 
     public static class DEQUE {
 
