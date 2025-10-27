@@ -1,227 +1,184 @@
-import QueueByStriver.basics.dequeImplementationOfArray;
+import QueueByStriver.basics.dequeImplementationOfLL;
 
 public class myPractice {
 
-    public static class dequeImplementationOfArray {
+    public static class dequeImplementationOfLL {
 
+        public static class Node {
 
-        int[] deque;
-        int front;
-        int rear;
-        int size;
-        int capacity;
-        int DEFAULT_CAPACITY = 10;
+            Node prev;
+            int data;
+            Node next;
 
-        dequeImplementationOfArray() {
+            Node(int data) {
 
-            capacity = DEFAULT_CAPACITY;
-            deque = new int[capacity];
-            front = -1;
-            rear = -1;
-            size = 0;
+                this.data = data;
+            }
         }
 
+        Node head;
+        Node tail;
+        int size;
+
+        dequeImplementationOfLL() {
+
+            head = null;
+            tail = null;
+            size = 0;
+        }
 
         public boolean isEmpty() {
 
             return size == 0;
         }
 
-        public boolean isFull() {
-
-            return size == capacity;
-        }
-
-
         public int getSize() {
 
             return size;
         }
 
-        public void resize() {
-
-            capacity *= 2;
-
-            int[] newDeque = new int[capacity];
-
-            for (int i = 0; i < size; i++) {
-
-                int oldIndex = (front + i) % (capacity / 2);
-
-                newDeque[i] = deque[oldIndex];
-
-            }
-
-            deque = newDeque;
-
-            front = 0;
-            rear = size - 1;
-
-        }
 
         public void offerFirst(int val) {
 
-            if (isFull()) resize();
+            Node newNode = new Node(val);
 
             if (isEmpty()) {
 
-                front = rear = 0;
+                head = tail = newNode;
             } else {
 
-                front = (front - 1 + capacity) % capacity;
-
+                newNode.next = head;
+                head.prev = newNode;
+                head = newNode;
 
             }
 
-            deque[front] = val;
             size++;
 
 
         }
-
 
         public void offerLast(int val) {
 
-            if (isFull()) resize();
+            Node newNode = new Node(val);
 
             if (isEmpty()) {
 
-                front = rear = 0;
+                head = tail = newNode;
             } else {
 
-                rear = (rear + 1) % capacity;
-
+                tail.next = newNode;
+                newNode.prev = tail;
+                tail = newNode;
             }
 
-            deque[rear] = val;
             size++;
 
 
         }
 
-        public void shrink() {
-
-            capacity /= 2;
-
-            int[] newDeque = new int[capacity];
-
-            for (int i = 0; i < size; i++) {
-
-                int oldIndex = (front + i) % (capacity * 2);
-                newDeque[i] = deque[oldIndex];
-            }
-
-            deque = newDeque;
-
-            front = 0;
-            rear = size - 1;
-
-        }
 
         public Integer pollFirst() {
 
             if (isEmpty()) return null;
 
-            int top = deque[front];
+            Integer top = head.data;
+            head = head.next;
 
-            front = (front + 1) % capacity;
+            if (head != null) head.prev = null;
+            else tail = null;
             size--;
 
-            if (size == 0) front = rear = -1;
-
-            if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
 
             return top;
-        }
 
+
+        }
 
         public Integer pollLast() {
 
             if (isEmpty()) return null;
 
-            int top = deque[rear];
+            int top = tail.data;
 
-            rear = (rear - 1 + capacity) % capacity;
+            tail = tail.prev;
+            if (tail != null) tail.next = null;
+            else head = null;
             size--;
 
-            if (size == 0) front = rear = -1;
-
-            if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
+            if (tail == null) head = null;
 
             return top;
-        }
 
+
+        }
 
         public Integer peekFirst() {
 
             if (isEmpty()) return null;
 
-            return deque[front];
+            return head.data;
+
+
         }
 
         public Integer peekLast() {
 
             if (isEmpty()) return null;
 
-            return deque[rear];
-        }
+            return tail.data;
 
+
+        }
 
         public void display() {
 
-            for (int i = 0; i < size; i++) {
+            Node temp = head;
 
-                int index = (front + i) % capacity;
-                System.out.print(deque[index] + " ");
+            while (temp != null) {
 
+                System.out.print(temp.data + " ");
+                temp = temp.next;
             }
 
             System.out.println();
 
         }
 
+
     }
 
     public static void main(String[] args) {
 
-        dequeImplementationOfArray dq = new dequeImplementationOfArray();
+        // Create deque object using your class name
+        dequeImplementationOfLL dq = new dequeImplementationOfLL();
 
         // Add elements to front and rear
-        dq.offerLast(10);  // Deque: 10
-        dq.offerFirst(5);  // Deque: 5 10
-        dq.offerLast(20);  // Deque: 5 10 20
-        dq.offerFirst(2);  // Deque: 2 5 10 20
+        dq.offerFirst(10);   // Deque: 10
+        dq.offerLast(20);    // Deque: 10 20
+        dq.offerFirst(5);    // Deque: 5 10 20
+        dq.offerLast(30);    // Deque: 5 10 20 30
 
         // Display deque
-        System.out.print("Deque elements: ");
-        dq.display();    // Output: 2 5 10 20
+        System.out.print("Deque after adding elements: ");
+        dq.display();      // Output: 5 10 20 30
 
         // Peek front and rear
-        System.out.println("Front element: " + dq.peekFirst()); // 2
-        System.out.println("Rear element: " + dq.peekLast());   // 20
+        System.out.println("Front element: " + dq.peekFirst()); // 5
+        System.out.println("Rear element: " + dq.peekLast());   // 30
 
         // Remove elements from front and rear
-        System.out.println("Removed front: " + dq.pollFirst()); // removes 2
-        System.out.println("Removed rear: " + dq.pollLast());   // removes 20
+        System.out.println("Removed front: " + dq.pollFirst()); // removes 5
+        System.out.println("Removed rear: " + dq.pollLast());   // removes 30
 
         // Display deque after removals
-        System.out.print("Deque after removals: ");
-        dq.display();     // Output: 5 10
+        System.out.print("Deque after removing elements: ");
+        dq.display();      // Output: 10 20
 
-        // Size and empty check
-        System.out.println("Deque size: " + dq.getSize());          // 2
-        System.out.println("Is deque empty? " + dq.isEmpty());   // false
-
-        // Add more elements to test circular behavior
-        dq.offerLast(30);  // 5 10 30
-        dq.offerLast(40);  // 5 10 30 40
-        dq.offerFirst(1);  // 1 5 10 30 40
-
-        System.out.print("Deque after more additions: ");
-        dq.display();    // Output: 1 5 10 30 40
-
+        // Check size and emptiness
+        System.out.println("Deque size: " + dq.getSize());           // 2
+        System.out.println("Is deque empty? " + dq.isEmpty());    // false
 
     }
-
 }
 

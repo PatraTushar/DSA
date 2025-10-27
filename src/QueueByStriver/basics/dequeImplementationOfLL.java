@@ -46,8 +46,8 @@ public class dequeImplementationOfLL {
 
         if (isEmpty()) {
 
-            head = newNode;
-            tail = newNode;
+            head = tail= newNode;
+
 
 
         } else {
@@ -69,8 +69,7 @@ public class dequeImplementationOfLL {
 
         if (isEmpty()) {
 
-            head = newNode;
-            tail = newNode;
+            head = tail = newNode;
 
 
         } else {
@@ -90,12 +89,12 @@ public class dequeImplementationOfLL {
 
         if (isEmpty()) return null;
 
-        Integer val = head.data;
+        Integer top = head.data;
         head = head.next;
         if (head != null) head.prev = null;
         else tail = null;
         size--;
-        return val;
+        return top;
 
 
     }
@@ -105,12 +104,12 @@ public class dequeImplementationOfLL {
 
         if (isEmpty()) return null;
 
-        Integer val = tail.data;
+        Integer top = tail.data;
         tail = tail.prev;
         if (tail != null) tail.next = null;
         else head = null;
         size--;
-        return val;
+        return top;
 
 
     }
@@ -136,7 +135,7 @@ public class dequeImplementationOfLL {
 
         while (temp != null) {
 
-            System.out.print(temp.data +" ");
+            System.out.print(temp.data + " ");
             temp = temp.next;
         }
 
@@ -147,7 +146,7 @@ public class dequeImplementationOfLL {
     public static void main(String[] args) {
 
         // Create deque object using your class name
-        dequeImplementationOfLL dq=new dequeImplementationOfLL();
+        dequeImplementationOfLL dq = new dequeImplementationOfLL();
 
         // Add elements to front and rear
         dq.offerFirst(10);   // Deque: 10
@@ -174,8 +173,6 @@ public class dequeImplementationOfLL {
         // Check size and emptiness
         System.out.println("Deque size: " + dq.size());           // 2
         System.out.println("Is deque empty? " + dq.isEmpty());    // false
-
-
 
 
     }
