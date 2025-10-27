@@ -1,11 +1,12 @@
-package QueueByStriver.basics;
+package linkedListByStriver.circularLinkedList;
+
+public class implementationOfCircularLL {
+
+    public static class circularLL {
 
 
-public class llImplementationOfCQ {
-
-    public static class circularQueue {
-
-        public static class Node {
+       //  USING HEAD AND TAIL POINTER
+        private static class Node {
 
             int data;
             Node next;
@@ -13,24 +14,23 @@ public class llImplementationOfCQ {
             Node(int data) {
 
                 this.data = data;
-
-
             }
 
         }
+
 
         Node head;
         Node tail;
         int size;
 
-        circularQueue() {
+        circularLL() {
 
             head = null;
             tail = null;
             size = 0;
 
-
         }
+
 
         public boolean isEmpty() {
 
@@ -38,13 +38,14 @@ public class llImplementationOfCQ {
             //Space Complexity:O(1)
 
             return size == 0;
+
+
         }
 
         public int getSize() {
 
             //Time Complexity:O(1)
             //Space Complexity:O(1)
-
             return size;
         }
 
@@ -53,21 +54,22 @@ public class llImplementationOfCQ {
             //Time Complexity:O(1)
             //Space Complexity:O(1)
 
-            Node temp = new Node(val);
+            Node newNode = new Node(val);
 
             if (isEmpty()) {
 
-                head = tail = temp;
-
+                head = tail = newNode;
 
             } else {
 
-                tail.next = temp;
-                tail = temp;
+                tail.next = newNode;
+                tail = newNode;
+
+
             }
 
+            tail.next = head;
             size++;
-
 
         }
 
@@ -77,21 +79,23 @@ public class llImplementationOfCQ {
             //Time Complexity:O(1)
             //Space Complexity:O(1)
 
-            if (isEmpty()) {
-
-                return null;
-            }
+            if (isEmpty()) return null;
 
             int top = head.data;
-            head = head.next;
-            size--;
 
-            if (head == null) {
+            if (size == 1) {
 
-                tail = null;
+                head = tail = null;
+
+            } else {
+
+                head = head.next;
+                tail.next = head;
+
             }
-
             return top;
+
+
         }
 
 
@@ -105,6 +109,7 @@ public class llImplementationOfCQ {
             return head.data;
         }
 
+
         public void display() {
 
             //Time Complexity:O(n)
@@ -112,32 +117,31 @@ public class llImplementationOfCQ {
 
             Node temp = head;
 
-            while (temp != null) {
+            do {
                 System.out.print(temp.data + " ");
                 temp = temp.next;
-            }
+            } while (temp != head);
 
             System.out.println();
         }
-
 
     }
 
 
     public static void main(String[] args) {
 
-        circularQueue q = new circularQueue();
-        System.out.println(q.isEmpty());  // true
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        q.add(4);
-        q.add(5);
-        q.display();  // 1 2 3 4 5
-        q.poll();
-        q.display();  // 2 3 4 5
-        System.out.println(q.peek()); // 2
-        System.out.println(q.isEmpty());  // false
+        circularLL ll = new circularLL();
+        ll.add(10);
+        ll.add(20);
+        ll.add(30);
+        ll.add(40);
+        ll.add(50);
+        ll.display();
+        System.out.println(ll.getSize());
+        System.out.println(ll.poll());
+        System.out.println(ll.getSize());
+        System.out.println(ll.peek());
+        System.out.println(ll.isEmpty());
 
 
     }
