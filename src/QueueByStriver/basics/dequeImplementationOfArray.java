@@ -178,6 +178,8 @@ public class dequeImplementationOfArray {
             front = (front + 1) % capacity;
             size--;
 
+            if (size == 0) front = rear = -1;
+
             if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
 
             return top;
@@ -198,6 +200,8 @@ public class dequeImplementationOfArray {
 
             rear = (rear - 1 + capacity) % capacity;
             size--;
+
+            if (size == 0) front = rear = -1;
 
             if (capacity > DEFAULT_CAPACITY && size < capacity / 4) shrink();
 
