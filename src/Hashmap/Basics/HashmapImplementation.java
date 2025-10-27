@@ -1,8 +1,5 @@
 package Hashmap.Basics;
 
-
-
-
 import java.util.*;
 
 public class HashmapImplementation {
