@@ -6,22 +6,18 @@ public class myPractice {
 
         int n = arr.length;
         int maxSum = Integer.MIN_VALUE;
-        int left = 0;
-        int sum = 0;
 
-        for (int right = 0; right < n; right++) {
 
-            sum += arr[right];
+        for (int i = 0; i <= n - k; i++) {
 
-            if (right >= k - 1) {
+            int sum = 0;
+            for (int j = i; j < k + i; j++) {
 
-                maxSum = Math.max(maxSum, sum);
-                sum -= arr[left];
-                left++;
+                sum += arr[j];
+                maxSum = Math.max(sum, maxSum);
 
 
             }
-
 
         }
 

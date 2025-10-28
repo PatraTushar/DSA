@@ -3,19 +3,6 @@ package TwoPointer_SlidingWindow;
 
 public class Q1 {
 
-    static int windowSum(int[] arr, int start, int k) {
-
-        int sum = 0;
-
-        for (int i = start; i < k + start; i++) {
-            sum += arr[i];
-        }
-
-        return sum;
-
-
-    }
-
 
     // BRUTEFORCE APPROACH
     static int maxSumInWindow(int[] arr, int k) {
@@ -23,19 +10,25 @@ public class Q1 {
         // Time Complexity: O(n * k)
         //  Space Complexity: O(1)
 
+
         int n = arr.length;
-        int max = Integer.MIN_VALUE;
+        int maxSum = Integer.MIN_VALUE;
+
 
         for (int i = 0; i <= n - k; i++) {
 
-            int sum = windowSum(arr, i, k);
+            int sum = 0;
+            for (int j = i; j < k + i; j++) {
 
-            max = Math.max(max, sum);
+                sum += arr[j];
+                maxSum = Math.max(sum, maxSum);
 
+
+            }
 
         }
 
-        return max;
+        return maxSum;
 
 
     }
