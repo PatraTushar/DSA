@@ -3,44 +3,53 @@ import java.util.Stack;
 
 public class myPractice {
 
-    static int func(int[] nums, int k) {
+    static int func(int[] fruits) {
 
-        int n = nums.length;
-        int maxConsecutiveOnes = 0;
-        int left = 0;
-        int zeroesFlip = 0;
+        int n = fruits.length;
+
+        int maxFruits = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            HashMap<Integer, Integer> map = new HashMap<>();
+            int left = i;
+
+            for (int j = i; j < n; j++) {
 
 
-        for (int right = 0; right < n; right++) {
+                map.put(fruits[j], map.getOrDefault(fruits[j], 0) + 1);
 
-            if (nums[right] == 0) zeroesFlip++;
+                while (map.size() > 2) {
 
-            while (zeroesFlip > k) {
+                    map.put(fruits[left], map.get(fruits[left]) - 1);
 
-                if (nums[left] == 0) zeroesFlip--;
-                left++;
+
+                    if (map.get(fruits[left]) == 0) {
+
+                        map.remove(fruits[left]);
+                    }
+
+                    left++;
+
+
+                }
+
+                maxFruits = Math.max(maxFruits, j - left + 1);
+
 
             }
 
-
-            int length = right - left + 1;
-            maxConsecutiveOnes = Math.max(maxConsecutiveOnes, length);
-
-
         }
 
-        return maxConsecutiveOnes;
-
+        return maxFruits;
 
     }
 
     public static void main(String[] args) {
 
 
-        int[] arr = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
-        int k = 2;
-        System.out.println(func(arr, k));
-
+        int[] arr = {3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4};
+        System.out.println(func(arr));
 
     }
 

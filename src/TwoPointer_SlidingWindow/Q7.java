@@ -8,37 +8,49 @@ public class Q7 {
 
 
     // BRUTE FORCE APPROACH
-    static int totalFruits(int[] arr) {
+    static int totalFruits(int[] fruits) {
 
         //  Time Complexity: O(n^2)
         //  Space Complexity: O(3)
 
 
-        int n = arr.length;
-        int maxLength = 0;
+        int n = fruits.length;
+
+        int maxFruits = 0;
 
         for (int i = 0; i < n; i++) {
 
-            HashSet<Integer> set = new HashSet<>();
+            HashMap<Integer, Integer> map = new HashMap<>();
+            int left = i;
 
             for (int j = i; j < n; j++) {
 
-                set.add(arr[j]);
 
-                if (set.size() <= 2) {
+                map.put(fruits[j], map.getOrDefault(fruits[j], 0) + 1);
+
+                while (map.size() > 2) {
+
+                    map.put(fruits[left], map.get(fruits[left]) - 1);
 
 
-                    int length = j - i + 1;
-                    maxLength = Math.max(maxLength, length);
+                    if (map.get(fruits[left]) == 0) {
+
+                        map.remove(fruits[left]);
+                    }
+
+                    left++;
 
 
-                } else break;
+                }
+
+                maxFruits = Math.max(maxFruits, j - left + 1);
 
 
             }
+
         }
 
-        return maxLength;
+        return maxFruits;
 
 
     }
@@ -50,43 +62,33 @@ public class Q7 {
         //  Time Complexity: O(n)
         //  Space Complexity: O(2)
 
-        int n=fruits.length;
-        int maxLength=0;
-        int left=0;
-        int right=0;
-        HashMap<Integer,Integer> map=new HashMap<>();
+        int n = fruits.length;
+        int maxFruits = 0;
+        int left = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for (int i=0;i<n;i++){
+        for (int right = 0; right < n; right++) {
+
 
             map.put(fruits[right], map.getOrDefault(fruits[right], 0) + 1);
 
+            while (map.size() > 2) {
 
-            if(map.size()<=2){
+                map.put(fruits[left], map.get(fruits[left]) - 1);
 
-                int length=right-left+1;
-                maxLength=Math.max(maxLength,length);
-            }
-
-
-            while (map.size()>2){
-
-                map.put(fruits[left],map.get(fruits[left])-1);
-
-                if(map.get(fruits[left])==0){
-                    map.remove(fruits[left]);
-                }
+                if (map.get(fruits[left]) == 0) map.remove(fruits[left]);
 
                 left++;
 
 
             }
 
-            right++;
+            maxFruits = Math.max(maxFruits, right - left + 1);
 
 
         }
 
-        return maxLength;
+        return maxFruits;
 
 
     }
