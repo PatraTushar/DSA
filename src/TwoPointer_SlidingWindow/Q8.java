@@ -12,31 +12,37 @@ public class Q8 {
         //  Space Complexity: O(k)
 
         int n = s.length();
-        int maxLength = -1;
-
+        int longest = 0;
 
         for (int i = 0; i < n; i++) {
 
             HashMap<Character, Integer> map = new HashMap<>();
-
+            int left = i;
 
             for (int j = i; j < n; j++) {
+
                 map.put(s.charAt(j), map.getOrDefault(s.charAt(j), 0) + 1);
 
-                if (map.size() == k) {
-                    int length = j - i + 1;
-                    maxLength = Math.max(maxLength, length);
+                while (map.size() > k) {
+
+
+                    map.put(s.charAt(left), map.get(s.charAt(left)) - 1);
+
+                    if (map.get(s.charAt(left)) == 0) map.remove(s.charAt(left));
+
+
+                    left++;
+
                 }
 
-               else if(map.size()>k) break;
+                longest = Math.max(longest, j - left + 1);
 
 
             }
 
-
         }
 
-        return maxLength;
+        return longest;
     }
 
     // OPTIMAL APPROACH
@@ -47,42 +53,32 @@ public class Q8 {
         //  Space Complexity: O(k)
 
         int n = s.length();
-        int maxLength = -1;
-        int left = 0;
-        int right = 0;
         HashMap<Character, Integer> map = new HashMap<>();
+        int longest = 0;
+        int left = 0;
 
-        for (int i = 0; i < n; i++) {
+        for (int right = 0; right < n; right++) {
 
+            char ch = s.charAt(right);
 
-            map.put(s.charAt(right), map.getOrDefault(s.charAt(right), 0) + 1);
-
-            if (map.size() == k) {
-
-                int length = right - left + 1;
-                maxLength = Math.max(maxLength, length);
-            }
-
-            right++;
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
 
             while (map.size() > k) {
 
                 map.put(s.charAt(left), map.get(s.charAt(left)) - 1);
 
-
-
-                if (map.get(s.charAt(left)) == 0) {
-                    map.remove(s.charAt(left));
-                }
-
+                if (map.get(s.charAt(left)) == 0) map.remove(s.charAt(left));
 
                 left++;
+
+
             }
 
+            longest = Math.max(longest, right - left + 1);
 
         }
 
-        return maxLength;
+        return longest;
 
     }
 
