@@ -6,28 +6,37 @@ public class Q5 {
 
 
     // BRUTE FORCE APPROACH
-    static int lengthOfLongestSubstring(String str) {
+    static int lengthOfLongestSubstring(String s) {
 
         //  Time Complexity: O(n^2)
-        //  Space Complexity: O(256)
+        //  Space Complexity: O(n  )
 
-        int n = str.length();
-        int maxLength = Integer.MIN_VALUE;
-        int[] hash = new int[255];
+        int maxLength = 0;
+
+        int n = s.length();
+        HashMap<Character, Integer> map = new HashMap<>();
+
 
         for (int i = 0; i < n; i++) {
 
             for (int j = i; j < n; j++) {
 
-                char ch = str.charAt(j);
+                char ch = s.charAt(j);
 
-                if (hash[ch] == 1) break;
+                map.put(ch, map.getOrDefault(ch, 0) + 1);
 
-                int length = j - i + 1;
+                if (map.get(ch) == 1) {
 
-                maxLength = Math.max(maxLength, length);
-                hash[ch] = 1;
+                    int length = j - i + 1;
+                    maxLength = Math.max(length, maxLength);
 
+                }
+
+                if (map.get(ch) > 1) {
+
+                    map.clear();
+                    break;
+                }
 
             }
 
@@ -35,6 +44,8 @@ public class Q5 {
         }
 
         return maxLength;
+
+
     }
 
     // OPTIMAL APPROACH
@@ -46,38 +57,30 @@ public class Q5 {
         //  Space Complexity: O(n)
 
 
-        int n = s.length();
         int maxLength = 0;
-        int left = 0;
-        int right = 0;
+        int n = s.length();
         HashMap<Character, Integer> map = new HashMap<>();
+        int left = 0;
 
-        for (int i = 0; i < n; i++) {
+        for (int right = 0; right < n; right++) {
 
-            char ch = s.charAt(i);
+            char ch = s.charAt(right);
 
-            if (!map.containsKey(ch)) {
+            if (!map.isEmpty() && (map.containsKey(ch) && map.get(ch) >= left)) {
 
-                int length = right - left + 1;
-                maxLength = Math.max(maxLength, length);
-                map.put(ch, i);
+                left = map.get(ch) + 1;
+                map.put(ch, right);
+
 
             } else {
 
-                if (map.get(ch) >= left) {
-
-                    left = map.get(ch) + 1;
-                }
-
-                map.put(ch,i);
-                int length = right - left + 1;
-                maxLength = Math.max(maxLength, length);
-
+                map.put(ch, right);
 
 
             }
 
-            right++;
+            int length = right - left + 1;
+            maxLength = Math.max(length, maxLength);
 
 
         }

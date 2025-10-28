@@ -1,36 +1,39 @@
-
+import java.util.HashMap;
+import java.util.Stack;
 
 public class myPractice {
 
-    static int func(int[] cardPoints, int k) {
+    static int func(String s) {
 
-        int n = cardPoints.length;
-        int leftSum = 0;
-        int rightSum = 0;
-        int maxSum = Integer.MIN_VALUE;
-        int right = n - 1;
-        int index = -1;
+        int maxLength = 0;
+        int n = s.length();
+        HashMap<Character, Integer> map = new HashMap<>();
+        int left = 0;
 
-        if (k == 1) return Math.max(cardPoints[0], cardPoints[right]);
+        for (int right = 0; right < n; right++) {
 
-        for (int left = 0; left < k; left++) {
+            char ch = s.charAt(right);
 
-            leftSum += cardPoints[left];
-            maxSum = Math.max(maxSum, leftSum);
-            index = left;
+            if (!map.isEmpty() && (map.containsKey(ch) && map.get(ch) >= left)) {
+
+                left = map.get(ch) + 1;
+                map.put(ch, right);
+
+
+            } else {
+
+                map.put(ch, right);
+
+
+            }
+
+            int length = right - left + 1;
+            maxLength = Math.max(length, maxLength);
+
 
         }
 
-
-        for (int i = index; i >= 0; i--) {
-
-            leftSum -= cardPoints[i];
-            rightSum += cardPoints[right--];
-            maxSum = Math.max(maxSum, leftSum + rightSum);
-
-        }
-
-        return maxSum;
+        return maxLength;
 
 
     }
@@ -38,9 +41,8 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-        int[] arr = {6,2,3,4,7,2,1,7,1};
-        int k = 4;
-        System.out.println(func(arr, k));
+        String s = "cadbzabcd";
+        System.out.println(func(s));
 
 
     }
