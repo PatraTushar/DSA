@@ -3,37 +3,33 @@ import java.util.Stack;
 
 public class myPractice {
 
-    static int func(String s) {
+    static int func(int[] nums, int k) {
 
-        int maxLength = 0;
-        int n = s.length();
-        HashMap<Character, Integer> map = new HashMap<>();
+        int n = nums.length;
+        int maxConsecutiveOnes = 0;
         int left = 0;
+        int zeroesFlip = 0;
+
 
         for (int right = 0; right < n; right++) {
 
-            char ch = s.charAt(right);
+            if (nums[right] == 0) zeroesFlip++;
 
-            if (!map.isEmpty() && (map.containsKey(ch) && map.get(ch) >= left)) {
+            while (zeroesFlip > k) {
 
-                left = map.get(ch) + 1;
-                map.put(ch, right);
-
-
-            } else {
-
-                map.put(ch, right);
-
+                if (nums[left] == 0) zeroesFlip--;
+                left++;
 
             }
 
+
             int length = right - left + 1;
-            maxLength = Math.max(length, maxLength);
+            maxConsecutiveOnes = Math.max(maxConsecutiveOnes, length);
 
 
         }
 
-        return maxLength;
+        return maxConsecutiveOnes;
 
 
     }
@@ -41,8 +37,9 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-        String s = "cadbzabcd";
-        System.out.println(func(s));
+        int[] arr = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
+        int k = 2;
+        System.out.println(func(arr, k));
 
 
     }
