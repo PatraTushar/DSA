@@ -2,35 +2,40 @@
 
 public class myPractice {
 
-    static int maximumSum(int[] arr, int k) {
+    static int longestSubarraywithsumsmallerthanequalk(int[] arr, int k) {
 
         int n = arr.length;
-        int maxSum = Integer.MIN_VALUE;
+        int longest = 0;
+        int sum = 0;
+        int left = 0;
 
+        for (int right = 0; right < n; right++) {
 
-        for (int i = 0; i <= n - k; i++) {
+            sum += arr[right];
 
-            int sum = 0;
-            for (int j = i; j < k + i; j++) {
+            while (sum > k) {
 
-                sum += arr[j];
-                maxSum = Math.max(sum, maxSum);
-
+                sum -= arr[left];
+                left++;
 
             }
 
+
+            longest = Math.max(longest, right - left + 1);
+
+
         }
 
-        return maxSum;
+        return longest;
 
     }
 
     public static void main(String[] args) {
 
 
-        int[] arr = {-1, 2, 3, 3, 4, 5, -1};
-        int k = 4;
-        System.out.println(maximumSum(arr, k));
+        int[] arr = {20, 1, 1, 1, 1, 1, 1, 5};
+        int k = 10;
+        System.out.println(longestSubarraywithsumsmallerthanequalk(arr, k));
 
 
     }

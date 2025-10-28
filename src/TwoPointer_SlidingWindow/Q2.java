@@ -36,44 +36,37 @@ public class Q2 {
 
     // OPTIMAL SOLUTION
 
-    static int longestSubArrayLengthI(int[] arr,int k){
+    static int longestSubArrayLengthI(int[] arr, int k) {
 
         // Time Complexity: O(n)
         // Space Complexity: O(1)
 
-        int n=arr.length;
-        int left=0;
-        int sum=0;
-        int maxLength=0;
+        int n = arr.length;
+        int left = 0;
+        int sum = 0;
+        int longest = 0;
 
-        for(int right=0;right<n;right++){
-
-
-            sum+=arr[right];
+        for (int right = 0; right < n; right++) {
 
 
-            while (sum>k){
+            sum += arr[right];
 
-                sum-=arr[left];
+
+            while (sum > k) {
+
+                sum -= arr[left];
                 left++;
             }
 
-            maxLength=Math.max(maxLength,right-left+1);
-
-
+            longest = Math.max(longest, right - left + 1);
 
 
         }
 
-        return maxLength;
+        return longest;
 
 
     }
-
-
-
-
-
 
 
     public static void main(String[] args) {
@@ -82,7 +75,7 @@ public class Q2 {
         int k = 14;
 
         System.out.println(longestSubArrayLength(arr, k));
-        System.out.println(longestSubArrayLengthI(arr,k));
+        System.out.println(longestSubArrayLengthI(arr, k));
 
 
     }
