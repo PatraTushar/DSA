@@ -2,31 +2,35 @@
 
 public class myPractice {
 
-    static int func(int[] nums, int target) {
+    static int func(int[] cardPoints, int k) {
 
-        int n = nums.length;
-        int sum = 0;
-        int left = 0;
-        int minLength = Integer.MAX_VALUE;
+        int n = cardPoints.length;
+        int leftSum = 0;
+        int rightSum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        int right = n - 1;
+        int index = -1;
 
-        for (int right = 0; right < n; right++) {
+        if (k == 1) return Math.max(cardPoints[0], cardPoints[right]);
 
-            sum += nums[right];
+        for (int left = 0; left < k; left++) {
 
-
-            while (sum >= target) {
-
-                minLength = Math.min(minLength, right - left + 1);
-                sum -= nums[left];
-                left++;
-
-            }
-
+            leftSum += cardPoints[left];
+            maxSum = Math.max(maxSum, leftSum);
+            index = left;
 
         }
 
 
-        return minLength == Integer.MAX_VALUE ? 0 : minLength;
+        for (int i = index; i >= 0; i--) {
+
+            leftSum -= cardPoints[i];
+            rightSum += cardPoints[right--];
+            maxSum = Math.max(maxSum, leftSum + rightSum);
+
+        }
+
+        return maxSum;
 
 
     }
@@ -34,8 +38,8 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-        int[] arr = {2, 3, 1, 2, 4, 3};
-        int k = 7;
+        int[] arr = {6,2,3,4,7,2,1,7,1};
+        int k = 4;
         System.out.println(func(arr, k));
 
 
