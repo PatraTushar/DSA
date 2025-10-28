@@ -46,19 +46,25 @@ public class Q1 {
         // Time Complexity: O(n)
         //  Space Complexity: O(1)
 
-        int windowSum = 0;
         int n = arr.length;
+        int maxSum = Integer.MIN_VALUE;
+        int left = 0;
+        int sum = 0;
 
-        for (int i = 0; i < k; i++) {
+        for (int right = 0; right < n; right++) {
 
-            windowSum += arr[i];
-        }
+            sum += arr[right];
 
-        int maxSum = windowSum;
+            if ((right - left + 1) == k) {
 
-        for (int i = k; i < n; i++) {
-            windowSum += arr[i] - arr[i - k];
-            maxSum = Math.max(maxSum, windowSum);
+                maxSum = Math.max(maxSum, sum);
+                sum -= arr[left];
+                left++;
+
+
+            }
+
+
         }
 
         return maxSum;
