@@ -10,34 +10,26 @@ public class Q3 {
 
 
         int n = arr.length;
-        int sum = 0;
         int left = 0;
         int minLength = Integer.MAX_VALUE;
+        int sum = 0;
+
 
         for (int right = 0; right < n; right++) {
 
             sum += arr[right];
 
-
-            while (sum > target) {
-
-                sum -= arr[left];
-                left++;
-
-            }
-
-            if (sum == target) {
+            while (sum >= target) {
 
                 minLength = Math.min(minLength, right - left + 1);
-
-
+                sum -= arr[left];
+                left++;
             }
 
 
         }
 
-        return minLength;
-
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
     }
 
     public static void main(String[] args) {

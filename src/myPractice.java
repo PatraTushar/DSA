@@ -2,36 +2,31 @@
 
 public class myPractice {
 
-    static int func(int[] arr, int target) {
+    static int func(int[] nums, int target) {
 
-        int n = arr.length;
+        int n = nums.length;
         int sum = 0;
         int left = 0;
         int minLength = Integer.MAX_VALUE;
 
         for (int right = 0; right < n; right++) {
 
-            sum += arr[right];
+            sum += nums[right];
 
 
-            while (sum > target) {
-
-                sum -= arr[left];
-                left++;
-
-            }
-
-            if (sum == target) {
+            while (sum >= target) {
 
                 minLength = Math.min(minLength, right - left + 1);
-
+                sum -= nums[left];
+                left++;
 
             }
 
 
         }
 
-        return minLength;
+
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
 
 
     }
