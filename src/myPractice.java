@@ -1,41 +1,51 @@
+import java.util.HashMap;
+
 public class myPractice {
 
-    static int func(int[] arr, int k) {
+
+    static int countSubArraysLessThanEqualToK(int[] arr, int k) {
+
+        if (k < 0) return 0;
 
         int n = arr.length;
-        int totalSubArray = 0;
+        int totalSubArrays = 0;
+        int left = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int right = 0; right < n; right++) {
 
-            int count=0;
+            map.put(arr[right], map.getOrDefault(arr[right], 0) + 1);
 
-            for (int j = i; j < n; j++) {
+            while (map.size() > k) {
 
-                if (arr[j] % 2 != 0 ) count++;
-
-                if (k == count) {
-
-                    totalSubArray++;
-
-
-                }
-
-                else if(count > k) break;
-
-
+                map.put(arr[left], map.get(arr[left])-1);
+                if (map.get(arr[left]) == 0) map.remove(arr[left]);
+                left++;
 
 
             }
+
+            totalSubArrays += (right - left + 1);
+
+
         }
 
-        return totalSubArray;
+        return totalSubArrays;
+
+    }
+
+    static int subArrayWithKDistinct(int[] arr, int k) {
+
+        return countSubArraysLessThanEqualToK(arr, k) - countSubArraysLessThanEqualToK(arr, k - 1);
+
+
     }
 
 
     public static void main(String[] args) {
-        int[] arr = {1,2,4};
-        int goal = 1;
-        System.out.println(func(arr, goal));
+        int[] arr = {1, 2, 1, 2, 3};
+        int goal = 2;
+        System.out.println(subArrayWithKDistinct(arr, goal));
 
 
     }
