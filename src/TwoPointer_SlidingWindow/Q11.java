@@ -75,6 +75,7 @@ public class Q11 {
 
         int[] arr = {1, 0, 1, 0, 1};
         int goal = 2;
+        System.out.println(numSubArraysWithSum(arr,goal));
         System.out.println(subArraysWithSum(arr, goal));
 
 
