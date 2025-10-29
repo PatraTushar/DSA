@@ -2,8 +2,36 @@ package TwoPointer_SlidingWindow;
 
 public class Q11 {
 
+    static int numSubArraysWithSum(int[] arr, int goal) {
+
+        //  Time Complexity: O(n^2)
+        //  Space Complexity: O(1)
+
+        int n = arr.length;
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            int sum = 0;
+
+            for (int j = i; j < n; j++) {
+
+                sum += arr[j];
+
+                if (sum == goal) count++;
+
+                if (sum > goal) break;
+
+
+            }
+        }
+
+        return count;
+    }
+
 
     static int subArraysWithSumLessThanEqualToGoal(int[] arr, int goal) {
+
 
         if (goal < 0) return 0;
 
@@ -35,6 +63,7 @@ public class Q11 {
 
         //  Time Complexity: O(n)
         //  Space Complexity: O(1)
+
 
         return subArraysWithSumLessThanEqualToGoal(arr, goal) - subArraysWithSumLessThanEqualToGoal(arr, goal - 1);
     }

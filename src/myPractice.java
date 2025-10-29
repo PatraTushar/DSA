@@ -3,44 +3,35 @@ import java.util.Stack;
 
 public class myPractice {
 
-    static int func(String s, int k) {
+    static int func(int[] arr, int goal) {
 
-        int n = s.length();
-        int longest = 0;
-        int[] freq = new int[26];
-        int left = 0;
-        int maxFreq = 0;
+        int n = arr.length;
+        int count = 0;
 
-        for (int right = 0; right < n; right++) {
+        for (int i = 0; i < n; i++) {
 
-            int rightIndex = s.charAt(right) - 'A';
-            freq[rightIndex]++;
-            maxFreq = Math.max(maxFreq, freq[rightIndex]);
+            int sum = 0;
 
-            int changes = (right - left + 1) - maxFreq;
+            for (int j = i; j < n; j++) {
 
-            if (changes > k) {
+                sum += arr[j];
 
-                int leftIndex = s.charAt(left) - 'A';
-                freq[leftIndex]--;
-                left++;
+                if (sum == goal) count++;
+
+                if (sum > goal) break;
 
 
             }
-
-            longest = Math.max(longest, right - left + 1);
-
-
         }
 
-        return longest;
+        return count;
 
     }
 
     public static void main(String[] args) {
-
-        String s = "AABABBA";
-        System.out.println(func(s, 2));
+        int[] arr = {1, 0, 1, 0, 1};
+        int goal = 2;
+        System.out.println(func(arr, goal));
 
 
     }
