@@ -10,48 +10,62 @@ public class Q14 {
     static String minWindow(String s, String t) {
 
         //  Time Complexity: O(m² * n)
-        //  Space Complexity: O(n)    where nis the length of the t string
-
+        //  Space Complexity: O(n)    where n is the length of the t string
 
         int m = s.length();
         int n = t.length();
-        int sIndex = -1;
+        HashMap<Character, Integer> mapForT = new HashMap<>();
         int minLength = Integer.MAX_VALUE;
+        int startingPoint = 0;
+        int endingPoint = m - 1;
+
 
         for (int i = 0; i < m; i++) {
 
             HashMap<Character, Integer> map = new HashMap<>();
-            int count = 0;
-
-            for (int j = 0; j < n; j++) {
-
-                map.put(t.charAt(j), map.getOrDefault(t.charAt(j), 0) + 1);
-            }
+            int lastIndex = -1;
 
             for (int j = i; j < m; j++) {
 
-                if (map.containsKey(s.charAt(j)) && map.get(s.charAt(j)) > 0) {
-                    count++;
-                    map.put(s.charAt(j), map.get(s.charAt(j)) - 1);
+                char ch = s.charAt(j);
+                map.put(ch, map.getOrDefault(ch, 0) + 1);
+                lastIndex = j;
 
-                }
-
-                if (count == n) {
-
-                    if (j - i + 1 < minLength) {
-                        minLength = j - i + 1;
-                        sIndex = i;
-                        break;
-                    }
-                }
             }
 
+            boolean isValidString = true;
 
+            for (int k = 0; k < n; k++) {
+
+                char ch = t.charAt(k);
+                if (!map.containsKey(ch)) {
+
+                    isValidString = false;
+                    break;
+                }
+
+            }
+
+            if (isValidString) {
+
+
+                int length = lastIndex - i + 1;
+
+                if (length < minLength) {
+
+                    minLength = length;
+                    startingPoint = i;
+                    endingPoint = lastIndex;
+
+                }
+
+
+            }
         }
 
-        if (sIndex == -1) return "";
+        return s.substring(startingPoint, endingPoint + 1);
 
-        return s.substring(sIndex, minLength + sIndex);
+
     }
 
 
@@ -75,11 +89,9 @@ public class Q14 {
         }
 
 
+        for (int right = 0; right < m; right++) {
 
-
-        for(int right=0;right<m;right++){
-
-            if(map.containsKey(s.charAt(right)) && map.get(s.charAt(right))>0){
+            if (map.containsKey(s.charAt(right)) && map.get(s.charAt(right)) > 0) {
 
                 count++;
             }
@@ -89,20 +101,19 @@ public class Q14 {
             }
 
 
+            while (count == n) {
 
-            while (count==n){
+                if (right - left + 1 < minLength) {
 
-                if(right-left+1<minLength){
-
-                    minLength=right-left+1;
-                    startIndex=left;
+                    minLength = right - left + 1;
+                    startIndex = left;
                 }
 
-                if(map.containsKey(s.charAt(left)) ){
+                if (map.containsKey(s.charAt(left))) {
 
-                    map.put(s.charAt(left),map.get(s.charAt(left))+1);
+                    map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
 
-                    if(map.get(s.charAt(left))>0) count--;
+                    if (map.get(s.charAt(left)) > 0) count--;
 
 
                 }
@@ -111,7 +122,7 @@ public class Q14 {
             }
         }
 
-        return startIndex==-1 ? "" :s.substring(startIndex,startIndex+minLength);
+        return startIndex == -1 ? "" : s.substring(startIndex, startIndex + minLength);
 
 
     }

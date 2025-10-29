@@ -3,49 +3,69 @@ import java.util.HashMap;
 public class myPractice {
 
 
-    static int countSubArraysLessThanEqualToK(int[] arr, int k) {
+    static String func(String s, String t) {
 
-        if (k < 0) return 0;
+        int m = s.length();
+        int n = t.length();
+        HashMap<Character, Integer> mapForT = new HashMap<>();
+        int minLength = Integer.MAX_VALUE;
+        int startingPoint = 0;
+        int endingPoint = m - 1;
 
-        int n = arr.length;
-        int totalSubArrays = 0;
-        int left = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for (int right = 0; right < n; right++) {
+        for (int i = 0; i < m; i++) {
 
-            map.put(arr[right], map.getOrDefault(arr[right], 0) + 1);
+            HashMap<Character, Integer> map = new HashMap<>();
+            int lastIndex = -1;
 
-            while (map.size() > k) {
+            for (int j = i; j < m; j++) {
 
-                map.put(arr[left], map.get(arr[left])-1);
-                if (map.get(arr[left]) == 0) map.remove(arr[left]);
-                left++;
-
+                char ch = s.charAt(j);
+                map.put(ch, map.getOrDefault(ch, 0) + 1);
+                lastIndex = j;
 
             }
 
-            totalSubArrays += (right - left + 1);
+            boolean isValidString = true;
+
+            for (int k = 0; k < n; k++) {
+
+                char ch = t.charAt(k);
+                if (!map.containsKey(ch)) {
+
+                    isValidString = false;
+                    break;
+                }
+
+            }
+
+            if (isValidString) {
 
 
+                int length = lastIndex - i + 1;
+
+                if (length < minLength) {
+
+                    minLength = length;
+                    startingPoint = i;
+                    endingPoint = lastIndex;
+
+                }
+
+
+            }
         }
 
-        return totalSubArrays;
-
-    }
-
-    static int subArrayWithKDistinct(int[] arr, int k) {
-
-        return countSubArraysLessThanEqualToK(arr, k) - countSubArraysLessThanEqualToK(arr, k - 1);
+        return minLength == Integer.MAX_VALUE ? "" : s.substring(startingPoint, endingPoint + 1);
 
 
     }
 
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 1, 2, 3};
-        int goal = 2;
-        System.out.println(subArrayWithKDistinct(arr, goal));
+        String s = "ADOBECODEBANC";
+        String t = "ABC";
+        System.out.println(func(s, t));
 
 
     }
