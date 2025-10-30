@@ -14,56 +14,49 @@ public class Q14 {
 
         int m = s.length();
         int n = t.length();
-        HashMap<Character, Integer> mapForT = new HashMap<>();
         int minLength = Integer.MAX_VALUE;
-        int startingPoint = 0;
-        int endingPoint = m - 1;
+        int startingIndex = -1;
 
 
         for (int i = 0; i < m; i++) {
 
-            HashMap<Character, Integer> map = new HashMap<>();
-            int lastIndex = -1;
+            HashMap<Character, Integer> mapForT = new HashMap<>();
+            int count = 0;
+
+            for (int j = 0; j < n; j++) {
+
+                char ch = t.charAt(j);
+                mapForT.put(ch, mapForT.getOrDefault(ch, 0) + 1);
+
+            }
+
 
             for (int j = i; j < m; j++) {
 
                 char ch = s.charAt(j);
-                map.put(ch, map.getOrDefault(ch, 0) + 1);
-                lastIndex = j;
 
-            }
+                if (mapForT.containsKey(ch) && mapForT.get(ch) != 0) {
 
-            boolean isValidString = true;
+                    count++;
+                    mapForT.put(ch, mapForT.get(ch) - 1);
 
-            for (int k = 0; k < n; k++) {
+                    if (count == n) {
 
-                char ch = t.charAt(k);
-                if (!map.containsKey(ch)) {
+                        int length = j - i + 1;
 
-                    isValidString = false;
-                    break;
+                        if (length < minLength) {
+
+                            minLength = length;
+                            startingIndex = i;
+                            break;
+                        }
+                    }
                 }
-
-            }
-
-            if (isValidString) {
-
-
-                int length = lastIndex - i + 1;
-
-                if (length < minLength) {
-
-                    minLength = length;
-                    startingPoint = i;
-                    endingPoint = lastIndex;
-
-                }
-
 
             }
         }
 
-        return s.substring(startingPoint, endingPoint + 1);
+        return minLength == Integer.MAX_VALUE ? "" : s.substring(startingIndex, minLength + startingIndex);
 
 
     }
