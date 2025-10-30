@@ -20,13 +20,13 @@ public class Q14 {
 
         for (int i = 0; i < m; i++) {
 
-            HashMap<Character, Integer> mapForT = new HashMap<>();
+            HashMap<Character, Integer> map = new HashMap<>();
             int count = 0;
 
             for (int j = 0; j < n; j++) {
 
                 char ch = t.charAt(j);
-                mapForT.put(ch, mapForT.getOrDefault(ch, 0) + 1);
+                map.put(ch, map.getOrDefault(ch, 0) + 1);
 
             }
 
@@ -35,10 +35,10 @@ public class Q14 {
 
                 char ch = s.charAt(j);
 
-                if (mapForT.containsKey(ch) && mapForT.get(ch) != 0) {
+                if (map.containsKey(ch) && map.get(ch) > 0) {
 
                     count++;
-                    mapForT.put(ch, mapForT.get(ch) - 1);
+                    map.put(ch, map.get(ch) - 1);
 
                     if (count == n) {
 
