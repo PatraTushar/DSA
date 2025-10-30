@@ -9,51 +9,55 @@ public class myPractice {
         int n = t.length();
         int minLength = Integer.MAX_VALUE;
         int startingIndex = -1;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int left = 0;
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            char ch = t.charAt(i);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
 
 
-        for (int i = 0; i < m; i++) {
+        for (int right = 0; right < m; right++) {
 
-            HashMap<Character, Integer> mapForT = new HashMap<>();
-            int count = 0;
+            char ch = s.charAt(right);
 
-            for (int j = 0; j < n; j++) {
+            if (map.containsKey(ch) && map.get(ch) > 0) count++;
 
-                char ch = t.charAt(j);
-                mapForT.put(ch, mapForT.getOrDefault(ch, 0) + 1);
+            if (map.containsKey(ch)) map.put(ch, map.get(ch) - 1);
 
-            }
+            while (count == n) {
 
+                int length = right - left + 1;
 
-            for (int j = i; j < m; j++) {
+                if (length < minLength) {
 
-                char ch = s.charAt(j);
-
-                if (mapForT.containsKey(ch) && mapForT.get(ch) != 0) {
-
-                    count++;
-                    mapForT.put(ch, mapForT.get(ch) - 1);
-
-                    if (count == n) {
-
-                        int length = j - i + 1;
-
-                        if (length < minLength) {
-
-                            minLength = length;
-                            startingIndex = i;
-                            break;
-                        }
-                    }
+                    minLength = length;
+                    startingIndex = left;
                 }
 
+
+                if (map.containsKey(s.charAt(left))) {
+                    map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
+
+                    if (map.get(s.charAt(left)) > 0) count--;
+
+                }
+
+
+                left++;
+
+
             }
+
+
         }
 
         return minLength == Integer.MAX_VALUE ? "" : s.substring(startingIndex, minLength + startingIndex);
 
-
     }
-
 
     public static void main(String[] args) {
         String s = "ADOBECODEBANC";

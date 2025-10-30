@@ -70,52 +70,55 @@ public class Q14 {
 
         int m = s.length();
         int n = t.length();
-        HashMap<Character, Integer> map = new HashMap<>();
         int minLength = Integer.MAX_VALUE;
-        int startIndex = -1;
-        int count = 0;
+        int startingIndex = -1;
+        HashMap<Character, Integer> map = new HashMap<>();
         int left = 0;
+        int count = 0;
 
         for (int i = 0; i < n; i++) {
 
-            map.put(t.charAt(i), map.getOrDefault(t.charAt(i), 0) + 1);
+            char ch = t.charAt(i);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
 
         for (int right = 0; right < m; right++) {
 
-            if (map.containsKey(s.charAt(right)) && map.get(s.charAt(right)) > 0) {
+            char ch = s.charAt(right);
 
-                count++;
-            }
+            if (map.containsKey(ch) && map.get(ch) > 0) count++;
 
-            if (map.containsKey(s.charAt(right))) {
-                map.put(s.charAt(right), map.get(s.charAt(right)) - 1);
-            }
-
+            if (map.containsKey(ch)) map.put(ch, map.get(ch) - 1);
 
             while (count == n) {
 
-                if (right - left + 1 < minLength) {
+                int length = right - left + 1;
 
-                    minLength = right - left + 1;
-                    startIndex = left;
+                if (length < minLength) {
+
+                    minLength = length;
+                    startingIndex = left;
                 }
 
-                if (map.containsKey(s.charAt(left))) {
 
+                if (map.containsKey(s.charAt(left))) {
                     map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
 
                     if (map.get(s.charAt(left)) > 0) count--;
 
-
                 }
 
+
                 left++;
+
+
             }
+
+
         }
 
-        return startIndex == -1 ? "" : s.substring(startIndex, startIndex + minLength);
+        return minLength == Integer.MAX_VALUE ? "" : s.substring(startingIndex, minLength + startingIndex);
 
 
     }
