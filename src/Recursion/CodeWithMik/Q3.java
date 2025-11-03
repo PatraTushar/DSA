@@ -39,6 +39,10 @@ public class Q3 {
 
     static ArrayList<String> rateInMaze(int[][] maze) {
 
+        // Time Complexity: O(4^(n^2))
+        //Space Complexity: O(n^2) (recursion + result)
+
+
         int n = maze.length;
 
         ArrayList<String> possiblePath = new ArrayList<>();
