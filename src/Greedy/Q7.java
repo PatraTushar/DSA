@@ -13,6 +13,7 @@ public class Q7 {
 
     }
 
+
     static int longestPalindrome(String[] words) {
 
         //  Time Complexity: O(n)
@@ -29,7 +30,7 @@ public class Q7 {
         int result = 0;
 
 
-        for (String word : map.keySet()) {
+        for (String word : words) {
 
 
             if (map.get(word) == 0) continue;
@@ -38,7 +39,7 @@ public class Q7 {
 
             if (!rev.equals(word)) {       // ab->ba
 
-                while (map.getOrDefault(word, 0) > 0 && map.getOrDefault(rev, 0) > 0) {
+                if (map.getOrDefault(word, 0) > 0 && map.getOrDefault(rev, 0) > 0) {
 
                     result += 4;
                     map.put(word, map.get(word) - 1);
@@ -49,13 +50,11 @@ public class Q7 {
             } else {   // aa->aa
 
 
-                while (map.get(word) >= 2) {
+                if (map.get(word) >= 2) {
 
                     result += 4;
                     map.put(word, map.get(word) - 2);
-                }
-
-                if (map.get(word) == 1 && !centerUsed) {
+                } else if (map.get(word) == 1 && !centerUsed) {
 
                     result += 2;
                     map.put(word, map.get(word) - 1);
@@ -70,6 +69,7 @@ public class Q7 {
 
 
     }
+
 
     public static void main(String[] args) {
 
