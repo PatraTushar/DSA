@@ -6,6 +6,9 @@ public class Q11 {
 
     static int maxIceCream(int[] costs, int coins) {
 
+        //  Time Complexity: O(n) + ( n log n) = o(n log n)
+        //  Space Complexity: O(1)
+
 
         int iceCreamCount = 0;
 
