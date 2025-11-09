@@ -14,6 +14,7 @@ public class Q19 {
         int aliceSteps = 0;
         int bobSteps = 0;
 
+
         for (int i = 1; i < n - 1; i++) {
 
             char ch = colors.charAt(i);
