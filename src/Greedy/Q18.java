@@ -92,6 +92,8 @@ public class Q18 {
 
     public static void main(String[] args) {
 
+        // leeTCode->135
+
         int[] ratings = {1, 2, 10, 10, 10, 2, 1};
         System.out.println(candy(ratings));
         System.out.println(candyI(ratings));

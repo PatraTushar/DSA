@@ -48,6 +48,8 @@ public class Q17 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1647
+
         String s = "abcdabcd";
         System.out.println(minDeletions(s));
     }
