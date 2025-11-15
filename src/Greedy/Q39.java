@@ -3,7 +3,7 @@ package Greedy;
 public class Q39 {
 
 
-    // BRUTE FORCE APPROACH
+    // BRUTE FORCE APPROACH GIVES TLE
     static double maxAverageRatio(int[][] classes, int extraStudents) {
 
         //  Time Complexity: O( n * extraStudents)
@@ -78,6 +78,8 @@ public class Q39 {
     }
 
     public static void main(String[] args) {
+
+        // leeTCode->624
 
         int[][] classes = {{1, 2}, {3, 5}, {2, 2}};
         int extraStudents = 2;
