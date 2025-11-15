@@ -4,7 +4,7 @@ public class Q35 {
 
     static int minPatches(int[] nums, int n) {
 
-        //  Time Complexity: O(length + log n)
+        //  Time Complexity: O(length + log n  )
         //  Space Complexity: O(1)
 
 
