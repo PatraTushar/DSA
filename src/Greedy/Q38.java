@@ -1,6 +1,7 @@
 package Greedy;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Q38 {
 
@@ -10,11 +11,11 @@ public class Q38 {
         //  Space Complexity: O(length)
 
         int length = banned.length;
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashSet<Integer> set = new HashSet<>();
 
         for (int i = 0; i < length; i++) {
 
-            map.put(banned[i], map.getOrDefault(banned[i], 0) + 1);
+            set.add(banned[i]);
         }
 
         int maxNumber = 0;
@@ -22,7 +23,7 @@ public class Q38 {
 
         for (int i = 1; i <= n; i++) {
 
-            if (!map.containsKey(i) && sum + i <= maxSum) {
+            if (!set.contains(i) && sum + i <= maxSum) {
 
                 maxNumber++;
                 sum += i;
