@@ -77,6 +77,8 @@ public class Q42 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1432
+
         int num = 8763;
         int number=1125;
         System.out.println(maxDiff(num));

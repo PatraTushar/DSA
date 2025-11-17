@@ -31,6 +31,8 @@ public class Q44 {
 
     public static void main(String[] args) {
 
+        // leeTCode->2311
+
         String s = "1001010";
         int k = 5;
         System.out.println(longestSubsequence(s, k));
