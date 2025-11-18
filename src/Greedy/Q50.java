@@ -66,6 +66,8 @@ public class Q50 {
 
     public static void main(String[] args) {
 
+        // leeTCode->2654
+
         int[] arr = {2, 6, 3, 4};
         System.out.println(minOperations(arr));
 
