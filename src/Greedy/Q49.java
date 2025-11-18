@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Q49 {
 
-    static int maxDistinctElements(int[] nums, int k) {
+    static int maxDistinctElements(int[] arr, int k) {
 
         //  Time Complexity: O(n log n)
         //  Space Complexity: O(1)
@@ -12,14 +12,14 @@ public class Q49 {
 
 
 
-        Arrays.sort(nums);
+        Arrays.sort(arr);
 
 
         int distinctCount = 0;
-        int currVal = nums[0] - k;
+        int currVal = arr[0] - k;
 
 
-        for (int ele : nums) {
+        for (int ele : arr) {
 
             int lowerBound = ele - k;
             int upperBound = ele + k;
