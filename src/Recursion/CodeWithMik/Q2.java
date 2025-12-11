@@ -21,7 +21,7 @@ public class Q2 {
         }
 
 
-        int minMoves = 0;
+        int minMoves;
 
         minMoves = towerOfHonoi(n - 1, source, destination, Auxiliary);
 
