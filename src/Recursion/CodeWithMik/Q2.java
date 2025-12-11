@@ -12,16 +12,24 @@ public class Q2 {
         //  Space Complexity: O(n)
 
 
-        if ( n == 1) return n;
+        if (n <= 0) return 0;
+
+        if (n == 1) {
+
+            System.out.println(" disk moved from " + source + " to " + destination);
+            return 1;
+        }
 
 
-        int count = towerOfHonoi(n - 1, source, destination, Auxiliary);
+        int minMoves = 0;
 
-        count++;
+        minMoves = towerOfHonoi(n - 1, source, destination, Auxiliary);
 
-        count += towerOfHonoi(n - 1, Auxiliary, source, destination);
+        minMoves += towerOfHonoi(1, source, Auxiliary, destination);
 
-        return count;
+        minMoves += towerOfHonoi(n - 1, Auxiliary, source, destination);
+
+        return minMoves;
 
 
     }
@@ -29,6 +37,6 @@ public class Q2 {
     public static void main(String[] args) {
 
         int n = 3;
-        System.out.println(towerOfHonoi(n, 1,2,3));
+        System.out.println(towerOfHonoi(n, 1, 2, 3));
     }
 }
