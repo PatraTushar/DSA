@@ -1,6 +1,6 @@
 package Recursion.CodeWithMik;
 
-import javax.swing.event.ListDataEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -50,8 +50,8 @@ public class Q7 {
 
     static List<String> generateParenthesis(int n) {
 
-        //  Time Complexity: O(2^2n * n)
-        //  Space Complexity:  O(2*n)
+        //  Time Complexity: O(Cₙ * n)
+        //  Space Complexity:  O(2n)->O(n)
 
 
 
@@ -81,7 +81,7 @@ public class Q7 {
     static List<String> generateParenthesisI(int n) {
 
         //  Time Complexity: O(2^2n * n)
-        //  Space Complexity:  O(2n)
+        //  Space Complexity:  O(2n)->O(n)
 
 
         List<String> result = new ArrayList<>();
