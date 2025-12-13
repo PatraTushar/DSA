@@ -26,7 +26,7 @@ public class Q11 {
     static List<List<Integer>> subsets(int[] num) {
 
         //  Time Complexity: O(n × 2ⁿ)
-        //  Space Complexity: O(n × 2ⁿ)
+        //  Space Complexity: : O(n × 2ⁿ)
 
 
         List<List<Integer>> result = new ArrayList<>();
