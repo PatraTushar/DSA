@@ -1,9 +1,11 @@
 package Recursion.CodeWithMik;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
-public class Q9 {
+public class Q10 {
 
     static void swap(int[] arr, int a, int b) {
 
@@ -27,8 +29,12 @@ public class Q9 {
             return;
         }
 
+        HashSet<Integer> set = new HashSet<>();
+
         for (int choices = idx; choices < n; choices++) {
 
+            if (set.contains(num[choices])) continue;
+            set.add(num[choices]);
             swap(num, idx, choices);
             generatePermutation(num, n, result, idx + 1);
             swap(num, idx, choices);
@@ -45,6 +51,10 @@ public class Q9 {
         //  Time Complexity: O(n × n!)
         //  Space Complexity: O(n × n!)
 
+        //  Time Complexity: O(n × n!)
+        //  Space Complexity: O(n × n!)
+
+        Arrays.sort(num);
         List<List<Integer>> result = new ArrayList<>();
         generatePermutation(num, num.length, result, 0);
 
@@ -57,9 +67,9 @@ public class Q9 {
 
     public static void main(String[] args) {
 
-        // leeTCode->46
+        // leeTCode->47
 
-        int[] num = {1, 2, 3};
+        int[] num = {1, 1, 2};
         List<List<Integer>> ans = permutation(num);
         System.out.println(ans);
 
