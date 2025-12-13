@@ -51,8 +51,6 @@ public class Q10 {
         //  Time Complexity: O(n × n!)
         //  Space Complexity: O(n × n!)
 
-        //  Time Complexity: O(n × n!)
-        //  Space Complexity: O(n × n!)
 
         Arrays.sort(num);
         List<List<Integer>> result = new ArrayList<>();
