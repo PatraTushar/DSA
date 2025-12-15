@@ -28,30 +28,42 @@ public class Q5 {
 
         while (curr != null) {
 
-            Node next = curr.next;
+            if (curr.child == null) {
 
-            if (curr.child != null) {
-                Node temp = flatten(curr.child);
-                curr.next = temp;
-                temp.prev = curr;
+                curr = curr.next;
 
-                while (temp.next != null) {
-                    temp = temp.next;
+
+            } else {
+
+                Node child = flatten(curr.child);
+                curr.child = null;
+
+                Node next = curr.next;
+                curr.next = child;
+                child.prev = curr;
+
+
+                Node lastChildNode = child;
+                while (lastChildNode.next != null) {
+
+                    lastChildNode = lastChildNode.next;
                 }
-                temp.next = next;
-                if (next != null) next.prev = temp;
+
+                lastChildNode.next = next;
+
+                if (next != null) next.prev = lastChildNode;
+                curr = next;
+
 
             }
 
-            curr.child = null;
-            curr = next;
+
         }
 
         return head;
 
 
     }
-
 
 
     static void display(Node head) {
@@ -83,23 +95,24 @@ public class Q5 {
         Node i = new Node(9);
         Node j = new Node(10);
 
+
+
         a.next = b;
         b.prev = a;
         b.next = c;
         c.prev = b;
-        c.child = d;
-        c.next = j;
-        d.next = e;
-        e.prev = d;
-        e.child = f;
-        e.next = h;
+        c.next = d;
+        d.prev = c;
+        c.child = f;
         f.next = g;
         g.prev = f;
-        h.prev = e;
-        h.next = i;
-        i.prev = h;
-        j.prev = c;
-
+        g.child = i;
+        i.next = j;
+        j.prev = i;
+        g.next = h;
+        h.prev = g;
+        d.next = e;
+        e.prev = d;
 
         display(a);
         flatten(a);
