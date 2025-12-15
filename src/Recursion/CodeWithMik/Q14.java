@@ -1,8 +1,6 @@
 package Recursion.CodeWithMik;
 
-import java.util.ArrayList;
-
-public class Q5 {
+public class Q14 {
 
 
     public static class Node {
@@ -21,36 +19,52 @@ public class Q5 {
 
     static Node flatten(Node head) {
 
-        // Time Complexity: O(n)     n = total nodes in all levels.
-        //Space Complexity: O(d)     d = maximum depth of child lists.
+
+
 
         Node curr = head;
 
         while (curr != null) {
 
-            Node next = curr.next;
+            if (curr.child == null) {
 
-            if (curr.child != null) {
-                Node temp = flatten(curr.child);
-                curr.next = temp;
-                temp.prev = curr;
+                curr = curr.next;
 
-                while (temp.next != null) {
-                    temp = temp.next;
+
+            } else {
+
+                Node child = flatten(curr.child);
+                curr.child = null;
+
+                Node next = curr.next;
+                curr.next = child;
+                child.prev = curr;
+
+
+                Node lastChildNode = child;
+                while (lastChildNode.next != null) {
+
+                    lastChildNode = lastChildNode.next;
                 }
-                temp.next = next;
-                if (next != null) next.prev = temp;
+
+                lastChildNode.next = next;
+
+                if (next != null) next.prev = lastChildNode;
+                curr = next;
+
 
             }
 
-            curr.child = null;
-            curr = next;
+
         }
 
         return head;
 
-
     }
+
+
+
+
 
 
 
@@ -70,7 +84,6 @@ public class Q5 {
 
     public static void main(String[] args) {
 
-        // leeTCode->430
 
         Node a = new Node(1);
         Node b = new Node(2);
@@ -87,19 +100,18 @@ public class Q5 {
         b.prev = a;
         b.next = c;
         c.prev = b;
-        c.child = d;
-        c.next = j;
-        d.next = e;
-        e.prev = d;
-        e.child = f;
-        e.next = h;
+        c.next = d;
+        d.prev = c;
+        c.child = f;
         f.next = g;
         g.prev = f;
-        h.prev = e;
-        h.next = i;
-        i.prev = h;
-        j.prev = c;
-
+        g.child = i;
+        i.next = j;
+        j.prev = i;
+        g.next = h;
+        h.prev = g;
+        d.next = e;
+        e.prev = d;
 
         display(a);
         flatten(a);
