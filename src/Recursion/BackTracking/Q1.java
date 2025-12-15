@@ -78,7 +78,7 @@ public class Q1 {
         // Time Complexity (TC):  O(N × N!)                         // N options in row 0
         // Space Complexity (SC): O(N²)                                 //× (N-1) options in row 1
                                                                      //× (N-2) options in row 2
-                                                                        //...
+                                                                           //...
                                                                        //× 1 option in row N-1
 
 
