@@ -53,9 +53,11 @@ public class Q14 {
 
     public static void main(String[] args) {
 
-        int n = 3;
-        int k = 3;
-        System.out.println(kthGrammar(n, k));
+       // leeTCode->779
+
+        int n = 4;
+        int k = 8;
+        System.out.println(kthGrammarI(n, k));
 
     }
 }
