@@ -45,6 +45,8 @@ public class Q19 {
 
     public static void main(String[] args) {
 
+        // leeTCode->386
+
         int n=13;
         List<Integer> ans=lexicoOrder(n);
         System.out.println(ans);
