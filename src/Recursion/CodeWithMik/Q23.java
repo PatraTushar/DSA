@@ -4,8 +4,8 @@ public class Q23 {
 
     static char findKthBit(int n, int k) {
 
-        //  Time Complexity (TC): O(log k)
-        //  Space Complexity (SC): O(log k)
+        //  Time Complexity (TC): O(n)
+        //  Space Complexity (SC): O(n)
 
         if (n == 1) return '0';
 
