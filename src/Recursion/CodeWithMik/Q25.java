@@ -29,10 +29,40 @@ public class Q25 {
     }
 
 
+    static boolean checkI(int num, int square, int currSum) {
+
+        if (num == 0) return currSum == num;
+
+
+        return checkI(num, square / 10, currSum + (square % 10)) || checkI(num, square / 100, currSum + (square % 100)) || checkI(num, square / 1000, currSum + (square % 1000));
+
+    }
+
+    static int partitionSumI(int n) {
+
+        int result = 0;
+
+        for (int num = 1; num <= n; num++) {
+
+            int square = num * num;
+
+            if (checkI(num, square, 0)) {
+
+                result += square;
+            }
+
+
+        }
+
+        return result;
+    }
+
+
     public static void main(String[] args) {
 
         String s = "1296";
         findPartitionSum(s, 0, 0);
+
 
 
     }
