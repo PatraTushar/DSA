@@ -15,7 +15,7 @@ public class Q25 {
         // try all partitions starting at index
         for (int i = index; i < s.length(); i++) {
 
-            // build number digit by digit
+            // build number digit by digit..33.
             num = num * 10 + (s.charAt(i) - '0');
 
             // recursive call

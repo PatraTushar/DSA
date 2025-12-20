@@ -8,21 +8,19 @@ public class Q24 {
 
         if (currSum > num) return false;
 
-        boolean possible = false;
+        int n = 0;
 
-        for (int j = idx; j < s.length(); j++) {
 
-            String substring = s.substring(idx, j + 1);
-            int val = Integer.parseInt(substring);
+        for (int i = idx; i < s.length(); i++) {
 
-            possible = possible || check(num, s, currSum + val, j + 1);
+            n = (n * 10) + (s.charAt(i) - '0');
 
-            if (possible) return true;
+            if (check(num, s, currSum + n, i + 1)) return true;
+
+
         }
 
-        return possible;
-
-
+        return false;
     }
 
     static int punishmentNumber(int n) {
