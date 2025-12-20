@@ -4,18 +4,21 @@ public class Q24 {
 
     static boolean check(int num, String s, int currSum, int idx) {
 
+        //  Time Complexity (TC): O(n.2^(m-1))
+        //  Space Complexity (SC): O(log k)  where k is  number
+
         if (idx == s.length()) return currSum == num;
 
         if (currSum > num) return false;
 
-        int n = 0;
+        int currentDigit = 0;
 
 
         for (int i = idx; i < s.length(); i++) {
 
-            n = (n * 10) + (s.charAt(i) - '0');
+            currentDigit = (currentDigit * 10) + (s.charAt(i) - '0');
 
-            if (check(num, s, currSum + n, i + 1)) return true;
+            if (check(num, s, currSum + currentDigit, i + 1)) return true;
 
 
         }

@@ -4,6 +4,9 @@ public class Q25 {
 
     static void findPartitionSum(String s, int currentSum, int index) {
 
+        //  Time Complexity (TC): O(2^(m-1))
+        //  Space Complexity (SC): O(log k) where k is the number
+
         // base case: whole string consumed
         if (index == s.length()) {
             System.out.println(currentSum);
