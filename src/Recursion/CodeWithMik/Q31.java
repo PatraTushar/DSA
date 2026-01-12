@@ -50,7 +50,7 @@ public class Q31 {
 
     public static void main(String[] args) {
 
-        int[] cookies = {8, 15, 10};
+        int[] cookies = {9,8,7,6};
         int k = 2;
         System.out.println(distributeCookies(cookies, k));
 
