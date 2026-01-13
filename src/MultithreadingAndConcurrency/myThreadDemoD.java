@@ -38,6 +38,7 @@ public class myThreadDemoD {
 // Child thread executes the run() method ("Run Method" print)
 
 // The run() method is executed only by the child thread
+// "A new child thread is created when the start() method of Thread is called"
 
 
 // output
