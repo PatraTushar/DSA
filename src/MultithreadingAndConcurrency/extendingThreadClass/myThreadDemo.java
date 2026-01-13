@@ -1,4 +1,4 @@
-package MultithreadingAndConcurrency;
+package MultithreadingAndConcurrency.extendingThreadClass;
 
 
 class myThread extends Thread {

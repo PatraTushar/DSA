@@ -1,4 +1,4 @@
-package MultithreadingAndConcurrency;
+package MultithreadingAndConcurrency.extendingThreadClass;
 
 // Not overriding run() method
 class myThreadB extends Thread{

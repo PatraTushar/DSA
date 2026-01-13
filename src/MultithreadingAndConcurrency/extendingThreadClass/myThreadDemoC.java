@@ -1,4 +1,4 @@
-package MultithreadingAndConcurrency;
+package MultithreadingAndConcurrency.extendingThreadClass;
 
 
 // overriding the start() method
