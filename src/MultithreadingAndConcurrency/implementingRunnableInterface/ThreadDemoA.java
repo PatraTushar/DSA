@@ -1,6 +1,8 @@
 package MultithreadingAndConcurrency.implementingRunnableInterface;
 
 
+// case study : Thread creation with or without Runnable
+
 class myRunnableA implements Runnable {
 
     @Override
@@ -12,22 +14,22 @@ class myRunnableA implements Runnable {
         }
     }
 }
+
 public class ThreadDemoA {
 
     public static void main(String[] args) {
 
-        myRunnableA obj=new myRunnableA();
-        Thread t1=new Thread();
+        myRunnableA obj = new myRunnableA();
+        Thread t1 = new Thread();
         t1.start();
-        t1.run();
-
-        Thread t2=new Thread(obj);
-        t2.start();
-        t2.run();
-
-        obj.run();
-       // obj.start();
-
+//        t1.run();
+//
+//        Thread t2 = new Thread(obj);
+//        t2.start();
+//        t2.run();
+//
+//        obj.run();
+        // obj.start();
 
 
     }
