@@ -1,6 +1,7 @@
 package MultithreadingAndConcurrency;
 
 
+// overriding the start() method
 class myThreadC extends Thread {
 
     public void start() {
