@@ -12,6 +12,10 @@ public class ThreadDemo {
 
         System.out.println(Thread.currentThread().getPriority()); // 7
 
+        myThread obj=new myThread();
+
+        System.out.println(obj.getPriority()); // 7
+
 
 
     }
