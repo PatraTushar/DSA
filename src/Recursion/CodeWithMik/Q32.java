@@ -50,6 +50,8 @@ public class Q32 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1601
+
         Q32 obj=new Q32();
 
         int[][] requests={{0,1},{1,0},{0,1},{1,2},{2,0},{3,4}};
