@@ -36,7 +36,7 @@ public class Q33 {
     static List<String> letterCombinations(String digits) {
 
         //  Time Complexity (TC): O(n * 4^n)
-        //  Space Complexity (SC): O(n * 4^n)
+        //  Space Complexity (SC): O(n * 4^n )
 
 
         List<String> result = new ArrayList<>();
