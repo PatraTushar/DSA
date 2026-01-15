@@ -1,5 +1,7 @@
 package MultithreadingAndConcurrency.preventingThreadFromExecution;
 
+
+// case:1 -> Waiting of Main Thread until Completing Child Thread
 class myThreadA extends Thread {
 
     public void run() {
