@@ -2,6 +2,7 @@ package MultithreadingAndConcurrency.preventingThreadFromExecution;
 
 
 // case 2:-> Waiting Of Child Thread Until Completing Main Thread
+// In the example child thread class join() method on main thread object hence child thread has to wait until completing  main thread.In this case output is  main thread 10 times followed by child thread 10 times
 class myThreadB extends Thread {
 
     static Thread mt;
