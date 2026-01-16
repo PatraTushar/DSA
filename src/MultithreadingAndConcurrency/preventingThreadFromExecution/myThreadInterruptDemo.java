@@ -27,9 +27,13 @@ public class myThreadInterruptDemo {
 
         myThreadD obj=new myThreadD();
         obj.start();
-        obj.interrupt();
+       // obj.interrupt();  // Line 1
 
-        System.out.println(" End of main");
+        System.out.println(" End of main Thread ");
 
     }
 }
+
+
+// if we comment Line 1 then main thread won't interrupt child thread op is "End of main Thread" followed by 10 times "I am lazy thread"
+// if we won't comment Line 1 then main thread  interrupt child thread op is "End of main Thread"  "I am lazy thread"  "I got interrupted"
