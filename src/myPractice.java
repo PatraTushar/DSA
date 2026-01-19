@@ -1,6 +1,6 @@
 
 
-class myRunnable implements Runnable {
+class myThread extends Thread {
 
     @Override
     public void run() {
@@ -12,21 +12,20 @@ class myRunnable implements Runnable {
     }
 }
 
-
 public class myPractice {
 
     public static void main(String[] args) {
 
-        myRunnable obj = new myRunnable();
-        Thread t = new Thread(obj);
-        t.start();
+        myThread obj = new myThread();
+        obj.start();
 
         for (int i = 0; i < 10; i++) {
 
             System.out.println(" main thread ");
         }
-    }
 
+
+    }
 
 }
 
