@@ -13,8 +13,7 @@ class myThreadB extends Thread {
         try {
 
             mt.join();
-        } catch (InterruptedException e) {
-        }
+        } catch (InterruptedException e) {}
 
 
         for (int i = 0; i < 10; i++) {
@@ -29,6 +28,8 @@ public class myThreadJoinMethodA {
     public static void main(String[] args) throws InterruptedException {
 
         myThreadB.mt = Thread.currentThread();
+
+
 
         myThreadB obj = new myThreadB();
 
