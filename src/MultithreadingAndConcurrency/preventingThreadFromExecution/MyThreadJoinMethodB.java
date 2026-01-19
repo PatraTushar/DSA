@@ -43,3 +43,16 @@ public class MyThreadJoinMethodB {
 
     }
 }
+
+
+
+//1
+// run() executes in the child thread
+//After calling start(), the JVM creates a new thread
+//That new thread executes the run() method
+
+
+//2
+//mt.join() is inside run()
+//So the thread executing mt.join() is the child thread
+//It is calling join() on mt (main thread)
