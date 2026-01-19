@@ -1,43 +1,38 @@
 
 
-
 class myThread extends Thread {
-
-    static Thread mt;
 
     @Override
     public void run() {
 
         try {
-            mt.join();
-        }catch (InterruptedException e){}
 
-        for (int i = 0; i < 10; i++) {
+            System.out.println(" child thread wants to sleep ");
+            Thread.sleep(2000);
 
-            System.out.println(" child thread ");
+            System.out.println(" child thread sleeps ");
 
+        } catch (InterruptedException e) {
 
+            System.out.println(" i got interrupted ");
         }
+
     }
 }
+
 
 public class myPractice {
 
 
-    public static void main(String[] args) throws InterruptedException {
-
-        myThread.mt = Thread.currentThread();
-
+    public static void main(String[] args) {
 
         myThread obj = new myThread();
         obj.start();
 
+        obj.interrupt();
 
-        for (int i = 0; i < 10; i++) {
+        System.out.println(" end of main thread ");
 
-            System.out.println(" main thread ");
-            Thread.sleep(2000);
-        }
 
     }
 

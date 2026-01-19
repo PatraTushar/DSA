@@ -9,6 +9,7 @@ class myThreadD extends Thread {
 
                 System.out.println(" I am lazy thread");
                 Thread.sleep(2000);
+
             }
         }catch (InterruptedException e) {
 
