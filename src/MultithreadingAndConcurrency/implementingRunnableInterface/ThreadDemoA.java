@@ -1,7 +1,7 @@
 package MultithreadingAndConcurrency.implementingRunnableInterface;
 
 
-// case study : Thread creation with or without Runnable
+// case study : Thread creation with or without Runnable target
 
 class myRunnableA implements Runnable {
 
