@@ -22,7 +22,7 @@ public class ThreadDemoA {
         myRunnableA obj = new myRunnableA();
         Thread t1 = new Thread();
         t1.start();
-//        t1.run();
+   //     t1.run();
 //
 //        Thread t2 = new Thread(obj);
 //        t2.start();
