@@ -81,9 +81,13 @@ public class synchronizationBlockDemoA {
     }
 }
 
-
-// If Thread-1 is inside synchronized(Display.class) block:
-//Other threads cannot enter any synchronized(Display.class) block (any instance) until the lock is released.
-//Other threads CAN enter synchronized methods on the same object if those methods do not use the class lock.
-//Example: another method public synchronized void hello() uses instance lock only — a thread can enter that if it gets the instance lock, regardless of class lock.
-//Other threads cannot enter this exact block or any other block synchronized on Display.class until the lock is released.
+// Thread-1 (t1) starts first
+//Calls d1.wish("Dhoni")
+//Reaches the synchronized(DisplayE.class) block → acquires class-level lock
+//Thread-2 (t2) starts
+//Calls d2.wish("Yuvraj")
+//Reaches the same class-level synchronized block → tries to acquire class-level lock
+//Blocked because Thread-1 is holding the lock
+//Thread-1 executes the loop inside the synchronized block: prints all 10 "Good morning Dhoni" messages
+//Thread-1 exits the synchronized block → releases class-level lock
+//Thread-2 acquires the class-level lock → executes the loop: prints 10 "Good morning Yuvraj" messages
