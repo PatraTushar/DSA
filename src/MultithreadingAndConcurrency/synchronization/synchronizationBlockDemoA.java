@@ -80,3 +80,10 @@ public class synchronizationBlockDemoA {
 
     }
 }
+
+
+// If Thread-1 is inside synchronized(Display.class) block:
+//Other threads cannot enter any synchronized(Display.class) block (any instance) until the lock is released.
+//Other threads CAN enter synchronized methods on the same object if those methods do not use the class lock.
+//Example: another method public synchronized void hello() uses instance lock only — a thread can enter that if it gets the instance lock, regardless of class lock.
+//Other threads cannot enter this exact block or any other block synchronized on Display.class until the lock is released.

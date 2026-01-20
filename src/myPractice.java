@@ -6,7 +6,7 @@ class Display {
 
         // 10 lakh lines of code
 
-        synchronized (this) {
+        synchronized (Display.class) {
 
             for (int i = 0; i < 10; i++) {
 
