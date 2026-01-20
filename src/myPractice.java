@@ -1,70 +1,65 @@
 
-class Display {
 
+class ThreadB extends Thread {
 
-    public synchronized void wish(String name) {
-
-        // 10 lakh lines of code
-
-        synchronized (Display.class) {
-
-            for (int i = 0; i < 10; i++) {
-
-                System.out.print(" Good morning ");
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                }
-
-                System.out.println(name);
-            }
-
-        }
-
-
-        // 10 lakh lines of code
-
-
-    }
-
-
-}
-
-
-class myThread extends Thread {
-
-    Display d;
-    String name;
-
-    myThread(Display d, String name) {
-
-        this.d = d;
-        this.name = name;
-    }
+    int total;
 
     @Override
     public void run() {
 
-        d.wish(name);
+        synchronized (this) {
+
+            System.out.println(" entered  into child thread  ");
+
+            System.out.println(" child thread perform calculation ");
+
+
+            for (int i = 1; i <= 100; i++) {
+
+                total += i;
+            }
+
+
+
+
+            System.out.println(" child calls notify ");
+
+            this.notify();
+
+
+
+        }
     }
+}
+
+class ThreadA {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        ThreadB obj = new ThreadB();
+
+        obj.start();
+
+        synchronized (obj) {
+
+            System.out.println(" main thread want to perform updation and it call wait() ");
+
+            obj.wait();
+
+            System.out.println(" main thread got notification ");
+
+            System.out.println(obj.total);
+
+
+        }
+    }
+
+
 }
 
 
 public class myPractice {
 
-
-    public static void main(String[] args) {
-
-        Display obj = new Display();
-
-        myThread t1=new myThread(obj,"dhoni");
-        myThread t2=new myThread(obj,"yuvraj");
-
-        t1.start();
-        t2.start();
-
-    }
 
 }
 

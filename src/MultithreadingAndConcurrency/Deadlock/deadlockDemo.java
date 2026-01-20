@@ -73,3 +73,5 @@ class DeadlockDemo extends Thread {
 
 }
 
+
+// In the above program if we remove at least one synchronized keyword then the program won't enter into deadlock. Hence synchronized keyword is the only reason for deadlock situation .Due to this using synchronized keyword we have to take special care
