@@ -54,3 +54,6 @@ public class synchronizedDemoB {
 
     }
 }
+
+
+// Since there is only one DisplayB class object, the first thread that enters the static synchronized method acquires the class-level lock, and other threads must wait until the lock is released.
