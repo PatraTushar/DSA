@@ -1,24 +1,33 @@
 
-
 class Display {
 
 
     public synchronized void wish(String name) {
 
-        for (int i = 0; i < 10; i++) {
+        // 10 lakh lines of code
 
-            System.out.print(" Good Morning ");
+        synchronized (this) {
 
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
+            for (int i = 0; i < 10; i++) {
+
+                System.out.print(" Good morning ");
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                }
+
+                System.out.println(name);
             }
 
-            System.out.println(name);
         }
 
 
+        // 10 lakh lines of code
+
+
     }
+
 
 }
 
@@ -36,24 +45,24 @@ class myThread extends Thread {
 
     @Override
     public void run() {
+
         d.wish(name);
     }
 }
+
 
 public class myPractice {
 
 
     public static void main(String[] args) {
 
-        Display d1 = new Display();
-        Display d2=new Display();
+        Display obj = new Display();
 
-        myThread t1=new myThread(d1,"dhoni");
-        myThread t2=new myThread(d2,"yuvraj");
+        myThread t1=new myThread(obj,"dhoni");
+        myThread t2=new myThread(obj,"yuvraj");
 
         t1.start();
         t2.start();
-
 
     }
 

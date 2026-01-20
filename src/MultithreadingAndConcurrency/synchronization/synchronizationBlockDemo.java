@@ -16,7 +16,14 @@ class DisplayD {
         ;
         ; // 1 lakhs line of code
 
+        // 10 lakh lines of code → runs concurrently in both threads (no lock here)
+
         synchronized (this) {
+
+            // Synchronized block → object-level lock acquired
+            // Only one thread can execute this block at a time
+            // Other thread waits until lock is released
+
 
             for (int i = 0; i < 10; i++) {
 
@@ -34,6 +41,7 @@ class DisplayD {
         }
 
 
+        // 10 lakh lines of code → runs concurrently in both threads after the lock
         ;
         ;
         ;
@@ -79,3 +87,17 @@ public class synchronizationBlockDemo {
 
     }
 }
+
+
+//this refers to the current DisplayD object on which wish() is called, and the intrinsic (monitor) lock of that same object is used for synchronization.
+
+
+// t1 enters synchronized block → acquires lock
+//t2 tries to enter → blocked
+//t1 completes synchronized block → releases lock
+//Now t1 is outside the synchronized block → it can run concurrently with t2
+//t2 acquires the lock → executes the synchronized block
+
+
+// Inside synchronized block → only one thread at a time
+//Outside synchronized block → multiple threads can run concurrently
