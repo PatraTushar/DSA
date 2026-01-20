@@ -32,6 +32,7 @@ public class DaemonThreadDemo {
     }
 }
 
+// t.setDaemon(true) sets the daemon flag on the Thread object, and after t.start() the created child thread becomes a daemon thread.
 
 // If the above program if we are commenting Line1 both main thread and child thread are Non-Daemon and both thread will be executed until their completion
 
