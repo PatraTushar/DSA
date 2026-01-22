@@ -32,7 +32,7 @@ class myThreadB extends Thread {
     }
 }
 
-public class ReentrantLockDemoB {
+public class tryLockDemo {
 
     public static void main(String[] args) {
 
@@ -51,3 +51,5 @@ public class ReentrantLockDemoB {
 //This ensures that when one thread acquires the lock, other threads have to wait or fail (tryLock()) — proper synchronization.
 //If l were not static, each thread would have its own lock, and they could all enter the critical section simultaneously, which defeats the purpose of using a lock.
 //In short: Static lock = shared among all objects of the class.
+
+// Non-static lock → each object has its own lock
