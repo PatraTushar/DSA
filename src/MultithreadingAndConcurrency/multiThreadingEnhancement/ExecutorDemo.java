@@ -114,9 +114,18 @@ public class ExecutorDemo {
 //After Thread-3 finishes Shiva, it picks Anil.
 
 
-//✅ Key Points
-//submit(job) → adds job to internal queue.
-//A thread from the pool picks the job if free, else it waits.
-//run() executes inside the thread.
-//Threads are reused until all jobs are done.
-//shutdown() → stops accepting new jobs, threads exit after finishing queued jobs.
+
+// note
+// Each thread picks a job and starts running it immediately,
+// but the actual printing order is not guaranteed.
+// For example, Durga may be picked first, but Ravi or Shiva may print first
+// because threads execute concurrently and the JVM scheduler decides which runs first.
+
+
+
+// “How many threads there are, that many jobs acquire a thread at a time.”
+
+// The output is irregular. ✅
+//Even though jobs are submitted in order, threads run concurrently, so the start and completion prints may not follow the submission order.
+
+//Jobs are submitted sequentially to the thread pool, but once threads start executing (up to the pool size), the output becomes irregular
