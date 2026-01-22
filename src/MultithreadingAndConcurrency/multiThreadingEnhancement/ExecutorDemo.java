@@ -129,3 +129,5 @@ public class ExecutorDemo {
 //Even though jobs are submitted in order, threads run concurrently, so the start and completion prints may not follow the submission order.
 
 //Jobs are submitted sequentially to the thread pool, but once threads start executing (up to the pool size), the output becomes irregular
+
+// shutdown() tells the ExecutorService: “Stop accepting new jobs, but finish all the jobs that are already submitted.”
