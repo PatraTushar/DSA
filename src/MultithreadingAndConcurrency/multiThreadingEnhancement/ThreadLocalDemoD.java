@@ -42,3 +42,8 @@ public class ThreadLocalDemoD {
 
     }
 }
+
+
+// In the above program  if we replace InheritableThreadLocal with ThreadLocal and if we are not overriding childValue() method then the op is " parent value : PP "  and  " child value : null "
+// In the above program if we are maintaining InheritableThreadLocal and if we are  not overriding childValue() method then the op is  " parent value : PP "  and  " child value : PP "
+
