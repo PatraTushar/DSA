@@ -38,6 +38,10 @@ public class Q36 {
 
     static int getMaximumGold(int[][] grid) {
 
+        //  Time Complexity (TC): O(m *n * 4^k)
+        //  Space Complexity (SC): O(k)
+
+
         int rows = grid.length;
         int cols = grid[0].length;
 
