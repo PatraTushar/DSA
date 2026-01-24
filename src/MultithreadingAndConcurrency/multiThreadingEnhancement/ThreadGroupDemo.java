@@ -10,5 +10,7 @@ public class ThreadGroupDemo {
         ThreadGroup g2=new ThreadGroup(g1,"Second Group");
         System.out.println(g2.getParent().getName());  // First Group       Because we pass g1 as the parent ThreadGroup, g2 belongs to First Group.
 
+        // The value inside the brackets is the name of the ThreadGroup, nothing else. eg:("First Group")
+
     }
 }
