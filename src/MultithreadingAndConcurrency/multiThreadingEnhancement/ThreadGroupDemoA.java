@@ -14,5 +14,7 @@ public class ThreadGroupDemoA {
         System.out.println(t2.getPriority());  // 5  (Default Thread Priority )
         System.out.println(t3.getPriority()); // 3
 
+
+        // Thread(ThreadGroup group, String name)   Thread constructor
     }
 }
