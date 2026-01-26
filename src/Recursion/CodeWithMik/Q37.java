@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 public class Q37 {
 
+    //  Time Complexity (TC): O(2^n)
+    //  Space Complexity (SC): O(n)
+
+
 
     static int beautifulSubsets(int[] nums, int k) {
         return dfs(nums, k, 0, new HashMap<>());
@@ -41,6 +45,8 @@ public class Q37 {
 
 
     public static void main(String[] args) {
+
+        // leeTCode->2597
 
         int[] nums = {2, 4, 6};
         int k = 2;
