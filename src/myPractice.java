@@ -1,52 +1,21 @@
 import java.util.concurrent.*;
 
-class MyCallable implements Callable {
-
-    int num;
-
-    MyCallable(int num) {
-        this.num = num;
-    }
-
-    @Override
-    public Object call() throws Exception {
-
-        System.out.println(Thread.currentThread().getName() +" is responsible to find sum of first  " + num + " numbers ");
-
-        int sum=0;
-
-        for (int i=1;i<=num;i++){
-            sum+=i;
-        }
-
-        return sum;
-
-
-    }
-}
-
 
 public class myPractice {
 
-    public static void main(String[] args) throws Exception {
+    myPractice i;
+    public static void main(String[] args)  {
+
+        myPractice obj=new myPractice();
+        myPractice obj1=new myPractice();
+        myPractice obj2=new myPractice();
+
+        obj.i=obj2;
 
 
-        MyCallable[] jobs={new MyCallable(10),
-                new MyCallable(20),
-                new MyCallable(30),
-                new MyCallable(40),
-                new MyCallable(50),
-                new MyCallable(60)};
 
-        ExecutorService service=Executors.newFixedThreadPool(3);
 
-        for (MyCallable job: jobs){
 
-            Future res=service.submit(job);
-            System.out.println(res.get());
-        }
-
-        service.shutdown();
 
     }
 
