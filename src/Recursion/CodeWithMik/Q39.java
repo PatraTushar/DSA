@@ -45,6 +45,8 @@ public class Q39 {
 
     public static void main(String[] args) {
 
+        // leeTCode->140
+
         String s="catsanddog";
         List<String> wordDict= Arrays.asList("cat","cats","and","sand","dog");
         List<String> ans=wordBreak(s,wordDict);
