@@ -1,22 +1,21 @@
 public class myPractice {
 
-    static boolean isSorted(int[] arr) {
+    static int[] func(int[] arr) {
 
-        int n = arr.length;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
 
-        if (n < 2) return true;
+        for (int i = 0; i < arr.length; i++) {
 
-        boolean asc = true;
-        boolean desc = true;
+            if (arr[i] <= min) min = arr[i];
 
-        for (int i = 1; i < n; i++) {
+            if (arr[i] >= max) max = arr[i];
 
-            asc = asc && (arr[i] >= arr[i - 1]);
-            desc = desc && (arr[i] <= arr[i - 1]);
 
         }
 
-        return asc || desc;
+        return new int[]{min, max};
+
 
     }
 
