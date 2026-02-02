@@ -6,15 +6,25 @@ public class A4 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        for(int i=0;i<arr.length-1;i++){
-            if(arr[i]>arr[i+1]){
-                return false;
-            }
+        int n = arr.length;
+
+        if (n < 2) return true;
+
+        boolean asc = true;
+        boolean desc = true;
+
+        for (int i = 1; i < n; i++) {
+
+            asc = asc && (arr[i] >= arr[i - 1]);
+            desc = desc && (arr[i] <= arr[i - 1]);
+
         }
 
+        return asc || desc;
 
 
-        return true;
+
+
     }
 
     public static void main(String[] args) {
