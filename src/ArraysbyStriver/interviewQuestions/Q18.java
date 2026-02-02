@@ -8,9 +8,7 @@ public class Q18 {
         //Space Complexity (SC): O(1)
 
         int n = arr.length;
-
         int prefix = 0;
-
 
         for (int i = 0; i < n; i++) {
 
@@ -19,15 +17,16 @@ public class Q18 {
 
         }
 
-        int suffix = 0;
 
-        for (int i = n - 1; i >= 0; i--) {
+        int suffix=0;
 
-            suffix += arr[i];
-            if (suffix == (prefix - suffix)) return true;
+        for (int i=n-1;i>=0;i--){
 
+            suffix+=arr[i];
+            prefix-=arr[i];
+
+            if (prefix==suffix) return true;
         }
-
 
         return false;
 

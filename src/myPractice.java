@@ -1,26 +1,38 @@
+import java.util.Arrays;
+
 public class myPractice {
 
-    static int[] func(int[] arr) {
 
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
+    static boolean func(int[] arr) {
 
-        for (int i = 0; i < arr.length; i++) {
+        int n = arr.length;
+        int prefix = 0;
 
-            if (arr[i] <= min) min = arr[i];
+        for (int i = 0; i < n; i++) {
 
-            if (arr[i] >= max) max = arr[i];
+            prefix += arr[i];
 
 
         }
 
-        return new int[]{min, max};
 
+        int suffix=0;
 
+        for (int i=n-1;i>=0;i--){
+
+            suffix+=arr[i];
+            prefix-=arr[i];
+
+            if (prefix==suffix) return true;
+        }
+
+        return false;
     }
 
 
     public static void main(String[] args) {
+
+        int[] arr = {5, 3, 2, 6, 3, 1};
 
 
     }
