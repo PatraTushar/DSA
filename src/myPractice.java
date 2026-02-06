@@ -1,53 +1,56 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class myPractice {
 
 
-    static int func(int[][] num, int r1, int c1, int r2, int c2) {
+    static List<Integer> generatePascal(int rowIndex) {
 
-        int row = num.length;
-        int col = num[0].length;
-
-        for (int rowWise = 0; rowWise < row; rowWise++) {
-
-            for (int columnWise = 1; columnWise < col; columnWise++) {
-
-                num[rowWise][columnWise] += num[rowWise][columnWise - 1];
+        List<Integer> nthRow = new ArrayList<>();
 
 
-            }
-        }
+        long result = 1;
 
-        for (int columnWise = 0; columnWise < col; columnWise++) {
+        for (int col = 0; col <= rowIndex; col++) {
 
-            for (int rowWise = 1; rowWise < row; rowWise++) {
+            if (col == 0 || col == rowIndex) {
+                nthRow.add(1);
 
-                num[rowWise][columnWise] += num[rowWise - 1][columnWise];
+            } else {
 
-
+                result *= (rowIndex - col + 1);
+                result /= col;
+                nthRow.add((int) result);
             }
 
 
         }
 
-
-        int sum = num[r2][c2];
-
-        if (r1 > 0) sum -= num[r1 - 1][c2];
-        if (c1 > 0) sum -= num[r2][c1 - 1];
-        if (r1>0 && c1>0) sum+=num[r1-1][c1-1];
+        return nthRow;
 
 
-        return sum;
+    }
 
+    static List<List<Integer>> pascal(int numRows) {
 
+        List<List<Integer>> result = new ArrayList<>();
+
+        for (int row = 0; row < numRows; row++) {
+
+            result.add(new ArrayList<>(generatePascal(row)));
+        }
+
+        return result;
     }
 
 
     public static void main(String[] args) {
 
-        int[][] arr = {{1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}};
-        int res = func(arr,3,1,5,4);
+        // int[][] arr = {{1}, {1, 1}, {1, 2, 1}, {1, 3, 3, 1}, {1, 4, 6, 4, 1}, {1, 5, 10, 10, 5, 1}};
+
+        int row = 5;
+
+        List<List<Integer>> res=pascal(row);
         System.out.println(res);
 
 

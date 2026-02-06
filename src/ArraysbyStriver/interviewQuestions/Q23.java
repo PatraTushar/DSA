@@ -40,7 +40,7 @@ public class Q23 {
     }
 
 
-    static List<Integer> pascalTriangleII(int row) {
+    static List<Integer> pascalTriangleII(int rowIndex) {
 
         // Type 2->Print the nth row of pascal triangle
 
@@ -50,20 +50,23 @@ public class Q23 {
         List<Integer> nthRow = new ArrayList<>();
 
 
+
         long result = 1;
 
-        nthRow.add((int) result);
+        for (int col = 0; col <= rowIndex; col++) {
 
+            if (col == 0 || col == rowIndex) {
+                nthRow.add(1);
 
-        for (int i = 1; i <= row; i++) {
+            } else {
 
-            result *= (row - i + 1);
-            result = result / i;
-            nthRow.add((int) result);
+                result *= (rowIndex - col + 1);
+                result/=col;
+                nthRow.add((int) result);
+            }
 
 
         }
-
 
         return nthRow;
     }
