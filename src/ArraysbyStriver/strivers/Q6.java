@@ -2,37 +2,37 @@ package ArraysbyStriver.strivers;
 
 public class Q6 {
 
-    static int maxConsecutiveOnes(int[] arr){
+    static int maxConsecutiveOnes(int[] num) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int max1s = Integer.MIN_VALUE;
-        int count1s = 0;
+        int maxConsecutiveOnes = 0;
+        int count = 0;
 
-        for (int ele : arr) {
+        for (int ele : num) {
 
-            if (ele == 1) {
+            if (ele == 1) count++;
 
-                count1s++;
-            } else {
+            else {
 
-                max1s = Math.max(max1s, count1s);
-                count1s = 0;
+                maxConsecutiveOnes = Math.max(maxConsecutiveOnes, count);
+
+                count = 0;
             }
+
+
         }
 
+        maxConsecutiveOnes = Math.max(maxConsecutiveOnes, count);
 
-        max1s=Math.max(max1s,count1s);
-
-        return max1s;
-
+        return maxConsecutiveOnes;
 
     }
 
     public static void main(String[] args) {
 
-        // maximum consecutive ones
+        // leeTCode->485
 
 
         int[] arr = {1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1};

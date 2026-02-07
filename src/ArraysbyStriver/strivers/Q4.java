@@ -31,7 +31,7 @@ public class Q4 {
 
     public static void main(String[] args) {
 
-        // Remove duplicates in place from sorted array (leeTCode-->26)
+        // (leeTCode-->26)
 
         int[] arr = {1, 1, 2, 2, 2, 3, 3};
         System.out.println(removeDuplicates(arr));
