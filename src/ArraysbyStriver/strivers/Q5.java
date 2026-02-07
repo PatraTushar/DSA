@@ -2,31 +2,26 @@ package ArraysbyStriver.strivers;
 
 public class Q5 {
 
-    static int missingNumber(int[] arr){
+    static int missingNumber(int[] num){
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int n = arr.length;
+        int n = num.length;
 
-        int sumOfN = 0;
+        int nthSum = n * (n + 1) / 2;
 
-        for (int i = 1; i <= n; i++) {
+        int sum = 0;
 
-            sumOfN += i;
-        }
+        for (int ele : num) {
 
-
-        int sumOfArr = 0;
-
-        for (int ele : arr) {
-
-            sumOfArr += ele;
+            sum += ele;
 
 
         }
 
-        return sumOfN - sumOfArr;
+        return nthSum-sum;
+
 
 
 
