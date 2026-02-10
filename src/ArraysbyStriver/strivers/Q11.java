@@ -43,27 +43,29 @@ public class Q11 {
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        int majority = 0;
-        int count = 0;
+        int majority = arr[0];
+        int count = 1;
 
-        for (int num : arr) {
+        for (int i = 1; i < arr.length; i++) {
 
-            if (count == 0) {
+            if (arr[i] == majority) count++;
 
-                majority = num;
-                count++;
-            } else if (majority == num) {
-
-                count++;
-            } else {
+            else {
 
                 count--;
+
+                if (count == 0) {
+
+                    majority = arr[i];
+                    count = 1;
+                }
             }
 
 
         }
 
         return majority;
+
     }
 
     public static void main(String[] args) {
