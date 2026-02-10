@@ -80,8 +80,9 @@ public class Q23 {
 
     public static void main(String[] args) {
 
-        int[] arr1 = {2, 4, 7, 10};
-        int[] arr2 = {2, 3};
+
+        int[] arr1={1,3,5,7};
+        int[] arr2={0,2,6,8,9};
         merge(arr1, arr2);
 
 

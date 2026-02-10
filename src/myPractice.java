@@ -228,7 +228,7 @@ public class myPractice {
 
             while (j < k) {
 
-                int sum = arr[i]+arr[j]+arr[k];
+                int sum = arr[i] + arr[j] + arr[k];
 
                 if (sum < 0) {
                     j++;
@@ -237,15 +237,14 @@ public class myPractice {
                     k--;
                 } else {
 
-                    List<Integer> triplets = Arrays.asList(arr[i],arr[j],arr[k]);
+                    List<Integer> triplets = Arrays.asList(arr[i], arr[j], arr[k]);
                     result.add(triplets);
 
                     int eleJ = arr[j];
                     int eleK = arr[k];
 
-                    while (j<k && eleJ==arr[j])j++;
-                    while (j<k && eleK==arr[k])k--;
-
+                    while (j < k && eleJ == arr[j]) j++;
+                    while (j < k && eleK == arr[k]) k--;
 
 
                 }
@@ -253,11 +252,63 @@ public class myPractice {
 
             }
 
-            int eleI=arr[i];
-            while (i<n-2 && eleI==arr[i])i++;
+            int eleI = arr[i];
+            while (i < n - 2 && eleI == arr[i]) i++;
 
 
+        }
 
+        return result;
+
+
+    }
+
+    static List<List<Integer>> sum4(int[] arr, int target) {
+
+        int n = arr.length;
+        Arrays.sort(arr);
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        int i = 0;
+
+        while (i < n - 3) {
+
+            int j = i + 1;
+
+            while (j < n - 2) {
+
+                int k = j + 1;
+                int l = n - 1;
+
+
+                while (k < l) {
+
+                    int sum = arr[i] + arr[j] + arr[k] + arr[l];
+
+                    if (sum < target) k++;
+                    else if (sum > target) l--;
+                    else {
+
+                        List<Integer> four = Arrays.asList(arr[i], arr[j], arr[k], arr[l]);
+                        result.add(four);
+
+                        int eleK = arr[k];
+                        int eleL = arr[l];
+
+                        while (k < l && eleK == arr[k]) k++;
+                        while (k < l && eleL == arr[l]) l--;
+                        ;
+
+                    }
+                }
+
+                int eleJ = arr[j];
+                while (j < n - 2 && eleJ == arr[j]) j++;
+            }
+
+            int eleI = arr[i];
+            while (i < n - 3 && eleI == arr[i]) i++;
         }
 
         return result;
@@ -288,9 +339,16 @@ public class myPractice {
         int[] arr4 = {1, 1, 1, 3, 3, 2, 2, 2};
         System.out.println(majorityElement2(arr4));
 
-        int[] arr5 = {-2,-2,-2,-1,-1,-1,0,0,0,2,2,2,2};
+        int[] arr5 = {-2, -2, -2, -1, -1, -1, 0, 0, 0, 2, 2, 2, 2};
         List<List<Integer>> ans1 = sum3(arr5);
         System.out.println(ans1);
+
+        int[] arr6 = {1,0,-1,0,-2,2};
+        List<List<Integer>> ans12 = sum4(arr6,0);
+        System.out.println(ans12);
+
+
+
 
 
     }
