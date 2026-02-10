@@ -66,7 +66,8 @@ public class Q20 {
         // 3 sum (leeTCode->15)
 
         int[] arr = {-1, 0, 1, 2, -1, 4};
-        List<List<Integer>> ans = threeSum(arr);
+        int[] arr1 = {-2,-2,-2,-1,-1,-1,0,0,0,2,2,2,2};
+        List<List<Integer>> ans = threeSum(arr1);
         System.out.println(ans);
     }
 }

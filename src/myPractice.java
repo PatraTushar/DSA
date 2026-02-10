@@ -196,7 +196,7 @@ public class myPractice {
         int majority = n / 3;
         count1 = 0;
         count2 = 0;
-        ArrayList<Integer> result=new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
 
         for (int ele : arr) {
 
@@ -204,10 +204,64 @@ public class myPractice {
             if (ele == majority2) count2++;
         }
 
-        if (count1>majority) result.add(majority1);
-        if (count2>majority)result.add(majority2);
+        if (count1 > majority) result.add(majority1);
+        if (count2 > majority) result.add(majority2);
 
         return result;
+
+    }
+
+    static List<List<Integer>> sum3(int[] arr) {
+
+        int n = arr.length;
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        int i = 0;
+
+
+        while (i < n - 2) {
+
+            int j = i + 1;
+            int k = n - 1;
+
+
+            while (j < k) {
+
+                int sum = arr[i]+arr[j]+arr[k];
+
+                if (sum < 0) {
+                    j++;
+                } else if (sum > 0) {
+
+                    k--;
+                } else {
+
+                    List<Integer> triplets = Arrays.asList(arr[i],arr[j],arr[k]);
+                    result.add(triplets);
+
+                    int eleJ = arr[j];
+                    int eleK = arr[k];
+
+                    while (j<k && eleJ==arr[j])j++;
+                    while (j<k && eleK==arr[k])k--;
+
+
+
+                }
+
+
+            }
+
+            int eleI=arr[i];
+            while (i<n-2 && eleI==arr[i])i++;
+
+
+
+        }
+
+        return result;
+
 
     }
 
@@ -233,6 +287,10 @@ public class myPractice {
 
         int[] arr4 = {1, 1, 1, 3, 3, 2, 2, 2};
         System.out.println(majorityElement2(arr4));
+
+        int[] arr5 = {-2,-2,-2,-1,-1,-1,0,0,0,2,2,2,2};
+        List<List<Integer>> ans1 = sum3(arr5);
+        System.out.println(ans1);
 
 
     }
