@@ -6,37 +6,37 @@ public class myPractice {
 
     static int func(int[] nums) {
 
-        int majority = nums[0];
-        int count = 1;
+        int sum = 0;
+        int maxSum = Integer.MIN_VALUE;
 
-        for (int i = 1; i < nums.length; i++) {
 
-            if (nums[i] == majority) count++;
+        for (int i = 0; i < nums.length; i++) {
 
-            else {
+            sum += nums[i];
 
-                count--;
+            if (sum < 0) {
 
-                if (count == 0) {
+                maxSum = Math.max(maxSum, sum);
+                sum = 0;
+            } else {
 
-                    majority = nums[i];
-                    count = 1;
-                }
+                maxSum = Math.max(maxSum, sum);
+
             }
 
 
         }
 
-        return majority;
 
+        return maxSum;
 
     }
 
 
     public static void main(String[] args) {
 
-        int[] arr = {2,2,3,3,1,2,2};
-        int ans=func(arr);
+        int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3};
+        int ans = func(arr);
         System.out.println(ans);
 
 
