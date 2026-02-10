@@ -159,7 +159,7 @@ public class myPractice {
 
     }
 
-    static int majorityElement2(int[][] arr) {
+    static ArrayList<Integer> majorityElement2(int[] arr) {
 
         int n = arr.length;
         int majority1 = 0;
@@ -168,11 +168,46 @@ public class myPractice {
         int count2 = 0;
 
 
-        for (int i = 0; i < n; i++) {
+        for (int ele : arr) {
+
+            if (count1 == 0) {
+
+                count1++;
+                majority1 = ele;
+            } else if (count2 == 0 && ele != majority1) {
+
+                count2++;
+                majority2 = ele;
+            } else if (ele == majority1) count1++;
+            else if (ele == majority2) count2++;
+
+            else {
+
+                count1--;
+                count2--;
+
+
+            }
 
 
         }
 
+
+        int majority = n / 3;
+        count1 = 0;
+        count2 = 0;
+        ArrayList<Integer> result=new ArrayList<>();
+
+        for (int ele : arr) {
+
+            if (ele == majority1) count1++;
+            if (ele == majority2) count2++;
+        }
+
+        if (count1>majority) result.add(majority1);
+        if (count2>majority)result.add(majority2);
+
+        return result;
 
     }
 
