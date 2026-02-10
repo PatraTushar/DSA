@@ -41,7 +41,7 @@ public class Q23 {
 
             while (right < length) {
 
-                // one pointer is in arr1 and one pointer is in arr2
+
 
                 if (left < m && right < m) {
 
