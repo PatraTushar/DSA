@@ -24,7 +24,7 @@ public class  Q29 {
 
     static int[] peakElementII(int[][] mat){
 
-        //Time Complexity (TC): O(row * log (cols)
+        //Time Complexity (TC): O(row * log (cols))
         //Space Complexity (SC): O(1)
 
         int rows = mat.length;

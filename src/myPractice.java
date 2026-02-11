@@ -470,19 +470,19 @@ public class myPractice {
 
     }
 
-    static int kthElement(int[] arr1, int[] arr2,int k) {
+    static int kthElement(int[] arr1, int[] arr2, int k) {
 
         int m = arr1.length;
         int n = arr2.length;
 
-        if (m > n) return kthElement(arr2, arr1,k);
+        if (m > n) return kthElement(arr2, arr1, k);
 
         int length = m + n;
 
         int partition = (length + 1) / 2;
 
-        int low = Math.max(0,k-n);
-        int high = Math.min(k,m);
+        int low = Math.max(0, k - n);
+        int high = Math.min(k, m);
 
         while (low <= high) {
 
@@ -494,7 +494,7 @@ public class myPractice {
             int r1 = mid1 < n ? arr1[mid1] : Integer.MAX_VALUE;
             int r2 = mid2 < n ? arr2[mid2] : Integer.MAX_VALUE;
 
-            if (l1 <= r2 && l2 <= r1) return Math.max(l1,l2);
+            if (l1 <= r2 && l2 <= r1) return Math.max(l1, l2);
 
             else if (l2 > r1) low = mid1 + 1;
             else high = mid1 - 1;
@@ -504,6 +504,105 @@ public class myPractice {
 
         return 0;
 
+    }
+
+    static int binarySearch(int[] arr, int low, int high) {
+
+        int col = arr.length;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            if ((mid == 0 || arr[mid - 1] == 0) && arr[mid] == 1) return col - mid;
+
+            else if (arr[mid] == 1) high = mid - 1;
+
+            else low = mid + 1;
+        }
+
+        return 0;
+
+
+    }
+
+
+    static int rowsWithMAx1s(int[][] arr) {
+
+        int rows = arr.length;
+        int cols = arr[0].length;
+
+        int max = -1;
+        int idx = -1;
+
+        for (int i = 0; i < rows; i++) {
+
+            int result = binarySearch(arr[i], 0, cols - 1);
+
+            if (result > max) {
+
+                max = result;
+                idx = i;
+            }
+
+
+        }
+
+        return idx;
+
+
+    }
+
+    static int findMaxInCols(int[][] arr, int cols) {
+
+        int rows = arr.length;
+
+        int rowIndexMax = -1;
+        int max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < rows; i++) {
+
+
+            if (arr[i][cols] > max) {
+
+                max = arr[i][cols];
+                rowIndexMax = i;
+            }
+
+
+        }
+
+        return rowIndexMax;
+
+
+    }
+
+
+    static int[] peakElement2(int[][] arr) {
+
+        int rows = arr.length;
+        int cols = arr[0].length;
+
+        int low = 0;
+        int high = cols - 1;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            int maxRowIndex = findMaxInCols(arr, mid);
+
+
+            if ((mid == 0 || arr[maxRowIndex][mid] > arr[maxRowIndex][mid - 1]) && (mid == cols - 1 || arr[maxRowIndex][mid] > arr[maxRowIndex][mid + 1])) {
+
+                return new int[]{maxRowIndex, mid};
+            } else if (arr[maxRowIndex][mid] > arr[maxRowIndex][mid + 1]) high = mid;
+            else low = mid + 1;
+
+
+        }
+
+        return new int[]{-1,-1};
     }
 
 
@@ -557,6 +656,18 @@ public class myPractice {
         int[] b = {2, 3, 6, 15};
         double re = findMedian(a, b);
         System.out.println(re);
+
+
+        int[] arr11 = {2, 3, 6, 7, 9};
+        int[] arr21 = {1, 4, 8, 10};
+        int k = 5;
+        int ans11 = kthElement(arr11, arr21, k);
+        System.out.println(ans11);
+
+
+        int[][] box = {{0, 0, 1, 1, 1}, {0, 0, 0, 0, 0}, {0, 1, 1, 1, 1}, {0, 0, 0, 0, 0}, {0, 1, 1, 1, 1}};
+        int result = rowsWithMAx1s(box);
+        System.out.println(result);
 
 
     }
