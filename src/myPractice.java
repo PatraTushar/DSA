@@ -316,6 +316,117 @@ public class myPractice {
 
     }
 
+    static void swap(int[] arr1, int[] arr2, int left, int right) {
+
+        if (arr1[left] > arr2[right]) {
+
+            int temp = arr1[left];
+            arr1[left] = arr2[right];
+            arr2[right] = temp;
+        }
+    }
+
+
+    static void merge(int[] arr1, int[] arr2) {
+
+        int m = arr1.length;
+        int n = arr2.length;
+
+        int length = m + n;
+
+        int gap = length / 2 + length % 2;
+
+
+        while (gap > 0) {
+
+            int left = 0;
+            int right = gap;
+
+            while (right < length) {
+
+                if (left < m && right < m) {
+
+                    swap(arr1, arr1, left, right);
+                } else if (left < m && right >= m) {
+
+                    swap(arr1, arr2, left, right - m);
+                } else {
+
+                    swap(arr2, arr2, left - m, right - m);
+                }
+
+                left++;
+                right++;
+            }
+
+            if (gap == 1) break;
+
+            gap = gap / 2 + gap % 2;
+        }
+
+
+        System.out.println(Arrays.toString(arr1));
+        System.out.println(Arrays.toString(arr2));
+
+
+    }
+
+    static int[] mergeI(int[] arr1, int m, int[] arr2, int n) {
+
+        int length = m + n;
+        int i = m - 1;
+        int j = n - 1;
+        int idx = length - 1;
+
+        while (i >= 0 && j >= 0) {
+
+            if (arr1[i] >= arr2[j]) {
+
+                arr1[idx--] = arr1[i--];
+
+
+            } else {
+
+                arr1[idx--] = arr2[j--];
+
+
+            }
+        }
+
+
+        return arr1;
+
+    }
+
+    static int[] missingAndRepeating(int[] arr, int n) {
+
+
+
+        int sumOfN = n * (n + 1) / 2;
+        int sqrOfN = n * (n + 1) * (2 * n + 1) / 6;
+
+        int sum = 0;
+        int square = 0;
+
+        for (int ele : arr) {
+
+            sum += ele;
+            square += ele * ele;
+        }
+
+        long val1 = sumOfN - sum;  // 4
+        long val2 = sqrOfN - square;  // 24
+
+        val2 /= val1;
+
+        long x = (val1 + val2) / 2;
+        long y = val2 - x;
+
+        return new int[]{(int) x, (int) y};
+
+
+    }
+
 
     public static void main(String[] args) {
 
@@ -343,10 +454,25 @@ public class myPractice {
         List<List<Integer>> ans1 = sum3(arr5);
         System.out.println(ans1);
 
-        int[] arr6 = {1,0,-1,0,-2,2};
-        List<List<Integer>> ans12 = sum4(arr6,0);
+        int[] arr6 = {1, 0, -1, 0, -2, 2};
+        List<List<Integer>> ans12 = sum4(arr6, 0);
         System.out.println(ans12);
 
+        int[] arr14 = {1, 3, 5, 7};
+        int[] arr24 = {0, 2, 6, 8, 9};
+        merge(arr14, arr24);
+
+        int[] arr1$ = {1, 2, 3, 0, 0, 0};
+        int m = 3;
+        int[] arr2$ = {2, 5, 6};
+        int n = 3;
+        int[] answer = mergeI(arr1$, m, arr2$, n);
+        System.out.println(Arrays.toString(answer));
+
+        int[] ar5 = {4, 3, 6, 2, 1, 1};
+        int len = 6;
+        int[] r=missingAndRepeating(ar5,len);
+        System.out.println(Arrays.toString(r));
 
 
 
