@@ -1,6 +1,8 @@
 package ArraysbyStriver.strivers;
 
-public class Q27 {
+public class
+
+Q27 {
 
     static int findKthElement(int[] arr1,int[] arr2,int k){
 
