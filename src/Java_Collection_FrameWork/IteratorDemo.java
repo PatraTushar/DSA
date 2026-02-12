@@ -21,7 +21,7 @@ public class IteratorDemo {
 
         while (itr.hasNext()) {
 
-            Integer I = (Integer) itr.next();
+            Integer I =  itr.next();
 
             if (I % 2 == 0) {
 

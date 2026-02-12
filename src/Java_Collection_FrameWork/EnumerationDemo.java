@@ -21,7 +21,7 @@ public class EnumerationDemo {
 
         while (e.hasMoreElements()) {
 
-            Integer I = (Integer) e.nextElement();
+            Integer I =  e.nextElement();
 
             if (I % 2 == 0) {
                 System.out.println(I);
