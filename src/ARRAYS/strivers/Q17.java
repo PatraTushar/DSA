@@ -13,25 +13,21 @@ public class Q17 {
         HashSet<Integer> set = new HashSet<>();
         int longest = Integer.MIN_VALUE;
 
-        for (int num : arr) {
-            set.add(num);
-        }
+        for (int ele : arr) set.add(ele);
 
+        for (int ele : arr) {
 
-        for (int ele : set) {
+            int curr = ele;
+            int count = 0;
+            while (set.contains(curr)) {
 
-            if (!set.contains(ele - 1)) {
-                int currNum = ele;
-                int count = 1;
+                count++;
+                curr--;
 
-                while (set.contains(currNum + 1)) {
-                    currNum++;
-                    count++;
-                }
-
-                longest = Math.max(longest, count);
 
             }
+
+            longest = Math.max(longest, count);
 
 
         }
