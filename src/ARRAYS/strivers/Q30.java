@@ -4,6 +4,9 @@ public class   Q30 {
 
     static int findMedian(int[][] arr) {
 
+        //Time Complexity: O(n * log m * log(R))
+        //Space Complexity: O(1)
+
         int rows = arr.length;
         int cols = arr[0].length;
         int totalLength = rows * cols;
