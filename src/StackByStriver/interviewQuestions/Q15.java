@@ -1,7 +1,5 @@
 package StackByStriver.interviewQuestions;
 
-import OopsByKK.AccessModifier.Public.A;
-
 import java.util.Stack;
 
 public class Q15 {

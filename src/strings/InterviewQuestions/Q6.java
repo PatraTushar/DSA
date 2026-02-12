@@ -1,7 +1,5 @@
 package strings.InterviewQuestions;
 
-import OopsByKK.AccessModifier.Public.A;
-
 import java.util.Arrays;
 
 public class Q6 {

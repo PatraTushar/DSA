@@ -1,7 +1,5 @@
 package Java_Collection_FrameWork;
 
-import OopsByKK.Generics.GenericInterface.WhenClassImplementsGenericInterface.MyClass;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;

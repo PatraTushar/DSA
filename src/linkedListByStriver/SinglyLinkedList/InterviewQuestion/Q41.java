@@ -1,7 +1,7 @@
 //package linkedListByKK.SinglyLinkedList.InterviewQuestion;
 //
 //
-//import OopsByKK.AccessModifier.Public.A;
+//import OOPS.AccessModifier.Public.A;
 //
 //import java.util.ArrayList;
 //import java.util.Collections;

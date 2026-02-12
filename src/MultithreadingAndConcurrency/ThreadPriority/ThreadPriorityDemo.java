@@ -1,8 +1,6 @@
 package MultithreadingAndConcurrency.ThreadPriority;
 
 
-import OopsByKK.Generics.GenericInterface.WhenClassImplementsGenericInterface.MyClass;
-
 class myThreadA extends Thread {
 
     @Override
