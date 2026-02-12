@@ -8,7 +8,7 @@ public class Q4 {
     static List<String> AllSubsets(String str, String Ans, List<String> list) {
 
         //  Time Complexity: O(2^n)
-        // Space Complexity: O(2^n * n)     You're storing 8 strings — and strings take memory per character
+        // Space Complexity: O(2^n * n)     You're storing 8 STRINGS — and STRINGS take memory per character
 
         // It is Parametrized Recursion
 
@@ -33,7 +33,7 @@ public class Q4 {
     static List<String> AllSubsetsI(String str, String Ans) {
 
         //  Time Complexity: O(2^n * n)
-        // Space Complexity: O(2^n * n)     You're storing 8 strings — and strings take memory per character
+        // Space Complexity: O(2^n * n)     You're storing 8 STRINGS — and STRINGS take memory per character
 
         // It is Functional Recursion
 
@@ -60,7 +60,7 @@ public class Q4 {
 
 
         //  Time Complexity: O(3^n)
-        // Space Complexity: O(3^n * n)     You're storing 8 strings — and strings take memory per character
+        // Space Complexity: O(3^n * n)     You're storing 8 STRINGS — and STRINGS take memory per character
 
         // It is Parametrized Recursion
 

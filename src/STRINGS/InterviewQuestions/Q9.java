@@ -1,4 +1,4 @@
-package strings.InterviewQuestions;
+package STRINGS.InterviewQuestions;
 
 import java.util.Arrays;
 

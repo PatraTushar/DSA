@@ -1,4 +1,4 @@
-package strings.Basics;
+package STRINGS.Basics;
 
 import java.util.Random;
 

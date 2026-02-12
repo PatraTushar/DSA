@@ -12,7 +12,7 @@ public class instanceMethodReference {
         //objectName::methodName
         //objectName::methodName--->objectName.methodName
 
-        // Example 1: Imagine you have a list of strings and you want to print each string.
+        // Example 1: Imagine you have a list of STRINGS and you want to print each string.
         List<String> names= Arrays.asList("Alice","Bob","Charlie");
 
         //Lambda Expression

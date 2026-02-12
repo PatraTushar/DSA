@@ -35,7 +35,7 @@ public class Basics {
 
         String[] str=new String[4];
 
-        System.out.println(" enter strings ");
+        System.out.println(" enter STRINGS ");
 
         for(int i=0;i<str.length;i++){
             str[i]=sc.next();

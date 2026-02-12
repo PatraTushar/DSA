@@ -1,4 +1,4 @@
-package strings.InterviewQuestions;
+package STRINGS.InterviewQuestions;
 
 public class Q8 {
 

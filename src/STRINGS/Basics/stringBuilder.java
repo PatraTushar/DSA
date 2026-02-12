@@ -1,4 +1,4 @@
-package strings.Basics;
+package STRINGS.Basics;
 
 public class stringBuilder {
 
