@@ -5,33 +5,33 @@ import java.util.Collections;
 
 public class Q16 {
 
-    static ArrayList<Integer> leader(int[] arr){
+    static ArrayList<Integer> leader(int[] num){
 
        // Time Complexity: O(n)
       //  Space Complexity: O(n)
 
+        int n = num.length;
+
         ArrayList<Integer> result = new ArrayList<>();
-        int n = arr.length;
 
-        result.add(arr[n - 1]);
+        int max = num[n - 1];
 
-        int max = arr[n - 1];
+        result.add(num[n - 1]);
 
         for (int i = n - 2; i >= 0; i--) {
 
-            if (arr[i] >= max) {
+            if (num[i] > max) {
 
-                result.add(arr[i]);
-                max = arr[i];
-
-
+                result.add(num[i]);
+                max = num[i];
             }
+
+
         }
 
         Collections.reverse(result);
+
         return result;
-
-
 
 
     }
