@@ -3,7 +3,7 @@ package Java_Collection_FrameWork;
 import java.util.Enumeration;
 import java.util.Vector;
 
-public class EnumerationInJava {
+public class EnumerationDemo {
 
     public static void main(String[] args) {
 
