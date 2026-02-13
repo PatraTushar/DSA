@@ -1,34 +1,78 @@
+import java.util.Arrays;
 
 public class myPractice {
 
-    static int kthMissing(int[] arr, int k) {
+    static int merge(int[] arr, int low, int mid, int high) {
 
-        int n = arr.length;
 
-        int low = 0;
-        int high = n - 1;
+        int[] mergeArray = new int[high - low + 1];
+        int i = low;
+        int j = mid + 1;
+        int k = 0;
+        int count = 0;
 
-        while (low <= high) {
+        while (i <= mid && j <= high) {
 
-            int mid = low + (high - low) / 2;
+            if (arr[i] <= arr[j]) {
 
-            int missing = arr[mid] - (mid + 1);
+                mergeArray[k++] = arr[i++];
+            } else {
 
-            if (missing < k) low = mid + 1;
+                count += mid - i + 1;
+                mergeArray[k++] = arr[j++];
 
-            else high = mid - 1;
+
+            }
+        }
+
+        while (i <= mid) {
+
+            mergeArray[k++] = arr[i++];
 
 
         }
 
-        return k + low;
+
+        while (j <= high) {
+
+            mergeArray[k++] = arr[j++];
+
+
+        }
+
+        for (int p = 0; p < mergeArray.length; p++) {
+
+            arr[low + p] = mergeArray[p];
+        }
+
+        return count;
+
     }
+
+
+    static int mergeSort(int[] arr, int low, int high) {
+
+        int count = 0;
+
+        if (low >= high) return count;
+
+        int mid = low + (high - low) / 2;
+
+       count+= mergeSort(arr, low, mid);
+        count+=mergeSort(arr, mid + 1, high);
+        count+= merge(arr, low, mid, high);
+
+        return count;
+
+
+    }
+
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 3, 4, 7, 11};
-        int k = 5;
-        System.out.println(kthMissing(arr, k));
+        int[] arr = {5, 3, 2, 4, 1};
+        int res = mergeSort(arr, 0, arr.length - 1);
+        System.out.println(res);
 
 
     }
