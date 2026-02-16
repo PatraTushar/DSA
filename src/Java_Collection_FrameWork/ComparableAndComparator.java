@@ -59,8 +59,8 @@ public class ComparableAndComparator {
         TreeSet<Employee> t = new TreeSet<>();
         Employee e1 = new Employee("nag", 100);
         Employee e2 = new Employee("balaiah", 200);
-        Employee e3 = new Employee("chinu", 50);
-        Employee e4 = new Employee("venki", 100);
+        Employee e3 = new Employee("chiru", 50);
+        Employee e4 = new Employee("venki", 150);
         Employee e5 = new Employee("nag", 100);
 
         t.add(e1);
