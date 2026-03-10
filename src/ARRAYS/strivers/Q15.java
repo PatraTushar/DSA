@@ -53,26 +53,26 @@ public class Q15 {
         //Space Complexity (SC): O(1)
 
         int n = arr.length;
-        int pivotIndex = -1;
+        int breakPoint = -1;
 
         for (int i = n - 1; i > 0; i--) {
 
-            if (arr[i] > arr[i - 1]) {
+            if (arr[i] > arr[i - 1]) {           // If arr[i] > arr[i-1], it means this permutation has a next greater permutation.
 
-                pivotIndex = i - 1;
+                breakPoint = i - 1;
                 break;
 
             }
         }
 
 
-        if (pivotIndex != -1) {
+        if (breakPoint != -1) {
 
-            int swappingIndex = findGreaterClosest(arr, pivotIndex + 1);
+            int swappingIndex = findGreaterClosest(arr, breakPoint + 1);
 
-            swap(arr, pivotIndex, swappingIndex);
+            swap(arr, breakPoint, swappingIndex);
 
-            reverse(arr, pivotIndex + 1, n - 1);
+            reverse(arr, breakPoint + 1, n - 1);
         } else {
 
             reverse(arr, 0, n - 1);

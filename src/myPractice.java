@@ -1,81 +1,82 @@
-import java.util.Arrays;
+
 
 public class myPractice {
 
-    static int merge(int[] arr, int low, int mid, int high) {
+    static void swap(int[] arr, int i, int j) {
 
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 
-        int[] mergeArray = new int[high - low + 1];
-        int i = low;
-        int j = mid + 1;
-        int k = 0;
-        int count = 0;
+    static void reverse(int[] arr, int i, int j) {
 
-        while (i <= mid && j <= high) {
+        while (i < j) {
 
-            if (arr[i] <= arr[j]) {
+            swap(arr, i, j);
+            i++;
+            j--;
+        }
+    }
 
-                mergeArray[k++] = arr[i++];
-            } else {
+    static int findClosestGreater(int[] num, int index) {
 
-                count += mid - i + 1;
-                mergeArray[k++] = arr[j++];
+        int n = num.length;
+        if (index <= 0 && index >= n) return -1;
+        int target = num[index - 1];
+        int closest = Integer.MAX_VALUE;
+        int closestIndex = -1;
+
+        for (int j = index; j < n; j++) {
+
+            if (num[j] > target && num[j] <= closest) {
+
+                closest = num[j];
+                closestIndex = j;
 
 
             }
-        }
-
-        while (i <= mid) {
-
-            mergeArray[k++] = arr[i++];
 
 
         }
 
-
-        while (j <= high) {
-
-            mergeArray[k++] = arr[j++];
-
-
-        }
-
-        for (int p = 0; p < mergeArray.length; p++) {
-
-            arr[low + p] = mergeArray[p];
-        }
-
-        return count;
+        return closestIndex;
 
     }
 
+    static void nextPermutation(int[] nums) {
 
-    static int mergeSort(int[] arr, int low, int high) {
+        int n = nums.length;
+        int breakPoint = -1;
 
-        int count = 0;
+        for (int i = n - 1; i > 0; i--) {
 
-        if (low >= high) return count;
+            if (nums[i] > nums[i - 1]) {
 
-        int mid = low + (high - low) / 2;
-
-       count+= mergeSort(arr, low, mid);
-        count+=mergeSort(arr, mid + 1, high);
-        count+= merge(arr, low, mid, high);
-
-        return count;
+                breakPoint = i - 1;
+                break;
+            }
+        }
 
 
+        if (breakPoint != -1) {
+
+            int swappingIndex = findClosestGreater(nums, breakPoint + 1);
+
+            swap(nums,breakPoint,swappingIndex);
+            reverse(nums,breakPoint+1,n-1);
+
+        }
+
+        else reverse(nums,0,n-1);
     }
-
 
     public static void main(String[] args) {
 
-        int[] arr = {5, 3, 2, 4, 1};
-        int res = mergeSort(arr, 0, arr.length - 1);
-        System.out.println(res);
+        int[] arr = {1, 2, 3};
 
 
     }
 
-}
 
+}
