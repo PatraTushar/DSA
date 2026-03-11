@@ -20,9 +20,9 @@ class Dog implements Animal{
 
     // you can override the default method also
 
-//    public void sleep(){
-//        System.out.println(" overridden sleeping ");
-//    }
+    public void sleep(){
+      System.out.println(" overridden sleeping ");
+   }
 }
 public class defaultMethodInInterface {
 
