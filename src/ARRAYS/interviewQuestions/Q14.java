@@ -43,6 +43,39 @@ public class Q14 {
 
     }
 
+    static int[] sort(int[] arr) {
+
+        // here order matters
+
+        int[] result = new int[arr.length];
+
+        int evenCount = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+
+            if (arr[i] % 2 == 0) evenCount++;
+
+        }
+
+        int left = 0;
+        int right = evenCount;
+
+        for (int i = 0; i < arr.length; i++) {
+
+            if (arr[i] % 2 == 0) result[left++] = arr[i];
+
+            else result[right++]=arr[i];
+
+
+        }
+
+        return result;
+
+
+    }
+
+
+
 
     public static void main(String[] args) {
 
