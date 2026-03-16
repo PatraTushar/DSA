@@ -11,29 +11,35 @@ public class Q17 {
         // Space Complexity: O(n)
 
         HashSet<Integer> set = new HashSet<>();
-        int longest = Integer.MIN_VALUE;
-
-        for (int ele : arr) set.add(ele);
+        int longest = 0;
 
         for (int ele : arr) {
 
-            int curr = ele;
-            int count = 0;
-            while (set.contains(curr)) {
+            set.add(ele);
+        }
 
-                count++;
-                curr--;
+
+        for (int ele : set) {
+
+            if (!set.contains(ele-1)){
+
+                int curr=ele;
+                int count=1;
+
+                while (set.contains(curr+1)){
+
+                    count++;
+                    curr++;
+                }
+
+                longest=Math.max(count,longest);
 
 
             }
 
-            longest = Math.max(longest, count);
-
-
         }
 
         return longest;
-
 
     }
 
