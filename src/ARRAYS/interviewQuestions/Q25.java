@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Q25 {
 
-    static int[][] spiralMatrixII(int n){
+    static int[][] spiralMatrixII(int n) {
 
         //Time Complexity (TC): O(n²)
         //Space Complexity (SC): O(n²)
@@ -55,11 +55,6 @@ public class Q25 {
                 bottomRow--;
 
 
-            }
-
-
-            if (topRow <= bottomRow && leftCol <= rightCol) {
-
                 for (int i = bottomRow; i >= topRow; i--) {
 
                     result[i][leftCol] = num++;
@@ -67,6 +62,7 @@ public class Q25 {
                 }
 
                 leftCol++;
+
             }
 
 
@@ -74,15 +70,14 @@ public class Q25 {
 
         return result;
     }
+
     public static void main(String[] args) {
 
         // Q: spiralMatrixII  (leeTCode-->59)
 
-        int n=3;
-        int[][] ans=spiralMatrixII(n);
+        int n = 3;
+        int[][] ans = spiralMatrixII(n);
         System.out.println(Arrays.deepToString(ans));
-
-
 
 
     }

@@ -99,7 +99,7 @@ public class Q23 {
 
 
         System.out.println(pascalTriangleI(5, 3));
-        List<Integer> ans = pascalTriangleII(3);
+        List<Integer> ans = pascalTriangleII(5);
         System.out.println(ans);
         List<List<Integer>> answer = pascalTriangleIII(5);
         System.out.println(answer);
