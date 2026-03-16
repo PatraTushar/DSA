@@ -7,25 +7,18 @@ public class Q4 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
         int n = num.length;
-        int idx = 0;
+        int idx = 1;
 
         for (int i = 1; i < n; i++) {
 
             if (num[i] != num[i - 1]) {
 
-                num[idx++] = num[i - 1];
-
+                num[idx++] = num[i];
 
             }
-
-
         }
 
-        num[idx++] = num[n - 1];
-
-
         return idx;
-
     }
 
 

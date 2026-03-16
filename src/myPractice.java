@@ -1,77 +1,32 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
 public class myPractice {
 
-    static int[][] func(int n) {
-
-        int num = 1;
-
-        int[][] result = new int[n][n];
+    static int func(int[] nums) {
 
 
-        int rows = result.length;
-        int cols = result[0].length;
-        int topRow = 0;
-        int bottomRow = rows - 1;
-        int leftCol = 0;
-        int rightCol = cols - 1;
+        int n = nums.length;
+        int idx = 1;
 
+        for (int i = 1; i < n; i++) {
 
-        while (topRow <= bottomRow && leftCol <= rightCol) {
+            if (nums[i] != nums[i - 1]) {
 
-            for (int i = leftCol; i <= rightCol; i++) {
-
-                result[topRow][i] = num++;
-            }
-
-            topRow++;
-
-            for (int i = topRow; i <= bottomRow; i++) {
-
-
-                result[i][rightCol]=num++;
-
-
-            }
-
-            rightCol--;
-
-
-            if (topRow <= bottomRow && leftCol <= rightCol) {
-
-                for (int i = rightCol; i >= leftCol; i--) {
-
-
-                    result[bottomRow][i]=num++;
-                }
-
-                bottomRow--;
-
-
-                for (int i = bottomRow; i >= topRow; i--) {
-
-                    result[i][leftCol]=num++;
-                }
-
-                leftCol++;
-
+                nums[idx++]=nums[i];
 
             }
         }
 
-        return result;
+        return idx;
 
     }
 
 
     public static void main(String[] args) {
 
-        int n = 3;
-        int[][] ans = func(n);
-        System.out.println(Arrays.deepToString(ans));
-
+        int[] arr = {1, 1, 2, 2, 2, 3, 3};
+        System.out.println(func(arr));
 
 
     }
