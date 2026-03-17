@@ -51,7 +51,7 @@ public class Q20 {
             }
 
             int eleI = arr[i];
-            while (i < j && eleI == arr[i]) i++;
+            while (i < n-2 && eleI == arr[i]) i++;
 
 
         }
