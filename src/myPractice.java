@@ -3,18 +3,23 @@ import java.util.Arrays;
 public class myPractice {
 
 
-    static void merge(int[] num, int low, int mid, int high) {
+    static int merge(int[] num, int low, int mid, int high) {
 
 
         int[] mergeArray = new int[high - low + 1];
         int left = low;
         int right = mid + 1;
         int k = 0;
+        int count = 0;
 
         while (left <= mid && right <= high) {
 
             if (num[left] <= num[right]) mergeArray[k++] = num[left++];
-            else mergeArray[k++] = num[right++];
+            else {
+
+                mergeArray[k++] = num[right++];
+                count += mid - left + 1;
+            }
         }
 
         while (left <= mid) {
@@ -33,19 +38,24 @@ public class myPractice {
         }
 
 
+        return count;
+
     }
 
 
-    static void mergeSort(int[] num, int low, int high) {
+    static int mergeSort(int[] num, int low, int high) {
 
 
-        if (low >= high) return;
+        int count = 0;
+        if (low >= high) return count;
 
         int mid = low + (high - low) / 2;
 
-        mergeSort(num, low, mid);
-        mergeSort(num, mid + 1, high);
-        merge(num, low, mid, high);
+        count += mergeSort(num, low, mid);
+        count += mergeSort(num, mid + 1, high);
+        count += merge(num, low, mid, high);
+
+        return count;
 
 
     }
@@ -53,9 +63,8 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        int[] arr = {7, 9, 6, 10, 4, 8, 5, 2, 1, 3};
-        mergeSort(arr, 0, arr.length - 1);
-        System.out.println(Arrays.toString(arr));
+        int[] arr = {5, 3, 2, 4, 1};
+        System.out.println(mergeSort(arr, 0, arr.length - 1));
 
     }
 }

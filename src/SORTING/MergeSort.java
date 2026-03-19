@@ -39,6 +39,9 @@ public class MergeSort {
 
     static void mergeSort(int[] num, int low, int high) {
 
+        //Time Complexity: O(n log n)
+        // Space Complexity: O(n)
+
 
         if (low >= high) return;
 
