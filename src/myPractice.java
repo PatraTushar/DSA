@@ -1,70 +1,39 @@
 import java.util.Arrays;
+import java.util.Map;
 
 public class myPractice {
 
 
-    static int merge(int[] num, int low, int mid, int high) {
+    static int func(int[] num) {
+
+        int n = num.length;
+
+        int prefixProduct = 1;
+        int suffixProduct = 1;
+        int maxProduct = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n; i++) {
 
 
-        int[] mergeArray = new int[high - low + 1];
-        int left = low;
-        int right = mid + 1;
-        int k = 0;
-        int count = 0;
+            if (prefixProduct == 0) prefixProduct = 1;
+            if (suffixProduct == 0) suffixProduct = 1;
 
-        while (left <= mid && right <= high) {
+            prefixProduct *= num[i];
+            suffixProduct *= num[n - i - 1];
 
-            if (num[left] <= num[right]) mergeArray[k++] = num[left++];
-            else {
+            maxProduct = Math.max(maxProduct,Math.max(prefixProduct,suffixProduct));
 
-                mergeArray[k++] = num[right++];
-                count += mid - left + 1;
-            }
-        }
 
-        while (left <= mid) {
-
-            mergeArray[k++] = num[left++];
-        }
-
-        while (right <= high) {
-
-            mergeArray[k++] = num[right++];
-        }
-
-        for (int i = 0; i < mergeArray.length; i++) {
-
-            num[low + i] = mergeArray[i];
         }
 
 
-        return count;
-
+        return maxProduct;
     }
-
-
-    static int mergeSort(int[] num, int low, int high) {
-
-
-        int count = 0;
-        if (low >= high) return count;
-
-        int mid = low + (high - low) / 2;
-
-        count += mergeSort(num, low, mid);
-        count += mergeSort(num, mid + 1, high);
-        count += merge(num, low, mid, high);
-
-        return count;
-
-
-    }
-
 
     public static void main(String[] args) {
 
-        int[] arr = {5, 3, 2, 4, 1};
-        System.out.println(mergeSort(arr, 0, arr.length - 1));
+        int[] arr = {2, 3, -2, 4};
+        System.out.println(func(arr));
 
     }
 }

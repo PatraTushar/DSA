@@ -2,7 +2,7 @@ package ARRAYS.strivers;
 
 
 
-public class Q36 {
+public class  Q36 {
 
     static int maxProfit(int[] prices) {
 
