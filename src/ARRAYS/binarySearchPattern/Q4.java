@@ -8,31 +8,29 @@ public class Q4 {
         //Time Complexity (TC): O(log n)
         //Space Complexity (SC): O(1)
 
-
         int n = arr.length;
         int low = 0;
         int high = n - 1;
-
-        if (n == 0) return -1;
-        if (target < arr[0]) return -1;
-        if (target > arr[n - 1]) return arr[n - 1];
+        int index = -1;
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
-            if (arr[mid] == target) return arr[mid];
+            if (arr[mid] > target) high = mid - 1;
 
-            else if (target > arr[mid]) low = mid + 1;
+            else {
 
-            else high = mid - 1;
+                index = mid;
+                low = mid + 1;
+
+
+            }
 
 
         }
 
-
-        return arr[high];
-
+        return index;
 
 
     }

@@ -1,39 +1,41 @@
-import java.util.Arrays;
-import java.util.Map;
-
 public class myPractice {
 
 
-    static int func(int[] num) {
+    static int func(int[] arr, int x) {
 
-        int n = num.length;
+        int n = arr.length;
+        int low = 0;
+        int high = n - 1;
+        int index = -1;
 
-        int prefixProduct = 1;
-        int suffixProduct = 1;
-        int maxProduct = Integer.MIN_VALUE;
+        while (low <= high) {
 
-        for (int i = 0; i < n; i++) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] < x) low = mid + 1;
+
+            else {
+
+                index=mid;
+                high=mid-1;
 
 
-            if (prefixProduct == 0) prefixProduct = 1;
-            if (suffixProduct == 0) suffixProduct = 1;
-
-            prefixProduct *= num[i];
-            suffixProduct *= num[n - i - 1];
-
-            maxProduct = Math.max(maxProduct,Math.max(prefixProduct,suffixProduct));
+            }
 
 
         }
 
+        return index;
 
-        return maxProduct;
+
     }
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 3, -2, 4};
-        System.out.println(func(arr));
+        int[] arr = {2, 3, 5, 9, 14, 16, 18};
+        int target = 15;
+        System.out.println(func(arr, target));
+
 
     }
 }
