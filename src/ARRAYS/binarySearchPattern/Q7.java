@@ -37,16 +37,16 @@ public class Q7 {
 
         while (high < n && target > arr[high]) {
 
-            low = high + 1;
-            high = (2 * low) + 1;
+            low = high;
+            high = 2 * high;
 
-            if (low >= n) return -1;
+
             if (high >= n) high = n - 1;
 
         }
 
 
-        return binarySearch(arr, target, low, high);
+        return binarySearch(arr, low, high, target);
 
     }
 
