@@ -1,11 +1,12 @@
 
+interface MountainArray {
+    int get(int index);
+
+    int length();
+}
+
 public class Q9 {
 
-    interface MountainArray {
-        int get(int index);
-
-        int length();
-    }
 
     static class MountainArrayImpl implements MountainArray {
         private int[] arr;
@@ -67,21 +68,19 @@ public class Q9 {
         int low = 0;
         int high = n - 1;
 
-
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
             int midVal = arr.get(mid);
 
-
             if ((mid > 0 && midVal > arr.get(mid - 1)) && (mid < n - 1 && midVal > arr.get(mid + 1))) return mid;
 
-            else if ((mid < n - 1) && (midVal > arr.get(mid + 1))) high = mid;
+            else if (mid > 0 && midVal < arr.get(mid - 1)) high = mid - 1;
 
             else low = mid + 1;
         }
 
-        return -1;
+        return high;
 
 
     }
@@ -90,10 +89,11 @@ public class Q9 {
     static int findInMountainArray(MountainArray mountainArr, int target) {
 
 
+        int n = mountainArr.length();
         int peakIndex = findPeakIndex(mountainArr);
 
         int firstPart = binarySearch(mountainArr, target, 0, peakIndex, true);
-        int secondPart = binarySearch(mountainArr, target, peakIndex + 1, mountainArr.length() - 1, false);
+        int secondPart = binarySearch(mountainArr, target, peakIndex + 1, n - 1, false);
 
         if (firstPart != -1) return firstPart;
         else return secondPart;
