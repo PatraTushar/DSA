@@ -11,20 +11,26 @@ public class Q5 {
 
         int low = 0;
         int high = n - 1;
-
-        if (target > letters[n - 1] || target == letters[n - 1]) return letters[low];
-
+        char character=letters[0];
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
-            if (target < letters[mid]) high = mid - 1;
+            if (letters[mid] <= target) low = mid + 1;
 
-            else low = mid + 1;
+            else {
+
+                character=letters[mid];
+                high=mid-1;
+
+
+
+            }
         }
 
-        return letters[low];
+        return character;
+
 
 
     }

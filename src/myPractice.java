@@ -1,40 +1,41 @@
 public class myPractice {
 
 
-    static int func(int[] arr, int x) {
+    static char func(char[] letters, char target) {
 
-        int n = arr.length;
+        int n = letters.length;
+
         int low = 0;
         int high = n - 1;
-        int index = -1;
+        char character=letters[0];
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
-            if (arr[mid] < x) low = mid + 1;
+            if (letters[mid] <= target) low = mid + 1;
 
             else {
 
-                index=mid;
+                character=letters[mid];
                 high=mid-1;
 
 
+
             }
-
-
         }
 
-        return index;
+        return character;
 
 
     }
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 3, 5, 9, 14, 16, 18};
-        int target = 15;
-        System.out.println(func(arr, target));
+
+        char[] ch = {'c', 'f', 'g'};
+        char target = 'c';
+        System.out.println(func(ch, target));
 
 
     }
