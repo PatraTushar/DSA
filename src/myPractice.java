@@ -2,34 +2,92 @@
 
 public class myPractice {
 
-    static int search(int[] nums) {
+    static int getMaxPages(int[] num) {
 
-        int n = nums.length;
+        int max = Integer.MIN_VALUE;
 
-        int low = 0;
-        int high = n - 1;
+        for (int ele : num) {
 
-        while (low != high) {
+            max = Math.max(max, ele);
+        }
+
+        return max;
+    }
+
+
+    static int getTotalPages(int[] num) {
+
+        int sum = 0;
+
+        for (int ele : num) {
+
+            sum += ele;
+        }
+
+        return sum;
+    }
+
+
+    static int countStudents(int[] num, int pages) {
+
+        int students = 1;
+        int sum = 0;
+
+        for (int ele : num) {
+
+            sum += ele;
+
+            if (sum > pages) {
+
+                students++;
+                sum = ele;
+
+            }
+
+
+        }
+
+        return students;
+
+
+    }
+
+
+    static int allocateBooks(int[] arr, int k) {
+
+        int n = arr.length;
+
+        if (k > n) return -1;
+
+        int low = getMaxPages(arr);
+        int high = getTotalPages(arr);
+
+        while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
-            if (nums[low] >= nums[high] && nums[low] <= nums[mid]) low = mid + 1;
+            int totalStudent = countStudents(arr, mid);
 
-            else high = mid;
+            if (totalStudent > k) low = mid + 1;
+
+            else high = mid - 1;
 
 
         }
 
         return low;
+
+
     }
 
 
     public static void main(String[] args) {
 
 
-        int[] num = {3,4,5,1,2};
+        int[] num = {12, 34, 67, 90};
+        int k = 2;
 
-        System.out.println(search(num));
+        System.out.println(allocateBooks(num, k));
 
     }
 

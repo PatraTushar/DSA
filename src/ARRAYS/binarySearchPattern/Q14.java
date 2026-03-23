@@ -2,94 +2,83 @@ package ARRAYS.binarySearchPattern;
 
 public class Q14 {
 
-    static int findMax(int[] arr) {
+    static int getMaxPages(int[] num) {
 
         int max = Integer.MIN_VALUE;
 
-        for (int ele : arr) {
+        for (int ele : num) {
 
-            if (ele > max) {
-
-                max = ele;
-            }
-
-
+            max = Math.max(max, ele);
         }
 
         return max;
     }
 
-    static int findSum(int[] arr) {
+
+    static int getTotalPages(int[] num) {
 
         int sum = 0;
-        for (int ele : arr) {
+
+        for (int ele : num) {
 
             sum += ele;
-
-
         }
 
         return sum;
     }
 
-    static int isValid(int[] arr, int pages) {
 
-        int initialPages = 0;
-        int initialStudent = 1;
+    static int countStudents(int[] num, int pages) {
 
-        for (int ele : arr) {
+        int students = 1;
+        int sum = 0;
 
+        for (int ele : num) {
 
-            if (initialPages + ele <= pages) {
+            sum += ele;
 
-                initialPages += ele;
-            } else {
+            if (sum > pages) {
 
-                initialStudent++;
-                initialPages = ele;
+                students++;
+                sum = ele;
+
             }
 
 
         }
 
-
-        return initialStudent;
+        return students;
 
 
     }
 
 
-    static int bookAllocations(int[] books, int students) {
+    static int allocateBooks(int[] arr, int k) {
 
-        // Time Complexity: O(n)+O(n)+O(n⋅log(sum−max))=O(n⋅log(sum−max))
-        // Space Complexity: O(1)
+        int n = arr.length;
 
-        if (students > books.length) return -1;
+        if (k > n) return -1;
 
-        int start = findMax(books);
-        int end = findSum(books);
+        int low = getMaxPages(arr);
+        int high = getTotalPages(arr);
 
-        while (start <= end) {
+        while (low <= high) {
 
-            int mid = start + (end - start) / 2;
+            int mid = low + (high - low) / 2;
 
-            int validStudent = isValid(books, mid);
+            int totalStudent = countStudents(arr, mid);
 
+            if (totalStudent > k) low = mid + 1;
 
-            if (validStudent > students) {
-
-                start = mid + 1;
-
-            } else end = mid - 1;
+            else high = mid - 1;
 
 
         }
 
-        return start;
+        return low;
 
 
     }
-
 
 
 
@@ -98,7 +87,7 @@ public class Q14 {
 
         int[] books = {25, 46, 28, 49, 24};
         int students = 4;
-        System.out.println(bookAllocations(books, students));
+        System.out.println(allocateBooks(books, students));
 
 
     }
