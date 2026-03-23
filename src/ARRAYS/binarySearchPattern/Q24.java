@@ -4,7 +4,7 @@ public class Q24 {
 
 
 
-    static int findMax(int[] weights) {
+    static int getMaxWeight(int[] weights) {
 
         int max = Integer.MIN_VALUE;
 
@@ -21,7 +21,7 @@ public class Q24 {
         return max;
     }
 
-    static int findSum(int[] weights) {
+    static int getTotalWeight(int[] weights) {
 
         int sum = 0;
 
@@ -34,7 +34,7 @@ public class Q24 {
     }
 
 
-    static int calculateDays(int[] weights, int mid) {
+    static int countDays(int[] weights, int mid) {
 
         int initialWeight = 0;
         int possibleDays = 1;
@@ -56,30 +56,30 @@ public class Q24 {
         return possibleDays;
     }
 
-    static int shipWithInDDays(int[] weights, int days) {
+    static int minCapacityToShip(int[] weights, int days) {
 
         // Time Complexity: O(n.log(sum-max))
         // Space Complexity: O(1)
 
         if (days > weights.length) return -1;
 
-        int start = findMax(weights);
-        int end = findSum(weights);
+        int low = getMaxWeight(weights);
+        int high = getTotalWeight(weights);
 
-        while (start <= end) {
+        while (low <= high) {
 
-            int mid = start + (end - start) / 2;
+            int mid = low + (high - low) / 2;
 
-            int daysPossible = calculateDays(weights, mid);
+            int daysPossible = countDays(weights, mid);
 
             if (daysPossible > days) {
 
-                start = mid + 1;
-            } else end = mid - 1;
+                low = mid + 1;
+            } else high = mid - 1;
 
         }
 
-        return start;
+        return low;
     }
     public static void main(String[] args) {
 
@@ -87,7 +87,7 @@ public class Q24 {
 
         int[] weight = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int days = 5;
-        System.out.println(shipWithInDDays(weight, days));
+        System.out.println(minCapacityToShip(weight, days));
 
     }
 }
