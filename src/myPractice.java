@@ -3,28 +3,28 @@ import java.util.Arrays;
 public class myPractice {
 
 
-    static int func(int[] arr, int target) {
+    static int func(int[] arr, int x) {
 
         int n = arr.length;
 
-        int low = 0;
-        int high = n - 1;
-        int index = -1;
+        int low = 1;
+        int high = x;
+
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
+            long square = (long) mid * mid;
 
-            if (arr[mid] == target) {
+            if (square==x) return mid;
 
-                index = mid;
-                high = mid - 1;
-            } else if (target > arr[mid]) low = mid + 1;
+           else if (square > x) high = mid - 1;
 
-            else high = mid - 1;
+            else low = mid + 1;
+
         }
 
-        return index;
+        return high;
 
 
     }

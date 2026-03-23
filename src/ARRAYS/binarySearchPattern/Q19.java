@@ -8,23 +8,25 @@ public class Q19 {
         // Space Complexity: O(1)
 
 
-        int start = 1;
-        int end = x;
-
-        while (start <= end) {
-
-            int mid = start + (end - start) / 2;
-            long midSqr = (long) mid * mid;
+        int low = 1;
+        int high = x;
 
 
-            if (midSqr > x) {
-                end = mid - 1;
-            } else {
-                start = mid + 1;
-            }
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+            long square = (long) mid * mid;
+
+            if (square == x) return mid;
+
+            else if (square > x) high = mid - 1;
+
+            else low = mid + 1;
+
         }
 
-        return end;
+        return high;
+
     }
 
     public static void main(String[] args) {
