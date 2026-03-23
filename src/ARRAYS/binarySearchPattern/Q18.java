@@ -8,21 +8,22 @@ public class Q18 {
         // Space Complexity: O(1)
 
 
-        int start = 0;
-        int end = arr.length - 1;
+        int n = arr.length;
+        int low = 0;
+        int high = n - 1;
         int index = -1;
 
-        while (start <= end) {
+        while (low <= high) {
 
-            int mid = start + (end - start) / 2;
+            int mid = low + (high - low) / 2;
 
             if (target == arr[mid]) {
 
                 index = mid;
-                end = mid - 1;
-            } else if (target > arr[mid]) start = mid + 1;
+                high = mid - 1;
+            } else if (target > arr[mid]) low = mid + 1;
 
-            else end = mid - 1;
+            else high = mid - 1;
 
 
         }
