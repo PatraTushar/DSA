@@ -9,25 +9,23 @@ public class Q13 {
 
 
 
-        int start = 0;
-        int end = num.length - 1;
+        int n = num.length;
 
-        while (start != end) {
+        int low = 0;
+        int high = n - 1;
 
-            int mid = start + (end - start) / 2;
+        while (low != high) {
 
+            int mid = low + (high - low) / 2;
 
-            if (num[start] >= num[end] && num[start] <= num[mid]) {
+            if (num[mid]>num[high]) low = mid + 1;
 
-                start = mid + 1;
-
-            } else end = mid;
+            else high = mid;
 
 
         }
 
-        return end;
-
+        return low;
 
     }
 
