@@ -55,6 +55,9 @@ public class Q14 {
 
     static int allocateBooks(int[] arr, int k) {
 
+        // Time Complexity: O(n)+O(n)+O(n⋅log(sum−max))=O(n⋅log(sum−max))
+        // Space Complexity: O(1)
+
         int n = arr.length;
 
         if (k > n) return -1;

@@ -2,7 +2,7 @@ package ARRAYS.binarySearchPattern;
 
 public class Q15 {
 
-    static int findMax(int[] arr) {
+    static int getMaxBoardLength(int[] arr) {
 
         int max = Integer.MIN_VALUE;
 
@@ -19,7 +19,7 @@ public class Q15 {
         return max;
     }
 
-    static int findSum(int[] arr) {
+    static int getTotalBoardLength(int[] arr) {
 
         int sum = 0;
         for (int ele : arr) {
@@ -32,7 +32,7 @@ public class Q15 {
         return sum;
     }
 
-    static int isValid(int[] boards, int maxTime) {
+    static int countPainters(int[] boards, int maxTime) {
 
         int initialBoard = 0;
         int initialPainter = 1;
@@ -66,14 +66,14 @@ public class Q15 {
 
         if (numPainters > boards.length) return -1;
 
-        int start = findMax(boards);
-        int end = findSum(boards);
+        int start = getMaxBoardLength(boards);
+        int end = getTotalBoardLength(boards);
 
         while (start <= end) {
 
             int mid = start + (end - start) / 2;
 
-            int paintersNeeded = isValid(boards, mid);
+            int paintersNeeded = countPainters(boards, mid);
 
 
             if (paintersNeeded > numPainters) {
