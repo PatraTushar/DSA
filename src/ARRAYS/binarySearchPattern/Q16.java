@@ -2,38 +2,38 @@ package ARRAYS.binarySearchPattern;
 
 public class Q16 {
 
-    static int findMax(int[] arr){
+    static int getMaxElement(int[] arr) {
 
-        int max=Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
 
-        for(int i=0;i<arr.length;i++){
-            max= Math.max(max,arr[i]);
+        for (int ele : arr) {
+
+            max = Math.max(max, ele);
         }
 
         return max;
     }
 
-    static int sumOfArr(int[] arr){
-        int sum=0;
-        for (int i=0;i<arr.length;i++){
-            sum+=arr[i];
+    static int getArraySum(int[] arr) {
+        int sum = 0;
+        for (int ele : arr) {
+            sum += ele;
         }
         return sum;
     }
 
-    static int isPossible(int[] arr,int mid){
+    static int countSubArrays(int[] arr, int mid) {
 
-        int parts=1;
-        int total=0;
+        int parts = 1;
+        int total = 0;
 
-        for(int i=0;i<arr.length;i++){
+        for (int i = 0; i < arr.length; i++) {
 
-            if(total+arr[i]<=mid){
-                total+=arr[i];
-            }
-            else {
+            if (total + arr[i] <= mid) {
+                total += arr[i];
+            } else {
                 parts++;
-                total=arr[i];
+                total = arr[i];
             }
         }
 
@@ -48,23 +48,20 @@ public class Q16 {
         // Space Complexity: O(1)
 
 
+        int start = getMaxElement(num);
+        int end = getArraySum(num);
 
-        int start=findMax(num);
-        int end=sumOfArr(num);
+        while (start <= end) {
 
-        while (start<=end){
+            int mid = start + (end - start) / 2;
 
-            int mid=start+(end-start)/2;
+            int totalParts = countSubArrays(num, mid);
 
-            int totalParts=isPossible(num,mid);
+            if (totalParts > k) {
+                start = mid + 1;
 
-            if(totalParts>k){
-                start=mid+1;
-
-            }
-
-            else {
-                end=mid-1;
+            } else {
+                end = mid - 1;
             }
 
 
@@ -73,17 +70,15 @@ public class Q16 {
         return start;
 
 
-
-
     }
 
     public static void main(String[] args) {
 
         // split array largest sum(leeTCode-->410)
 
-        int[] arr={10,20,10,10};
-        int k=2;
-        System.out.println(splitArray(arr,k));
+        int[] arr = {10, 20, 10, 10};
+        int k = 2;
+        System.out.println(splitArray(arr, k));
 
 
     }
