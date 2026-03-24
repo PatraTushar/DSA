@@ -3,7 +3,7 @@ package ARRAYS.binarySearchPattern;
 
 import java.util.Arrays;
 
-public class Q25 {
+public class   Q25 {
 
     static int totalCows(int[] stalls, int mid) {
 
@@ -38,24 +38,24 @@ public class Q25 {
 
         int n = stalls.length;
 
-        int start = 1;
-        int end = stalls[n - 1] - stalls[0];
+        int low = 1;
+        int high = stalls[n - 1] - stalls[0];
 
-        while (start <= end) {
+        while (low <= high) {
 
-            int mid = start + (end - start) / 2;
+            int mid = low + (high - low) / 2;
 
             int placesCow = totalCows(stalls, mid);
 
             if (placesCow >= cows) {
 
-                start = mid + 1;
-            } else end = mid - 1;
+                low = mid + 1;
+            } else high = mid - 1;
 
 
         }
 
-        return end;
+        return high;
 
 
     }

@@ -3,39 +3,55 @@ import java.util.Arrays;
 public class myPractice {
 
 
-    static int func(int[] arr, int x) {
+    static int countCowPlaced(int[] stall, int distance) {
 
-        int n = arr.length;
+        int cows = 1;
+        int lastPlacedPosition = stall[0];
 
-        int low = 1;
-        int high = x;
+        for (int i = 1; i < stall.length; i++) {
 
+            if (stall[i]-lastPlacedPosition>=distance){
+
+                cows++;
+                lastPlacedPosition=stall[i];
+            }
+        }
+
+        return cows;
+
+
+    }
+
+    static int AggressiveCows(int[] stalls, int cows) {
+
+        Arrays.sort(stalls);
+
+        int n = stalls.length;
+
+        int low = 0;
+        int high = stalls[n - 1] - stalls[0];
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
-            long square = (long) mid * mid;
 
-            if (square==x) return mid;
+            int placedCows = countCowPlaced(stalls, mid);
 
-           else if (square > x) high = mid - 1;
+            if (placedCows >= cows) low = mid + 1;
 
-            else low = mid + 1;
-
+            else high = mid - 1;
         }
 
         return high;
-
-
     }
 
 
     public static void main(String[] args) {
 
+        int[] arr = {0, 3, 4, 7, 10, 9};
+        int cows = 4;
+        System.out.println(AggressiveCows(arr, cows));
 
-        int[] arr = {2, 5, 5, 5, 6, 6, 8, 9, 9, 9};
-        int target = 5;
-        System.out.println(func(arr, target));
 
     }
 
