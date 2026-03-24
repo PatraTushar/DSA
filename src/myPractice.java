@@ -3,54 +3,60 @@ import java.util.Arrays;
 public class myPractice {
 
 
-    static int countCowPlaced(int[] stall, int distance) {
+    static int getMaxPiles(int[] piles) {
 
-        int cows = 1;
-        int lastPlacedPosition = stall[0];
+        int maxPiles = Integer.MIN_VALUE;
 
-        for (int i = 1; i < stall.length; i++) {
+        for (int pile : piles) {
 
-            if (stall[i]-lastPlacedPosition>=distance){
-
-                cows++;
-                lastPlacedPosition=stall[i];
-            }
+            maxPiles = Math.max(maxPiles, pile);
         }
 
-        return cows;
+        return maxPiles;
+    }
+
+    static int calculateHrs(int[] piles, int banana) {
+
+        int totalHrs = 0;
+
+        for (int i = 0; i < piles.length; i++) {
+
+            totalHrs += Math.ceil((double) piles[i] / banana);
+        }
+
+        return totalHrs;
 
 
     }
 
-    static int AggressiveCows(int[] stalls, int cows) {
+    static int minEatingSpeed(int[] piles, int hrs) {
 
-        Arrays.sort(stalls);
-
-        int n = stalls.length;
-
-        int low = 0;
-        int high = stalls[n - 1] - stalls[0];
+        int low = 1;
+        int high = getMaxPiles(piles);
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
-            int placedCows = countCowPlaced(stalls, mid);
+            int hoursTaken = calculateHrs(piles, mid);
 
-            if (placedCows >= cows) low = mid + 1;
+            if (hoursTaken > hrs) low = mid + 1;
 
             else high = mid - 1;
         }
 
-        return high;
+        return low;
+
+
     }
 
 
     public static void main(String[] args) {
 
-        int[] arr = {0, 3, 4, 7, 10, 9};
-        int cows = 4;
-        System.out.println(AggressiveCows(arr, cows));
+
+        int[] piles = {3, 6, 7, 11};
+        int hrs = 8;
+        System.out.println(minEatingSpeed(piles, hrs));
 
 
     }
