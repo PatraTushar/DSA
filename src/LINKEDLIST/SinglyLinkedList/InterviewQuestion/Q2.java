@@ -30,23 +30,22 @@ public class Q2 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int size=0;
-        Node temp=head;
-        while (temp!=null){
-            size++;
-            temp=temp.next;
+        Node slow = head;
+        Node fast = head;
+
+        for (int i = 0; i < n; i++) {
+
+            fast = fast.next;
         }
 
-        temp=head;
+        while (fast != null) {
 
-        int fromStart=size-n+1;
-
-        for(int i=0;i<fromStart-1;i++){
-            temp=temp.next;
-
+            slow = slow.next;
+            fast = fast.next;
         }
 
-        return temp;
+        return slow;
+
 
 
     }

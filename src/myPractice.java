@@ -1,52 +1,49 @@
-import java.util.Arrays;
+import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q1;
+import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q2;
 
 public class myPractice {
 
+    public static class Node {
 
-    static int getMaxPiles(int[] piles) {
+        int data;
+        Node next;
 
-        int maxPiles = Integer.MIN_VALUE;
+        Node(int data) {
 
-        for (int pile : piles) {
-
-            maxPiles = Math.max(maxPiles, pile);
+            this.data = data;
         }
-
-        return maxPiles;
     }
 
-    static int calculateHrs(int[] piles, int banana) {
+    static void display(Node node) {
 
-        int totalHrs = 0;
+        Node temp = node;
 
-        for (int i = 0; i < piles.length; i++) {
+        while (temp != null) {
 
-            totalHrs += Math.ceil((double) piles[i] / banana);
+            System.out.print(temp.data + " ");
+            temp = temp.next;
         }
 
-        return totalHrs;
-
-
+        System.out.println();
     }
 
-    static int minEatingSpeed(int[] piles, int hrs) {
+    static Node nthNodeFromEnd(Node head, int n) {
 
-        int low = 1;
-        int high = getMaxPiles(piles);
+        Node slow = head;
+        Node fast = head;
 
-        while (low <= high) {
+        for (int i = 0; i < n; i++) {
 
-            int mid = low + (high - low) / 2;
-
-            int hoursTaken = calculateHrs(piles, mid);
-
-            if (hoursTaken > hrs) low = mid + 1;
-
-            else high = mid - 1;
+            fast = fast.next;
         }
 
-        return low;
+        while (fast != null) {
 
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
 
     }
 
@@ -54,14 +51,25 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-        int[] piles = {3, 6, 7, 11};
-        int hrs = 8;
-        System.out.println(minEatingSpeed(piles, hrs));
+        Node a = new Node(100);
+        Node b = new Node(13);
+        Node c = new Node(4);
+        Node d = new Node(5);
+        Node e = new Node(12);
+        Node f = new Node(10);
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = f;
+
+        display(a);
+
+        Node ans = nthNodeFromEnd(a, 4);
+        System.out.println(ans.data);
 
 
     }
-
-
 }
 
 
