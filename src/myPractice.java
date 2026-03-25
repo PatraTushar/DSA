@@ -24,14 +24,32 @@ public class myPractice {
         System.out.println();
     }
 
-    static void nthNodeFromEnd(ListNode node) {
+    static ListNode nthNodeFromEnd(ListNode head, int n) {
 
 
-        node.val=node.next.val;
-        node.next=node.next.next;
+        ListNode slow = head;
+        ListNode fast = head;
 
 
+        for (int i = 0; i < n; i++) {
 
+            if (fast == null) return head;
+            fast = fast.next;
+
+
+        }
+
+        if (fast == null) return head.next;
+
+        while (fast.next != null) {
+
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        slow.next = slow.next.next;
+
+        return head;
 
 
     }
@@ -54,10 +72,9 @@ public class myPractice {
 
         display(a);
 
-         nthNodeFromEnd(a, 4);
+        nthNodeFromEnd(a, 4);
 
-         display(a);
-
+        display(a);
 
 
     }
