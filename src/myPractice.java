@@ -1,49 +1,38 @@
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q1;
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q2;
-
 public class myPractice {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
+        ListNode(int data) {
 
-            this.data = data;
+            this.val = data;
         }
     }
 
-    static void display(Node node) {
+    static void display(ListNode node) {
 
-        Node temp = node;
+        ListNode temp = node;
 
         while (temp != null) {
 
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
 
         System.out.println();
     }
 
-    static Node nthNodeFromEnd(Node head, int n) {
+    static void nthNodeFromEnd(ListNode node) {
 
-        Node slow = head;
-        Node fast = head;
 
-        for (int i = 0; i < n; i++) {
+        node.val=node.next.val;
+        node.next=node.next.next;
 
-            fast = fast.next;
-        }
 
-        while (fast != null) {
 
-            slow = slow.next;
-            fast = fast.next;
-        }
 
-        return slow;
 
     }
 
@@ -51,12 +40,12 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-        Node a = new Node(100);
-        Node b = new Node(13);
-        Node c = new Node(4);
-        Node d = new Node(5);
-        Node e = new Node(12);
-        Node f = new Node(10);
+        ListNode a = new ListNode(100);
+        ListNode b = new ListNode(13);
+        ListNode c = new ListNode(4);
+        ListNode d = new ListNode(5);
+        ListNode e = new ListNode(12);
+        ListNode f = new ListNode(10);
         a.next = b;
         b.next = c;
         c.next = d;
@@ -65,8 +54,10 @@ public class myPractice {
 
         display(a);
 
-        Node ans = nthNodeFromEnd(a, 4);
-        System.out.println(ans.data);
+         nthNodeFromEnd(a, 4);
+
+         display(a);
+
 
 
     }
