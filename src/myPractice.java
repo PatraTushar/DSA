@@ -1,115 +1,48 @@
+import java.util.TreeSet;
+
 public class myPractice {
 
-    public static class ListNode {
+    static class Employee implements Comparable<Object> {
 
-        int val;
-        ListNode next;
+        String name;
+        int eid;
 
-        ListNode(int data) {
-
-            this.val = data;
-        }
-    }
-
-    static void display(ListNode node) {
-
-        ListNode temp = node;
-
-        while (temp != null) {
-
-            System.out.print(temp.val + " ");
-            temp = temp.next;
-        }
-
-        System.out.println();
-    }
-
-    static ListNode findIntersection(ListNode headA, ListNode headB) {
-
-        ListNode tempA = headA;
-        ListNode tempB = headB;
-
-        int lengthA = 0;
-        int lengthB = 0;
-
-        while (tempA != null) {
-
-            lengthA++;
-
-            tempA = tempA.next;
-        }
-
-        while (tempB != null) {
-
-            lengthB++;
-            tempB = tempB.next;
-        }
-
-        if (lengthA > lengthB) return findIntersection(headB, headA);
-
-        int lengthDiff = lengthB - lengthA;
-
-
-        ListNode slow = headA;
-        ListNode fast = headB;
-
-        for (int i = 0; i < lengthDiff; i++) {
-
-            fast = fast.next;
+        public Employee(String name, int eid) {
+            this.name = name;
+            this.eid = eid;
         }
 
 
-        while (slow != fast) {
-            slow = slow.next;
-            fast = fast.next;
+        @Override
+        public int compareTo(Object o) {
+
+            int eid1 = this.eid;          // this.eid-> Refers to the current object (the one already inside TreeSet or being compared)
+            Employee e = (Employee) o;
+            int eid2 = e.eid;            // e.eid-> Refers to the incoming object (the one you are comparing with)
+
+            if (eid1 < eid2) return -1;
+            else if (eid1 > eid2) return +1;
+            else return 0;
         }
 
-        return slow;
+        public String toString() {
 
-    }
-
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-
-        // one pass solution
-
-        ListNode a = headA;
-        ListNode b = headB;
-
-        while (a != b) {
-            a = (a == null) ? headB : a.next;
-            b = (b == null) ? headA : b.next;
+            return name + " " + eid;
         }
 
-        return a;
     }
 
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(87);
-        ListNode b = new ListNode(100);
-        ListNode c = new ListNode(13);
-        ListNode d = new ListNode(4);
-        ListNode e = new ListNode(5);
-        ListNode f = new ListNode(12);
-        ListNode g = new ListNode(10);
+        TreeSet<Employee> treeSet = new TreeSet<>();
+        treeSet.add(new Employee("nag", 100));
+        treeSet.add(new Employee("balaiah", 200));
+        treeSet.add(new Employee("chinu", 50));
+        treeSet.add(new Employee("venki", 150));
+        treeSet.add(new Employee("nag", 100));
 
-        a.next = b;
-        b.next = c;
-        c.next = d;
-        d.next = e;
-        e.next = f;
-        f.next = g;
-
-        ListNode h = new ListNode(90);
-        ListNode i = new ListNode(9);
-        h.next = i;
-        i.next = e;
-
-
-        display(a);
-        ListNode Ans = findIntersection(a, h);
-        System.out.println(" Intersection of both linked list is " + Ans.val);
+        System.out.println(treeSet);
 
     }
 }
