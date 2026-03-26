@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class myPractice {
 
     public static class ListNode {
@@ -23,65 +21,51 @@ public class myPractice {
     }
 
 
-    static ListNode hasCycle(ListNode head) {
+    static ListNode merge(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(100);
+        ListNode current = dummy;
+        ListNode ptr1 = list1;
+        ListNode ptr2 = list2;
 
-        if (head == null || head.next == null) return null;
-
-        ListNode slow = head;
-        ListNode fast = head;
-
-        while (fast != null && fast.next!=null) {
-
-            slow = slow.next;
-            fast = fast.next.next;
-
-            if (slow == fast) break;
+        while (ptr1 != null && ptr2 != null) {
 
 
+            if (ptr1.val < ptr2.val) {
+
+                current.next = ptr1;
+                current = ptr1;
+                ptr1 = ptr1.next;
+            } else {
+
+                current.next = ptr2;
+                current = ptr2;
+                ptr2 = ptr2.next;
+            }
         }
 
-        if (fast==null || fast.next==null) return null;
 
-         slow = head;
+        while (ptr1 != null) {
 
-        while (slow != fast) {
-            slow = slow.next;
-            fast = fast.next;
+            current.next = ptr1;
+            current = ptr1;
+            ptr1 = ptr1.next;
         }
 
-        return slow;
+
+        while (ptr2 != null) {
+
+            current.next = ptr2;
+            current = ptr2;
+            ptr2 = ptr2.next;
+        }
+
+        return dummy.next;
 
 
     }
 
     public static void main(String[] args) {
 
-        // Input 1
-        ListNode a = new ListNode(3);
-        ListNode b = new ListNode(2);
-        ListNode c = new ListNode(0);
-        ListNode d = new ListNode(-4);
-
-        a.next = b;
-        b.next = c;
-        c.next = d;
-        d.next = b;
-
-        System.out.println(hasCycle(a));
-
-        // Input 2
-
-        ListNode e = new ListNode(1);
-        ListNode f = new ListNode(2);
-        e.next = f;
-        f.next = e;
-
-        System.out.println(hasCycle(e));
-
-        // Input 3
-
-        ListNode g = new ListNode(1);
-        System.out.println(hasCycle(g));
 
 
     }

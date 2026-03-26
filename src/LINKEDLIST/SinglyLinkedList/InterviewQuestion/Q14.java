@@ -1,6 +1,6 @@
 package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
-public class Q14 {
+public class   Q14 {
 
     public static class Node {
 
@@ -52,34 +52,34 @@ public class Q14 {
 
         System.out.println(" After merging ");
 
-        Node temp1 = head1;
-        Node temp2 = head2;
+        Node ptr1 = head1;
+        Node ptr2 = head2;
         Node dummy = new Node(100);
-        Node t = dummy;
+        Node current = dummy;
 
 
-        while (temp1 != null && temp2 != null) {
+        while (ptr1 != null && ptr2 != null) {
 
-            if (temp1.data < temp2.data) {
+            if (ptr1.data < ptr2.data) {
 
-                t.next = temp1;
-                t = temp1;
-                temp1 = temp1.next;
+                current.next = ptr1;
+                current = ptr1;
+                ptr1 = ptr1.next;
 
             } else {
 
-                t.next = temp2;
-                t = temp2;
-                temp2 = temp2.next;
+                current.next = ptr2;
+                current = ptr2;
+                ptr2 = ptr2.next;
 
 
             }
         }
 
-        if (temp1 == null) {
-            t.next = temp2;
+        if (ptr1 == null) {
+            current.next = ptr2;
         } else {
-            t.next = temp1;
+            current.next = ptr1;
         }
 
         return dummy.next;
