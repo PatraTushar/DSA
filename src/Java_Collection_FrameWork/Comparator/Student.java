@@ -1,60 +1,71 @@
 package Java_Collection_FrameWork.Comparator;
 
 import java.util.Comparator;
-import java.util.*;
+import java.util.TreeSet;
 
-public class Student {
+
+
+
+class Student {
 
     String name;
-    int marks;
+    int eid;
 
-    Student(String name, int marks) {
+    Student(String name, int eid) {
 
         this.name = name;
-        this.marks = marks;
+        this.eid = eid;
     }
 
 
+    @Override
     public String toString() {
-
-        return this.name + " : " + this.marks;
+        return name + " : " + eid;
     }
+
+
 
 
 }
 
-class sortByMarks implements Comparator<Student> {
+
+class myComparator implements Comparator<Student> {
 
     @Override
     public int compare(Student o1, Student o2) {
-        return o1.marks - o2.marks;
+
+
+        String s1 = o1.name;
+        String s2 = o2.name;
+
+        return s1.compareTo(s2);
+
     }
+
+
+
 }
 
-class NameComparator implements Comparator<Student> {
 
-
-    public int compare(Student a, Student b) {
-        return a.name.compareTo(b.name);
-    }
+class Main{
 
 
     public static void main(String[] args) {
 
-        List<Student> list = new ArrayList<>();
-        list.add(new Student("Ram", 90));
-        list.add(new Student("Shyam", 80));
-        list.add(new Student("Mohan", 95));
+        TreeSet<Student> treeSet = new TreeSet<>(new myComparator());
 
-        Collections.sort(list, new NameComparator());
-        System.out.println(list);
+        treeSet.add(new Student("nag", 100));
+        treeSet.add(new Student("balaiah", 200));
+        treeSet.add(new Student("chinu", 50));
+        treeSet.add(new Student("venki", 150));
+        treeSet.add(new Student("nag", 100));   // duplicate
+        treeSet.add(new Student("nag", 200));   // allowed
 
-        Student[] arr = new Student[]{new Student("rahul", 100), new Student("Ayush", 80), new Student("charles", 90)};
-        Arrays.sort(arr,new sortByMarks());
-        System.out.println(Arrays.toString(arr));
-
-
-
+        for (Student s : treeSet) {
+            System.out.println(s);
+        }
     }
 
+
 }
+
