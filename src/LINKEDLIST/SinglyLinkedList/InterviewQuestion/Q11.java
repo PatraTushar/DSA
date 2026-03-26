@@ -13,7 +13,7 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
             }
         }
 
-        static boolean cycleInALinkedListI(Node head){
+        static boolean hasCycle(Node head){
 
             //Time Complexity (TC): O(n)
             //Space Complexity (SC): O(1)
@@ -57,7 +57,7 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
             c.next=d;
             d.next=b;
 
-            System.out.println(cycleInALinkedListI(a));
+            System.out.println(hasCycle(a));
 
             // Input 2
 
@@ -66,12 +66,12 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
             e.next=f;
             f.next=e;
 
-            System.out.println(cycleInALinkedListI(e));
+            System.out.println(hasCycle(e));
 
             // Input 3
 
             Node g=new Node(1);
-            System.out.println(cycleInALinkedListI(g));
+            System.out.println(hasCycle(g));
 
 
 

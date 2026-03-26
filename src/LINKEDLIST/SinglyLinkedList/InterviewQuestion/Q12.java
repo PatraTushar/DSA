@@ -2,40 +2,40 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q12 {
 
-    public static class Node{
+    public static class Node {
 
         int data;
         Node next;
-        Node(int data){
-            this.data=data;
+
+        Node(int data) {
+            this.data = data;
         }
     }
 
-    static Node cycleInALinkedListII(Node head){
+    static Node detectCycle(Node head) {
 
         //Time Complexity: O(N)
         //Space Complexity: O(1)
 
-        Node slow=head;
-        Node fast=head;
+        Node slow = head;
+        Node fast = head;
 
-        if(head==null || head.next==null) return null;
+        if (head == null || head.next == null) return null;
 
-        while (fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-            if(fast==slow) break;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow) break;
         }
 
-        if(fast==null || fast.next==null) return null;
+        if (fast == null || fast.next == null) return null;
 
 
+        slow = head;
 
-        slow=head;
-
-        while (slow!=fast){
-            slow=slow.next;
-            fast=fast.next;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
         }
         return slow;
     }
@@ -55,39 +55,35 @@ public class Q12 {
 
         // Q:  Cycle in a linked list II (leeTCode-->142)
 
-        Node a=new Node(3);
-        Node b=new Node(2);
-        Node c=new Node(0);
-        Node d=new Node(-4);
+        Node a = new Node(3);
+        Node b = new Node(2);
+        Node c = new Node(0);
+        Node d = new Node(-4);
 
-        a.next=b;
-        b.next=c;
-        c.next=d;
-        d.next=b;
-
-
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = b;
 
 
-        Node e=new Node(1);
-        Node f=new Node(2);
-        e.next=f;
-        f.next=e;
+        Node e = new Node(1);
+        Node f = new Node(2);
+        e.next = f;
+        f.next = e;
 
-        Node g=new Node(1);
-
-
-        Node Ans=cycleInALinkedListII(a);
+        Node g = new Node(1);
 
 
-        if(Ans!= null){
+        Node Ans = detectCycle(a);
 
-            int cycleIndex=getIndex(a,Ans);
 
-            System.out.println( " tail connects to node index " +cycleIndex);
+        if (Ans != null) {
 
-        }
+            int cycleIndex = getIndex(a, Ans);
 
-        else {
+            System.out.println(" tail connects to node index " + cycleIndex);
+
+        } else {
             System.out.println(" No cycle found ");
         }
 

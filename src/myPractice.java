@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class myPractice {
 
     public static class ListNode {
@@ -21,46 +23,65 @@ public class myPractice {
     }
 
 
-    static ListNode findMiddle(ListNode head) {
+    static ListNode hasCycle(ListNode head) {
 
-        if (head==null || head.next==null) return null;
+        if (head == null || head.next == null) return null;
 
         ListNode slow = head;
         ListNode fast = head;
-        ListNode prev = null;
 
-        while (fast != null && fast.next != null) {
+        while (fast != null && fast.next!=null) {
 
-            prev = slow;
             slow = slow.next;
             fast = fast.next.next;
+
+            if (slow == fast) break;
+
+
         }
 
-        prev.next=slow.next;
+        if (fast==null || fast.next==null) return null;
 
-        return head;
+         slow = head;
+
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
 
 
     }
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(100);
-        ListNode b = new ListNode(13);
-        ListNode c = new ListNode(4);
-        ListNode d = new ListNode(5);
-        ListNode e = new ListNode(12);
-        ListNode f = new ListNode(10);
+        // Input 1
+        ListNode a = new ListNode(3);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(0);
+        ListNode d = new ListNode(-4);
 
         a.next = b;
         b.next = c;
         c.next = d;
-        d.next = e;
-        e.next = f;
+        d.next = b;
 
-        display(a);
-        ListNode Ans = findMiddle(a);
-        System.out.println(Ans.val);
+        System.out.println(hasCycle(a));
+
+        // Input 2
+
+        ListNode e = new ListNode(1);
+        ListNode f = new ListNode(2);
+        e.next = f;
+        f.next = e;
+
+        System.out.println(hasCycle(e));
+
+        // Input 3
+
+        ListNode g = new ListNode(1);
+        System.out.println(hasCycle(g));
 
 
     }
