@@ -25,19 +25,20 @@ public class Q9 {
 
     static Node deleteRightMiddle(Node head){
 
-        if(head==null) return null;
+        if (head==null || head.next==null) return null;
 
-        Node slow=head;
-        Node fast=head;
+        Node slow = head;
+        Node fast = head;
+        Node prev = null;
 
-        if(fast.next==null) return null;
+        while (fast != null && fast.next != null) {
 
-        while (fast.next.next!=null && fast.next.next.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        slow.next=slow.next.next;
+        prev.next=slow.next;
 
         return head;
 

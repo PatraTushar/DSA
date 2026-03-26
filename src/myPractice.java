@@ -1,48 +1,67 @@
-import java.util.TreeSet;
-
 public class myPractice {
 
-    static class Employee implements Comparable<Object> {
+    public static class ListNode {
 
-        String name;
-        int eid;
+        int val;
+        ListNode next;
 
-        public Employee(String name, int eid) {
-            this.name = name;
-            this.eid = eid;
+        ListNode(int data) {
+            this.val = data;
         }
+    }
 
+    static void display(ListNode head) {
 
-        @Override
-        public int compareTo(Object o) {
-
-            int eid1 = this.eid;          // this.eid-> Refers to the current object (the one already inside TreeSet or being compared)
-            Employee e = (Employee) o;
-            int eid2 = e.eid;            // e.eid-> Refers to the incoming object (the one you are comparing with)
-
-            if (eid1 < eid2) return -1;
-            else if (eid1 > eid2) return +1;
-            else return 0;
+        ListNode temp = head;
+        while (temp != null) {
+            System.out.print(temp.val + " ");
+            temp = temp.next;
         }
-
-        public String toString() {
-
-            return name + " " + eid;
-        }
-
+        System.out.println();
     }
 
 
+    static ListNode findMiddle(ListNode head) {
+
+        if (head==null || head.next==null) return null;
+
+        ListNode slow = head;
+        ListNode fast = head;
+        ListNode prev = null;
+
+        while (fast != null && fast.next != null) {
+
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        prev.next=slow.next;
+
+        return head;
+
+
+    }
+
     public static void main(String[] args) {
 
-        TreeSet<Employee> treeSet = new TreeSet<>();
-        treeSet.add(new Employee("nag", 100));
-        treeSet.add(new Employee("balaiah", 200));
-        treeSet.add(new Employee("chinu", 50));
-        treeSet.add(new Employee("venki", 150));
-        treeSet.add(new Employee("nag", 100));
+        ListNode a = new ListNode(100);
+        ListNode b = new ListNode(13);
+        ListNode c = new ListNode(4);
+        ListNode d = new ListNode(5);
+        ListNode e = new ListNode(12);
+        ListNode f = new ListNode(10);
 
-        System.out.println(treeSet);
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = f;
+
+        display(a);
+        ListNode Ans = findMiddle(a);
+        System.out.println(Ans.val);
+
 
     }
 }
