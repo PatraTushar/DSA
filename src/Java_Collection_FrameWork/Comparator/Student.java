@@ -4,8 +4,6 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 
-
-
 class Student {
 
     String name;
@@ -24,12 +22,10 @@ class Student {
     }
 
 
-
-
 }
 
 
-class myComparator implements Comparator<Student> {
+class MyComparator implements Comparator<Student> {
 
     @Override
     public int compare(Student o1, Student o2) {
@@ -43,16 +39,15 @@ class myComparator implements Comparator<Student> {
     }
 
 
-
 }
 
 
-class Main{
+class Main {
 
 
     public static void main(String[] args) {
 
-        TreeSet<Student> treeSet = new TreeSet<>(new myComparator());
+        TreeSet<Student> treeSet = new TreeSet<>(new MyComparator());
 
         treeSet.add(new Student("nag", 100));
         treeSet.add(new Student("balaiah", 200));
@@ -61,9 +56,9 @@ class Main{
         treeSet.add(new Student("nag", 100));   // duplicate
         treeSet.add(new Student("nag", 200));   // allowed
 
-        for (Student s : treeSet) {
-            System.out.println(s);
-        }
+        System.out.println(treeSet);
+
+
     }
 
 
