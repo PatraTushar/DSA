@@ -29,31 +29,32 @@ public class Q16 {
         //Time Complexity: O(N)
         //Space Complexity: O(1)
 
-        Node oddPlace = new Node(-1);
-        Node evenPlace = new Node(-1);
+        if (head == null) return null;
+        if (head.next == null) return head;
 
-        if(head==null) return null;
-        if(head.next==null) return head;
-
-        Node o1 = oddPlace;
-        Node e1 = evenPlace;
+        Node dummyOdd = new Node(-1);
+        Node oddPtr = dummyOdd;
+        Node dummyEven = new Node(-1);
+        Node evenPtr = dummyEven;
         Node temp = head;
 
         while (temp != null) {
 
-            o1.next = temp;
-            o1 = temp;
+            oddPtr.next = temp;
+            oddPtr = temp;
             temp = temp.next;
-            e1.next = temp;
-            e1 = temp;
-            if(temp==null) break;
+            evenPtr.next = temp;
+            evenPtr = temp;
+            if (temp == null) break;
             temp = temp.next;
+
         }
 
-        o1.next = evenPlace.next;
 
+        oddPtr.next = dummyEven.next;
 
-        return oddPlace.next;
+        return dummyOdd.next;
+
 
 
     }
@@ -62,7 +63,7 @@ public class Q16 {
 
     public static void main(String[] args) {
 
-        // Q: odd even linked list
+        // leeTCode->328
 
         Node a = new Node(2);
         Node b = new Node(1);
