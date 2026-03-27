@@ -29,47 +29,35 @@ public class Q15 {
         //Space Complexity: O(1)
 
 
-        Node odd=new Node(-1);
-        Node even=new Node(-1);
+        Node temp = head;
+        Node dummyOdd = new Node(101);
+        Node odd = dummyOdd;
+        Node dummyEven = new Node(100);
+        Node even = dummyEven;
 
-        Node o1=odd;
-        Node e1=even;
-        Node temp=head;
+        while (temp != null) {
 
-        while (temp!=null){
+            if (temp.data % 2 != 0) {
 
-            if(temp.data%2!=0){
+                odd.next = temp;
+                odd = temp;
 
-                o1.next=temp;
-                o1=temp;
+            } else {
 
-
-
-            }
-
-            else {
-
-                e1.next=temp;
-                e1=temp;
-
-
+                even.next = temp;
+                even = temp;
 
             }
 
-            temp=temp.next;
+            temp = temp.next;
         }
 
 
-        o1.next=null;
-        e1.next=null;
+        odd.next=null;
+        even.next=null;
 
-        o1=odd.next;
-        e1=even.next;
-
-        System.out.println(" odd list ");
-        display(o1);
-        System.out.println(" even list ");
-        display(e1);
+        display(dummyOdd.next);
+        display(dummyEven.next);
 
 
 

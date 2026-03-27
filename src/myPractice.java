@@ -1,18 +1,18 @@
 public class myPractice {
 
-    public static class ListNode {
+    public static class Node {
 
         int val;
-        ListNode next;
+        Node next;
 
-        ListNode(int data) {
+        Node(int data) {
             this.val = data;
         }
     }
 
-    static void display(ListNode head) {
+    static void display(Node head) {
 
-        ListNode temp = head;
+        Node temp = head;
         while (temp != null) {
             System.out.print(temp.val + " ");
             temp = temp.next;
@@ -21,51 +21,64 @@ public class myPractice {
     }
 
 
-    static ListNode merge(ListNode list1, ListNode list2) {
-        ListNode dummy = new ListNode(100);
-        ListNode current = dummy;
-        ListNode ptr1 = list1;
-        ListNode ptr2 = list2;
+    static void oddEvenSplit(Node head) {
 
-        while (ptr1 != null && ptr2 != null) {
+        Node temp = head;
+        Node dummyOdd = new Node(101);
+        Node odd = dummyOdd;
+        Node dummyEven = new Node(100);
+        Node even = dummyEven;
 
+        while (temp != null) {
 
-            if (ptr1.val < ptr2.val) {
+            if (temp.val % 2 != 0) {
 
-                current.next = ptr1;
-                current = ptr1;
-                ptr1 = ptr1.next;
+                odd.next = temp;
+                odd = temp;
+
             } else {
 
-                current.next = ptr2;
-                current = ptr2;
-                ptr2 = ptr2.next;
+                even.next = temp;
+                even = temp;
+
             }
+
+            temp = temp.next;
         }
 
 
-        while (ptr1 != null) {
+        odd.next=null;
+        even.next=null;
 
-            current.next = ptr1;
-            current = ptr1;
-            ptr1 = ptr1.next;
-        }
-
-
-        while (ptr2 != null) {
-
-            current.next = ptr2;
-            current = ptr2;
-            ptr2 = ptr2.next;
-        }
-
-        return dummy.next;
+        display(dummyOdd.next);
+        display(dummyEven.next);
 
 
     }
 
     public static void main(String[] args) {
 
+
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+        Node d = new Node(4);
+        Node e = new Node(5);
+        Node f = new Node(6);
+        Node g = new Node(7);
+        Node h = new Node(8);
+
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = f;
+        f.next = g;
+        g.next = h;
+
+        System.out.println(" original list ");
+        display(a);
+        oddEvenSplit(a);
 
 
     }
