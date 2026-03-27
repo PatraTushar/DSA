@@ -23,12 +23,16 @@ class Employee implements Comparable<Object> {
     @Override
     public int compareTo(Object obj1) {
 
-        int empID1 = this.empID;
+        int e1 = this.empID;
         Employee e = (Employee) obj1;
-        int empID2 = e.empID;
+        int e2 = e.empID;
 
-        if (empID1 < empID2) return -1;
-        else if (empID1 > empID2) return +1;
+        //this → the object calling compareTo, i.e., the incoming/new object being added to the TreeSet.
+        //obj1 (parameter) → the object already in the TreeSet that we are comparing against.
+        // e2.compareTo(e1)
+
+        if (e1 < e2) return -1;
+        else if (e1 > e2) return +1;
         else return 0;
 
     }
@@ -41,6 +45,9 @@ class MyComparator implements Comparator<Object> {
 
     @Override
     public int compare(Object obj1, Object obj2) {
+
+        //obj1 → incoming/new object
+        //obj2 → existing object in the TreeSet
 
         Employee e1 = (Employee) obj1;
         Employee e2 = (Employee) obj2;
