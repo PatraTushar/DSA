@@ -1,6 +1,6 @@
 package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
-public class Q20 {
+public class   Q20 {
 
     public static class Node{
 

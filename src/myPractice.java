@@ -1,18 +1,19 @@
 public class myPractice {
 
-    public static class Node {
+    public static class ListNode {
 
         int val;
-        Node next;
+        ListNode next;
 
-        Node(int data) {
+        ListNode(int data) {
+
             this.val = data;
         }
     }
 
-    static void display(Node head) {
+    static void display(ListNode head) {
 
-        Node temp = head;
+        ListNode temp = head;
         while (temp != null) {
             System.out.print(temp.val + " ");
             temp = temp.next;
@@ -21,58 +22,85 @@ public class myPractice {
     }
 
 
-    static Node oddEvenLL(Node head) {
+    static ListNode reverse(ListNode head) {
 
-        if (head == null) return null;
-        if (head.next == null) return head;
+        ListNode PREV = null;
+        ListNode CURR = head;
+        ListNode NEXT;
 
-        Node dummyOdd = new Node(-1);
-        Node oddPtr = dummyOdd;
-        Node dummyEven = new Node(-1);
-        Node evenPtr = dummyEven;
-        Node temp = head;
+        while (CURR != null) {
 
-        while (temp != null) {
-
-            oddPtr.next = temp;
-            oddPtr = temp;
-            temp = temp.next;
-            evenPtr.next = temp;
-            evenPtr = temp;
-            if (temp == null) break;
-            temp = temp.next;
-
+            NEXT = CURR.next;
+            CURR.next = PREV;
+            PREV = CURR;
+            CURR = NEXT;
         }
 
+        return PREV;
+    }
 
-        oddPtr.next = dummyEven.next;
 
-        return dummyOdd.next;
+    static ListNode findLeftMiddle(ListNode head) {
 
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        if (fast != null) return slow;
+
+        return prev;
+
+
+    }
+
+    static boolean isPalindromeLL(ListNode head) {
+
+        if (head == null || head.next == null) return true;
+
+        ListNode middle = findLeftMiddle(head);
+
+        ListNode reverse = reverse(middle.next);
+
+        middle.next = reverse;
+
+        ListNode ptr1 = head;
+        ListNode ptr2 = middle.next;
+
+        while (ptr2 != null) {
+
+            if (ptr1.val != ptr2.val) return false;
+
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
+        }
+
+        return true;
 
     }
 
     public static void main(String[] args) {
 
-
-        Node a = new Node(2);
-        Node b = new Node(1);
-        Node c = new Node(3);
-        Node d = new Node(5);
-        Node e = new Node(6);
-        Node f = new Node(4);
-        Node g = new Node(7);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(3);
+        ListNode d = new ListNode(3);
+        ListNode e = new ListNode(2);
+        ListNode f = new ListNode(1);
 
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
         e.next = f;
-        f.next = g;
 
-        display(a);
-        Node Ans = oddEvenLL(a);
-        display(Ans);
+        System.out.println(isPalindromeLL(a));
 
 
     }

@@ -9,45 +9,45 @@ public class Q17 {
 
         Node(int data){
 
-            this.data=data;
+            this.data =data;
         }
 
     }
 
 
-        static Node duplicateI(Node head){
+        static Node deleteDuplicates(Node head){
 
             //Time Complexity: O(n)
             //Space Complexity: O(1)
 
-            Node dummy=new Node(Integer.MIN_VALUE);
-            Node t=dummy;
-            Node temp=head;
+            Node curr = head;
+            Node temp;
 
-            while (temp!=null){
+            while (curr != null && curr.next != null) {
 
-                if(t.data !=temp.data){
+                if (curr.data == curr.next.data) {
 
-                    t.next=temp;
-                    t=temp;
-                    temp=temp.next;
-                }
 
-                else {
+                    temp = curr.next;
 
-                    while (t.data ==temp.data){
-                        temp=temp.next;
-                        if(temp==null) break;
+                    while (temp != null && temp.data == curr.data) {
 
+                        temp = temp.next;
                     }
-                    t.next=temp;
+
+                    curr.next = temp;
+                    curr = temp;
+
+
+                } else {
+
+                    curr = curr.next;
 
 
                 }
             }
 
-            return dummy.next;
-
+            return head;
 
 
 
@@ -57,7 +57,7 @@ public class Q17 {
       static   void display(Node head){
         Node temp=head;
         while (temp!=null){
-            System.out.print(temp.data+" ");
+            System.out.print(temp.data +" ");
             temp=temp.next;
         }
             System.out.println();
@@ -98,7 +98,7 @@ public class Q17 {
         j.next=k;
 
         display(a);
-        Node Ans=duplicateI(a);
+        Node Ans= deleteDuplicates(a);
         display(Ans);
 
 
