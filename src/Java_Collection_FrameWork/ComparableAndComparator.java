@@ -3,61 +3,58 @@ package Java_Collection_FrameWork;
 import java.util.Comparator;
 import java.util.TreeSet;
 
-class Employee implements Comparable<Object> {
+class Employee implements Comparable<Employee> {
 
     String name;
-    int empID;
+    int age;
 
-    Employee(String name, int empID) {
+    public Employee(String name, int age) {
 
         this.name = name;
-        this.empID = empID;
+        this.age = age;
     }
 
     public String toString() {
 
-        return name + "--" + empID;
+        return name + " : " + age;
     }
 
 
     @Override
-    public int compareTo(Object obj1) {
+    public int compareTo(Employee e) {
 
-        int e1 = this.empID;
-        Employee e = (Employee) obj1;
-        int e2 = e.empID;
+
+        int e1 = this.age;
+        int e2 = e.age;
 
         //this → the object calling compareTo, i.e., the incoming/new object being added to the TreeSet.
-        //obj1 (parameter) → the object already in the TreeSet that we are comparing against.
-        // e2.compareTo(e1)
+        //e (parameter) → the object already in the TreeSet that we are comparing against.
 
-        if (e1 < e2) return -1;
-        else if (e1 > e2) return +1;
+
+        if (e1 > e2) return +1;
+        else if (e1 < e2) return -1;
         else return 0;
 
+
     }
-
-
 }
 
-
-class MyComparator implements Comparator<Object> {
+class myComparator implements Comparator<Employee> {
 
     @Override
-    public int compare(Object obj1, Object obj2) {
+    public int compare(Employee e1, Employee e2) {
 
-        //obj1 → incoming/new object
-        //obj2 → existing object in the TreeSet
+        //e1 → incoming/new object
+        //e2 → existing object in the TreeSet
 
-        Employee e1 = (Employee) obj1;
-        Employee e2 = (Employee) obj2;
+
         String s1 = e1.name;
         String s2 = e2.name;
+
         return s1.compareTo(s2);
 
     }
 }
-
 public class ComparableAndComparator {
 
     public static void main(String[] args) {
@@ -78,7 +75,7 @@ public class ComparableAndComparator {
         System.out.println(t);
 
 
-        TreeSet<Employee> t1 = new TreeSet<>(new MyComparator());
+        TreeSet<Employee> t1 = new TreeSet<>(new myComparator());
         t1.add(e1);
         t1.add(e2);
         t1.add(e3);
