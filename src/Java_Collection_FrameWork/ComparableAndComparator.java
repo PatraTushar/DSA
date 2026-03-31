@@ -89,3 +89,9 @@ public class ComparableAndComparator {
 
     }
 }
+
+
+
+
+
+// obj1.compareTo(obj2)  --> newElement.compareTo(existingElement)
