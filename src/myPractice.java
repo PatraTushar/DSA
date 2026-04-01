@@ -22,49 +22,32 @@ public class myPractice {
     }
 
 
-    static ListNode reverse(ListNode head) {
 
-        ListNode prev = null;
-        ListNode curr = head;
-        ListNode agla;
 
-        while (curr != null) {
+    static ListNode delete(ListNode head) {
 
-            agla = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = agla;
+        if (head==null || head.next==null) return null;
+
+        ListNode prev=null;
+        ListNode slow=head;
+        ListNode fast=head;
+
+        while (fast!=null && fast.next!=null){
+
+            prev=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+
+
         }
 
-        return prev;
-
-    }
 
 
-    static ListNode plusOne(ListNode head) {
+        prev.next=slow.next;
 
-        ListNode dummy = new ListNode(-1);
-        ListNode d = dummy;
-        int carry = 1;
+        return head;
 
 
-        ListNode temp = reverse(head);
-
-        while (temp != null) {
-
-            int sum = temp.val + carry;
-            int digit = sum % 10;
-            carry = sum / 10;
-
-            d.next = new ListNode(digit);
-            d = d.next;
-            temp = temp.next;
-        }
-
-        if (carry>0) d.next=new ListNode(carry);
-
-
-        return reverse(dummy.next);
 
 
     }
@@ -80,7 +63,7 @@ public class myPractice {
         b.next = c;
 
         display(a);
-        ListNode Ans = plusOne(a);
+        ListNode Ans = delete(a);
         display(Ans);
 
 
