@@ -3,125 +3,72 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 public class Q29 {
 
     public static class ListNode {
-
-        int data;
+        int val;
         ListNode next;
 
-        ListNode(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
-
     }
 
-
+    // Reverse a linked list from head to tail
     static ListNode reverse(ListNode head) {
-
         ListNode prev = null;
         ListNode curr = head;
-        ListNode Agla;
+        ListNode agla;
 
         while (curr != null) {
-
-            Agla = curr.next;
+            agla = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = Agla;
+            curr = agla;
         }
 
         return prev;
     }
 
-    static ListNode findKthNode(ListNode head, int k){
+    // Reverse every k nodes
+    static ListNode reverseKGroup(ListNode head, int k) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
 
-        ListNode temp=head;
+        ListNode prevGroupEnd = dummy;
+        ListNode groupStart = head;
 
-        for(int i=1;i<k;i++){
+        while (true) {
+            ListNode kth = groupStart;
+            for (int i = 1; i < k && kth != null; i++) {
+                kth = kth.next;
+            }
+            if (kth == null) break; // less than k nodes left
 
-            if (temp == null) return null;
+            ListNode nextGroup = kth.next;
+            kth.next = null; // cut current group
 
-            temp=temp.next;
+            // Reverse current group
+            prevGroupEnd.next = reverse(groupStart);
 
+            // Connect reversed group to next
+            groupStart.next = nextGroup;
 
+            // Move pointers for next iteration
+            prevGroupEnd = groupStart;
+            groupStart = nextGroup;
         }
 
-        return temp;
-
-
-    }
-
-    static ListNode reverseKthNode(ListNode head, int k){
-
-        //Time Complexity (TC): O(n)
-        //Space Complexity (SC): O(1)
-
-        ListNode temp=head;
-
-        ListNode prevNode=null;
-
-        while (temp!=null){
-
-            ListNode kthNode=findKthNode(temp,k);
-
-            if(kthNode==null){
-
-                if(prevNode!=null){
-
-                    prevNode.next=temp;
-
-
-                }
-
-                break;
-
-            }
-
-            ListNode nextNode=kthNode.next;
-            kthNode.next=null;
-
-          reverse(temp);
-
-
-
-            if(temp==head){
-
-                head=kthNode;
-
-            }
-            else {
-
-                prevNode.next=kthNode;
-
-
-            }
-
-            prevNode=temp;
-            temp=nextNode;
-        }
-
-        return head;
-
+        return dummy.next;
     }
 
     static void display(ListNode head) {
-
         ListNode temp = head;
-
         while (temp != null) {
-
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
-
         }
-
         System.out.println();
-
     }
 
-
     public static void main(String[] args) {
-
-        // Reverse nodes in k group
-
         ListNode a = new ListNode(1);
         ListNode b = new ListNode(2);
         ListNode c = new ListNode(3);
@@ -143,12 +90,10 @@ public class Q29 {
         h.next = i;
         i.next = j;
 
-        int k=3;
+        int k = 3;
 
         display(a);
-        ListNode Ans=reverseKthNode(a,k);
-        display(Ans);
-
-
+        ListNode ans = reverseKGroup(a, k);
+        display(ans);
     }
 }
