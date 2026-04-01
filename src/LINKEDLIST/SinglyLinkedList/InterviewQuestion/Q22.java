@@ -2,35 +2,35 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q22 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
-            this.data=data;
+        ListNode(int val){
+            this.val = val;
         }
     }
 
-    static void display(Node head){
-        Node temp=head;
+    static void display(ListNode head){
+        ListNode temp=head;
         while (temp!=null){
-            System.out.print(temp.data +" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
 
         System.out.println();
     }
 
-    static Node oddEvenLL(Node head){
+    static ListNode oddEvenLL(ListNode head){
 
         if(head==null || head.next==null) return head;
 
-        Node temp=head;
-        Node odd=new Node(0);
-        Node even=new Node(0);
-        Node tempO=odd;
-        Node tempE=even;
+        ListNode temp=head;
+        ListNode odd=new ListNode(0);
+        ListNode even=new ListNode(0);
+        ListNode tempO=odd;
+        ListNode tempE=even;
 
         while (temp!=null){
 
@@ -55,19 +55,19 @@ public class Q22 {
 
         // Q: Odd even linked list (leeTCode-->328)
 
-        Node a=new Node(10);
-        Node b=new Node(11);
-        Node c=new Node(1);
-        Node d=new Node(4);
-        Node e=new Node(6);
-        Node f=new Node(5);
+        ListNode a=new ListNode(10);
+        ListNode b=new ListNode(11);
+        ListNode c=new ListNode(1);
+        ListNode d=new ListNode(4);
+        ListNode e=new ListNode(6);
+        ListNode f=new ListNode(5);
         a.next=b;
         b.next=c;
         c.next=d;
         d.next=e;
         e.next=f;
         display(a);
-        Node Ans=oddEvenLL(a);
+        ListNode Ans=oddEvenLL(a);
         display(Ans);
 
 

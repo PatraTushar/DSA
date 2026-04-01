@@ -2,60 +2,61 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q24 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
-            this.data=data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static void display(Node head){
+    static void display(ListNode head) {
 
-        Node temp=head;
-        while (temp!=null){
-            System.out.print(temp.data +" ");
-            temp=temp.next;
+        ListNode temp = head;
+        while (temp != null) {
+            System.out.print(temp.val + " ");
+            temp = temp.next;
         }
         System.out.println();
     }
 
-    static Node deepCopy(Node head){
+    static ListNode deepCopy(ListNode head) {
 
-        Node temp1=head;
-        Node h=new Node(-1);
-        Node temp2=h;
 
-        while (temp1!=null){
-            Node a=new Node(temp1.data);
-            temp2.next=a;
-            temp2=temp2.next;
-            temp1=temp1.next;
+        ListNode ptr1 = head;
+        ListNode dummy = new ListNode(-1);
+        ListNode ptr2 = dummy;
+
+        while (ptr1 != null) {
+
+            ListNode newNode = new ListNode(ptr1.val);
+            ptr2.next = newNode;
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
         }
 
-        h=h.next;
-        return h;
+        return dummy.next;
     }
 
     public static void main(String[] args) {
 
         // Q: Deep copy
 
-        Node a=new Node(1);
-        Node b=new Node(10);
-        Node c=new Node(99);
-        Node d=new Node(101);
-        Node e=new Node(4);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(10);
+        ListNode c = new ListNode(99);
+        ListNode d = new ListNode(101);
+        ListNode e = new ListNode(4);
 
-        a.next=b;
-        b.next=c;
-        c.next=d;
-        d.next=e;
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
 
         display(a);
-        Node Ans=deepCopy(a);
+        ListNode Ans = deepCopy(a);
         display(Ans);
 
     }

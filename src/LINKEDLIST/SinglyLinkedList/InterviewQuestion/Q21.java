@@ -2,91 +2,105 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q21 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
-            this.data=data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static Node reverse(Node head){
+    static ListNode reverse(ListNode head) {
 
-        Node curr=head;
-        Node prev=null;
-        Node agla;
+        ListNode curr = head;
+        ListNode prev = null;
+        ListNode agla;
 
-        while (curr!=null){
-            agla=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=agla;
+        while (curr != null) {
+            agla = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = agla;
         }
 
         return prev;
     }
 
-    static int maxTwinSum(Node head){
+    static ListNode findLeftMiddle(ListNode head) {
+
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+
+
+        }
+
+
+        if (fast == null) return prev;
+
+        return slow;
+
+    }
+
+
+    static int maxTwinSum(ListNode head) {
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        Node slow=head;
-        Node fast=head;
+        ListNode leftMiddle = findLeftMiddle(head);
 
-        while (fast.next!=null && fast.next.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
+        leftMiddle.next = reverse(leftMiddle.next);
+
+        ListNode ptr1 = head;
+        ListNode ptr2 = leftMiddle.next;
+
+        int maxTwin = 0;
+
+        while (ptr2 != null) {
+
+            int sum = ptr1.val + ptr2.val;
+
+            if (sum > maxTwin) maxTwin = sum;
+
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
         }
 
-        slow.next=reverse(slow.next);
 
-
-        Node p1=head;
-        Node p2=slow.next;
-        int max=Integer.MIN_VALUE;
-
-        while (p2!=null){
-
-            if((p1.data + p2.data) >max){
-                max=(p1.data + p2.data);
-            }
-
-            p1=p1.next;
-            p2=p2.next;
-
-
-        }
-
-        return max;
-
+        return maxTwin;
 
     }
 
     public static void main(String[] args) {
 
         // Q: Find the maximum twin sum of a linked list of even length (leeTCode-->2130)
-        Node a=new Node(1);
-        Node b=new Node(10);
-        Node c=new Node(13);
-        Node d=new Node(4);
-        Node e=new Node(5);
-        Node f=new Node(6);
-        Node g=new Node(7);
-        Node h=new Node(2);
-        a.next=b;
-        b.next=c;
-        c.next=d;
-        d.next=e;
-        e.next=f;
-        f.next=g;
-        g.next=h;
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(10);
+        ListNode c = new ListNode(13);
+        ListNode d = new ListNode(4);
+        ListNode e = new ListNode(5);
+        ListNode f = new ListNode(6);
+        ListNode g = new ListNode(7);
+        ListNode h = new ListNode(2);
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = f;
+        f.next = g;
+        g.next = h;
 
-        int Ans=maxTwinSum(a);
+        int Ans = maxTwinSum(a);
         System.out.println(Ans);
-
 
 
     }

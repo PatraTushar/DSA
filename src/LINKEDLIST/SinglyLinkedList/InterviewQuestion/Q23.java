@@ -2,39 +2,39 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q23 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
-        Node random;
+        int val;
+        ListNode next;
+        ListNode random;
 
-        Node(int data){
-            this.data=data;
+        ListNode(int val){
+            this.val = val;
         }
     }
 
-    static void display(Node head){
-        Node temp=head;
+    static void display(ListNode head){
+        ListNode temp=head;
 
         while (temp!=null){
-            System.out.print(temp.data+" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
         System.out.println();
     }
 
-    static Node randomPointer(Node head){
+    static ListNode randomPointer(ListNode head){
 
         if(head==null) return null;
 
         // Assign the alternate connections
 
-        Node oldTemp = head;
-        Node newTemp;
+        ListNode oldTemp = head;
+        ListNode newTemp;
 
         while (oldTemp != null) {
 
-            newTemp = new Node(oldTemp.data);
+            newTemp = new ListNode(oldTemp.val);
             newTemp.next = oldTemp.next;
             oldTemp.next = newTemp;
             oldTemp = oldTemp.next.next;
@@ -62,7 +62,7 @@ public class Q23 {
             newTemp = newTemp.next.next;
         }
 
-        Node dummy = new Node(-1);
+        ListNode dummy = new ListNode(-1);
         oldTemp = head;
         newTemp = head.next;
         dummy.next = head.next;
@@ -90,11 +90,11 @@ public class Q23 {
 
         // Q: copy list with random Pointer (leeTCode-->138)
 
-        Node a=new Node(7);
-        Node b=new Node(13);
-        Node c=new Node(11);
-        Node d=new Node(10);
-        Node e=new Node(1);
+        ListNode a=new ListNode(7);
+        ListNode b=new ListNode(13);
+        ListNode c=new ListNode(11);
+        ListNode d=new ListNode(10);
+        ListNode e=new ListNode(1);
 
         a.next=b;
         b.next=c;
@@ -108,7 +108,7 @@ public class Q23 {
         e.random=a;
 
         display(a);
-        Node Ans=randomPointer(a);
+        ListNode Ans=randomPointer(a);
         display(Ans);
 
 
