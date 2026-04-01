@@ -2,44 +2,44 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q31 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
 
-        Node(int data) {
+        ListNode next;
 
-            this.data = data;
+        ListNode(int val) {
+
+            this.val = val;
         }
     }
 
-    static Node AddNumbers(Node head1, Node head2) {
+    static ListNode AddNumbers(ListNode l1, ListNode l2) {
 
         // Time Complexity (TC): O(max(N, M))
         //Space Complexity (SC): O(max(N, M))
         //Where:
-        //N = number of nodes in head1
-        //M = number of nodes in head2
+        //N = number of nodes in l1
+        //M = number of nodes in l2
 
 
-
-        Node dummy = new Node(-1);
-        Node curr = dummy;
+        ListNode dummy = new ListNode(-1);
+        ListNode curr = dummy;
         int carry = 0;
 
-        while (head1 != null || head2 != null || carry != 0) {
-            int val1 = (head1 != null) ? head1.data : 0;
-            int val2 = (head2 != null) ? head2.data : 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            int val1 = (l1 != null) ? l1.val : 0;
+            int val2 = (l2 != null) ? l2.val : 0;
 
             int sum = val1 + val2 + carry;
             int digit = sum % 10;
             carry = sum / 10;
 
-            curr.next = new Node(digit);
+            curr.next = new ListNode(digit);
             curr = curr.next;
 
-            if (head1 != null) head1 = head1.next;
-            if (head2 != null) head2 = head2.next;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
         }
 
         return dummy.next;
@@ -47,50 +47,45 @@ public class Q31 {
     }
 
 
-
-    static void display(Node head) {
-        Node temp = head;
+    static void display(ListNode head) {
+        ListNode temp = head;
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
         System.out.println();
     }
 
 
-
     public static void main(String[] args) {
 
-        // Add Two Numbers  (leeTCde->2)
+        // Add Two Numbers  (leeTCode->2)
 
-        Node a = new Node(4);
-        Node b = new Node(5);
-        Node c = new Node(6);
-        Node d = new Node(2);
-         Node e = new Node(6);
+        ListNode a = new ListNode(4);
+        ListNode b = new ListNode(5);
+        ListNode c = new ListNode(6);
+        ListNode d = new ListNode(2);
+        ListNode e = new ListNode(6);
 
         a.next = b;
         b.next = c;
         c.next = d;
-         d.next=e;
+        d.next = e;
 
 
-        Node f = new Node(4);
-        Node g = new Node(1);
-        Node h = new Node(8);
-        Node i = new Node(5);
-        Node j = new Node(2);
+        ListNode f = new ListNode(4);
+        ListNode g = new ListNode(1);
+        ListNode h = new ListNode(8);
+        ListNode i = new ListNode(5);
+        ListNode j = new ListNode(2);
 
         f.next = g;
         g.next = h;
         h.next = i;
         i.next = j;
 
-        Node Ans = AddNumbers(a, f);
+        ListNode Ans = AddNumbers(a, f);
         display(Ans);
-
-
-
 
 
     }

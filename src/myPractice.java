@@ -22,51 +22,63 @@ public class myPractice {
     }
 
 
-    static ListNode deleteNthNode(ListNode head, int n) {
+    static ListNode AddNumbers(ListNode l1, ListNode l2) {
 
 
-        ListNode slow = head;
-        ListNode fast = head;
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+        int carry = 0;
 
-        for (int i = 0; i < n; i++) {
+        while (l1 != null || l2 != null || carry != 0) {
 
-            fast = fast.next;
+
+            int val1 = l1 != null ? l1.val : 0;
+            int val2 = l2 != null ? l2.val : 0;
+
+            int sum = val1 + val2 + carry;
+            int digit = sum % 10;
+            carry = sum / 10;
+
+            curr.next = new ListNode(digit);
+            curr = curr.next;
+
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+
         }
 
-        if (fast == null) return head.next;
-
-
-        while (fast.next != null) {
-
-            slow = slow.next;
-            fast = fast.next;
-        }
-
-
-
-        slow.next = slow.next.next;
-
-        return head;
+        return dummy.next;
 
     }
 
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(1);
-        ListNode b = new ListNode(2);
-        ListNode c = new ListNode(3);
-        ListNode d = new ListNode(4);
-        ListNode e = new ListNode(5);
+        ListNode a = new ListNode(4);
+        ListNode b = new ListNode(5);
+        ListNode c = new ListNode(6);
+        ListNode d = new ListNode(2);
+        ListNode e = new ListNode(6);
 
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
 
-        display(a);
-        ListNode ans = deleteNthNode(a, 4);
-        display(ans);
+
+        ListNode f = new ListNode(4);
+        ListNode g = new ListNode(1);
+        ListNode h = new ListNode(8);
+        ListNode i = new ListNode(5);
+        ListNode j = new ListNode(2);
+
+        f.next = g;
+        g.next = h;
+        h.next = i;
+        i.next = j;
+
+        ListNode Ans = AddNumbers(a, f);
+        display(Ans);
 
 
     }
