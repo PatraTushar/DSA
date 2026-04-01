@@ -1,5 +1,3 @@
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q24;
-
 public class myPractice {
 
     public static class ListNode {
@@ -24,21 +22,30 @@ public class myPractice {
     }
 
 
-    static ListNode deepCopy(ListNode head) {
+    static ListNode deleteDuplicates(ListNode head) {
 
-        ListNode ptr1 = head;
-        ListNode dummy = new ListNode(-1);
-        ListNode ptr2 = dummy;
+        ListNode curr = head;
+        ListNode temp;
 
-        while (ptr1 != null) {
+        while (curr != null && curr.next != null) {
 
-            ListNode newNode = new ListNode(ptr1.val);
-            ptr2.next = newNode;
-            ptr1 = ptr1.next;
-            ptr2 = ptr2.next;
+            if (curr.val != curr.next.val) curr = curr.next;
+            else {
+
+                temp = curr.next;
+
+                while (temp != null && temp.val == curr.val) {
+
+                    temp = temp.next;
+                }
+
+                curr.next = temp;
+                curr = temp;
+            }
         }
 
-        return dummy.next;
+
+        return head;
 
 
     }
@@ -46,19 +53,33 @@ public class myPractice {
 
     public static void main(String[] args) {
 
+
         ListNode a = new ListNode(1);
-        ListNode b = new ListNode(10);
-        ListNode c = new ListNode(99);
-        ListNode d = new ListNode(101);
-        ListNode e = new ListNode(4);
+        ListNode b = new ListNode(1);
+        ListNode c = new ListNode(2);
+        ListNode d = new ListNode(3);
+        ListNode e = new ListNode(3);
+        ListNode f = new ListNode(3);
+        ListNode g = new ListNode(4);
+        ListNode h = new ListNode(4);
+        ListNode i = new ListNode(5);
+        ListNode j = new ListNode(6);
+        ListNode k = new ListNode(6);
+
 
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
+        e.next = f;
+        f.next = g;
+        g.next = h;
+        h.next = i;
+        i.next = j;
+        j.next = k;
 
         display(a);
-        ListNode Ans = deepCopy(a);
+        ListNode Ans = deleteDuplicates(a);
         display(Ans);
 
 
