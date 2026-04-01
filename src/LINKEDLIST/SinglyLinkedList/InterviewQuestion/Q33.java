@@ -2,23 +2,23 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q33 {
 
-    public static class Node {
+    public static class ListNode {
 
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
+        ListNode(int val) {
 
-            this.data = data;
+            this.val = val;
         }
     }
 
-    static Node reverse(Node head){
+    static ListNode reverse(ListNode head){
 
-        Node curr=head;
-        Node prev=null;
-        Node Agla;
+        ListNode curr=head;
+        ListNode prev=null;
+        ListNode Agla;
 
         while (curr!=null){
             Agla=curr.next;
@@ -31,51 +31,44 @@ public class Q33 {
 
     }
 
-    static Node plusOne(Node head){
+    static ListNode plusOne(ListNode head){
 
         //Time Complexity: O(n)
         //Space Complexity: O(n)
 
 
+        ListNode dummy = new ListNode(-1);
+        ListNode d = dummy;
+        int carry = 1;
 
-        Node temp=reverse(head);
-        int carry=1;
-        Node dummy=new Node(-1);
-        Node d1=dummy;
 
-        while (temp!=null){
+        ListNode temp = reverse(head);
 
-            int sum=temp.data+carry;
+        while (temp != null) {
 
-            int digit=sum%10;
-            carry=sum/10;
+            int sum = temp.val + carry;
+            int digit = sum % 10;
+            carry = sum / 10;
 
-            Node newNode=new Node(digit);
-            d1.next=newNode;
-            d1=newNode;
-            temp=temp.next;
-
+            d.next = new ListNode(digit);
+            d = d.next;
+            temp = temp.next;
         }
 
-        if (carry > 0) {
-            d1.next = new Node(carry);
-        }
-
-
+        if (carry>0) d.next=new ListNode(carry);
 
 
         return reverse(dummy.next);
 
 
 
-
     }
 
-    static void display(Node head){
+    static void display(ListNode head){
 
-        Node temp=head;
+        ListNode temp=head;
         while (temp!=null){
-            System.out.print(temp.data +" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
         System.out.println();
@@ -84,15 +77,15 @@ public class Q33 {
 
     public static void main(String[] args) {
 
-        Node a = new Node(1);
-        Node b = new Node(0);
-        Node c = new Node(2);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(0);
+        ListNode c = new ListNode(2);
 
         a.next = b;
         b.next = c;
 
         display(a);
-        Node Ans=plusOne(a);
+        ListNode Ans=plusOne(a);
         display(Ans);
 
 
