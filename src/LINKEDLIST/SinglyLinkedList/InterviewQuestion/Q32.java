@@ -2,20 +2,20 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q32 {
 
-    public static class Node {
+    public static class ListNode {
 
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
+        ListNode(int val) {
 
-            this.data = data;
+            this.val = val;
         }
     }
 
 
-    static Node count0s1sAnd2s(Node head){
+    static ListNode count0s1sAnd2s(ListNode head){
 
         // Brute force
 
@@ -27,15 +27,15 @@ public class Q32 {
         int count0=0;
         int count1=0;
         int count2=0;
-        Node temp=head;
+        ListNode temp=head;
 
 
         while (temp!=null){
 
-            if(temp.data==0){
+            if(temp.val ==0){
                 count0++;
             }
-            else if(temp.data==1){
+            else if(temp.val ==1){
                 count1++;
             }
             else {
@@ -52,20 +52,20 @@ public class Q32 {
         while (temp!=null){
 
             if(count0!=0){
-                temp.data=0;
+                temp.val =0;
                 count0--;
             }
 
             else if(count1!=0){
 
-                temp.data=1;
+                temp.val =1;
                 count1--;
 
             }
 
             else {
 
-                temp.data=2;
+                temp.val =2;
                 count2--;
 
             }
@@ -77,57 +77,62 @@ public class Q32 {
 
     }
 
-    static Node Sort0s1s2s(Node head){
+    static ListNode Sort0s1s2s(ListNode head){
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
         if(head==null) return null;
 
-        Node dummy1=new Node(-1);
-        Node d1=dummy1;
-        Node dummy2=new Node(-1);
-        Node d2=dummy2;
-        Node dummy3=new Node(-1);
-        Node d3=dummy3;
 
-        Node temp=head;
+        ListNode zeroes = new ListNode(-1);
+        ListNode z = zeroes;
+        ListNode ones = new ListNode(-1);
+        ListNode o = ones;
+        ListNode twos = new ListNode(-1);
+        ListNode t = twos;
+        ListNode temp = head;
 
-        while (temp!=null){
 
-            if(temp.data==0){
-                d1.next=temp;
-                d1=d1.next;
+        while (temp != null) {
+
+            if (temp.val == 0) {
+
+                z.next = temp;
+                z = z.next;
+                temp = temp.next;
+
+
+            } else if (temp.val == 1) {
+
+                o.next = temp;
+                o = o.next;
+                temp = temp.next;
+
+
+            } else {
+
+                t.next = temp;
+                t = t.next;
+                temp = temp.next;
+
+
             }
-
-            else if(temp.data==1){
-                d2.next=temp;
-                d2=d2.next;
-            }
-
-            else {
-
-                d3.next=temp;
-                d3=d3.next;
-
-            }
-
-
-            temp=temp.next;
         }
 
-        d1.next = (dummy2.next != null) ? dummy2.next : dummy3.next;
-        d2.next = (dummy3.next!=null) ? dummy3.next : null;
-        d3.next = null;
 
-        return dummy1.next;
+        z.next = ones.next != null ? ones.next : twos.next;
+        o.next = twos.next != null ? twos.next : null;
+        t.next = null;
+
+        return zeroes.next;
     }
 
-    static void display(Node head){
+    static void display(ListNode head){
 
-        Node temp=head;
+        ListNode temp=head;
         while (temp!=null){
-            System.out.print(temp.data +" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
         System.out.println();
@@ -136,14 +141,14 @@ public class Q32 {
 
     public static void main(String[] args) {
 
-        Node a = new Node(1);
-        Node b = new Node(0);
-        Node c = new Node(2);
-        Node d = new Node(0);
-        Node e = new Node(2);
-        Node f = new Node(1);
-        Node g = new Node(0);
-        Node h = new Node(1);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(0);
+        ListNode c = new ListNode(2);
+        ListNode d = new ListNode(0);
+        ListNode e = new ListNode(2);
+        ListNode f = new ListNode(1);
+        ListNode g = new ListNode(0);
+        ListNode h = new ListNode(1);
 
         a.next = b;
         b.next = c;
@@ -152,7 +157,7 @@ public class Q32 {
         e.next = f;
         f.next = g;
         g.next = h;
-        Node Ans= Sort0s1s2s(a);
+        ListNode Ans= Sort0s1s2s(a);
         display(Ans);
 
 

@@ -22,62 +22,73 @@ public class myPractice {
     }
 
 
-    static ListNode AddNumbers(ListNode l1, ListNode l2) {
+    static ListNode sort(ListNode head) {
+
+        ListNode zeroes = new ListNode(-1);
+        ListNode z = zeroes;
+        ListNode ones = new ListNode(-1);
+        ListNode o = ones;
+        ListNode twos = new ListNode(-1);
+        ListNode t = twos;
+        ListNode temp = head;
 
 
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
-        int carry = 0;
+        while (temp != null) {
 
-        while (l1 != null || l2 != null || carry != 0) {
+            if (temp.val == 0) {
+
+                z.next = temp;
+                z = z.next;
+                temp = temp.next;
 
 
-            int val1 = l1 != null ? l1.val : 0;
-            int val2 = l2 != null ? l2.val : 0;
+            } else if (temp.val == 1) {
 
-            int sum = val1 + val2 + carry;
-            int digit = sum % 10;
-            carry = sum / 10;
+                o.next = temp;
+                o = o.next;
+                temp = temp.next;
 
-            curr.next = new ListNode(digit);
-            curr = curr.next;
 
-            if (l1 != null) l1 = l1.next;
-            if (l2 != null) l2 = l2.next;
+            } else {
 
+                t.next = temp;
+                t = t.next;
+                temp = temp.next;
+
+
+            }
         }
 
-        return dummy.next;
+
+        z.next = ones.next != null ? ones.next : twos.next;
+        o.next = twos.next != null ? twos.next : null;
+        t.next = null;
+
+        return zeroes.next;
+
 
     }
 
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(4);
-        ListNode b = new ListNode(5);
-        ListNode c = new ListNode(6);
-        ListNode d = new ListNode(2);
-        ListNode e = new ListNode(6);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(0);
+        ListNode c = new ListNode(2);
+        ListNode d = new ListNode(0);
+        ListNode e = new ListNode(2);
+        ListNode f = new ListNode(1);
+        ListNode g = new ListNode(0);
+        ListNode h = new ListNode(1);
 
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
-
-
-        ListNode f = new ListNode(4);
-        ListNode g = new ListNode(1);
-        ListNode h = new ListNode(8);
-        ListNode i = new ListNode(5);
-        ListNode j = new ListNode(2);
-
+        e.next = f;
         f.next = g;
         g.next = h;
-        h.next = i;
-        i.next = j;
-
-        ListNode Ans = AddNumbers(a, f);
+        ListNode Ans = sort(a);
         display(Ans);
 
 
