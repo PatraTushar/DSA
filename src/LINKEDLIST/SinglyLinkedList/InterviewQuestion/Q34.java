@@ -2,72 +2,62 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q34 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
 
-    static int lengthOfALoop(Node head) {
+    static int lengthOfALoop(ListNode head) {
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        Node slow = head;
-        Node fast = head;
-        boolean hasLoop=false;
-
+        ListNode slow = head;
+        ListNode fast = head;
 
         while (fast != null && fast.next != null) {
+
             slow = slow.next;
             fast = fast.next.next;
 
-            if (slow == fast){
+            if (slow == fast) {
 
-                hasLoop=true;
+                int length = 1;
+                ListNode temp = slow.next;
 
-                break;
+                while (temp != slow) {
+
+                    length++;
+                    temp = temp.next;
+                }
+
+                return length;
+
 
             }
-
         }
 
-        if(!hasLoop) return 0;
-
-
-        Node temp = slow;
-
-        if (slow != null) {
-            temp = slow.next;
-        }
-        int length = 1;
-
-        while (temp != slow) {
-            length++;
-            if (temp != null) temp = temp.next;
-        }
-
-
-        return length ;
+        return 0;
 
     }
 
 
     public static void main(String[] args) {
-        Node a = new Node(1);
-        Node b = new Node(2);
-        Node c = new Node(3);
-        Node d = new Node(4);
-        Node e = new Node(5);
-        Node f = new Node(6);
-        Node g = new Node(7);
-        Node h = new Node(8);
-        Node i = new Node(9);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(3);
+        ListNode d = new ListNode(4);
+        ListNode e = new ListNode(5);
+        ListNode f = new ListNode(6);
+        ListNode g = new ListNode(7);
+        ListNode h = new ListNode(8);
+        ListNode i = new ListNode(9);
 
         a.next = b;
         b.next = c;
