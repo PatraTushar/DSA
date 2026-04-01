@@ -3,35 +3,35 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 public class Q28 {
 
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
+        ListNode(int val){
 
-            this.data=data;
+            this.val = val;
         }
     }
 
-    static void display(Node head){
+    static void display(ListNode head){
 
-        Node temp=head;
+        ListNode temp=head;
         while (temp!=null){
-            System.out.print(temp.data+" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
         System.out.println();
 
     }
 
-    static Node reverse(Node head){
+    static ListNode reverse(ListNode head){
 
         if(head==null || head.next==null) return head;
 
-        Node curr=head;
-        Node prev=null;
-        Node agla=null;
+        ListNode curr=head;
+        ListNode prev=null;
+        ListNode agla=null;
 
         while (curr!=null){
 
@@ -46,15 +46,15 @@ public class Q28 {
 
     }
 
-    static void reorderSet(Node head){
+    static void reorderSet(ListNode head){
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
 
 
-        Node slow=head;
-        Node fast=head;
+        ListNode slow=head;
+        ListNode fast=head;
 
 
         while ( fast.next!=null && fast.next.next!=null){
@@ -64,18 +64,18 @@ public class Q28 {
         }
 
 
-        Node rev2ndHalf=reverse(slow.next);
+        ListNode rev2ndHalf=reverse(slow.next);
         slow.next=null;
 
-        Node pointer1=head;
-        Node pointer2=rev2ndHalf;
+        ListNode pointer1=head;
+        ListNode pointer2=rev2ndHalf;
 
 
 
         while (pointer1 != null &&pointer2!=null){
 
-            Node temp1 = pointer1.next;
-            Node temp2 = pointer2.next;
+            ListNode temp1 = pointer1.next;
+            ListNode temp2 = pointer2.next;
 
             pointer1.next = pointer2;
             pointer2.next = temp1;
@@ -98,12 +98,12 @@ public class Q28 {
 
         // Q: Reorder list (leeTCode->143)
 
-        Node a=new Node(1);
-        Node b=new Node(2);
-        Node c=new Node(3);
-        Node d=new Node(4);
-        Node e=new Node(5);
-        Node f=new Node(6);
+        ListNode a=new ListNode(1);
+        ListNode b=new ListNode(2);
+        ListNode c=new ListNode(3);
+        ListNode d=new ListNode(4);
+        ListNode e=new ListNode(5);
+        ListNode f=new ListNode(6);
 
         a.next=b;
         b.next=c;
