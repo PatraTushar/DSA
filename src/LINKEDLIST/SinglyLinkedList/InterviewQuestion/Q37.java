@@ -2,59 +2,52 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q37 {
 
-    public static class Node{
+    public static class ListNode {
 
-        Node prev;
-        int data;
-        Node next;
+        ListNode prev;
+        int val;
+        ListNode next;
 
-        Node(int data){
+        ListNode(int val) {
 
-            this.data=data;
+            this.val = val;
         }
     }
 
-    static Node deleteKeys(Node head,int key){
+    static ListNode deleteKeys(ListNode head, int key) {
 
         //Time Complexity (TC): O(N)
         //Space Complexity (SC): O(1)
 
-        Node temp=head;
+        ListNode temp = head;
 
-        while (temp!=null){
+        while (temp != null) {
 
-            if(temp.data==key){
+            if (temp.val == key) {
 
-                if(temp==head){
-                    head=head.next;
-                    if (head != null) head.prev = null;
-                }
+                if (temp==head) head=temp.next;
 
-                Node nextNode=temp.next;
-                Node prevNode=temp.prev;
+                if (temp.prev!=null)  temp.prev.next=temp.next;
 
-                if(nextNode!=null) nextNode.prev=prevNode;
-                if(prevNode!=null) prevNode.next=nextNode;
-
-                temp=nextNode;
+                if (temp.next!=null) temp.next.prev=temp.prev;
             }
 
-            else {
+            temp=temp.next;
 
-                temp=temp.next;
-            }
+
         }
+
 
         return head;
 
     }
 
-    static void display(Node head){
+    static void display(ListNode head) {
 
-        Node temp=head;
-        while (temp!=null){
-            System.out.print(temp.data +" ");
-            temp=temp.next;
+        ListNode temp = head;
+        while (temp != null) {
+            System.out.print(temp.val + " ");
+            temp = temp.next;
         }
         System.out.println();
     }
@@ -63,32 +56,27 @@ public class Q37 {
 
         // Delete All occurrences of key in DLL
 
-        Node a=new Node(10);
-        Node b=new Node(4);
-        Node c=new Node(10);
-        Node d=new Node(10);
-        Node e=new Node(6);
+        ListNode a = new ListNode(10);
+        ListNode b = new ListNode(4);
+        ListNode c = new ListNode(10);
+        ListNode d = new ListNode(10);
+        ListNode e = new ListNode(6);
 
-        a.prev=null;
-        a.next=b;
-        b.prev=a;
-        b.next=c;
-        c.prev=b;
-        c.next=d;
-        d.prev=c;
-        d.next=e;
-        e.prev=d;
-        e.next=null;
+        a.prev = null;
+        a.next = b;
+        b.prev = a;
+        b.next = c;
+        c.prev = b;
+        c.next = d;
+        d.prev = c;
+        d.next = e;
+        e.prev = d;
+        e.next = null;
 
         display(a);
-        int key=10;
-        Node Ans=deleteKeys(a,key);
+        int key = 10;
+        ListNode Ans = deleteKeys(a, key);
         display(Ans);
-
-
-
-
-
 
 
     }
