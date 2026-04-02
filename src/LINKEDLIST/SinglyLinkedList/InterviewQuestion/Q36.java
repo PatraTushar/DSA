@@ -2,25 +2,25 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q36 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static Node deleteMiddle(Node head) {
+    static ListNode deleteMiddle(ListNode head) {
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
         // for even left middle
 
-        Node slow = head;
-        Node fast = head;
+        ListNode slow = head;
+        ListNode fast = head;
 
         if(fast==null) return null;
         if (fast.next==null) return head;
@@ -36,11 +36,11 @@ public class Q36 {
         return head;
     }
 
-    static void display(Node head) {
+    static void display(ListNode head) {
 
-        Node temp = head;
+        ListNode temp = head;
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
         System.out.println();
@@ -49,12 +49,12 @@ public class Q36 {
 
     public static void main(String[] args) {
 
-        Node a = new Node(1);
-        Node b = new Node(2);
-        Node c = new Node(3);
-        Node d = new Node(4);
-        Node e = new Node(5);
-        Node f = new Node(6);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(3);
+        ListNode d = new ListNode(4);
+        ListNode e = new ListNode(5);
+        ListNode f = new ListNode(6);
 
         a.next = b;
         b.next = c;
@@ -63,7 +63,7 @@ public class Q36 {
         e.next = f;
 
         display(a);
-        Node Ans = deleteMiddle(a);
+        ListNode Ans = deleteMiddle(a);
         display(Ans);
 
 
