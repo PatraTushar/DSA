@@ -23,7 +23,7 @@ public class Q23 {
         System.out.println();
     }
 
-    static ListNode randomPointer(ListNode head){
+    static ListNode copyRandomList(ListNode head){
 
         if(head==null) return null;
 
@@ -108,7 +108,7 @@ public class Q23 {
         e.random=a;
 
         display(a);
-        ListNode Ans=randomPointer(a);
+        ListNode Ans= copyRandomList(a);
         display(Ans);
 
 

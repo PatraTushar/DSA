@@ -1,6 +1,3 @@
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q23;
-import linkedListByKK.SinglyLinkedList.InterviewQuestion.Q41;
-
 public class myPractice {
 
     public static class ListNode {
