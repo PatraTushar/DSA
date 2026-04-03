@@ -2,42 +2,41 @@ package LINKEDLIST.doublyLinkedList;
 
 public class Q1 {
 
-   public static class Node{
+    public static class ListNode {
 
-        Node prev;
-        int data;
-        Node next;
+        ListNode prev;
+        int val;
+        ListNode next;
 
-        Node(int data){
+        ListNode(int val) {
 
-            this.data=data;
+            this.val = val;
         }
     }
 
-    static boolean isPalindrome(Node head){
+    static boolean isPalindrome(ListNode head) {
 
-        Node temp=head;
-        while (temp.next!=null){
-            temp=temp.next;
+        ListNode right = head;
+        while (right.next != null) {
+            right = right.next;
         }
 
-        Node pointer1=head;
-        Node pointer2=temp;
-
-        while (pointer1 != null && pointer2 != null && pointer1 != pointer2 && pointer1.prev != pointer2){
+        ListNode left = head;
 
 
-            if(pointer1.data!=pointer2.data){
+        while (left != null && right != null && left != right && left.prev != right) {
+
+
+            if (left.val != right.val) {
                 return false;
             }
 
-            pointer1=pointer1.next;
-            pointer2=pointer2.prev;
+            left = left.next;
+            right = right.prev;
 
         }
 
         return true;
-
 
 
     }
@@ -47,22 +46,22 @@ public class Q1 {
         // Q: Palindrome Doubly Linked List
 
 
-        Node a=new Node(4);
-        Node b=new Node(10);
-        Node c=new Node(5);
-        Node d=new Node(10);
-        Node e=new Node(4);
+        ListNode a = new ListNode(4);
+        ListNode b = new ListNode(10);
+        ListNode c = new ListNode(5);
+        ListNode d = new ListNode(10);
+        ListNode e = new ListNode(4);
 
-        a.prev=null;
-        a.next=b;
-        b.prev=a;
-        b.next=c;
-        c.prev=b;
-        c.next=d;
-        d.prev=c;
-        d.next=e;
-        e.prev=d;
-        e.next=null;
+        a.prev = null;
+        a.next = b;
+        b.prev = a;
+        b.next = c;
+        c.prev = b;
+        c.next = d;
+        d.prev = c;
+        d.next = e;
+        e.prev = d;
+        e.next = null;
 
         System.out.println(isPalindrome(a));
 

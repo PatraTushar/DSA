@@ -4,32 +4,32 @@ import java.util.Arrays;
 
 public class Q3 {
 
-    public static class Node{
+    public static class ListNode {
 
-        Node prev;
-        int data;
-        Node next;
+        ListNode prev;
+        int val;
+        ListNode next;
 
-        Node(int data)
+        ListNode(int val)
         {
-            this.data=data;
+            this.val = val;
         }
     }
 
-    public static int[] nodesBetweenCriticalPoints(Node head) {
+    public static int[] nodesBetweenCriticalPoints(ListNode head) {
 
         int firstCPI=-1;
         int prevCPI=-1;
         int currIndex=1;
-        Node curr=head.next;
-        Node prev=head;
+        ListNode curr=head.next;
+        ListNode prev=head;
         int[] res=new int[2];
         res[0]=Integer.MAX_VALUE;
 
         while(curr.next!=null){
 
-            Node Next=curr.next;
-            if(curr.data>prev.data && curr.data>Next.data || curr.data<prev.data && curr.data<Next.data){
+            ListNode Next=curr.next;
+            if(curr.val >prev.val && curr.val >Next.val || curr.val <prev.val && curr.val <Next.val){
 
                 if(prevCPI==-1){
                     firstCPI=currIndex;
@@ -66,13 +66,13 @@ public class Q3 {
 
         // Q3: critical point max and min distance  (leeTCode->2058)
 
-        Node a=new Node(5);
-        Node b=new Node(3);
-        Node c=new Node(1);
-        Node d=new Node(2);
-        Node e=new Node(5);
-        Node f=new Node(1);
-        Node g=new Node(2);
+        ListNode a=new ListNode(5);
+        ListNode b=new ListNode(3);
+        ListNode c=new ListNode(1);
+        ListNode d=new ListNode(2);
+        ListNode e=new ListNode(5);
+        ListNode f=new ListNode(1);
+        ListNode g=new ListNode(2);
 
         a.next=b;
         b.next=c;
