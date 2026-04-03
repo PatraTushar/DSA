@@ -43,7 +43,7 @@ public class Q43 {
                 else {
 
                     minDistance= Math.min(minDistance,currentIndex-lastCriticalIndex);
-                    maxDistance=currentIndex-firstCriticalIndex;
+                    maxDistance= Math.max(maxDistance, currentIndex - firstCriticalIndex);
 
 
                 }

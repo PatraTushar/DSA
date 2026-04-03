@@ -88,7 +88,7 @@ public class Q23 {
 
     public static void main(String[] args) {
 
-        // Q: copy list with random Pointer (leeTCode-->138)
+        //  (leeTCode-->138)
 
         ListNode a=new ListNode(7);
         ListNode b=new ListNode(13);
