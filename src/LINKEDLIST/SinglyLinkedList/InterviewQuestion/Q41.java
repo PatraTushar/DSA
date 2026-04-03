@@ -75,15 +75,15 @@ public class Q41 {
         return dummy.child; // ✅ return dummy.child, not dummy.next
     }
 
-    static ListNode flattenLinkedListII(ListNode head) {
+    static ListNode FLATTEN(ListNode head) {
         // Base case: empty list or single column
         if (head == null || head.next == null) return head;
 
         // ✅ Recursively flatten the rest, then merge with current head
-        ListNode mergedTail = flattenLinkedListII(head.next);
+        ListNode rightList = FLATTEN(head.next);
         head.next = null; // disconnect before merging
 
-        return mergeList(head, mergedTail);
+        return mergeList(head, rightList);
     }
 
     // ─── Display (using child pointer for flattened output) ──────────────────
@@ -137,7 +137,7 @@ public class Q41 {
         j.child = k;  k.child = l;
 
         // Test Approach 2
-        ListNode ans2 = flattenLinkedListII(a);
+        ListNode ans2 = FLATTEN(a);
         System.out.print("Optimal Merge: ");
         display(ans2);
     }
