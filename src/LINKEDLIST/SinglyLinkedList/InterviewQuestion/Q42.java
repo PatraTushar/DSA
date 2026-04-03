@@ -122,3 +122,6 @@ public class Q42 {
         display(mergeKSortedListII(lists2));
     }
 }
+
+
+// Learn Heap first if You want to understand this Question
