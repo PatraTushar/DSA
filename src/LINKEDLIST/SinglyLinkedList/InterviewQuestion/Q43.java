@@ -64,7 +64,7 @@ public class Q43 {
 
     public static void main(String[] args) {
 
-        // Q3: critical point max and min distance  (leeTCode->2058)
+        //  (leeTCode->2058)
 
         ListNode a = new ListNode(5);
         ListNode b = new ListNode(3);
