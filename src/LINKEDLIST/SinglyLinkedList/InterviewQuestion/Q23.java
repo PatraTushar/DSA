@@ -65,7 +65,7 @@ public class Q23 {
         ListNode dummy = new ListNode(-1);
         oldTemp = head;
         newTemp = head.next;
-        dummy.next = head.next;
+        dummy.next = newTemp;
 
         // separate the connections
 
