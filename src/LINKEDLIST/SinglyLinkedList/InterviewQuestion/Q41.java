@@ -59,11 +59,11 @@ public class Q41 {
             if (list1.val < list2.val) {
                 res.child = list1;
                 res = list1;
-                list1 = list1.child;   // ✅ move via child, not next
+                list1 = list1.child;   //  move via child, not next
             } else {
                 res.child = list2;
                 res = list2;
-                list2 = list2.child;   // ✅ move via child, not next
+                list2 = list2.child;   //  move via child, not next
             }
             res.next = null;
         }
