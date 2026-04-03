@@ -18,6 +18,9 @@ public class Q43 {
 
     public static int[] nodesBetweenCriticalPoints(ListNode head) {
 
+        // TC: O(N)
+        // SC: O(1)
+
 
         int firstCriticalIndex = -1;
         int lastCriticalIndex = -1;

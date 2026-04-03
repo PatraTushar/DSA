@@ -1,4 +1,6 @@
-public class myPractice {
+package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
+
+public class Q44 {
 
     public static class ListNode {
         int val;
@@ -74,6 +76,9 @@ public class myPractice {
 
     static ListNode sortList(ListNode head) {
 
+        // TC: O(N log N)
+        // SC: O(logN)
+
         if (head == null || head.next == null) return head;
 
         ListNode middle = findLeftMiddle(head);
@@ -91,7 +96,6 @@ public class myPractice {
 
 
     }
-
 
     public static void main(String[] args) {
 
@@ -112,11 +116,4 @@ public class myPractice {
         ListNode Ans = sortList(a);
         display(Ans);
     }
-
-
 }
-
-
-
-
-
