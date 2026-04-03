@@ -2,53 +2,53 @@ package LINKEDLIST.SinglyLinkedList.Basics;
 
 public class implementationOfLL {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
 
     public static class LinkedList {
 
-        Node head = null;
-        Node tail = null;
+        ListNode head = null;
+        ListNode tail = null;
         int size = 0;
 
         void insertAtTail(int data) {
 
-            Node newNode = new Node(data);
+            ListNode newListNode = new ListNode(data);
 
             if (head == null) {
 
-                head = newNode;
+                head = newListNode;
 
             } else {
 
-                tail.next = newNode;
+                tail.next = newListNode;
 
             }
 
-            tail = newNode;
+            tail = newListNode;
             size++;
 
         }
 
         void insertAtHead(int data) {
 
-            Node newNode = new Node(data);
+            ListNode newListNode = new ListNode(data);
 
             if (head == null) {
-                head = newNode;
-                tail = newNode;
+                head = newListNode;
+                tail = newListNode;
             } else {
 
-                newNode.next = head;
-                head = newNode;
+                newListNode.next = head;
+                head = newListNode;
 
 
             }
@@ -78,8 +78,8 @@ public class implementationOfLL {
 
 
 
-            Node newNode=new Node(data);
-            Node temp=head;
+            ListNode newListNode =new ListNode(data);
+            ListNode temp=head;
 
             for(int i=0;i<idx-1;i++){
 
@@ -87,9 +87,9 @@ public class implementationOfLL {
 
             }
 
-            Node afterNode=temp.next;
-            temp.next=newNode;
-            newNode.next=afterNode;
+            ListNode afterListNode =temp.next;
+            temp.next= newListNode;
+            newListNode.next= afterListNode;
 
             size++;
 
@@ -97,7 +97,7 @@ public class implementationOfLL {
 
        public int getAt(int idx){
 
-            Node temp=head;
+            ListNode temp=head;
 
             if(idx<0 || idx==size){
 
@@ -110,12 +110,12 @@ public class implementationOfLL {
 
             }
 
-            return temp.data;
+            return temp.val;
         }
 
        public void delete(int idx){
 
-            Node temp=head;
+            ListNode temp=head;
 
             if(idx<0 || idx==size){
                 throw new IndexOutOfBoundsException(" invalid index ");
@@ -146,10 +146,10 @@ public class implementationOfLL {
 
         void display(){
 
-            Node temp=head;
+            ListNode temp=head;
 
             while (temp!=null){
-                System.out.print(temp.data +" ");
+                System.out.print(temp.val +" ");
                 temp=temp.next;
             }
 
