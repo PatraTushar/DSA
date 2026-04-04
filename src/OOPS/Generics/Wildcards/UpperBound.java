@@ -6,7 +6,7 @@ public class UpperBound {
 
 
     // In upper bound (? extends T), you cannot add any element except null because the exact type is unknown, so it is mainly used for reading.
-// While passing, you can pass T or any of its subclasses (child classes).
+     // While passing, you can pass T or any of its subclasses (child classes).
 
 
 
