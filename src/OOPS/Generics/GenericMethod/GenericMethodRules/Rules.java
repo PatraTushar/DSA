@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Rules {
 
+    // “In method-level generics, the type written before the return type defines what type is allowed for the method parameters (and also return type if used).”
+
     // Write a generic method printArray() that takes any type of array and prints all its elements.
     public static class Array {
 
