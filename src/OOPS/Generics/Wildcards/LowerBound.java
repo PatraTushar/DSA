@@ -6,6 +6,10 @@ import java.util.List;
 
 public class LowerBound {
 
+
+// In lower bound (? super T), you can add elements of type T and its subclasses because Java guarantees it can safely accept them.
+// While passing, you can pass T or any of its superclasses (parent classes).
+
     public static void addIntegers(List<? super Integer> list){
 
         list.add(100);
