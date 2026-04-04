@@ -2,6 +2,8 @@ package OOPS.Generics.GenericMethod.T_extends_Type;
 
 public class BasicSingleBound {
 
+    // The type we declare before the return type decides what types we can pass to parameter T.
+
     public static class Demo{
 
         public <T extends Number> void printDoubleValue(T val){
