@@ -2,16 +2,16 @@ package OOPS.Generics.GenericMethod.T_extends_Type.GenericMethodInsideGenricClas
 
 public class Generic_Method_using_the_same_class_type_T {
 
-    public static class Box<T>{
+    public static class Box<T> {
 
         private T item;
 
-        public void setItem(T item){
+        public void setItem(T item) {
 
-            this.item=item;
+            this.item = item;
         }
 
-        public T getItem(){
+        public T getItem() {
 
             return item;
         }
@@ -26,9 +26,10 @@ public class Generic_Method_using_the_same_class_type_T {
 
     public static void main(String[] args) {
 
-        Box<String> box=new Box<>();
+        Box<String> box = new Box<>();
         box.setItem("Hello");
         box.displayItemType("world");
+        System.out.println(box.getItem());
 
 
     }
