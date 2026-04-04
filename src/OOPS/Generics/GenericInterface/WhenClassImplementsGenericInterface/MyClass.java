@@ -1,5 +1,6 @@
 package OOPS.Generics.GenericInterface.WhenClassImplementsGenericInterface;
 
+//The type parameter you give to the interface (String here) is automatically “passed” to the class object and its methods, ensuring that everything uses the same type for that objec
 
 interface MyInterface<T>{
 
