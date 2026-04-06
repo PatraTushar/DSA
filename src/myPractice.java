@@ -1,3 +1,5 @@
+import OOPS.AccessModifier.Public.A;
+
 public class myPractice {
 
 
@@ -23,7 +25,7 @@ public class myPractice {
         System.out.println();
     }
 
-    static ListNode LeftMiddle(ListNode head) {
+    static ListNode deleteRightMiddle(ListNode head) {
 
         if (head.next==null) return head;
 
@@ -37,8 +39,10 @@ public class myPractice {
             fast = fast.next.next;
         }
 
-        if (fast!=null) return slow;
-        return prev;
+
+       prev.next=slow.next;
+
+        return head;
 
     }
 
@@ -60,8 +64,8 @@ public class myPractice {
         e.next = f;
 
         display(a);
-        ListNode Ans = LeftMiddle(a);
-        System.out.println(Ans.val);
+        ListNode Ans = deleteRightMiddle(a);
+        display(Ans);
 
 
     }
