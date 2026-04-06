@@ -36,40 +36,13 @@ public class Q6 {
         //Time Complexity: O(n + m)
         //Space Complexity: O(1)
 
-        ListNode temp1 = headA;
-        ListNode temp2 = headB;
-
-        int length1 = 0;
-        int length2 = 0;
-
-        while (temp1 != null) {
-            length1++;
-            temp1 = temp1.next;
-        }
-
-        while (temp2 != null) {
-            length2++;
-            temp2 = temp2.next;
-        }
-
-        if (length1 > length2) {
-
-            return findIntersection(headB, headA);
-
-        }
-
         ListNode slow = headA;
         ListNode fast = headB;
 
-        int lengthDiff = length2 - length1;
-
-        for (int i = 0; i < lengthDiff; i++) {
-            fast = fast.next;
-        }
-
         while (slow != fast) {
-            slow = slow.next;
-            fast = fast.next;
+
+            slow = (slow == null) ? headB :  slow.next;
+            fast = (fast == null) ? headA :  fast.next;
         }
 
         return slow;
