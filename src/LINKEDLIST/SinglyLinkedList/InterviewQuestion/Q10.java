@@ -2,36 +2,36 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q10 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static void display(Node head) {
-        Node temp = head;
+    static void display(ListNode head) {
+        ListNode temp = head;
 
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
 
         System.out.println();
     }
 
-    static Node deleteLeftMiddle(Node head) {
+    static ListNode deleteLeftMiddle(ListNode head) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
         if (head == null || head.next == null) return null;
-        Node prev = null;
-        Node slow = head;
-        Node fast = head.next;
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head.next;
 
         while (fast != null && fast.next != null) {
 
@@ -53,12 +53,12 @@ public class Q10 {
 
         // Q: Delete the middle element of linked list for odd and left middle for even
 
-        Node a = new Node(1);
-        Node b = new Node(5);
-        Node c = new Node(10);
-        Node d = new Node(13);
-        Node e = new Node(12);
-        Node f = new Node(20);
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(5);
+        ListNode c = new ListNode(10);
+        ListNode d = new ListNode(13);
+        ListNode e = new ListNode(12);
+        ListNode f = new ListNode(20);
 
         a.next = b;
         b.next = c;
@@ -67,7 +67,7 @@ public class Q10 {
         e.next = f;
 
         display(a);
-        Node Ans = deleteLeftMiddle(a);
+        ListNode Ans = deleteLeftMiddle(a);
         display(Ans);
 
 

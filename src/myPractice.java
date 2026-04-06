@@ -31,7 +31,7 @@ public class myPractice {
 
         ListNode prev=null;
         ListNode slow = head;
-        ListNode fast = head;
+        ListNode fast = head.next;
 
         while (fast != null && fast.next != null) {
             prev=slow;
@@ -39,6 +39,7 @@ public class myPractice {
             fast = fast.next.next;
         }
 
+        if (prev==null) return head.next;
 
        prev.next=slow.next;
 
