@@ -1,4 +1,5 @@
 import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q11;
+import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q13;
 import OOPS.AccessModifier.Public.A;
 
 public class myPractice {
@@ -26,35 +27,10 @@ public class myPractice {
         System.out.println();
     }
 
-    static ListNode hasCycle(ListNode head) {
-
-        if (head==null || head.next==null) return null;
-
-        ListNode slow=head;
-        ListNode fast=head;
-
-        while (fast!=null &&fast.next!=null){
-
-            slow=slow.next;
-            fast=fast.next.next;
-
-            if (slow==fast) break;
+    static ListNode MergeTwoLL(ListNode head1, ListNode head2) {
 
 
-        }
 
-        if (fast==null || fast.next==null) return null;
-
-        slow=head;
-
-        while (slow!=fast){
-
-            slow=slow.next;
-            fast=fast.next;
-        }
-
-
-        return slow;
 
 
     }
@@ -62,37 +38,31 @@ public class myPractice {
 
     public static void main(String[] args) {
 
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(3);
+        ListNode c = new ListNode(5);
+        ListNode d = new ListNode(8);
 
-        // Input 1
-        ListNode a =new ListNode(3);
-        ListNode b=new ListNode(2);
-        ListNode c=new ListNode(0);
-        ListNode d=new ListNode(-4);
+        a.next = b;
+        b.next = c;
+        c.next = d;
 
-        a.next=b;
-        b.next=c;
-        c.next=d;
-        d.next=b;
+        ListNode e = new ListNode(2);
+        ListNode f = new ListNode(4);
+        ListNode g = new ListNode(6);
+        ListNode h = new ListNode(7);
 
-        System.out.println(hasCycle(a));
+        e.next = f;
+        f.next = g;
+        g.next = h;
 
-        // Input 2
+        display(a, e);
 
-        ListNode e=new ListNode(1);
-        ListNode f=new ListNode(2);
-        e.next=f;
-        f.next=e;
-
-        System.out.println(hasCycle(e));
-
-        // Input 3
-
-        ListNode g=new ListNode(1);
-        System.out.println(hasCycle(g));
+        ListNode Ans = MergeTwoLL(a, e);
+        display2(Ans);
 
 
     }
-
 }
 
 
