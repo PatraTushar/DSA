@@ -2,22 +2,22 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class   Q20 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
+        ListNode(int val){
 
-            this.data=data;
+            this.val = val;
         }
     }
 
-   public static Node rev(Node head){
+   public static ListNode rev(ListNode head){
 
-        Node curr=head;
-        Node prev=null;
-        Node agla;
+        ListNode curr=head;
+        ListNode prev=null;
+        ListNode agla;
 
         while (curr!=null){
 
@@ -32,28 +32,28 @@ public class   Q20 {
     }
 
 
-    static boolean isPalindromeLL(Node head){
+    static boolean isPalindromeLL(ListNode head){
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
-        Node slow=head;
-        Node fast=head;
+        ListNode slow=head;
+        ListNode fast=head;
 
         while (fast.next!=null && fast.next.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
 
-        Node temp=rev(slow.next);
+        ListNode temp=rev(slow.next);
         slow.next=temp;
 
-        Node p1=head;
-        Node p2=slow.next;
+        ListNode p1=head;
+        ListNode p2=slow.next;
 
         while ( p2!=null){
 
-            if(p1.data!=p2.data) return false;
+            if(p1.val !=p2.val) return false;
 
             p1=p1.next;
             p2=p2.next;
@@ -68,12 +68,12 @@ public class   Q20 {
 
         // Q: palindrome linked list (leeTCode-->234)
 
-        Node a=new Node(1);
-        Node b=new Node(2);
-        Node c=new Node(3);
-        Node d=new Node(3);
-        Node e=new Node(2);
-        Node f=new Node(1);
+        ListNode a=new ListNode(1);
+        ListNode b=new ListNode(2);
+        ListNode c=new ListNode(3);
+        ListNode d=new ListNode(3);
+        ListNode e=new ListNode(2);
+        ListNode f=new ListNode(1);
 
         a.next=b;
         b.next=c;

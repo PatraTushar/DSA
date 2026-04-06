@@ -1,3 +1,5 @@
+import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q20;
+
 public class myPractice {
 
 
@@ -9,6 +11,23 @@ public class myPractice {
         ListNode(int val) {
             this.val = val;
         }
+    }
+
+    static ListNode reverse(ListNode head) {
+
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode agla;
+
+        while (curr != null) {
+
+            agla = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = agla;
+        }
+
+        return prev;
     }
 
 
@@ -23,35 +42,49 @@ public class myPractice {
         System.out.println();
     }
 
-    static ListNode removeDuplicates(ListNode head) {
 
-        ListNode curr = head;
-
-        while (curr != null && curr.next!=null) {
-
-            if (curr.val == curr.next.val) {
-
-                int duplicate = curr.val;
-                ListNode temp = curr.next;
-
-                while (temp != null && temp.val == duplicate) {
-
-                    temp = temp.next;
-
-                }
-
-                curr.next=temp;
-                curr=temp;
+    static ListNode findLeftMiddle(ListNode head) {
 
 
-            } else {
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head;
 
-                curr = curr.next;
-            }
+        while (fast != null && fast.next != null) {
 
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        return head;
+        if (fast == null) return prev;
+
+
+        return slow;
+    }
+
+    static boolean isPalindromeLL(ListNode head) {
+
+        if (head.next == null) return true;
+
+        ListNode leftMiddle = findLeftMiddle(head);
+
+        leftMiddle.next = reverse(leftMiddle.next);
+
+        ListNode slow = head;
+        ListNode fast = leftMiddle.next;
+
+        while (fast != null) {
+
+            if (slow.val == fast.val) {
+                slow = slow.next;
+                fast = fast.next;
+            }
+
+            else return false;
+        }
+
+        return true;
 
 
     }
@@ -59,34 +92,21 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(1);
-        ListNode b = new ListNode(1);
-        ListNode c = new ListNode(2);
-        ListNode d = new ListNode(3);
-        ListNode e = new ListNode(3);
-        ListNode f = new ListNode(3);
-        ListNode g = new ListNode(4);
-        ListNode h = new ListNode(4);
-        ListNode i = new ListNode(5);
-        ListNode j = new ListNode(6);
-        ListNode k = new ListNode(6);
 
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(3);
+        ListNode d = new ListNode(3);
+        ListNode e = new ListNode(2);
+        ListNode f = new ListNode(1);
 
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
         e.next = f;
-        f.next = g;
-        g.next = h;
-        h.next = i;
-        i.next = j;
-        j.next = k;
 
-        display(a);
-        ListNode Ans = removeDuplicates(a);
-        display(Ans);
-
+        System.out.println(isPalindromeLL(a));
     }
 }
 
