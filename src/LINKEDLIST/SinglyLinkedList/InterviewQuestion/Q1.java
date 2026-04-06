@@ -2,41 +2,41 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q1 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
-            this.data=data;
+        ListNode(int val){
+            this.val = val;
         }
     }
 
-    static void display(Node a){
+    static void display(ListNode a){
 
-        Node temp=a;
+        ListNode temp=a;
 
         while (temp!=null){
-            System.out.print(temp.data +" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
         System.out.println();
     }
 
-    static void deleteNode(Node node){
+    static void deleteNode(ListNode listNode){
 
         // (leeTCode->237)
 
         //Time Complexity (TC): O(1)
         //Space Complexity (SC): O(1)
 
-        if (node == null || node.next == null) {
+        if (listNode == null || listNode.next == null) {
             throw new IllegalArgumentException("Cannot delete the last node using this method.");
         }
 
 
-        node.data=node.next.data;
-        node.next=node.next.next;
+        listNode.val = listNode.next.val;
+        listNode.next= listNode.next.next;
 
 
     }
@@ -45,10 +45,10 @@ public class Q1 {
 
         // Q: Delete node with node as given parameter
 
-        Node a=new Node(4);
-        Node b=new Node(5);
-        Node c=new Node(1);
-        Node d=new Node(9);
+        ListNode a=new ListNode(4);
+        ListNode b=new ListNode(5);
+        ListNode c=new ListNode(1);
+        ListNode d=new ListNode(9);
 
         a.next=b;
         b.next=c;
