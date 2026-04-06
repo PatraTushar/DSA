@@ -2,35 +2,35 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q18 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
+        ListNode(int val){
 
-            this.data=data;
+            this.val = val;
         }
     }
 
-    static void display(Node head){
+    static void display(ListNode head){
 
         if(head==null){
             System.out.println();
             return;
         }
-        System.out.print(head.data+" ");
+        System.out.print(head.val +" ");
         display(head.next);
     }
 
-    static Node reverse(Node head){
+    static ListNode reverse(ListNode head){
 
         //Time Complexity: O(n)
         //Space Complexity: O(1)
 
         if(head.next==null) return head;
 
-        Node newHead=reverse(head.next);
+        ListNode newHead=reverse(head.next);
         head.next.next=head;
         head.next=null;
         return newHead;
@@ -42,18 +42,18 @@ public class Q18 {
 
         // Q: Reverse a linked list  (Recursively)  (leeTCode-->206)
 
-        Node a=new Node(3);
-        Node b=new Node(5);
-        Node c=new Node(1);
-        Node d=new Node(2);
-        Node e=new Node(4);
+        ListNode a=new ListNode(3);
+        ListNode b=new ListNode(5);
+        ListNode c=new ListNode(1);
+        ListNode d=new ListNode(2);
+        ListNode e=new ListNode(4);
         a.next=b;
         b.next=c;
         c.next=d;
         d.next=e;
 
         display(a);
-       Node newHead= reverse(a);
+       ListNode newHead= reverse(a);
         display(newHead);
 
 

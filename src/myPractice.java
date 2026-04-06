@@ -1,8 +1,3 @@
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q11;
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q13;
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q15;
-import OOPS.AccessModifier.Public.A;
-
 public class myPractice {
 
 
@@ -28,42 +23,35 @@ public class myPractice {
         System.out.println();
     }
 
-    static void oddEvenSplit(ListNode head) {
+    static ListNode removeDuplicates(ListNode head) {
 
-        ListNode odd = new ListNode(-1);
-        ListNode o = odd;
-        ListNode even = new ListNode(-1);
-        ListNode e = even;
-        ListNode temp = head;
+        ListNode curr = head;
 
-        while (temp != null) {
+        while (curr != null && curr.next!=null) {
 
-            if (temp.val % 2 == 0) {
+            if (curr.val == curr.next.val) {
 
-                e.next=temp;
-                e=temp;
+                int duplicate = curr.val;
+                ListNode temp = curr.next;
 
+                while (temp != null && temp.val == duplicate) {
+
+                    temp = temp.next;
+
+                }
+
+                curr.next=temp;
+                curr=temp;
 
 
             } else {
 
-                o.next=temp;
-                o=temp;
-
-
-
+                curr = curr.next;
             }
-
-            temp=temp.next;
 
         }
 
-        o.next=even.next;
-        e.next=null;
-
-
-      display(odd.next);
-
+        return head;
 
 
     }
@@ -72,13 +60,17 @@ public class myPractice {
     public static void main(String[] args) {
 
         ListNode a = new ListNode(1);
-        ListNode b = new ListNode(2);
-        ListNode c = new ListNode(3);
-        ListNode d = new ListNode(4);
-        ListNode e = new ListNode(5);
-        ListNode f = new ListNode(6);
-        ListNode g = new ListNode(7);
-        ListNode h = new ListNode(8);
+        ListNode b = new ListNode(1);
+        ListNode c = new ListNode(2);
+        ListNode d = new ListNode(3);
+        ListNode e = new ListNode(3);
+        ListNode f = new ListNode(3);
+        ListNode g = new ListNode(4);
+        ListNode h = new ListNode(4);
+        ListNode i = new ListNode(5);
+        ListNode j = new ListNode(6);
+        ListNode k = new ListNode(6);
+
 
         a.next = b;
         b.next = c;
@@ -87,10 +79,13 @@ public class myPractice {
         e.next = f;
         f.next = g;
         g.next = h;
+        h.next = i;
+        i.next = j;
+        j.next = k;
 
-        System.out.println(" original list ");
         display(a);
-        oddEvenSplit(a);
+        ListNode Ans = removeDuplicates(a);
+        display(Ans);
 
     }
 }

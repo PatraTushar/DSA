@@ -2,32 +2,32 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q19 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
+        ListNode(int val){
 
-            this.data=data;
+            this.val = val;
         }
     }
 
-    static void display(Node head){
+    static void display(ListNode head){
 
-        Node temp=head;
+        ListNode temp=head;
 
         while (temp!=null){
-            System.out.print(temp.data +" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
         System.out.println();
     }
-    static Node reverseALL(Node head){
+    static ListNode reverseALL(ListNode head){
 
-        Node prev=null;
-        Node curr=head;
-        Node agla;
+        ListNode prev=null;
+        ListNode curr=head;
+        ListNode agla;
 
         while(curr!=null){
             agla=curr.next;
@@ -43,11 +43,11 @@ public class Q19 {
 
         // Q: Reverse a linked list (Iterative)  (leeTCode-->206)
 
-        Node a=new Node(3);
-        Node b=new Node(5);
-        Node c=new Node(1);
-        Node d=new Node(2);
-        Node e=new Node(4);
+        ListNode a=new ListNode(3);
+        ListNode b=new ListNode(5);
+        ListNode c=new ListNode(1);
+        ListNode d=new ListNode(2);
+        ListNode e=new ListNode(4);
 
         a.next=b;
         b.next=c;
@@ -55,7 +55,7 @@ public class Q19 {
         d.next=e;
 
         display(a);
-        Node rev=reverseALL(a);
+        ListNode rev=reverseALL(a);
         display(rev);
 
 
