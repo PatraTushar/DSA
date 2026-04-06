@@ -58,13 +58,11 @@ public class myPractice {
 
         }
 
-        o.next=null;
+        o.next=even.next;
         e.next=null;
 
 
-        display(odd.next);
-        display(even.next);
-
+      display(odd.next);
 
 
 

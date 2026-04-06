@@ -2,29 +2,29 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q16 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static void display(Node head) {
+    static void display(ListNode head) {
 
-        Node temp = head;
+        ListNode temp = head;
 
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
 
         System.out.println();
     }
 
-    static Node oddEvenLL(Node head) {
+    static ListNode oddEvenLL(ListNode head) {
 
         //Time Complexity: O(N)
         //Space Complexity: O(1)
@@ -32,11 +32,11 @@ public class Q16 {
         if (head == null) return null;
         if (head.next == null) return head;
 
-        Node dummyOdd = new Node(-1);
-        Node oddPtr = dummyOdd;
-        Node dummyEven = new Node(-1);
-        Node evenPtr = dummyEven;
-        Node temp = head;
+        ListNode dummyOdd = new ListNode(-1);
+        ListNode oddPtr = dummyOdd;
+        ListNode dummyEven = new ListNode(-1);
+        ListNode evenPtr = dummyEven;
+        ListNode temp = head;
 
         while (temp != null) {
 
@@ -53,6 +53,7 @@ public class Q16 {
 
         oddPtr.next = dummyEven.next;
 
+
         return dummyOdd.next;
 
 
@@ -65,13 +66,13 @@ public class Q16 {
 
         // leeTCode->328
 
-        Node a = new Node(2);
-        Node b = new Node(1);
-        Node c = new Node(3);
-        Node d = new Node(5);
-        Node e = new Node(6);
-        Node f = new Node(4);
-        Node g = new Node(7);
+        ListNode a = new ListNode(2);
+        ListNode b = new ListNode(1);
+        ListNode c = new ListNode(3);
+        ListNode d = new ListNode(5);
+        ListNode e = new ListNode(6);
+        ListNode f = new ListNode(4);
+        ListNode g = new ListNode(7);
 
         a.next = b;
         b.next = c;
@@ -81,7 +82,7 @@ public class Q16 {
         f.next = g;
 
         display(a);
-        Node Ans=oddEvenLL(a);
+        ListNode Ans=oddEvenLL(a);
         display(Ans);
 
     }
