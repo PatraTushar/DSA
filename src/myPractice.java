@@ -1,4 +1,4 @@
-
+import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q2;
 
 public class myPractice {
 
@@ -25,12 +25,23 @@ public class myPractice {
         System.out.println();
     }
 
-    static void deleteNode(ListNode node) {
+    static ListNode nthNodeFromEnd(ListNode head, int n) {
+
+        ListNode slow = head;
+        ListNode fast = head;
 
 
+        for (int i = 0; i < n; i++) {
+            fast = fast.next;
+        }
 
-        node.val = node.next.val;
-        node.next=node.next.next;
+
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
 
 
     }
@@ -38,19 +49,22 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-        ListNode a = new ListNode(4);
-        ListNode b = new ListNode(5);
-        ListNode c = new ListNode(1);
-        ListNode d = new ListNode(9);
-
+        ListNode a = new ListNode(100);
+        ListNode b = new ListNode(13);
+        ListNode c = new ListNode(4);
+        ListNode d = new ListNode(5);
+        ListNode e = new ListNode(12);
+        ListNode f = new ListNode(10);
         a.next = b;
         b.next = c;
         c.next = d;
+        d.next = e;
+        e.next = f;
 
         display(a);
-        deleteNode(b);
-        display(a);
 
+        ListNode ans = nthNodeFromEnd(a, 4);
+        System.out.println(ans.val);
 
     }
 
