@@ -2,42 +2,42 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q6 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static void display(Node head1, Node head2) {
+    static void display(ListNode head1, ListNode head2) {
 
-        Node temp1 = head1;
-        Node temp2 = head2;
+        ListNode temp1 = head1;
+        ListNode temp2 = head2;
 
         while (temp1 != null) {
-            System.out.print(temp1.data + " ");
+            System.out.print(temp1.val + " ");
             temp1 = temp1.next;
         }
         System.out.println();
 
         while (temp2 != null) {
-            System.out.print(temp2.data + " ");
+            System.out.print(temp2.val + " ");
             temp2 = temp2.next;
         }
         System.out.println();
 
     }
 
-    static Node findIntersection(Node headA, Node headB) {
+    static ListNode findIntersection(ListNode headA, ListNode headB) {
 
         //Time Complexity: O(n + m)
         //Space Complexity: O(1)
 
-        Node temp1 = headA;
-        Node temp2 = headB;
+        ListNode temp1 = headA;
+        ListNode temp2 = headB;
 
         int length1 = 0;
         int length2 = 0;
@@ -58,8 +58,8 @@ public class Q6 {
 
         }
 
-        Node slow = headA;
-        Node fast = headB;
+        ListNode slow = headA;
+        ListNode fast = headB;
 
         int lengthDiff = length2 - length1;
 
@@ -82,13 +82,13 @@ public class Q6 {
 
         // Q: Intersection of 2 linked list  (leeTCode->160)
 
-        Node a = new Node(87);
-        Node b = new Node(100);
-        Node c = new Node(13);
-        Node d = new Node(4);
-        Node e = new Node(5);
-        Node f = new Node(12);
-        Node g = new Node(10);
+        ListNode a = new ListNode(87);
+        ListNode b = new ListNode(100);
+        ListNode c = new ListNode(13);
+        ListNode d = new ListNode(4);
+        ListNode e = new ListNode(5);
+        ListNode f = new ListNode(12);
+        ListNode g = new ListNode(10);
 
         a.next = b;
         b.next = c;
@@ -97,15 +97,15 @@ public class Q6 {
         e.next = f;
         f.next = g;
 
-        Node h = new Node(90);
-        Node i = new Node(9);
+        ListNode h = new ListNode(90);
+        ListNode i = new ListNode(9);
         h.next = i;
         i.next = e;
 
 
         display(a, h);
-        Node Ans = findIntersection(a, h);
-        System.out.println(" Intersection of both linked list is " + Ans.data);
+        ListNode Ans = findIntersection(a, h);
+        System.out.println(" Intersection of both linked list is " + Ans.val);
 
     }
 }
