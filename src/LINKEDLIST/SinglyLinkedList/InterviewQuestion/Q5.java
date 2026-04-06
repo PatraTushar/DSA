@@ -2,36 +2,36 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q5 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
+        ListNode(int val) {
 
-            this.data = data;
+            this.val = val;
         }
     }
 
-    static void display(Node head) {
+    static void display(ListNode head) {
 
-        Node temp = head;
+        ListNode temp = head;
 
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
         System.out.println();
     }
 
-    static Node deleteNthNodeFromEnd(Node head, int n) {
+    static ListNode deleteNthNodeFromEnd(ListNode head, int n) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
         if (head == null) return null;
-        Node slow = head;
-        Node fast = head;
+        ListNode slow = head;
+        ListNode fast = head;
 
         for (int i = 0; i < n; i++) {
 
@@ -61,12 +61,12 @@ public class Q5 {
 
         // Q: Delete nth node from end of the linked list(in one traversal)  here head node is deleted
 
-        Node a = new Node(100);
-        Node b = new Node(15);
-        Node c = new Node(4);
-        Node d = new Node(5);
-        Node e = new Node(12);
-        Node f = new Node(10);
+        ListNode a = new ListNode(100);
+        ListNode b = new ListNode(15);
+        ListNode c = new ListNode(4);
+        ListNode d = new ListNode(5);
+        ListNode e = new ListNode(12);
+        ListNode f = new ListNode(10);
         a.next = b;
         b.next = c;
         c.next = d;
@@ -78,8 +78,8 @@ public class Q5 {
 //        Node node3rd=deleteNthNode(a,3);
 //        display(node3rd);
 
-        Node node6th = deleteNthNodeFromEnd(a, 4);
-        display(node6th);
+        ListNode listNode6Th = deleteNthNodeFromEnd(a, 4);
+        display(listNode6Th);
 
 
     }

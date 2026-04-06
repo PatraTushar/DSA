@@ -2,23 +2,23 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q12 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static Node detectCycle(Node head) {
+    static ListNode detectCycle(ListNode head) {
 
         //Time Complexity: O(N)
         //Space Complexity: O(1)
 
-        Node slow = head;
-        Node fast = head;
+        ListNode slow = head;
+        ListNode fast = head;
 
         if (head == null || head.next == null) return null;
 
@@ -40,9 +40,9 @@ public class Q12 {
         return slow;
     }
 
-    public static int getIndex(Node head, Node target) {
+    public static int getIndex(ListNode head, ListNode target) {
         int index = 0; // Start indexing from 1
-        Node temp = head;
+        ListNode temp = head;
         while (temp != null) {
             if (temp == target) return index;
             temp = temp.next;
@@ -55,10 +55,10 @@ public class Q12 {
 
         // Q:  Cycle in a linked list II (leeTCode-->142)
 
-        Node a = new Node(3);
-        Node b = new Node(2);
-        Node c = new Node(0);
-        Node d = new Node(-4);
+        ListNode a = new ListNode(3);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(0);
+        ListNode d = new ListNode(-4);
 
         a.next = b;
         b.next = c;
@@ -66,15 +66,15 @@ public class Q12 {
         d.next = b;
 
 
-        Node e = new Node(1);
-        Node f = new Node(2);
+        ListNode e = new ListNode(1);
+        ListNode f = new ListNode(2);
         e.next = f;
         f.next = e;
 
-        Node g = new Node(1);
+        ListNode g = new ListNode(1);
 
 
-        Node Ans = detectCycle(a);
+        ListNode Ans = detectCycle(a);
 
 
         if (Ans != null) {
