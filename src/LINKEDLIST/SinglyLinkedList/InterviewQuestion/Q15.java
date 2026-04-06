@@ -2,42 +2,42 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q15 {
 
-    public static class Node{
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data){
+        ListNode(int val){
 
-            this.data=data;
+            this.val = val;
         }
 
     }
 
-    static void display(Node head){
-        Node temp=head;
+    static void display(ListNode head){
+        ListNode temp=head;
         while (temp!=null){
-            System.out.print(temp.data +" ");
+            System.out.print(temp.val +" ");
             temp=temp.next;
         }
         System.out.println();
     }
 
-    static void oddEvenSplit(Node head){
+    static void oddEvenSplit(ListNode head){
 
         //Time Complexity: O(N)
         //Space Complexity: O(1)
 
 
-        Node temp = head;
-        Node dummyOdd = new Node(101);
-        Node odd = dummyOdd;
-        Node dummyEven = new Node(100);
-        Node even = dummyEven;
+        ListNode temp = head;
+        ListNode dummyOdd = new ListNode(101);
+        ListNode odd = dummyOdd;
+        ListNode dummyEven = new ListNode(100);
+        ListNode even = dummyEven;
 
         while (temp != null) {
 
-            if (temp.data % 2 != 0) {
+            if (temp.val % 2 != 0) {
 
                 odd.next = temp;
                 odd = temp;
@@ -68,14 +68,14 @@ public class Q15 {
 
     public static void main(String[] args) {
 
-        Node a=new Node(1);
-        Node b=new Node(2);
-        Node c=new Node(3);
-        Node d=new Node(4);
-        Node e=new Node(5);
-        Node f=new Node(6);
-        Node g=new Node(7);
-        Node h=new Node(8);
+        ListNode a=new ListNode(1);
+        ListNode b=new ListNode(2);
+        ListNode c=new ListNode(3);
+        ListNode d=new ListNode(4);
+        ListNode e=new ListNode(5);
+        ListNode f=new ListNode(6);
+        ListNode g=new ListNode(7);
+        ListNode h=new ListNode(8);
 
         a.next=b;
         b.next=c;

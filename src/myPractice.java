@@ -1,5 +1,6 @@
 import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q11;
 import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q13;
+import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q15;
 import OOPS.AccessModifier.Public.A;
 
 public class myPractice {
@@ -27,8 +28,42 @@ public class myPractice {
         System.out.println();
     }
 
-    static ListNode MergeTwoLL(ListNode head1, ListNode head2) {
+    static void oddEvenSplit(ListNode head) {
 
+        ListNode odd = new ListNode(-1);
+        ListNode o = odd;
+        ListNode even = new ListNode(-1);
+        ListNode e = even;
+        ListNode temp = head;
+
+        while (temp != null) {
+
+            if (temp.val % 2 == 0) {
+
+                e.next=temp;
+                e=temp;
+
+
+
+            } else {
+
+                o.next=temp;
+                o=temp;
+
+
+
+            }
+
+            temp=temp.next;
+
+        }
+
+        o.next=null;
+        e.next=null;
+
+
+        display(odd.next);
+        display(even.next);
 
 
 
@@ -39,28 +74,25 @@ public class myPractice {
     public static void main(String[] args) {
 
         ListNode a = new ListNode(1);
-        ListNode b = new ListNode(3);
-        ListNode c = new ListNode(5);
-        ListNode d = new ListNode(8);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(3);
+        ListNode d = new ListNode(4);
+        ListNode e = new ListNode(5);
+        ListNode f = new ListNode(6);
+        ListNode g = new ListNode(7);
+        ListNode h = new ListNode(8);
 
         a.next = b;
         b.next = c;
         c.next = d;
-
-        ListNode e = new ListNode(2);
-        ListNode f = new ListNode(4);
-        ListNode g = new ListNode(6);
-        ListNode h = new ListNode(7);
-
+        d.next = e;
         e.next = f;
         f.next = g;
         g.next = h;
 
-        display(a, e);
-
-        ListNode Ans = MergeTwoLL(a, e);
-        display2(Ans);
-
+        System.out.println(" original list ");
+        display(a);
+        oddEvenSplit(a);
 
     }
 }
