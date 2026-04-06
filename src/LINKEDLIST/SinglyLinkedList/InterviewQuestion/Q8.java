@@ -2,35 +2,35 @@ package LINKEDLIST.SinglyLinkedList.InterviewQuestion;
 
 public class Q8 {
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
-            this.data = data;
+        ListNode(int val) {
+            this.val = val;
         }
     }
 
-    static void display(Node head) {
+    static void display(ListNode head) {
 
-        Node temp = head;
+        ListNode temp = head;
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
         System.out.println();
     }
 
-    static Node findLeftMiddle(Node head) {
+    static ListNode findLeftMiddle(ListNode head) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
 
-        Node prev = null;
-        Node slow = head;
-        Node fast = head;
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head;
 
         if (head == null) return null;
 
@@ -50,12 +50,12 @@ public class Q8 {
 
         // Q: find middle element of linked list for odd and left middle for even
 
-        Node a = new Node(100);
-        Node b = new Node(13);
-        Node c = new Node(4);
-        Node d = new Node(5);
-        Node e = new Node(12);
-        Node f = new Node(10);
+        ListNode a = new ListNode(100);
+        ListNode b = new ListNode(13);
+        ListNode c = new ListNode(4);
+        ListNode d = new ListNode(5);
+        ListNode e = new ListNode(12);
+        ListNode f = new ListNode(10);
 
         a.next = b;
         b.next = c;
@@ -64,8 +64,8 @@ public class Q8 {
         e.next = f;
 
         display(a);
-        Node Ans = findLeftMiddle(a);
-        System.out.println(Ans.data);
+        ListNode Ans = findLeftMiddle(a);
+        System.out.println(Ans.val);
 
 
     }
