@@ -1,5 +1,3 @@
-import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q2;
-
 public class myPractice {
 
 
@@ -25,23 +23,8 @@ public class myPractice {
         System.out.println();
     }
 
-    static ListNode nthNodeFromEnd(ListNode head, int n) {
+    static ListNode deleteNthNode(ListNode head, int n) {
 
-        ListNode slow = head;
-        ListNode fast = head;
-
-
-        for (int i = 0; i < n; i++) {
-            fast = fast.next;
-        }
-
-
-        while (fast != null) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-
-        return slow;
 
 
     }
@@ -63,8 +46,8 @@ public class myPractice {
 
         display(a);
 
-        ListNode ans = nthNodeFromEnd(a, 4);
-        System.out.println(ans.val);
+        ListNode ans = deleteNthNode(a, 4);
+       display(ans);
 
     }
 

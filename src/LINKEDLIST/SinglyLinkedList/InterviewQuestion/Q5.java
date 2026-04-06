@@ -29,6 +29,7 @@ public class Q5 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
+        if (head == null) return null;
         Node slow = head;
         Node fast = head;
 
@@ -40,15 +41,13 @@ public class Q5 {
 
         }
 
-        if (fast==null) return head.next;
+        if (fast == null) return head.next;
 
         while (fast.next != null) {
 
             slow = slow.next;
             fast = fast.next;
         }
-
-
 
 
         slow.next = slow.next.next;

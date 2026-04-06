@@ -4,30 +4,30 @@ public class Q3 {
 
     // same as Q2
 
-    public static class Node {
+    public static class ListNode {
 
-        int data;
-        Node next;
+        int val;
+        ListNode next;
 
-        Node(int data) {
+        ListNode(int val) {
 
-            this.data = data;
+            this.val = val;
         }
 
     }
 
-    static void display(Node head) {
+    static void display(ListNode head) {
 
-        Node temp = head;
+        ListNode temp = head;
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
 
         System.out.println();
     }
 
-    static Node nthNodeFromLast(Node head, int n) {
+    static ListNode nthNodeFromLast(ListNode head, int n) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
@@ -36,8 +36,8 @@ public class Q3 {
             throw new IllegalArgumentException("Invalid input: List is empty or n is non-positive.");
         }
 
-        Node slow = head;
-        Node fast = head;
+        ListNode slow = head;
+        ListNode fast = head;
 
         for (int i = 0; i < n; i++) {
 
@@ -57,12 +57,12 @@ public class Q3 {
 
         // Q: finding nth node from the end of linked list(in one traversal)
 
-        Node a = new Node(100);
-        Node b = new Node(13);
-        Node c = new Node(4);
-        Node d = new Node(5);
-        Node e = new Node(12);
-        Node f = new Node(10);
+        ListNode a = new ListNode(100);
+        ListNode b = new ListNode(13);
+        ListNode c = new ListNode(4);
+        ListNode d = new ListNode(5);
+        ListNode e = new ListNode(12);
+        ListNode f = new ListNode(10);
         a.next = b;
         b.next = c;
         c.next = d;
@@ -70,8 +70,8 @@ public class Q3 {
         e.next = f;
         display(a);
 
-        Node ans = nthNodeFromLast(a, 3);
-        System.out.println(ans.data);
+        ListNode ans = nthNodeFromLast(a, 3);
+        System.out.println(ans.val);
 
 
     }
