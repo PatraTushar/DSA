@@ -22,9 +22,11 @@ public class Q25 {
 
     static ListNode duplicateII(ListNode head) {
 
-        ListNode dummy = new ListNode(0);
-        ListNode prev = dummy;
-        dummy.next = head;
+        if (head == null || head.next == null) return head;
+
+        ListNode dummy = new ListNode(-1);
+        ListNode d = dummy;
+        d.next = head;
 
         while (head != null) {
 
@@ -32,21 +34,23 @@ public class Q25 {
 
                 int duplicate = head.val;
 
-                while (head!= null && head.val == duplicate) {
+                while (head != null && head.val == duplicate) {
+
                     head = head.next;
                 }
-                prev.next = head;
 
+                d.next = head;
             } else {
-                prev = prev.next;
+
+
+                d = d.next;
                 head = head.next;
-
             }
-
-
         }
 
         return dummy.next;
+
+
 
     }
 
