@@ -1,5 +1,6 @@
 import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q23;
 import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q25;
+import LINKEDLIST.SinglyLinkedList.InterviewQuestion.Q27;
 
 public class myPractice {
 
@@ -37,6 +38,7 @@ public class myPractice {
 
     static void display(ListNode head) {
 
+
         ListNode temp = head;
         while (temp != null) {
             System.out.print(temp.val + " ");
@@ -67,87 +69,34 @@ public class myPractice {
         return slow;
     }
 
-    static ListNode duplicateII(ListNode head) {
 
-        if (head == null || head.next == null) return head;
+    static ListNode fun(ListNode head, int left, int right) {
+
+        if (head == null || left == right) return head;
 
         ListNode dummy = new ListNode(-1);
-        ListNode d = dummy;
-        d.next = head;
+        dummy.next = head;
+        ListNode temp = dummy;
 
-        while (head != null) {
-
-            if (head.next != null && head.val == head.next.val) {
-
-                int duplicate = head.val;
-
-                while (head != null && head.val == duplicate) {
-
-                    head = head.next;
-                }
-
-                d.next = head;
-            } else {
-
-
-                d = d.next;
-                head = head.next;
-            }
+        for (int i = 1; i < left; i++) {
+            temp = temp.next;
         }
 
-        return dummy.next;
+        ListNode prev = null;
+        ListNode curr = temp.next;
+        ListNode agla;
+        ListNode tail = curr;
 
+        for (int i = 0; i < right - left + 1; i++) {
 
-    }
-
-
-    static ListNode copyRandomList(ListNode head) {
-
-        ListNode oldTemp = head;
-
-        // alternate connection
-
-        while (oldTemp != null) {
-
-            ListNode newNode = new ListNode(oldTemp.val);
-            newNode.next = oldTemp.next;
-            oldTemp.next = newNode;
-            oldTemp = oldTemp.next.next;
+            agla = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = agla;
         }
 
-
-        // assign random pointers
-
-        oldTemp = head;
-        ListNode newTemp = head.next;
-
-        while (oldTemp != null) {
-
-            if (oldTemp.random == null) newTemp.random = null;
-
-            else newTemp.random = oldTemp.random.next;
-
-
-            oldTemp = oldTemp.next.next;
-            if (newTemp.next == null) break;
-            newTemp = newTemp.next.next;
-        }
-
-
-        // separate te connection
-
-        oldTemp = head;
-        newTemp = head.next;
-        ListNode dummy = new ListNode(-1);
-        dummy.next = newTemp;
-
-        while (oldTemp != null) {
-
-            oldTemp.next = newTemp.next;
-            if (newTemp.next != null) newTemp.next = newTemp.next.next;
-            oldTemp = oldTemp.next;
-            newTemp = newTemp.next;
-        }
+        temp.next = prev;
+        tail.next = curr;
 
         return dummy.next;
 
@@ -160,42 +109,15 @@ public class myPractice {
         ListNode a = new ListNode(1);
         ListNode b = new ListNode(2);
         ListNode c = new ListNode(3);
-        ListNode d = new ListNode(3);
-        ListNode e = new ListNode(4);
-        ListNode f = new ListNode(4);
-        ListNode g = new ListNode(5);
-
+        ListNode d = new ListNode(4);
+        ListNode e = new ListNode(5);
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
-        e.next = f;
-        f.next = g;
-
         display(a);
-        ListNode ans = duplicateII(a);
-        display(ans);
 
-
-        ListNode i = new ListNode(7);
-        ListNode j = new ListNode(13);
-        ListNode k = new ListNode(11);
-        ListNode l = new ListNode(10);
-        ListNode m = new ListNode(1);
-
-        i.next = j;
-        j.next = k;
-        k.next = l;
-        l.next = m;
-
-        i.random = null;
-        j.random = j;
-        k.random = m;
-        l.random = k;
-        m.random = i;
-
-        display(i);
-        ListNode Ans = copyRandomList(i);
+        ListNode Ans = fun(a, 2, 4);
         display(Ans);
 
 
