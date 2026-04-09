@@ -1,27 +1,33 @@
+import java.util.Scanner;
+
 public class myThread {
 
-    static class Student {
-
-       public void finalize(){
-
-           System.out.println(" finalize method called ");
 
 
-       }
-    }
+    public static void main(String[] args)  {
+
+        // try without resources
+
+        Scanner sc=null;
+
+        try {
 
 
-    public static void main(String[] args) {
+            sc=new Scanner(System.in);
+            System.out.println(" enter the number  ");
+            int num=sc.nextInt();
+            System.out.println(" Number :" +num);
+        }
+
+        finally {
+
+            if (sc!=null){
+
+                sc.close();
+            }
+        }
 
 
-      Student s=new Student();
-      s.finalize();
-      s.finalize();
-       s=null;
-
-       System.gc();
-
-        System.out.println(" end of main ");
 
 
     }
