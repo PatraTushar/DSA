@@ -1,39 +1,45 @@
+import java.util.Arrays;
 import java.util.Stack;
 
 public class myPractice {
 
-    static boolean validParenthesis(String s) {
+    static int[] nge(int[] arr) {
 
-        int length = s.length();
-        Stack<Character> st = new Stack<>();
+        int n = arr.length;
 
-        for (int i = 0; i < length; i++) {
+        Stack<Integer> st = new Stack<>();
+        int[] NGE = new int[n];
 
-            char currChar = s.charAt(i);
+        NGE[n - 1] = -1;
+        st.push(arr[n - 1]);
 
-            if (currChar == '{' || currChar == '[' || currChar == '(') st.push(currChar);
+        for (int i = n - 2; i >= 0; i--) {
+
+            if (!st.isEmpty() && st.peek() > arr[i]) NGE[i] = st.peek();
 
             else {
 
-                if (st.isEmpty()) return false;
+                while (!st.isEmpty() && st.peek() <= arr[i]) {
 
-               else if ((currChar == '}' && st.peek() == '{') || (currChar == ']' && st.peek() == '[') || (currChar == ')' && st.peek() == '('))
                     st.pop();
+                }
 
-               else return false;
-
-
+                NGE[i] = st.isEmpty() ? -1 :st.peek();
 
             }
+            st.push(arr[i]);
         }
 
-        return st.isEmpty();
-
+        return NGE;
 
     }
 
 
     public static void main(String[] args) {
+
+        int[] arr = {1, 3, 2, 1, 8, 6, 3, 4};
+        int[] res = nge(arr);
+        System.out.println(Arrays.toString(res));
 
     }
 

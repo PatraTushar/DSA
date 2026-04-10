@@ -11,42 +11,36 @@ public class Q3 {
         // Space Complexity (SC): O(n)
 
         int n = arr.length;
-        int[] nge = new int[n];
-        Stack<Integer> st = new Stack<>();
 
-        nge[n - 1] = -1;
+        Stack<Integer> st = new Stack<>();
+        int[] NGE = new int[n];
+
+        NGE[n - 1] = -1;
         st.push(arr[n - 1]);
 
         for (int i = n - 2; i >= 0; i--) {
 
-            if (st.peek() > arr[i]) {
+            if (!st.isEmpty() && st.peek() > arr[i]) NGE[i] = st.peek();
 
-                nge[i] = st.peek();
-                st.push(arr[i]);
-
-            } else {
-
+            else {
 
                 while (!st.isEmpty() && st.peek() <= arr[i]) {
 
                     st.pop();
                 }
 
-                if (!st.isEmpty()) nge[i] = st.peek();
-                else nge[i] = -1;
-                st.push(arr[i]);
+                NGE[i] = st.isEmpty() ? -1 : st.peek();
 
             }
-
-
+            st.push(arr[i]);
         }
 
-        return nge;
+        return NGE;
 
     }
 
 
-    static int[] nextSmallerElement(int[] arr){
+    static int[] nextSmallerElement(int[] arr) {
 
         //  Time Complexity (TC): O(n)
         // Space Complexity (SC): O(n)
@@ -83,7 +77,6 @@ public class Q3 {
         }
 
         return nse;
-
 
 
     }
