@@ -33,8 +33,6 @@ public class Q7 {
     }
 
 
-
-
     static int sumSubArrayMinII(int[] arr) {
 
         // Time Complexity: O(n)
@@ -77,7 +75,7 @@ public class Q7 {
         }
 
 
-
+        // “How many subarrays have arr[i] as the minimum?”
 
 
         long sum = 0;
@@ -87,7 +85,7 @@ public class Q7 {
 
             long left = i - pse[i];
             long right = nse[i] - i;
-            sum = (sum + arr[i] * left * right) % MOD;
+            sum += (arr[i] * left * right) % MOD;
 
 
         }
@@ -100,11 +98,26 @@ public class Q7 {
     public static void main(String[] args) {
 
         int[] arr = {71, 55, 82, 55};
+        int[] num = {3, 1, 2, 4};
         //  System.out.println(sumSubArrayMin(arr));
-        System.out.println(sumSubArrayMinII(arr));
+        System.out.println(sumSubArrayMinII(num));
 
 
     }
 
 
 }
+
+
+// PSE (Previous Smaller Element):
+// stores index of nearest smaller element on left of i
+// PSE can be -1 when no smaller element exists on left
+// we use (i - PSE[i]) to count valid starting positions
+// this also safely handles PSE[i] = -1 without breaking logic
+
+
+// NSE (Next Smaller Element):
+// stores index of nearest smaller element on right of i
+// NSE can be n when no smaller element exists on right
+// we use (NSE[i] - i) to count valid ending positions
+// this gives number of ways arr[i] can act as minimum in subarrays
