@@ -38,35 +38,32 @@ public class Q4 {
 
 
     // optimal approach
-    static int[] nextGreaterElementII(int[] arr) {
+    static int[] nextGreaterElementII(int[] num) {
 
         // Time Complexity (TC): O(n)
         // Space Complexity (SC): O(n)
 
-        int n = arr.length;
+        int length = num.length;
         Stack<Integer> st = new Stack<>();
-        st.push(arr[(2 * n - 1) % n]);
-        int[] nge = new int[n];
+        int[] nge = new int[length];
+        st.push(num[(2 * length - 1) % length]);
 
-        for (int i = 2 * n - 2; i >= 0; i--) {
+        for (int i = 2 * length - 2; i >= 0; i--) {
 
-            while (!st.isEmpty() && st.peek() <= arr[i % n]) {
+            while (!st.isEmpty() && st.peek() <= num[i%length]) {
 
                 st.pop();
-
-
             }
 
 
-            if (i < n) {
+            if (i < length) {
 
-                if (!st.isEmpty()) nge[i] = st.peek();
-                else nge[i] = -1;
+                if (st.isEmpty()) nge[i]=-1;
+                else nge[i]=st.peek();
+
             }
 
-            st.push(arr[i % n]);
-
-
+            st.push(num[i % length]);
         }
 
         return nge;
@@ -74,6 +71,7 @@ public class Q4 {
 
     public static void main(String[] args) {
 
+        // leeTCode 503
         int[] arr = {2, 10, 12, 1, 11};
         int[] arr1 = {5, 3, 4, 6};
         int[] ans = nextGreaterElementII(arr);

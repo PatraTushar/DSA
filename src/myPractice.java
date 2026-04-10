@@ -3,19 +3,22 @@ import java.util.Stack;
 
 public class myPractice {
 
-    static int[] nse(int[] arr) {
+    static int[] prevSmallerElement(int[] arr) {
+
+        //  Time Complexity (TC): O(n)
+        // Space Complexity (SC): O(n)
 
         int n = arr.length;
 
         Stack<Integer> st = new Stack<>();
-        int[] NSE = new int[n];
+        int[] PSE = new int[n];
 
-        NSE[n - 1] = -1;
-        st.push(arr[n - 1]);
+        PSE[0] = -1;
+        st.push(arr[0]);
 
-        for (int i = n - 2; i >= 0; i--) {
+        for (int i = 1; i < n; i++) {
 
-            if (!st.isEmpty() && st.peek() < arr[i]) NSE[i] = st.peek();
+            if (!st.isEmpty() && st.peek() < arr[i]) PSE[i] = st.peek();
 
             else {
 
@@ -24,22 +27,22 @@ public class myPractice {
                     st.pop();
                 }
 
-                NSE[i] = st.isEmpty() ? -1 :st.peek();
+                PSE[i] = st.isEmpty() ? -1 : st.peek();
 
             }
             st.push(arr[i]);
         }
 
-        return NSE;
+        return PSE;
 
     }
 
 
     public static void main(String[] args) {
 
-        int[] arr = {1, 3, 2, 1, 8, 6, 3, 4};
-        int[] res = nse(arr);
-        System.out.println(Arrays.toString(res));
+        int[] arr1 = {4, 1, 2};
+        int[] ans = prevSmallerElement(arr1);
+        System.out.println(Arrays.toString(ans));
 
     }
 
