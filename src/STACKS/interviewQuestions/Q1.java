@@ -8,41 +8,37 @@ public class Q1 {
 
         //Time Complexity: O(n)
         //Space Complexity: O(n)
-
-        int n = s.length();
+        int length = s.length();
         Stack<Character> st = new Stack<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < length; i++) {
 
-            char ch = s.charAt(i);
+            char currChar = s.charAt(i);
 
-            if (ch == '[' || ch == '{' || ch == '(') {
+            if (currChar == '{' || currChar == '[' || currChar == '(') st.push(currChar);
 
-                st.push(ch);
-
-            } else {
+            else {
 
                 if (st.isEmpty()) return false;
 
-
-                if (ch == ']' && st.peek() == '[' || ch == '}' && st.peek() == '{' || ch == ')' && st.peek() == '(') {
-
+                else if ((currChar == '}' && st.peek() == '{') || (currChar == ']' && st.peek() == '[') || (currChar == ')' && st.peek() == '('))
                     st.pop();
-                } else {
 
-                    return false;
-                }
+                else return false;
+
 
 
             }
-
         }
 
         return st.isEmpty();
+
     }
 
 
     public static void main(String[] args) {
+
+        // leeTCode->20
 
         String str1 = "()[{}()]";
         String str2 = "()[{}(])";

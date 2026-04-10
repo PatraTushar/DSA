@@ -2,32 +2,41 @@ import java.util.Scanner;
 
 public class myThread {
 
+    static class TooYoungException extends RuntimeException{
+
+        TooYoungException(String s){
+
+            super(s);
+        }
+    }
+
+    static class TooOldException extends RuntimeException{
+
+        TooOldException(String s){
+            super(s);
+        }
+    }
 
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
-        // try without resources
+        Scanner sc=new Scanner(System.in);
+        System.out.println(" enter age ");
+        int age=sc.nextInt();
 
-        Scanner sc=null;
+        if (age<18){
 
-        try {
-
-
-            sc=new Scanner(System.in);
-            System.out.println(" enter the number  ");
-            int num=sc.nextInt();
-            System.out.println(" Number :" +num);
+            throw new TooYoungException(" You are too Young and You cant marry ");
         }
 
-        finally {
+        else if (age>60){
 
-            if (sc!=null){
-
-                sc.close();
-            }
+            throw new TooOldException(" You are Too old ");
         }
 
-
+        else {
+            System.out.println(" you are eligible for the marriage ");
+        };
 
 
     }
