@@ -1,48 +1,68 @@
-import java.util.Arrays;
 import java.util.Stack;
 
 public class myPractice {
 
-    static int[] prevSmallerElement(int[] arr) {
+    static int sumOfSubArrayMin(int[] arr) {
 
-        //  Time Complexity (TC): O(n)
-        // Space Complexity (SC): O(n)
-
-        int n = arr.length;
-
+        int length = arr.length;
         Stack<Integer> st = new Stack<>();
-        int[] PSE = new int[n];
+        int[] pse = new int[length];
+        int[] nse = new int[length];
+        int MOD = (int) 1e9 + 7;
 
-        PSE[0] = -1;
-        st.push(arr[0]);
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 0; i < length; i++) {
 
-            if (!st.isEmpty() && st.peek() < arr[i]) PSE[i] = st.peek();
+            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
 
-            else {
-
-                while (!st.isEmpty() && st.peek() >= arr[i]) {
-
-                    st.pop();
-                }
-
-                PSE[i] = st.isEmpty() ? -1 : st.peek();
+                st.pop();
 
             }
-            st.push(arr[i]);
+
+
+            pse[i] = st.isEmpty() ? -1 : st.peek();
+
+            st.push(i);
+
         }
 
-        return PSE;
+
+        st.clear();
+
+
+        for (int i = length - 1; i >= 0; i--) {
+
+            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
+                st.pop();
+            }
+
+            nse[i] = st.isEmpty() ? length : st.peek();
+            st.push(i);
+
+
+        }
+
+
+        long sum = 0;
+
+        for (int i = 0; i < length; i++) {
+
+            long left=i-pse[i];
+            long right=nse[i]-i;
+            sum=(sum+arr[i]*left*right)%MOD;
+
+        }
+
+        return (int) sum;
 
     }
 
 
     public static void main(String[] args) {
 
-        int[] arr1 = {4, 1, 2};
-        int[] ans = prevSmallerElement(arr1);
-        System.out.println(Arrays.toString(ans));
+        int[] num = {3, 1, 2, 4};
+        System.out.println(sumOfSubArrayMin(num));
+
 
     }
 

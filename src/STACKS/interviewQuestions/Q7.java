@@ -85,7 +85,7 @@ public class Q7 {
 
             long left = i - pse[i];
             long right = nse[i] - i;
-            sum += (arr[i] * left * right) % MOD;
+            sum = (sum + arr[i] * left * right) % MOD;
 
 
         }
