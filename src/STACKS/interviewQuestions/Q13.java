@@ -46,13 +46,13 @@ public class Q13 {
 
 
         int largestArea = Integer.MIN_VALUE;
-        int sum;
+        int val;
 
 
         for (int i = 0; i < n; i++) {
 
-            sum = heights[i] * (nse[i] - pse[i] - 1);
-            largestArea = Math.max(sum, largestArea);
+            val = heights[i] * (nse[i] - pse[i] - 1);
+            largestArea = Math.max(val, largestArea);
 
 
         }
