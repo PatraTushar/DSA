@@ -18,7 +18,7 @@ public class Q12 {
 
         for (int ele : asteroids) {
 
-            boolean destroyed = false;
+            boolean isCurrentDestroyed = false;
 
             while (!st.isEmpty() && ele < 0 && st.peek() > 0) {
 
@@ -29,13 +29,13 @@ public class Q12 {
 
                 } else if (Math.abs(st.peek()) > Math.abs(ele)) {
 
-                    destroyed = true;
+                    isCurrentDestroyed = true;
                     break;
 
 
                 } else {
 
-                    destroyed = true;
+                    isCurrentDestroyed = true;
                     st.pop();
                     break;
 
@@ -45,7 +45,7 @@ public class Q12 {
             }
 
 
-            if (!destroyed) st.push(ele);
+            if (!isCurrentDestroyed) st.push(ele);
 
         }
 

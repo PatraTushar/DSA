@@ -1,67 +1,65 @@
+import java.util.Arrays;
 import java.util.Stack;
 
 public class myPractice {
 
-    static int sumOfSubArrayMin(int[] arr) {
+    static int[] asteroidCollision(int[] arr) {
 
-        int length = arr.length;
+
         Stack<Integer> st = new Stack<>();
-        int[] pse = new int[length];
-        int[] nse = new int[length];
-        int MOD = (int) 1e9 + 7;
 
 
-        for (int i = 0; i < length; i++) {
+        for (int ele : arr) {
 
-            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
+            boolean isCurrentDestroyed = false;
 
-                st.pop();
+            while (!st.isEmpty() && ele < 0 && st.peek() > 0) {
+
+                if (Math.abs(st.peek()) < Math.abs(ele)) {
+
+                    st.pop();
+                } else if (Math.abs(st.peek()) > Math.abs(ele)) {
+
+                    isCurrentDestroyed=true;
+                    break;
+                }
+
+                else {
+
+                    st.pop();
+                    isCurrentDestroyed=true;
+                    break;
+                }
 
             }
 
-
-            pse[i] = st.isEmpty() ? -1 : st.peek();
-
-            st.push(i);
-
-        }
+            if(!isCurrentDestroyed) st.push(ele);
 
 
-        st.clear();
-
-
-        for (int i = length - 1; i >= 0; i--) {
-
-            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
-                st.pop();
-            }
-
-            nse[i] = st.isEmpty() ? length : st.peek();
-            st.push(i);
 
 
         }
 
 
-        long sum = 0;
+        int[] res=new int[st.size()];
+        int length=res.length;
 
-        for (int i = 0; i < length; i++) {
-
-            long left=i-pse[i];
-            long right=nse[i]-i;
-            sum=(sum+arr[i]*left*right)%MOD;
-
+        for (int i=length-1;i>=0;i--){
+            res[i]=st.pop();
         }
 
-        return (int) sum;
+
+        return res;
+
 
     }
 
 
     public static void main(String[] args) {
 
-        int[] num = {3, 1, 2, 4};
-        System.out.println(sumOfSubArrayMin(num));
+        int[] arr = {4, 7, 1, 1, 2, -3, -7, 17, 15, -16};
+        int[] ans = asteroidCollision(arr);
+        System.out.println(Arrays.toString(ans));
 
 
     }
