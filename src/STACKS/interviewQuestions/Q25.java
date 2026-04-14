@@ -45,47 +45,40 @@ public class Q25 {
 
     static int celebrityProblemI(int[][] mat) {
 
-        // Time Complexity: O(2n)=O(n)
-        // Space Complexity: O(1)
-
         int n = mat.length;
-
 
         int top = 0;
         int bottom = n - 1;
 
+        // Step 1: Find candidate
         while (top < bottom) {
 
-            if (mat[top][bottom] == 1) top++;
-
-            else if (mat[bottom][top] == 1) bottom--;
-
-            else {
-
+            if (mat[top][bottom] == 1) {
+                // top knows bottom → top can't be celebrity
                 top++;
+            } else {
+                // top does NOT know bottom → bottom can't be celebrity
                 bottom--;
             }
-
-
         }
 
-
-        if (top > bottom) return -1;
+        // Step 2: Verify candidate
+        int candidate = top;
 
         for (int i = 0; i < n; i++) {
 
-            if (i == top) continue;
+            if (i == candidate) continue;
 
-            if (mat[top][i] == 0 && mat[i][bottom] == 1) {
-
-
-            } else return -1;
-
+            // candidate should not know anyone
+            // everyone should know candidate
+            if (mat[candidate][i] == 1 || mat[i][candidate] == 0) {
+                return -1;
+            }
         }
 
-        return top;
-
+        return candidate;
     }
+
 
     public static void main(String[] args) {
 
