@@ -50,7 +50,7 @@ public class Q25 {
         int top = 0;
         int bottom = n - 1;
 
-        // Step 1: Find candidate
+        // Step 1: Find celebrity
         while (top < bottom) {
 
             if (mat[top][bottom] == 1) {
@@ -62,21 +62,21 @@ public class Q25 {
             }
         }
 
-        // Step 2: Verify candidate
-        int candidate = top;
+        // Step 2: Verify celebrity
+        int celebrity = top;
 
         for (int i = 0; i < n; i++) {
 
-            if (i == candidate) continue;
+            if (i == celebrity) continue;
 
-            // candidate should not know anyone
-            // everyone should know candidate
-            if (mat[candidate][i] == 1 || mat[i][candidate] == 0) {
+            // celebrity should not know anyone
+            // everyone should know celebrity
+            if (mat[celebrity][i] == 1 || mat[i][celebrity] == 0) {
                 return -1;
             }
         }
 
-        return candidate;
+        return celebrity;
     }
 
 
