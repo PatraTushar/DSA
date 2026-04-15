@@ -14,7 +14,7 @@ public class Q27 {
 
         int n = arr.length;
         int[] result = new int[n];
-        Arrays.fill(result,Integer.MIN_VALUE);
+        Arrays.fill(result, Integer.MIN_VALUE);
 
 
         for (int i = 0; i < n; i++) {
@@ -86,12 +86,10 @@ public class Q27 {
         }
 
 
-        ArrayList<Integer> resultList=new ArrayList<>();
+        ArrayList<Integer> resultList = new ArrayList<>();
         for (int val : res) resultList.add(val);
 
         return resultList;
-
-
 
 
     }
@@ -153,7 +151,7 @@ public class Q27 {
         System.out.println(Arrays.toString(ans));
         int[] ans1 = maxOfMinI(arr);
         System.out.println(Arrays.toString(ans1));
-        ArrayList<Integer> ans2=MaxOfMin(arr);
+        ArrayList<Integer> ans2 = MaxOfMin(arr);
         System.out.println(ans2);
 
 
