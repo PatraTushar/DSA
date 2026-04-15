@@ -48,6 +48,7 @@ public class Q27 {
         int[] pse = new int[n];  // previous smaller element index
         int[] nse = new int[n];  // next smaller element index
         int[] res = new int[n];  // result array
+        Arrays.fill(res, Integer.MIN_VALUE);
 
         Stack<Integer> st = new Stack<>();
 
@@ -73,7 +74,7 @@ public class Q27 {
 
 
         // Step 3: Fill res[length - 1] = max(res[length - 1], arr[i])
-        Arrays.fill(res, Integer.MIN_VALUE);
+
         for (int i = 0; i < n; i++) {
             int len = nse[i] - pse[i] - 1;        // len: window size for which arr[i] is the minimum element
             res[len - 1] = Math.max(res[len - 1], arr[i]);
