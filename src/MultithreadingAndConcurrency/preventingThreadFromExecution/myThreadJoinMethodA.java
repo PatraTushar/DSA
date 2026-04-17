@@ -56,3 +56,6 @@ public class myThreadJoinMethodA {
 //mt.join() is inside run()
 //So the thread executing mt.join() is the child thread
 //It is calling join() on mt (main thread)
+
+
+// mt.join() -> “Child thread will WAIT until mt (main thread) finishes execution”
