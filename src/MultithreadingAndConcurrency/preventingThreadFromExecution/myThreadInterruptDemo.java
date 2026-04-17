@@ -28,7 +28,7 @@ public class myThreadInterruptDemo {
 
         myThreadD obj=new myThreadD();
         obj.start();
-       // obj.interrupt();  // Line 1
+        obj.interrupt();  // Line 1
 
         System.out.println(" End of main Thread ");
 

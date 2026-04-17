@@ -1,42 +1,36 @@
-import java.util.Scanner;
+public class myThread extends Thread {
 
-public class myThread {
+    static Thread mt;
+    @Override
+    public void run() {
 
-    static class TooYoungException extends RuntimeException{
 
-        TooYoungException(String s){
+        try {
+            mt.join();
+        } catch (Exception e) {
+        }
 
-            super(s);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(" child thread ");
+
         }
     }
 
-    static class TooOldException extends RuntimeException{
+    public static void main(String[] args) throws Exception {
 
-        TooOldException(String s){
-            super(s);
+        mt=Thread.currentThread();
+
+        myThread t = new myThread();
+        t.start();
+
+
+        t.join();
+
+
+        for (int i = 0; i < 10; i++) {
+
+            System.out.println(" main thread ");
         }
-    }
-
-
-    public static void main(String[] args) {
-
-        Scanner sc=new Scanner(System.in);
-        System.out.println(" enter age ");
-        int age=sc.nextInt();
-
-        if (age<18){
-
-            throw new TooYoungException(" You are too Young and You cant marry ");
-        }
-
-        else if (age>60){
-
-            throw new TooOldException(" You are Too old ");
-        }
-
-        else {
-            System.out.println(" you are eligible for the marriage ");
-        };
 
 
     }
