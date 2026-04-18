@@ -111,37 +111,18 @@ public class myPractice {
     }
 
 
-    static int sumOfSubArrayMinimums(int[] arr) {
+    static int histogram(int[] heights) {
 
 
-        int length = arr.length;
-        int MOD = (int) 1e9 + 7;
+        int length = heights.length;
         int[] pse = new int[length];
         int[] nse = new int[length];
         Stack<Integer> st = new Stack<>();
 
 
-        for (int i = length - 1; i >= 0; i--) {
-
-            while (!st.isEmpty() && arr[st.peek()] > arr[i]) {
-
-                st.pop();
-            }
-
-
-            nse[i] = st.isEmpty() ? length : st.peek();
-
-            st.push(i);
-
-
-        }
-
-        st.clear();
-
-
         for (int i = 0; i < length; i++) {
 
-            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
 
                 st.pop();
             }
@@ -154,60 +135,18 @@ public class myPractice {
 
         }
 
-
-        long res = 0;
-
-        for (int i = 0; i < length; i++) {
-
-            long left = i - pse[i];
-            long right = nse[i] - i;
-
-            res = (res + left * right * arr[i]) % MOD;
-        }
-
-        return (int) res;
-
-
-    }
-
-
-    static int sumOfSubArrayMaximums(int[] arr) {
-
-
-        int length = arr.length;
-        int MOD = (int) 1e9 + 7;
-        int[] pge = new int[length];
-        int[] nge = new int[length];
-        Stack<Integer> st = new Stack<>();
-
-
-        for (int i = 0; i < length; i++) {
-
-            while (!st.isEmpty() && arr[st.peek()] < arr[i]) {
-
-                st.pop();
-            }
-
-
-            pge[i] = st.isEmpty() ? -1 : st.peek();
-
-            st.push(i);
-
-
-        }
-
         st.clear();
 
 
         for (int i = length - 1; i >= 0; i--) {
 
-            while (!st.isEmpty() && arr[st.peek()] <= arr[i]) {
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
 
                 st.pop();
             }
 
 
-            nge[i] = st.isEmpty() ? length : st.peek();
+            nse[i] = st.isEmpty() ? length : st.peek();
 
             st.push(i);
 
@@ -215,33 +154,71 @@ public class myPractice {
         }
 
 
+        int largestArea = Integer.MIN_VALUE;
 
-
-
-
-
-
-        long res = 0;
 
         for (int i = 0; i < length; i++) {
 
-            long left = i - pge[i];
-            long right = nge[i] - i;
+            int val = heights[i] * (nse[i] - pse[i] - 1);
+            largestArea = Math.max(largestArea, val);
 
-            res = (res + left * right * arr[i]) % MOD;
+
         }
 
-        return (int) res;
+        return largestArea;
+
+    }
+
+    static int[][] prefixSum(char[][] matrix) {
 
 
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int[][] pSum = new int[rows][cols];
+
+        for (int j = 0; j < cols; j++) {
+
+            int sum = 0;
+
+            for (int i = 0; i < rows; i++) {
+
+                sum += matrix[i][j] - '0';
+
+                if (matrix[i][j] == '0') sum = 0;
+
+                pSum[i][j] = sum;
+
+
+            }
+        }
+
+        return pSum;
+
+    }
+
+
+    static int maximalRectangle(char[][] arr) {
+
+        int rows = arr.length;
+        int max = Integer.MIN_VALUE;
+
+        int[][] pSum=prefixSum(arr);
+
+        for (int i = 0; i < rows; i++) {
+
+            max = Math.max(max, histogram(pSum[i]));
+
+        }
+
+        return max;
     }
 
 
     public static void main(String[] args) {
 
-        int[] num = {3, 1, 2, 4};
-         System.out.println(sumOfSubArrayMinimums(num));
-        System.out.println(sumOfSubArrayMaximums(num));
+        char[][] matrix = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
+        System.out.println(maximalRectangle(matrix));
+
 
 
     }

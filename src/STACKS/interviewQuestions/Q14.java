@@ -60,43 +60,18 @@ public class Q14 {
     }
 
 
-    static int[][] prefixSum(char[][] arr) {
+    static int maximalRectangle(char[][] matrix) {
 
-        int rows = arr.length;
-        int cols = arr[0].length;
-        int[][] pSum = new int[rows][cols];
+        //Time Complexity (TC): O(R × C) + O(C)
+        //Space Complexity (SC): O(C)
 
-        for (int j = 0; j < cols; j++) {
+        //R = number of rows
+        //C = number of columns
 
-            int sum = 0;
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int[] heights = new int[cols];
 
-            for (int i = 0; i < rows; i++) {
-
-                sum += arr[i][j] - '0';
-
-                if (arr[i][j] == '0') sum = 0;
-
-                pSum[i][j] = sum;
-
-
-            }
-
-        }
-
-        return pSum;
-
-
-    }
-
-    static int maximalRectangle(char[][] arr) {
-
-        //Time Complexity (TC): O(n)
-        //Space Complexity (SC): O(n)
-
-        int rows = arr.length;
-
-
-        int[][] prefixSum = prefixSum(arr);
 
         int maxArea = 0;
 
@@ -104,7 +79,16 @@ public class Q14 {
         for (int i = 0; i < rows; i++) {
 
 
-            maxArea = Math.max(maxArea, largestRectangleHistogram(prefixSum[i]));
+            for (int j = 0; j < cols; j++) {
+
+                if (matrix[i][j] == '1') heights[j] += 1;
+
+                else heights[j] = 0;
+
+
+            }
+
+            maxArea = Math.max(maxArea, largestRectangleHistogram(heights));
 
         }
 
