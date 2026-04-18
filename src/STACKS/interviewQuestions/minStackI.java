@@ -99,6 +99,8 @@ public class minStackI {
 
         // Get top and min after pop
         System.out.println("Top after pop: " + m.top());   // Should print 15
+
+
         System.out.println("Min after pop: " + m.getMin()); // Should print 12
 
 
