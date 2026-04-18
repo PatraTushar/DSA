@@ -2,7 +2,7 @@ package STACKS.interviewQuestions;
 
 import java.util.Stack;
 
-public class minStack {
+public class   minStack {
 
     public static class Pair {
         int first;
