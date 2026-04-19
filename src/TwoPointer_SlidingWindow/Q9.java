@@ -59,19 +59,13 @@ public class Q9 {
 
             while (map.size() == 3) {
 
-                numberOfStrings+=n-right;
-                map.put(s.charAt(left),map.get(s.charAt(left))-1);
-                if(map.get(s.charAt(left))==0) map.remove(s.charAt(left));
+                numberOfStrings += n - right;       // Number of substrings starting from current left that are valid
+                map.put(s.charAt(left), map.get(s.charAt(left)) - 1);
+                if (map.get(s.charAt(left)) == 0) map.remove(s.charAt(left));
                 left++;
 
 
-
             }
-
-
-
-
-
 
 
         }

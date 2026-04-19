@@ -1,122 +1,44 @@
-import java.util.Stack;
-
 public class myPractice {
 
 
-    static int[] NGE(int[] arr) {
+    static int func(int[] arr, int k) {
 
         int length = arr.length;
-        int[] nge = new int[length];
-        Stack<Integer> st = new Stack<>();
-
-        for (int i = length - 1; i >= 0; i--) {
-
-            while (!st.isEmpty() && st.peek() <= arr[i]) {
-
-                st.pop();
-            }
+        int leftSum = 0;
+        int rightSum = 0;
+        int right = length - 1;
+        int maxSum = Integer.MIN_VALUE;
+        int idx = -1;
 
 
-            nge[i] = st.isEmpty() ? -1 : st.peek();
+        for (int left = 0; left < k; left++) {
 
-            st.push(arr[i]);
+            leftSum += arr[left];
+            maxSum = Math.max(maxSum, leftSum);
+            idx = left;
 
 
         }
 
-        return nge;
 
+        for (int i = idx; i >= 0; i--) {
 
-    }
-
-
-    static int[] NSE(int[] arr) {
-
-        int length = arr.length;
-        int[] nse = new int[length];
-        Stack<Integer> st = new Stack<>();
-
-        for (int i = length - 1; i >= 0; i--) {
-
-            while (!st.isEmpty() && st.peek() >= arr[i]) {
-
-                st.pop();
-            }
-
-
-            nse[i] = st.isEmpty() ? -1 : st.peek();
-
-            st.push(arr[i]);
-
-
+            leftSum -= arr[i];
+            rightSum += arr[right--];
+            maxSum = Math.max(maxSum, leftSum + rightSum);
         }
 
-        return nse;
-
-
-    }
-
-
-    static int[] PGE(int[] arr) {
-
-        int length = arr.length;
-        int[] pge = new int[length];
-        Stack<Integer> st = new Stack<>();
-
-        for (int i = 0; i < length; i++) {
-
-            while (!st.isEmpty() && st.peek() <= arr[i]) {
-
-                st.pop();
-            }
-
-
-            pge[i] = st.isEmpty() ? -1 : st.peek();
-
-            st.push(arr[i]);
-
-
-        }
-
-        return pge;
-
+        return maxSum;
 
     }
-
-    static int[] PSE(int[] arr) {
-
-        int length = arr.length;
-        int[] pse = new int[length];
-        Stack<Integer> st = new Stack<>();
-
-        for (int i = 0; i < length; i++) {
-
-            while (!st.isEmpty() && st.peek() >= arr[i]) {
-
-                st.pop();
-            }
-
-
-            pse[i] = st.isEmpty() ? -1 : st.peek();
-
-            st.push(arr[i]);
-
-
-        }
-
-        return pse;
-
-
-    }
-
-
 
 
     public static void main(String[] args) {
 
 
-
-
+        int[] arr = {6, 2, 3, 4, 7, 2, 1, 7, 1};
+        int k = 4;
+        System.out.println(func(arr, k));
 
     }
 
