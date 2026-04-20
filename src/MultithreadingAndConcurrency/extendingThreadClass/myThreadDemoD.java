@@ -32,6 +32,7 @@ public class myThreadDemoD {
     }
 }
 
+//When we call the start() method of the Thread class, the JVM creates a new child thread.
 
 // Here, 2 threads exist: main thread and child thread
 // Main thread executes main() and the "Start Method" print inside start()
