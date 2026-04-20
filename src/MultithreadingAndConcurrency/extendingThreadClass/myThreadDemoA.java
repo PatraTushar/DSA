@@ -32,3 +32,9 @@ public class myThreadDemoA {
 
 
 }
+
+
+// When we call start(), JVM creates a new thread and internally invokes the run()
+// method of that thread. Even if we override run(), only the no-argument run()
+// method is executed in the new thread context. If we directly call run(),
+// it behaves like a normal method call without creating a new thread.

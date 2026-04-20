@@ -14,3 +14,6 @@ public class myThreadDemoB {
 
     }
 }
+
+
+// “If you are not overriding run(), JVM will call Thread class run() method which has no implementation”
