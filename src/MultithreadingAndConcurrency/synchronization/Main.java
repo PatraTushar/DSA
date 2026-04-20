@@ -18,9 +18,9 @@ class Test {
 }
 
 class MyThread1 extends Thread {
-    Test obj;
+    TestDemo obj;
 
-    MyThread1(Test obj) {
+    MyThread1(TestDemo obj) {
         this.obj = obj;
     }
 
@@ -30,9 +30,9 @@ class MyThread1 extends Thread {
 }
 
 class MyThread2 extends Thread {
-    Test obj;
+    TestDemo obj;
 
-    MyThread2(Test obj) {
+    MyThread2(TestDemo obj) {
         this.obj = obj;
     }
 
@@ -42,9 +42,9 @@ class MyThread2 extends Thread {
 }
 
 class MyThread3 extends Thread {
-    Test obj;
+    TestDemo obj;
 
-    MyThread3(Test obj) {
+    MyThread3(TestDemo obj) {
         this.obj = obj;
     }
 
@@ -56,11 +56,11 @@ class MyThread3 extends Thread {
 public class Main {
     public static void main(String[] args) {
 
-        Test obj = new Test(); // SAME OBJECT
+        TestDemo obj = new TestDemo(); // SAME OBJECT
 
-        MyThread1 t1 = new MyThread1(obj);
-        MyThread2 t2 = new MyThread2(obj);
-        MyThread3 t3 = new MyThread3(obj);
+        MyThreadA t1 = new MyThreadA(obj);
+        MyThreadB t2 = new MyThreadB(obj);
+        MyThreadC t3 = new MyThreadC(obj);
 
         t1.start();
         t2.start();
