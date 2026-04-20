@@ -8,16 +8,11 @@ public class Q2 {
     public static class Stack {
 
 
-
-        Queue<Integer> original=new LinkedList<>();
-        Queue<Integer> helper=new LinkedList<>();
-
+        Queue<Integer> original = new LinkedList<>();
+        Queue<Integer> helper = new LinkedList<>();
 
 
-
-
-
-        public void push(int val){
+        public void push(int val) {
 
             // Time Complexity: O(1)
             // Space Complexity: O(1) (only 1 element is added)
@@ -27,7 +22,7 @@ public class Q2 {
 
         }
 
-        public int pop(){
+        public int pop() {
 
             // Time Complexity: O(n)
             // Space Complexity: O(1)
@@ -35,12 +30,12 @@ public class Q2 {
             if (original.isEmpty()) return -1;
 
 
-            while (original.size()>1){
+            while (original.size() > 1) {
 
                 helper.add(original.remove());
             }
 
-            int top=original.remove();
+            int top = original.remove();
 
             Queue<Integer> temp = original;
             original = helper;
@@ -51,18 +46,20 @@ public class Q2 {
         }
 
 
-        public int peek(){
+        public int peek() {
 
             // Time Complexity: O(n)
             // Space Complexity: O(1)
 
-            while (original.size()>1){
+            if (original.isEmpty()) return -1;
+
+            while (original.size() > 1) {
 
                 helper.add(original.remove());
             }
 
 
-            int top=original.remove();
+            int top = original.remove();
 
             helper.add(top);
 
@@ -72,7 +69,6 @@ public class Q2 {
             helper = temp;
 
             return top;
-
 
 
         }
