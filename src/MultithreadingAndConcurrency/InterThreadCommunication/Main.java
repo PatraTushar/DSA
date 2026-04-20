@@ -66,3 +66,6 @@ public class Main {
 
 
 //“When a thread enters a synchronized method or block, it acquires the lock, and synchronization comes into play.”
+
+//“After notify() is called, the waiting thread does NOT execute immediately. It only gets moved from WAITING state to BLOCKED state,
+// and it will resume execution only after the current thread releases the lock.”
