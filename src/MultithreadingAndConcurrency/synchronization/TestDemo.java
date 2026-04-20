@@ -5,7 +5,10 @@ class Demo {
     // 1. Static synchronized method (CLASS LOCK)
     public static synchronized void staticSyncMethod() {
         System.out.println(Thread.currentThread().getName() + " entered staticSyncMethod");
-        try { Thread.sleep(3000); } catch (Exception e) {}
+        try {
+            Thread.sleep(3000);
+        } catch (Exception e) {
+        }
         System.out.println(Thread.currentThread().getName() + " exiting staticSyncMethod");
     }
 
@@ -17,7 +20,10 @@ class Demo {
     // 3. Synchronized instance method (OBJECT LOCK)
     public synchronized void instanceSyncMethod() {
         System.out.println(Thread.currentThread().getName() + " entered instanceSyncMethod");
-        try { Thread.sleep(3000); } catch (Exception e) {}
+        try {
+            Thread.sleep(3000);
+        } catch (Exception e) {
+        }
         System.out.println(Thread.currentThread().getName() + " exiting instanceSyncMethod");
     }
 
@@ -58,6 +64,22 @@ class MyThreadD extends Thread {
     }
 }
 
+class MyThreadE extends Thread {
+
+    Demo obj;
+
+    MyThreadE(Demo obj){
+
+        this.obj=obj;
+    }
+
+    @Override
+    public void run() {
+
+        obj.normalInstanceMethod();
+    }
+}
+
 
 public class TestDemo {
     public static void main(String[] args) {
@@ -68,10 +90,12 @@ public class TestDemo {
         MyThreadB t2 = new MyThreadB();
         MyThreadC t3 = new MyThreadC(obj);
         MyThreadD t4 = new MyThreadD();
+        MyThreadE t5 = new MyThreadE(obj);
 
         t1.start();
         t2.start();
         t3.start();
         t4.start();
+        t5.start();
     }
 }
