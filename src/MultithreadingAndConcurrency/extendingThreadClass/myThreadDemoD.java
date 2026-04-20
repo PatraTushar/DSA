@@ -54,10 +54,6 @@ public class myThreadDemoD {
 // Run Method
 // Main Method
 
-// 3
-//  Run Method
-// Start Method
-// Main Method
 
 
 
