@@ -2,6 +2,29 @@
 
 class Test {
 
+
+    public static synchronized void staticSync() {
+
+        System.out.println(Thread.currentThread().getName() + " entered static synchronized method ");
+
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+        }
+
+        System.out.println(Thread.currentThread().getName() + " exits static synchronized method ");
+
+    }
+
+
+    public static void normalStaticMethod() {
+
+        System.out.println(Thread.currentThread().getName() + " executing normal static method ");
+
+
+    }
+
+
     synchronized void syncMethod() {
 
         System.out.println(Thread.currentThread().getName() + " entered  synchronized method ");
@@ -25,72 +48,89 @@ class Test {
 }
 
 
-    class myThread1 extends Thread {
+class myThread1 extends Thread {
 
-        Test obj;
 
-        myThread1(Test obj) {
-            this.obj = obj;
-        }
+    @Override
+    public void run() {
+        Test.staticSync();
+    }
+}
 
-        @Override
-        public void run() {
-            obj.syncMethod();
-        }
+
+class myThread2 extends Thread {
+
+
+    @Override
+    public void run() {
+        Test.staticSync();
+    }
+}
+
+
+class myThread3 extends Thread {
+
+    Test obj;
+
+    myThread3(Test obj) {
+
+        this.obj = obj;
     }
 
+    @Override
+    public void run() {
+        obj.syncMethod();
+    }
+}
 
-    class myThread2 extends Thread {
 
-        Test obj;
+class myThread4 extends Thread {
 
-        myThread2(Test obj) {
+    @Override
+    public void run() {
+        Test.normalStaticMethod();
+    }
+}
 
-            this.obj = obj;
-        }
 
-        @Override
-        public void run() {
-            obj.syncMethod();
-        }
+class myThread5 extends Thread {
+
+    Test obj;
+
+    myThread5(Test obj) {
+
+        this.obj = obj;
     }
 
+    @Override
+    public void run() {
+        obj.normalMethod();
+    }
+}
 
-    class myThread3 extends Thread {
 
-        Test obj;
+public class MAIN {
 
-        myThread3(Test obj) {
+    public static void main(String[] args) {
 
-            this.obj = obj;
-        }
+        Test obj = new Test();
 
-        @Override
-        public void run() {
-            obj.normalMethod();
-        }
+        myThread1 t1 = new myThread1();
+        myThread2 t2 = new myThread2();
+        myThread3 t3 = new myThread3(obj);
+        myThread4 t4 = new myThread4();
+        myThread5 t5 = new myThread5(obj);
+
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+        t5.start();
+
+
     }
 
-
-     public class MAIN {
-
-         public static void main(String[] args) {
-
-             Test obj=new Test();
-
-             myThread1 t1=new myThread1(obj);
-             myThread2 t2=new myThread2(obj);
-             myThread3 t3=new myThread3(obj);
-
-             t1.start();
-             t2.start();
-             t3.start();
-
-
-
-         }
-
-     }
+}
 
 
 
