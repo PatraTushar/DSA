@@ -75,8 +75,7 @@ public class myPractice {
 
 
 
-    public static void main(String[]
-                                    args) {
+    public static void main(String[] args) {
 
         stack st = new stack();
 

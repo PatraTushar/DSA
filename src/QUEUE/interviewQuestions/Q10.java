@@ -20,7 +20,7 @@ public class Q10 {
 
         int time = 0;
 
-        while (tickets[k] != 0) {
+        while (!q.isEmpty() && tickets[k] != 0) {
 
 
             tickets[q.peek()]--;
@@ -52,7 +52,7 @@ public class Q10 {
             if (i <= k) {
 
                 time += Math.min(tickets[i], tickets[k]);
-            } else time += Math.min(tickets[k]-1,tickets[i]);
+            } else time += Math.min(tickets[k] - 1, tickets[i]);
 
         }
 
