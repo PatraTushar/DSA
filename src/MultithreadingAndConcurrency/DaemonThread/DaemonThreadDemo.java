@@ -21,8 +21,11 @@ public class DaemonThreadDemo {
 
     public static void main(String[] args) {
 
+        System.out.println(Thread.currentThread().isDaemon());  // false because main thread is always non-Daemon
+
+
         ThreadA t=new ThreadA();
-        t.setDaemon(true);    // Line1
+       t.setDaemon(true);    // Line1
 
         t.start();
 
