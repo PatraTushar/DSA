@@ -4,28 +4,7 @@ public class myPractice {
 
     static double func(int[] nums, int k) {
 
-        int length = nums.length;
 
-        double sum = 0;
-        double maxSum = Integer.MIN_VALUE;
-        int left = 0;
-
-        for (int right = 0; right < length; right++) {
-
-            sum += nums[right];
-
-            if ((right - left + 1) == k) {
-
-                double avgValue=sum/k;
-                maxSum = Math.max(maxSum, avgValue);
-                sum -= nums[left];
-                left++;
-            }
-
-
-        }
-
-        return maxSum;
     }
 
     public static void main(String[] args) {

@@ -2,9 +2,9 @@ package TwoPointer_SlidingWindow;
 
 public class Q15 {
 
-    static double findMaxAverage(int[] nums, int k) {
+    static double findMaxAverage(int[] num, int k) {
 
-        int length = nums.length;
+        int length = num.length;
 
         double sum = 0;
         double maxSum = Integer.MIN_VALUE;
@@ -12,13 +12,13 @@ public class Q15 {
 
         for (int right = 0; right < length; right++) {
 
-            sum += nums[right];
+            sum += num[right];
 
             if ((right - left + 1) == k) {
 
                 double avgValue=sum/k;
                 maxSum = Math.max(maxSum, avgValue);
-                sum -= nums[left];
+                sum -= num[left];
                 left++;
             }
 
