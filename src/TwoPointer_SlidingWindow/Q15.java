@@ -1,8 +1,8 @@
+package TwoPointer_SlidingWindow;
 
-public class myPractice {
+public class Q15 {
 
-
-    static double func(int[] nums, int k) {
+    static double findMaxAverage(int[] nums, int k) {
 
         int length = nums.length;
 
@@ -30,19 +30,11 @@ public class myPractice {
 
     public static void main(String[] args) {
 
-
+        // leeTCode->643
 
         int[] arr = {-1, 12, -5, -6, 50,3};
         int k = 4;
-        System.out.println(func(arr, k));
-
+        System.out.println(findMaxAverage(arr, k));
 
     }
-
-
 }
-
-
-
-
-
