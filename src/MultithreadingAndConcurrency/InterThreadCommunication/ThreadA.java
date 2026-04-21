@@ -121,3 +121,5 @@ public class ThreadA {
 // A thread is in BLOCKED state when it wants to enter a synchronized block/method but cannot because another thread already holds the object’s lock.
 
 // A thread must be notified on the SAME object on which it called wait()
+
+// after notify() completes and the thread releases the lock, the waiting thread resumes and continues execution right after wait().
