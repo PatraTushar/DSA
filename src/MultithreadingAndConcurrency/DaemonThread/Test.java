@@ -12,7 +12,7 @@ public class Test {
 
         myThread t=new myThread();
 
-        System.out.println(t.isDaemon()); // false     because t inherits daemon status from main thread (which is non-daemon)
+        System.out.println(t.isDaemon()); // false    In Java, every newly created thread is a user (non-daemon) thread by default. It becomes a daemon thread only if explicitly set using setDaemon(true) before starting.
 
         t.setDaemon(true);
 
