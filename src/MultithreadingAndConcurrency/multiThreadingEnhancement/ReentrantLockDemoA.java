@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class Display {
 
-    ReentrantLock l=new ReentrantLock();
+    ReentrantLock l = new ReentrantLock();
 
     public void wish(String name) {
 
@@ -12,7 +12,7 @@ class Display {
         // Step:7 Thread acquires the lock
         // If another thread is already inside wish(), this thread waits until the lock is free
 
-       // Only the thread holding the lock can enter the loop at a time
+        // Only the thread holding the lock can enter the loop at a time
 
         for (int i = 0; i < 10; i++) {
 
@@ -38,16 +38,16 @@ class Display {
 
 }
 
-class myThreadA extends Thread{
+class myThreadA extends Thread {
 
     Display d;
     String name;
 
-    myThreadA(Display d, String name){
+    myThreadA(Display d, String name) {
 
         // Step 3: Same Display object is shared by all threads
-        this.d=d;
-        this.name=name;
+        this.d = d;
+        this.name = name;
 
     }
 
@@ -66,13 +66,13 @@ public class ReentrantLockDemoA {
 
         // Step 1: Main thread starts execution
 
-        Display d=new Display();
+        Display d = new Display();
         // Step 2: One Display object is created
 
 
-        myThreadA t1=new myThreadA(d,"Dhoni");
-        myThreadA t2=new myThreadA(d,"Yuvraj");
-        myThreadA t3=new myThreadA(d,"Kohli");
+        myThreadA t1 = new myThreadA(d, "Dhoni");
+        myThreadA t2 = new myThreadA(d, "Yuvraj");
+        myThreadA t3 = new myThreadA(d, "Kohli");
         // Step 3: Three threads are created sharing the same Display object
 
         t1.start();
@@ -80,12 +80,11 @@ public class ReentrantLockDemoA {
 
 
         t2.start();
-        // Step 5: Thread-2 starts and enters wish("Yuvraj") without waiting
+        // Step 5: Thread-2 starts and tries to enter wish("Yuvraj"),but it will block at l.lock() if another thread already holds the lock
 
 
         t3.start();
-        // Step 6: Thread-3 starts and enters wish("Kohli") without waiting
-
+        // Step 6: Thread-3 starts and tries to enter wish("Kohli"),but it will also block at l.lock() until the lock is released
 
 
     }
