@@ -1,5 +1,3 @@
-package MultithreadingAndConcurrency.multiThreadingEnhancement;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -8,125 +6,110 @@ class PrintJob implements Runnable {
     String name;
 
     PrintJob(String name) {
-
-        this.name = name;
+        this.name = name;   // Step 1: Job object is created (NO thread yet)
     }
 
     @Override
     public void run() {
 
-        System.out.println(name + " job started by thread : " + Thread.currentThread().getName());
+        // Step 8: A worker thread starts executing this job
+        System.out.println(name + " job started by thread : "
+                + Thread.currentThread().getName());
 
         try {
-
-            Thread.sleep(5000);
+            Thread.sleep(5000);  // Step 9: Simulate work (thread is BUSY here)
         } catch (InterruptedException e) {
         }
 
-        System.out.println(name + " job complete by thread : " + Thread.currentThread().getName());
-
-
+        // Step 10: Job execution completed
+        System.out.println(name + " job completed by thread : "
+                + Thread.currentThread().getName());
     }
-
 }
 
 public class ExecutorDemo {
 
     public static void main(String[] args) {
 
-        PrintJob[] jobs = {new PrintJob("Durga"),
+        // Step 1: Main thread starts here
+
+        // Step 2: Create job objects (only objects, no execution)
+        PrintJob[] jobs = {
+                new PrintJob("Durga"),
                 new PrintJob("Ravi"),
                 new PrintJob("Shiva"),
                 new PrintJob("Pavan"),
                 new PrintJob("Suresh"),
-                new PrintJob("Anil")};
+                new PrintJob("Anil")
+        };
 
+        // Step 3: Create thread pool with 3 worker threads
+        ExecutorService service = Executors.newFixedThreadPool(3);   // “At a time, up to 3 threads can execute tasks.”
 
-        ExecutorService service = Executors.newFixedThreadPool(3);
+        // Internally:
+        // 3 worker threads created:
+        // pool-1-thread-1
+        // pool-1-thread-2
+        // pool-1-thread-3
+        // (They are idle initially)
 
+        //“Three worker threads pick three jobs, but which thread picks which job is not guaranteed.” ✅
+
+        // Step 4: Submit jobs ONE BY ONE (sequentially by main thread)
         for (PrintJob job : jobs) {
 
             service.submit(job);
+
+            // Step 5: Each submit() does:
+            // → Job is placed into internal queue
+
+            // IMPORTANT:
+            // At this moment, threads may start picking jobs immediately
         }
 
+        // Step 6: After all submissions
         service.shutdown();
+        // → No new tasks allowed
+        // → Existing tasks WILL finish
 
+        // =======================
+        // ACTUAL THREAD EXECUTION
+        // =======================
 
+        // Step 7:
+        // First 3 jobs are picked by 3 worker threads (almost immediately)
+
+        // pool-1-thread-1 → picks Durga
+        // pool-1-thread-2 → picks Ravi
+        // pool-1-thread-3 → picks Shiva
+
+        // Remaining jobs stay in queue:
+        // [Pavan, Suresh, Anil]
+
+        // Step 8:
+        // Threads execute run() method concurrently
+
+        // Step 9:
+        // After ~5 seconds, first batch completes:
+        // Durga, Ravi, Shiva finished
+
+        // Step 10:
+        // Threads pick next jobs from queue
+
+        // pool-1-thread-1 → picks Pavan
+        // pool-1-thread-2 → picks Suresh
+        // pool-1-thread-3 → picks Anil
+
+        // Step 11:
+        // After another ~5 seconds:
+        // Pavan, Suresh, Anil finished
+
+        // Step 12:
+        // Queue becomes empty
+        // All threads become idle
+
+        // Step 13:
+        // Since shutdown() was called:
+        // Thread pool TERMINATES completely
     }
 }
-
-
-// Note : There is only ONE thread pool object (service), and how many threads exist inside that pool is decided by the number we pass in the bracket.
-
-// ExecutorService
-//It’s an interface in Java (java.util.concurrent).
-//Provides methods to submit and manage tasks, like submit(), shutdown(), etc.
-//Example: ExecutorService service = Executors.newFixedThreadPool(3);
-
-//Thread Pool
-//It’s a concept / implementation of ExecutorService.
-//It’s a pool of threads that executes submitted tasks.
-
-
-
-// flow of the program
-
-// Step 1: submit(job) is called
-//service.submit(job);
-//The job is a Runnable object (PrintJob in your case).
-//submit() does not create a new thread immediately.
-//Instead, it adds the job to an internal queue inside the ExecutorService.
-//Think of it like putting a ticket in a waiting line for the chefs (threads) in our fast-food analogy.
-
-
-//Step 2: Thread pool checks for a free thread
-//The ExecutorService has 3 threads in the pool (Thread-1, Thread-2, Thread-3).
-//When a job is submitted, the pool looks for a free thread:
-//If a thread is free → it assigns the job to that thread immediately.
-//If all threads are busy → the job waits in the queue until a thread becomes free.
-
-
-//Step 3: Job execution
-//When a thread picks up the job, it calls the run() method of the Runnable.
-//System.out.println(name + " job started by thread : " + Thread.currentThread().getName());
-//Thread.sleep(5000); // simulate work
-//System.out.println(name + " job complete by thread : " + Thread.currentThread().getName());
-//The thread executes the job concurrently with other threads in the pool.
-//After finishing, the thread checks the queue:
-//If there’s another job waiting → picks it up immediately.
-//If no jobs → stays idle until a new job is submitted (or until shutdown() is called).
-
-
-//Step 4: Thread reuse
-//Threads are reused for multiple jobs.
-//This is why a fixed thread pool is efficient: we don’t create a new thread for every job.
-//Example flow with your 6 jobs and 3 threads:
-//Job Submitted	Thread Assigned	Status
-//Durga	Thread-1	Running
-//Ravi	Thread-2	Running
-//Shiva	Thread-3	Running
-//Pavan	Waiting in queue	Pending
-//Suresh	Waiting in queue	Pending
-//Anil	Waiting in queue	Pending
-//After Thread-1 finishes Durga, it picks Pavan.
-//After Thread-2 finishes Ravi, it picks Suresh.
-//After Thread-3 finishes Shiva, it picks Anil.
-
-
-
-// note
-// Each thread picks a job and starts running it immediately,
-// but the actual printing order is not guaranteed.
-// For example, Durga may be picked first, but Ravi or Shiva may print first
-// because threads execute concurrently and the JVM scheduler decides which runs first.
-
-
-
-// “How many threads there are, that many jobs acquire a thread at a time.”
-
-// The output is irregular. ✅
-//Even though jobs are submitted in order, threads run concurrently, so the start and completion prints may not follow the submission order.
-
-//Jobs are submitted sequentially to the thread pool, but once threads start executing (up to the pool size), the output becomes irregular
-
-// shutdown() tells the ExecutorService: “Stop accepting new jobs, but finish all the jobs that are already submitted.”
