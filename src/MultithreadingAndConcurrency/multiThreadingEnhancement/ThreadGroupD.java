@@ -8,7 +8,7 @@ public class ThreadGroupD {
 
         ThreadGroup system = Thread.currentThread().getThreadGroup().getParent();
 
-        Thread[] t = new Thread[system.activeCount()];
+        Thread[] t = new Thread[system.activeCount()];   // system.activeCount()->It returns an estimate of the number of active threads in the ThreadGroup (system) and its child ThreadGroups.
 
         system.enumerate(t);     // It copies all active threads from the ThreadGroup (system) into your array t.
 
