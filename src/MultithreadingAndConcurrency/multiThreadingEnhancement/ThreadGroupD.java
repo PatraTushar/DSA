@@ -10,7 +10,7 @@ public class ThreadGroupD {
 
         Thread[] t = new Thread[system.activeCount()];
 
-        system.enumerate(t);
+        system.enumerate(t);     // It copies all active threads from the ThreadGroup (system) into your array t.
 
         for (Thread t1 : t) {
 

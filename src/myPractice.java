@@ -1,8 +1,35 @@
+import java.util.HashMap;
 
 public class myPractice {
 
+    static int smallerThanEqualTo(int[] arr, int goal) {
 
-    static double func(int[] nums, int k) {
+        int length = arr.length;
+        int count = 0;
+        int sum = 0;
+        int left = 0;
+
+        for (int right = 0; right < length; right++) {
+
+            sum += arr[right];
+
+            while (sum > goal) {
+
+                sum -= arr[left];
+                left++;
+
+            }
+
+            count += right - left + 1;
+        }
+
+        return count;
+    }
+
+
+    static int func(int[] arr, int goal) {
+
+        return smallerThanEqualTo(arr,goal)-smallerThanEqualTo(arr,goal-1);
 
 
     }
@@ -10,12 +37,9 @@ public class myPractice {
     public static void main(String[] args) {
 
 
-
-        int[] arr = {-1, 12, -5, -6, 50,3};
-        int k = 4;
-        System.out.println(func(arr, k));
-
-
+        int[] arr = {1, 0, 1, 0, 1};
+        int goal = 2;
+        System.out.println(func(arr, goal));
     }
 
 
