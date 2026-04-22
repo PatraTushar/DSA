@@ -6,7 +6,7 @@ class PrintJob implements Runnable {
     String name;
 
     PrintJob(String name) {
-        this.name = name;   // Step 1: Job object is created (NO thread yet)
+        this.name = name;
     }
 
     @Override
@@ -62,9 +62,12 @@ public class ExecutorDemo {
 
             // Step 5: Each submit() does:
             // → Job is placed into internal queue
+            //A worker thread takes a task object from the queue and executes it.”
+            // In a thread pool, execute means running the task’s run() method.
 
             // IMPORTANT:
             // At this moment, threads may start picking jobs immediately
+            // In a thread pool, worker threads call the run() method of the task.
         }
 
         // Step 6: After all submissions
