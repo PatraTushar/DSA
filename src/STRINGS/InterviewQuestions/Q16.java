@@ -69,3 +69,10 @@ public class Q16 {
 
     }
 }
+
+
+// 👉 For every pair of two different characters (first, second),
+//we try to find a substring where:
+//
+//both characters appear at least once
+//and the value (count of first − count of second) is maximum
