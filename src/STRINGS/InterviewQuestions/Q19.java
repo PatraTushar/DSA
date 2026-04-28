@@ -121,11 +121,11 @@ public class Q19 {
 
         String s = "abc";
         String t = "ahbgdc";
-        String s1 = "aabc";
-        String t1 = "ahabgdc";
+        String s1 = "ababc";
+        String[] words= {"abc","aa","acb"};
 
         System.out.println(isSubsequence(s, t));
-        System.out.println(isSubsequenceI(s1, t1));
+        System.out.println(numMatchingSubseq(s1,words));
 
 
     }
