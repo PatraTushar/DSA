@@ -1,45 +1,44 @@
-import java.util.HashMap;
+
+import java.util.WeakHashMap;
 
 public class myPractice {
 
-    static int smallerThanEqualTo(int[] arr, int goal) {
+    static class Temp {
 
-        int length = arr.length;
-        int count = 0;
-        int sum = 0;
-        int left = 0;
+        @Override
+        public String toString() {
 
-        for (int right = 0; right < length; right++) {
-
-            sum += arr[right];
-
-            while (sum > goal) {
-
-                sum -= arr[left];
-                left++;
-
-            }
-
-            count += right - left + 1;
+            return "temp";
         }
 
-        return count;
+        public void finalize() {
+
+            System.out.println(" finalize method is called ");
+        }
     }
 
-
-    static int func(int[] arr, int goal) {
-
-        return smallerThanEqualTo(arr,goal)-smallerThanEqualTo(arr,goal-1);
+    public static void main(String[] args) throws Exception {
 
 
-    }
+        WeakHashMap<Temp, String> map = new WeakHashMap<>();
 
-    public static void main(String[] args) {
+        Temp t = new Temp();
+
+        map.put(t, "durga");
+        System.out.println(map);
+
+        t = null;
+
+        System.gc();
+
+        Thread.sleep(3000);
+
+        System.out.println(map);
 
 
-        int[] arr = {1, 0, 1, 0, 1};
-        int goal = 2;
-        System.out.println(func(arr, goal));
+
+
+
     }
 
 
