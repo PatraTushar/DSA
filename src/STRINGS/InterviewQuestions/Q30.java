@@ -33,6 +33,8 @@ public class Q30 {
 
     public static void main(String[] args) {
 
+        // leeTCode->2125
+
         String[] bank = {"011001", "000000", "010100", "001000"};
         System.out.println(numberOfBeams(bank));
 
