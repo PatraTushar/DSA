@@ -16,7 +16,6 @@ class Employees {
 }
 
 
-
 public class PredicateDemo {
 
 
@@ -56,8 +55,31 @@ public class PredicateDemo {
         }
 
 
+        // and() , or(), negate()
 
 
+
+        int[] num = {0, 5, 10, 15, 20, 25, 30, 35};
+
+        Predicate<Integer> p4 = number -> number % 2 == 0;
+        Predicate<Integer> p5 = number -> number > 10;
+
+        System.out.println(" The number which are even and greater than 10 are ");
+
+        for (int ele : num) {
+
+            if (p4.and(p5).test(ele)) System.out.println(ele);
+        }
+
+
+        //  negate() reverses the result of a predicate.
+
+        Predicate<Integer> isEven = x -> x % 2 == 0;
+
+        Predicate<Integer> isOdd = isEven.negate();
+
+        System.out.println(isEven.test(4)); // true
+        System.out.println(isOdd.test(4));  // false
 
 
     }
