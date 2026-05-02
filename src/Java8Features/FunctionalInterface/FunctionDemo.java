@@ -4,6 +4,7 @@ package Java8Features.FunctionalInterface;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+
 class Student {
 
     String name;
