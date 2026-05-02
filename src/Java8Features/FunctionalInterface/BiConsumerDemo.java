@@ -1,10 +1,6 @@
 package Java8Features.FunctionalInterface;
 
-
-import OOPS.AccessModifier.Public.A;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.BiConsumer;
 
 class MyEmployee {
@@ -50,7 +46,7 @@ public class BiConsumerDemo {
 
         for (MyEmployee e : list) {
 
-            System.out.println(e.name+":"+e.salary);
+            System.out.println(e.name + ":" + e.salary);
         }
 
 
