@@ -29,7 +29,7 @@ public class Q41 {
     static String nearestPalindrome(String n) {
 
         // Time Complexity: O(n)
-        // Space Complexity: O(1)
+        // Space Complexity: O(5) -> O(1)
 
 
         int length = n.length();
