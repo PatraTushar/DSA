@@ -67,7 +67,6 @@ public class DateAndTimeApi {
 
 
         // Period → Difference Between Dates
-
         LocalDate birth = LocalDate.of(2003, 5, 10);
         LocalDate t1 = LocalDate.now();
 
