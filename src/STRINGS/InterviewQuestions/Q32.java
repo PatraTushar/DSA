@@ -77,7 +77,7 @@ public class Q32 {
 
     static List<Integer> beautifulIndices(String s, String a, String b, int k) {
 
-        // leeTCode->3006
+
 
         // Time Complexity: O(s+a+b)
         // Space Complexity: O(s+a+b)
@@ -122,6 +122,8 @@ public class Q32 {
     }
 
     public static void main(String[] args) {
+
+        // leeTCode->3006 & 3008
 
         String s = "isawsquirrelnearmysquirrelhouseohmy";
         String a = "my";
