@@ -141,5 +141,10 @@ public class Q1 {
         System.out.println(kmp(txt, pattern));
 
 
+        String txt1="ABABCABCABABABD";
+        String pattern1="ABABD";
+        System.out.println(kmp(txt1,pattern1));
+
+
     }
 }
