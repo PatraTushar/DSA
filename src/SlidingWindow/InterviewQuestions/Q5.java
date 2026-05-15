@@ -4,12 +4,12 @@ import java.util.HashSet;
 
 public class Q5 {
 
-    static boolean containsNearByDuplicate(int[] nums, int k) {
+    static boolean containsNearByDuplicate(int[] num, int k) {
 
         // Time Complexity: O(n)
         // Space Complexity: O(k)  at any point, the HashSet stores at most k elements (sliding window of size k).
 
-        int n = nums.length;
+        int n = num.length;
         int left = 0;
         HashSet<Integer> set = new HashSet<>();
 
@@ -18,15 +18,15 @@ public class Q5 {
 
             if (right - left > k) {
 
-                set.remove(nums[left]);
+                set.remove(num[left]);
                 left++;
 
             }
 
 
-            if (set.contains(nums[right])) return true;
+            if (set.contains(num[right])) return true;
 
-            set.add(nums[right]);
+            set.add(num[right]);
 
         }
 
