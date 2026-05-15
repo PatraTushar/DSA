@@ -74,7 +74,7 @@ public class Q14 {
         int startingIndex = -1;
         HashMap<Character, Integer> map = new HashMap<>();
         int left = 0;
-        int count = 0;
+        int need = 0;
 
         for (int i = 0; i < n; i++) {
 
@@ -87,11 +87,17 @@ public class Q14 {
 
             char ch = s.charAt(right);
 
-            if (map.containsKey(ch) && map.get(ch) > 0) count++;
+            if (map.containsKey(ch)) {
 
-            if (map.containsKey(ch)) map.put(ch, map.get(ch) - 1);
+                if (map.get(ch) > 0) need++;
 
-            while (count == n) {
+                map.put(ch, map.get(ch) - 1);
+
+
+            }
+
+
+            while (need == n) {
 
                 int length = right - left + 1;
 
@@ -105,7 +111,7 @@ public class Q14 {
                 if (map.containsKey(s.charAt(left))) {
                     map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
 
-                    if (map.get(s.charAt(left)) > 0) count--;
+                    if (map.get(s.charAt(left)) > 0) need--;
 
                 }
 
