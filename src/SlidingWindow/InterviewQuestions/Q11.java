@@ -7,6 +7,10 @@ public class Q11 {
 
     static int[] maxSlidingWindow(int[] nums, int k) {
 
+        // Time Complexity: O(n)
+        // Space Complexity: O(k)
+
+
         int n = nums.length;
 
         ArrayDeque<Integer> dq = new ArrayDeque<>();

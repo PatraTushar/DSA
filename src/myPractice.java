@@ -1,29 +1,47 @@
-import java.util.*;
+import java.util.Comparator;
+import java.util.TreeSet;
+
+class Student implements Comparable<Student> {
+
+    String name;
+    int rno;
+
+    Student(String name, int rno) {
+
+        this.name = name;
+        this.rno = rno;
+    }
+
+
+    @Override
+    public int compareTo(Student o) {
+
+        String s1 = o.name;
+        String s2 = this.name;
+
+        return s2.compareTo(s1);
+
+
+    }
+
+    public String toString() {
+
+        return name + " " + rno;
+    }
+}
 
 public class myPractice {
 
-
     public static void main(String[] args) {
 
-        List<Integer> list = new Vector<>();
-        list.add(100);
-        list.add(2001);
-        list.add(3001);
-        list.add(4001);
-        list.add(500);
+        TreeSet<Student> t = new TreeSet<>();
+        t.add(new Student("rahul", 45));
+        t.add(new Student("bibhu", 38));
+        t.add(new Student("mehul", 18));
+        t.add(new Student("anshu", 89));
+        t.add(new Student("pragyan", 78));
 
-        ListIterator<Integer> e = list.listIterator();
-
-        while (e.hasNext()) {
-
-            int ele=e.next();
-
-            if (ele%2==0) e.set(404040404);
-
-        }
-
-
-        System.out.println(list);
+        System.out.println(t);
 
 
     }
