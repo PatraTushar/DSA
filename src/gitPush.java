@@ -1,49 +1,60 @@
 //public class gitPush {
 //
-//    🔁 ONE-TIME SETUP (Per Project)
-//1️⃣ Create a GitHub Repository
-//    Go to: https://github.com
-//
-//    Click "New" → Create a repository
-//
-//    Do not initialize with README
-//
-//    Copy the HTTPS URL of the repo
-//
-//2️⃣ Save Files from Your Compiler (SSMS, VS Code, etc.)
-//    Save files into a dedicated local folder
-//
-//            makefile
-//    Copy
-//            Edit
-//    Example: C:\Users\Tushar\Documents\SQLPractice
-//3️⃣ Open Terminal (Git Bash or CMD) and Initialize Git
-//    bash
-//            Copy
-//    Edit
-//    cd "C:\Users\Tushar\Documents\SQLPractice"
-//    git init
-//    git remote add origin https://github.com/YourUsername/RepoName.git
-//            🚀 FIRST-TIME PUSH
-//    bash
-//            Copy
-//    Edit
-//    git add .
-//    git commit -m "Initial commit"
-//    git branch -M main
-//    git push -u origin main
-//🔁 FROM NEXT TIME ONWARDS
-//    bash
-//            Copy
-//    Edit
-//    git add .
-//    git commit -m "Your message"
-//    git push
-//🧠 Tip:
-//
-//    Always write clear commit messages.
-//
-//    Use git status if unsure what's being tracked.
-//
+//// Method 1: Using IntelliJ (Easiest)
+////Step 1: Enable Git
+////Open your project in IntelliJ.
+////Go to VCS → Enable Version Control Integration.
+////Select Git.
+////Click OK.
+////
+////You should now see the project files turn into Git-tracked files.
+////
+////Step 2: Commit your project
+////Go to Git → Commit (or press Ctrl + K).
+////Select all files.
+////
+////Enter a commit message, for example:
+////
+////Initial commit
+////Click Commit or Commit and Push.
+////Step 3: Create a GitHub repository
+////
+////Go to GitHub.
+////
+////Click New Repository.
+////Give it a name (e.g., SpringBootProject).
+////Keep it Public or Private.
+////Do NOT add a README, .gitignore, or License if your project already exists locally.
+////Click Create repository.
+////Step 4: Add the remote repository
+////
+////If IntelliJ asks for a remote repository:
+////
+////Paste the GitHub repository URL, for example:
+////
+////https://github.com/yourusername/SpringBootProject.git
+////
+////Or go to:
+////
+////Git → Manage Remotes
+////
+////Click + and add:
+////
+////Name:
+////
+////origin
+////
+////URL:
+////
+////https://github.com/yourusername/SpringBootProject.git
+////Step 5: Push
+////
+////Go to:
+////
+////Git → Push (or press Ctrl + Shift + K)
+////
+////Click Push.
+////
+////Your project is now on GitHub.
 //
 //}
