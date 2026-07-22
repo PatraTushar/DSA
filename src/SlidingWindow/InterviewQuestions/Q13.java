@@ -27,7 +27,7 @@ public class Q13 {
 
                 if (count[ch - 'a'] == k) goodChars++;
 
-                else if (count[ch - 'a'] == k + 1) goodChars--;
+                else if (count[ch - 'a'] > k ) goodChars--;
 
                 if (right - left + 1 > windowLength) {
 
@@ -35,7 +35,7 @@ public class Q13 {
 
                     if (count[leftChar - 'a'] == k) goodChars--;
 
-                    else if (count[leftChar - 'a'] ==k + 1)goodChars++;
+                    else if (count[leftChar - 'a'] >k)goodChars++;
 
                     count[word.charAt(left) - 'a']--;
                     left++;
@@ -81,7 +81,7 @@ public class Q13 {
 
     public static void main(String[] args) {
 
-        String word = "igigee";
+        String word = "aaddffii";
         int k = 2;
         System.out.println(countCompleteSubstrings(word, k));
 
