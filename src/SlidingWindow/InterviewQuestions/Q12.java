@@ -4,15 +4,15 @@ import java.util.Arrays;
 
 public class Q12 {
 
-    static int maxFrequency(int[] nums, int k) {
+    static int maxFrequency(int[] num, int k) {
 
         // Time Complexity: O(n log n)
         // Space Complexity: O(1)
 
 
-        Arrays.sort(nums);
+        Arrays.sort(num);
 
-        int n = nums.length;
+        int n = num.length;
         int result = 0;
 
         long currWindowSum = 0;
@@ -21,15 +21,15 @@ public class Q12 {
 
         for (int right = 0; right < n; right++) {
 
-            long target = nums[right];
-            currWindowSum += nums[right];
+            long target = num[right];
+            currWindowSum += num[right];
             long targetWindowSum = (right - left + 1) * target;
 
             long operation = targetWindowSum - currWindowSum;
 
             while (operation > k) {
 
-                currWindowSum -= nums[left];
+                currWindowSum -= num[left];
                 left++;
                 operation=(right-left+1)*target-currWindowSum;
             }
@@ -42,6 +42,8 @@ public class Q12 {
     }
 
     public static void main(String[] args) {
+
+        // leeTCode->1838
 
         int[] num = {1, 2, 4};
         int k = 5;
