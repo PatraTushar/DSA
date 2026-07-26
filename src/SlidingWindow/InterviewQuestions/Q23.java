@@ -2,9 +2,31 @@
 //
 //public class Q23 {
 //
-//    static int shortestSubArray(int[] nums,int k){
+//    static int shortestSubArrayI(int[] num, int k) {
 //
-//        int n=nums.length;
+//        int n = num.length;
+//
+//        int minLength = Integer.MAX_VALUE;
+//
+//
+//        for (int i = 0; i < n; i++) {
+//
+//            long sum = 0;
+//            for (int j = i; j < n; j++) {
+//
+//                sum += num[j];
+//
+//                if (sum >= k) minLength = Math.min(minLength, j - i + 1);
+//            }
+//
+//        }
+//
+//        return minLength == Integer.MAX_VALUE ? -1 : minLength;
+//    }
+//
+//    static int shortestSubArray(int[] nums, int k) {
+//
+//        int n = nums.length;
 //
 //
 //    }
@@ -13,9 +35,9 @@
 //
 //        // leeTCode->862
 //
-//        int[] num={2,-1,2};
-//        int k=3;
-//        System.out.println(shortestSubArray(num,k));
+//        int[] num = {2, -1, 2};
+//        int k = 3;
+//        System.out.println(shortestSubArray(num, k));
 //
 //
 //    }
