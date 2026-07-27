@@ -46,6 +46,8 @@ public class Q26 {
 
     public static void main(String[] args) {
 
+        // leeTCode->2762
+
         int[] num = {5, 4, 2, 4};
         System.out.println(continuousSubArrays(num));
 
