@@ -48,7 +48,7 @@ public class Q28 {
 
 
         int n = nums.length;
-        int result = 1;
+        int result = 0;
         int mask = 0;
         int left = 0;
 
@@ -73,6 +73,8 @@ public class Q28 {
     }
 
     public static void main(String[] args) {
+
+        // leeTCode->2401
 
         int[] num={1,3,4,8,10};
         System.out.println(longestSubArrayI(num));
