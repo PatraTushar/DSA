@@ -19,6 +19,7 @@ public class Q31 {
 
             sum += num[right];
 
+
             // shrink the window
             while (left <= right && sum * (right - left + 1) >= k) {
 
