@@ -22,7 +22,7 @@ public class MaxHeapImplementation {
     }
 
 
-    private void heapifyUp(int index) {
+    private void heapifyUp(int index) {            // heapifyUp->Bottom To Top
 
         while (index > 0) {
 
@@ -77,7 +77,7 @@ public class MaxHeapImplementation {
     }
 
 
-    private void heapifyDown(int index) {
+    private void heapifyDown(int index) {       // heapifyDown-> Top to Bottom
 
         int size = heap.size();
 
