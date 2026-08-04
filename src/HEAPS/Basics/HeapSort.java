@@ -23,9 +23,7 @@ public class HeapSort {
         for (int i = n - 1; i > 0; i--) {
 
             // Swap root with last element
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
+            swap(arr, 0, i);
 
             // Heapify the reduced heap
             heapify(arr, i, 0);
@@ -65,7 +63,7 @@ public class HeapSort {
 
     public static void main(String[] args) {
 
-        int[] arr = {22,13,17,11,10,14,12};
+        int[] arr = {22, 13, 17, 11, 10, 14, 12};
 
         System.out.println("Before Sorting:");
         printArray(arr);
