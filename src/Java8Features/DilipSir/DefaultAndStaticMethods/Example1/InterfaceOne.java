@@ -17,4 +17,9 @@ public interface InterfaceOne {
         return "defaultMethodTwo";
 
     }
+
+    default void defaultMethodFive(){
+
+        System.out.println(" Inside InterfaceOne : DefaultMethodFive() ");
+    }
 }

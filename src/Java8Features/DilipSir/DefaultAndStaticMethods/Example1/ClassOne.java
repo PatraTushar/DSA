@@ -17,4 +17,10 @@ public class ClassOne implements InterfaceOne {
 
 
     }
+
+
+    public void defaultMethodOne(){
+
+        System.out.println(" Inside classOne : defaultMethodOne ");
+    }
 }

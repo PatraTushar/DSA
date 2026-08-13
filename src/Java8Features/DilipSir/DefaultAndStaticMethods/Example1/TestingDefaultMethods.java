@@ -16,6 +16,7 @@ public class TestingDefaultMethods {
         System.out.println(a);
         one.printNames();
 
+
         ClassTwo two = new ClassTwo();
         two.defaultMethodOne();
         String s1 = two.defaultMethodTwo();
@@ -23,6 +24,15 @@ public class TestingDefaultMethods {
         String b = two.getNames();
         System.out.println(b);
         two.printNames();
+
+        ClassThree three = new ClassThree();
+        three.defaultMethodOne();
+        three.defaultMethodTwo();
+        three.defaultMethodThree();
+        three.defaultMethodFive();
+
+
+
 
 
     }
