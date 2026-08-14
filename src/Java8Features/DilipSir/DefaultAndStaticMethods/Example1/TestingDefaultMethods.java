@@ -32,6 +32,12 @@ public class TestingDefaultMethods {
         three.defaultMethodFive();
 
 
+        // Accessing static Methods
+
+        InterfaceOne.staticMethodOne();
+        InterfaceOne.staticMethodTwo();
+
+
 
 
 
