@@ -31,8 +31,12 @@ public interface InterfaceOne {
         return " This is a static method ";
     }
 
-    static void staticMethodTwo(){
+    static void staticMethodTwo() {
 
         System.out.println(" InterfaceOne : Static Method Two ");
     }
+
+
+
+
 }
