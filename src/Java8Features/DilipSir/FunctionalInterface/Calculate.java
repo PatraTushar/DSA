@@ -1,5 +1,6 @@
 package Java8Features.DilipSir.FunctionalInterface;
 
+@FunctionalInterface
 public interface Calculate {
 
     void printName();
