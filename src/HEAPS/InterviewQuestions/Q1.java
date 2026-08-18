@@ -1,7 +1,6 @@
 package HEAPS.InterviewQuestions;
 
 import java.util.Collections;
-import java.util.Map;
 import java.util.PriorityQueue;
 
 public class Q1 {
