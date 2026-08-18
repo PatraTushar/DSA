@@ -43,8 +43,13 @@ public class Demo {
 
 
         calculationOperation multiplication = (a, b) -> a * b;
-        double ans=multiplication.operation(200,5);
+        double ans = multiplication.operation(200, 5);
         System.out.println(ans);
+
+        // execute default method
+        multiplication.printInfo();
+
+        // execute static method
 
 
     }
