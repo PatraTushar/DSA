@@ -68,3 +68,17 @@ public class Q2 {
 
     }
 }
+
+
+
+// 1)Create a HashMap to store each character and its frequency.
+//2)Traverse the input string character by character.
+//3)For each character, increase its frequency in the HashMap.
+//4)Create a Max-Heap based on character frequency.
+//5)Insert each character and its frequency from the HashMap into the Max-Heap.
+//6)The Max-Heap keeps the character with the highest frequency at the top.
+//7)Create a StringBuilder to store the final result.
+//8)While the Max-Heap is not empty, remove the character with the highest frequency.
+//9)Append that character to the result as many times as its frequency.
+//10)Continue until the Max-Heap becomes empty.
+//11)Return the resulting string.
