@@ -78,6 +78,8 @@ public class Q5 {
 
     public static void main(String[] args) {
 
+        // leeTCode->1046
+
         int[] stones = {2, 7, 4, 1, 8, 1};
         System.out.println(lastStoneWeight(stones));
         lastStoneWeightI(stones);
