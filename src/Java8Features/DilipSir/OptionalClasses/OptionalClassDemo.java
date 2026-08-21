@@ -55,7 +55,7 @@ public class OptionalClassDemo {
 
         Optional<String> nameContainer = getNameI();
 
-        // isPresent()
+        // isPresent() :   checks whether the Optional contains a value. Returns true if value is present, otherwise false.
 
         if (nameContainer.isPresent()) {
 
@@ -65,12 +65,12 @@ public class OptionalClassDemo {
         } else System.out.println(" value is not available ");
 
 
-        // isEmpty()
+        // isEmpty() : checks whether the Optional does NOT contain a value.Returns true if value is absent, otherwise false.
         if (nameContainer.isEmpty()) System.out.println("Yes,Empty");
         else System.out.println(nameContainer.get());
 
 
-        // ifPresent()
+        // ifPresent() :  executes the given action only if a value is present.If value is absent, nothing happens.
 
         Optional<String> container = getNameII();
 
@@ -80,7 +80,7 @@ public class OptionalClassDemo {
         });
 
 
-        // ifPresentOrElse()
+        // ifPresentOrElse() : executes one action if a value is present,otherwise executes another action if the value is absent.
         Optional<String> c = getNameIII();
         c.ifPresentOrElse(val -> {
             System.out.println("Value is Present Convert to UpperCase");
