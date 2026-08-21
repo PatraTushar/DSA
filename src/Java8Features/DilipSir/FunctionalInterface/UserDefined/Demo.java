@@ -1,4 +1,8 @@
-package Java8Features.DilipSir.FunctionalInterface;
+package Java8Features.DilipSir.FunctionalInterface.UserDefined;
+
+import Java8Features.DilipSir.FunctionalInterface.UserDefined.Calculate;
+import Java8Features.DilipSir.FunctionalInterface.UserDefined.ClassOne;
+import Java8Features.DilipSir.FunctionalInterface.UserDefined.calculationOperation;
 
 public class Demo {
 

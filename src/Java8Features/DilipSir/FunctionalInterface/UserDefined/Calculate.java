@@ -1,4 +1,4 @@
-package Java8Features.DilipSir.FunctionalInterface;
+package Java8Features.DilipSir.FunctionalInterface.UserDefined;
 
 @FunctionalInterface
 public interface Calculate {
