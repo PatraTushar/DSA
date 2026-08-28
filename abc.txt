@@ -1,3 +1,4 @@
+d
+abcd
 durga
-SofwareSolution
-abc
+software solution
