@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 
 public class FileExtractor {
 
+    // write a program to perform file extraction operations
     public static void main(String[] args) throws IOException {
 
         PrintWriter pw = new PrintWriter("output.txt");
