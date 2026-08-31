@@ -9,7 +9,7 @@ public class FileExtractor {
 
     public static void main(String[] args) throws IOException {
 
-        PrintWriter pw = new PrintWriter("ouput.txt");
+        PrintWriter pw = new PrintWriter("output.txt");
         BufferedReader br1 = new BufferedReader(new FileReader("input.txt"));
         String line = br1.readLine();
 
