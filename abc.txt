@@ -1,4 +1,4 @@
-d
-abcd
+d100
+true
+c
 durga
-software solution
