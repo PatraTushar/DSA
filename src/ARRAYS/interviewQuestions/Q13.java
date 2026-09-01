@@ -28,7 +28,7 @@ public class Q13 {
                 j--;
 
             }
-            else if(arr[i]==0 && arr[j]==0){
+            else if(arr[i]==0){
                 i++;
             }
 

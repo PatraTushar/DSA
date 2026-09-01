@@ -1,11 +1,8 @@
-package ARRAYS.interviewQuestions;
+package DSAPractice;
 
-public class Q18 {
+public class Q12 {
 
     static boolean subArrayWithEqualSum(int[] arr) {
-
-        //Time Complexity (TC): O(n)
-        //Space Complexity (SC): O(1)
 
         int totalSum = 0;
         for (int ele : arr) {
@@ -17,21 +14,19 @@ public class Q18 {
 
             currSum += ele;
 
-            if (currSum == (totalSum - currSum)) return true;
+            if (currSum==(totalSum-currSum)) return true;
 
         }
 
         return false;
-
-
     }
+
 
     public static void main(String[] args) {
 
-        // Q: check if we partition the array into 2 subArrays with equal sum
-
         int[] arr = {5, 3, 2, 6, 3, 1};
         System.out.println(subArrayWithEqualSum(arr));
+
 
     }
 }

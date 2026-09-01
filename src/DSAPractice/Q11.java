@@ -1,23 +1,11 @@
-package ARRAYS.interviewQuestions;
-
+package DSAPractice;
 
 import java.util.Arrays;
+import java.util.Map;
 
-public class Q15 {
-
-    static void swap(int[] arr, int i, int j) {
-
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-
-    }
+public class Q11 {
 
     static int[] sorted(int[] arr) {
-
-        //Time Complexity (TC): O(n)
-        //Space Complexity (SC): O(n)
-
 
         int n = arr.length;
         int[] res = new int[n];
@@ -35,9 +23,11 @@ public class Q15 {
             if (leftSquare >= rightSquare) {
                 res[p1--] = leftSquare;
                 left++;
-            } else {
+            }
 
-                res[p1--] = rightSquare;
+            else {
+
+                res[p1--]=rightSquare;
                 right--;
             }
 
@@ -45,17 +35,12 @@ public class Q15 {
         }
 
         return res;
+
     }
 
     public static void main(String[] args) {
 
-        // Q; Given an array A sorted in non decreasing order return the array of the squares of each number sorted in non decreasing order
-
-        //Time Complexity (TC): O(n)
-        //Space Complexity (SC): O(n)
-
         int[] arr = {-10, -3, -2, 1, 4, 5};
-        // int[] arr2={2,4,6,7,10};
         int[] ans = sorted(arr);
         System.out.println(Arrays.toString(ans));
 
