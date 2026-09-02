@@ -54,13 +54,13 @@ public class Q1 {
     }
 
 
-    static int trappingRainWaterI(int[] heights) {
+    static int trappingRainWaterI(int[] height) {
 
         // Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
 
-        int n = heights.length;
+        int n = height.length;
 
         int leftMax = 0;
         int rightMax = 0;
@@ -71,25 +71,20 @@ public class Q1 {
 
         while (left < right) {
 
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
 
-            if (heights[left] <= heights[right]) {
+            if (leftMax < rightMax) {
 
-                if (leftMax > heights[left]) totalUnits += leftMax - heights[left];
-                else leftMax = heights[left];
-
+                totalUnits += leftMax - height[left];
                 left++;
-
             } else {
 
-                if (rightMax > heights[right]) totalUnits += rightMax - heights[right];
-                else rightMax = heights[right];
-
+                totalUnits += rightMax - height[right];
                 right--;
-
-
             }
-
         }
+
 
         return totalUnits;
 
