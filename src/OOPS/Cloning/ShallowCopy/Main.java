@@ -36,14 +36,14 @@ public class Main {
 
         // shallowCopy-->shallow copy means creation of new object that copy the primitive fields from the original object and for non Primitive fields it will copy the reference
 
-        Address obj = new Address("UK");
-        Person obj2 = new Person("john", 14, obj);
-        Person obj3 = (Person) obj2.clone();  // Cloning obj2
+        Address a1 = new Address("UK");
+        Person p1 = new Person("john", 14, a1);
+        Person p2 = (Person) p1.clone();  // Cloning obj2
 
-        obj3.address.city = "USA";  // Changing obj3's city
+        p2.address.city = "USA";  // Changing obj3's city
 
-        obj2.display(); // Will print "USA" due to shallow copy
-        obj3.display(); // Will also print "USA"
+        p1.display(); // Will print "USA" due to shallow copy
+        p2.display(); // Will also print "USA"
     }
 }
 
