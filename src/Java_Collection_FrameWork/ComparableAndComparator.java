@@ -44,8 +44,7 @@ class myComparator implements Comparator<Employee> {
     @Override
     public int compare(Employee e1, Employee e2) {
 
-        //e1 → incoming/new object
-        //e2 → existing object in the TreeSet
+          //e2 → existing object in the TreeSet
 
 
         String s1 = e1.name;
