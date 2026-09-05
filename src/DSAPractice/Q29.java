@@ -2,26 +2,54 @@ package DSAPractice;
 
 public class Q29 {
 
-    static int findTarget(int[] nums, int target) {
+    static int binarySearch(int[] num, int target,int low,int high) {
 
-        int n = nums.length;
-        int low = 0;
-        int high = n - 1;
+
+
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
-            if (nums[mid] == target) return mid;
+            if (target == num[mid]) return mid;
 
-            else if (nums[low] < nums[mid] && (target >nums[mid])) {
+            else if (target > num[mid]) low = mid + 1;
 
-              low=mid+1;
-
-            } else  high = mid - 1;
+            else high = mid - 1;
         }
 
         return -1;
+    }
+
+    static int findPivot(int[] num) {
+
+        int n = num.length;
+        int low = 0;
+        int high = n - 1;
+
+        while (low != high) {
+
+            int mid = low + (high - low) / 2;
+
+            if (num[low] < num[mid]) low = mid;
+            else high = mid;
+
+
+        }
+
+        return low;
+    }
+
+    static int findTarget(int[] nums, int target) {
+
+        int n=nums.length;
+        int pivot = findPivot(nums);
+
+        int firstHalf=binarySearch(nums,target,0,pivot);
+        int secondHalf=binarySearch(nums,target,pivot+1,n-1);
+        if (firstHalf!=-1) return firstHalf;
+        else return secondHalf;
+
     }
 
     public static void main(String[] args) {
