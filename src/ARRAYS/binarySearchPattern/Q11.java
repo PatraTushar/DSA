@@ -2,10 +2,10 @@ package ARRAYS.binarySearchPattern;
 
 public class Q11 {
 
-    static boolean search(int[] nums, int target) {
+    static boolean search(int[] num, int target) {
 
 
-        int n = nums.length;
+        int n = num.length;
 
         int low = 0;
         int high = n - 1;
@@ -14,19 +14,19 @@ public class Q11 {
 
             int mid = low + (high - low) / 2;
 
-            if (nums[mid] == target) return true;
+            if (num[mid] == target) return true;
 
-            else if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
+            else if (num[low] == num[mid] && num[mid] == num[high]) {
 
                 low++;
                 high--;
-            } else if (nums[low] <= nums[mid]) {
+            } else if (num[low] <= num[mid]) {
 
-                if (target >= nums[low] && target < nums[mid]) high = mid - 1;
+                if (target >= num[low] && target < num[mid]) high = mid - 1;
                 else low = mid + 1;
             } else {
 
-                if (target > nums[mid] && target <= nums[high]) low = mid + 1;
+                if (target > num[mid] && target <= num[high]) low = mid + 1;
                 else high = mid - 1;
             }
         }

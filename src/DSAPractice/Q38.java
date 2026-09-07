@@ -1,9 +1,8 @@
-package ARRAYS.binarySearchPattern;
-
+package DSAPractice;
 
 import java.util.Arrays;
 
-public class   Q25 {
+public class Q38 {
 
     static int findPlacedCow(int[] stalls, int target) {
 
@@ -27,45 +26,34 @@ public class   Q25 {
 
     static int AggressiveCows(int[] stalls, int cows) {
 
-        // Time Complexity: O(n.log(n)+n⋅log(max(stalls)-1))
-        // Space Complexity: O(1)
-
         Arrays.sort(stalls);
-
-        if (cows > stalls.length) return -1;
 
         int n = stalls.length;
 
         int low = 1;
-        int high = stalls[n - 1] - stalls[0];
+        int high = stalls[n - 1];
 
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
-            int placesCow = findPlacedCow(stalls, mid);
+            int cowPlaced = findPlacedCow(stalls, mid);
 
-            if (placesCow >= cows) {
-
-                low = mid + 1;
-            } else high = mid - 1;
+            if (cowPlaced >= cows) low = mid + 1;
+            else high = mid - 1;
 
 
         }
 
         return high;
 
-
     }
 
     public static void main(String[] args) {
 
-        // Aggressive cows
-
         int[] arr = {0, 3, 4, 7, 10, 9};
         int cows = 4;
         System.out.println(AggressiveCows(arr, cows));
-
 
     }
 }
