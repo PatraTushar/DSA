@@ -40,19 +40,23 @@ public class Main {
         Address originalAddress = new Address("London");
 
         // Create a Person object
-        Person originalPerson = new Person("Alice", 30, originalAddress);
+        Person p1 = new Person("Alice", 30, originalAddress);
 
         // Clone the Person object (deep copy)
-        Person clonedPerson = (Person) originalPerson.clone();
+        Person p2 = (Person) p1.clone();
 
         // Modify the cloned Person's Address
-        clonedPerson.address.city = "New York";
+        p2.address.city = "New York";
 
         // Display the original and cloned Person objects
         System.out.println("Original Person:");
-        originalPerson.display(); // Output: Name: Alice, Age: 30, City: London
+        p1.display(); // Output: Name: Alice, Age: 30, City: London
 
         System.out.println("\nCloned Person:");
-        clonedPerson.display(); // Output: Name: Alice, Age: 30, City: New York
+        p2.display(); // Output: Name: Alice, Age: 30, City: New York
     }
 }
+
+
+// this.address.city means: Go to the current Person object's address, then access its city.
+// In your deep-copy code, this refers to p1, the original object because The clone() method is executing on p1.
