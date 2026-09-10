@@ -2,7 +2,8 @@ package ARRAYS.strivers;
 
 import java.util.Arrays;
 
-public class Q10 {
+public class
+Q10 {
 
     static void swap(int[] arr,int a,int b){
 

@@ -1,4 +1,10 @@
-d100
-true
-c
-durga
+class Demo{
+
+public static void main(String[] args){
+
+System.out.Println("welcome to java class")
+Sytem.out.Print("hello world --------- ee sala cup namde")
+
+
+}l
+}
