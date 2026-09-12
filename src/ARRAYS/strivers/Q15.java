@@ -47,19 +47,19 @@ public class Q15 {
     }
 
 
-    static void nextPermutation(int[] arr) {
+    static void nextPermutation(int[] nums) {
 
         // Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int n = arr.length;
+        int n = nums.length;
         int breakPoint = -1;
 
         for (int i = n - 1; i > 0; i--) {
 
-            if (arr[i] > arr[i - 1]) {           // If arr[i] > arr[i-1], it means this permutation has a next greater permutation.
+            if (nums[i] > nums[i - 1]) {           // If nums[i] > nums[i-1], it means this permutation has a next greater permutation.
 
-                breakPoint = i - 1;
+                breakPoint = i;
                 break;
 
             }
@@ -68,17 +68,17 @@ public class Q15 {
 
         if (breakPoint != -1) {
 
-            int swappingIndex = findGreaterClosest(arr, breakPoint + 1);
+            int swappingIndex = findGreaterClosest(nums, breakPoint);
 
-            swap(arr, breakPoint, swappingIndex);
+            swap(nums, breakPoint - 1, swappingIndex);
 
-            reverse(arr, breakPoint + 1, n - 1);
+            reverse(nums, breakPoint, n - 1);
         } else {
 
-            reverse(arr, 0, n - 1);
+            reverse(nums, 0, n - 1);
         }
 
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(nums));
 
 
     }
