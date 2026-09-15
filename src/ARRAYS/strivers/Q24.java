@@ -76,6 +76,12 @@ public class Q24 {
             k--;
         }
 
+        while (j >= 0) {
+            arr1[k] = arr2[j];
+            j--;
+            k--;
+        }
+
         System.out.println(Arrays.toString(arr1));
     }
 

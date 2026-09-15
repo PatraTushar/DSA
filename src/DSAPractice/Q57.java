@@ -48,6 +48,7 @@ public class Q57 {
             gap = gap / 2 + gap % 2;
         }
 
+
         System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr2));
 
