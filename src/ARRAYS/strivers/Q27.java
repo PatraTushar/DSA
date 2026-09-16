@@ -67,3 +67,6 @@ Q27 {
 
     }
 }
+
+
+// formula to know the low and high range
