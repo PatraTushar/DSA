@@ -40,7 +40,7 @@ public class Q63 {
             if ((mid == 0 || mat[rowIndex][mid] > mat[rowIndex][mid - 1]) && (mid == cols - 1 || mat[rowIndex][mid] > mat[rowIndex][mid + 1])) {
 
                 return new int[]{rowIndex, mid};
-            } else if (mat[rowIndex][mid] < mat[rowIndex][mid - 1]) high = mid-1 ;
+            } else if (mat[rowIndex][mid] > mat[rowIndex][mid +1]) high = mid;
 
             else low = mid + 1;
 
@@ -49,6 +49,13 @@ public class Q63 {
 
         return new int[]{-1, -1};
     }
+
+
+
+
+
+
+
 
     public static void main(String[] args) {
 
