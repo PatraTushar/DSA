@@ -70,11 +70,11 @@ public class Operators {
 
         System.out.println(" ------------------------- ");
 
-        int n1=626262;
+        int n1 = 626262;
         while (n1 > 0) {
 
             System.out.println(n1 % 10);
-            n1= n1 / 10;
+            n1 = n1 / 10;
 
 
         }
@@ -82,14 +82,73 @@ public class Operators {
 
         System.out.println(" ----------------------- ");
 
-        int n2=123456;
+        int n2 = 123456;
         while (n2 > 0) {
 
             System.out.println(n2 % 100);
-            n2= n2 / 100;
+            n2 = n2 / 100;
 
 
         }
+
+
+        System.out.println("------------------------");
+
+        int p1 = 10;
+        p1 += 20;
+        System.out.println(p1);
+
+
+        float f=23.7f;
+        f+=10;
+        System.out.println(f);
+
+
+        char ch='c';
+        ch+=10;
+        System.out.println(ch);
+
+
+        long l=23;
+        l+=40.21;
+        System.out.println(l);
+
+
+        double d2=34.5;
+        d2+='a';
+        System.out.println(d2);
+
+
+
+        short s=23;
+        s+=20.4;
+        System.out.println(s);
+
+
+
+        char c3='e';
+        c3+=2.2;
+        System.out.println(c3);
+
+
+
+        long l1=23;
+        l1%=10;
+        System.out.println(l1);
+
+
+        long l2=55;
+        l2%=10.5;
+        System.out.println(l2);
+
+
+        String s1="Hello";
+        s1+=10;
+        System.out.println(s1);
+
+        String s3="welcome";
+        s3+='A';
+        System.out.println(s3);
 
 
 

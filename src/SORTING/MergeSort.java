@@ -30,7 +30,7 @@ public class MergeSort {
 
         for (int i = 0; i < mergeArray.length; i++) {
 
-            num[low + i] = mergeArray[i];
+            num[low ++] = mergeArray[i];
         }
 
 
