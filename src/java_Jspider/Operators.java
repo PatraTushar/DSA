@@ -151,6 +151,31 @@ public class Operators {
         System.out.println(s3);
 
 
+        System.out.println("-------------------------");
+
+
+        int a1=10;
+        System.out.println(a1+=20);
+        System.out.println(a1-=10);
+        System.out.println(a1*=2);
+        System.out.println(a1/=5);
+        System.out.println(a1%=4);
+
+
+        System.out.println(" ------------------------------ ");
+        int x=100;
+        int y=200;
+
+        System.out.println(x>y);
+        System.out.println(x<y);
+        System.out.println(x>=y);
+        System.out.println(x<=y);
+        System.out.println(x==y);
+        System.out.println(x!=y);
+
+
+
+
 
     }
 }
