@@ -28,6 +28,20 @@ public class ProgramsOnOperator {
     }
 
 
+    static void isOddOrEven(int num) {
+
+        if (num % 2 == 0) System.out.println(num + " is even number ");
+        else System.out.println(num + " is odd number ");
+    }
+
+
+    static void isDivisibleBy5And6(int num) {
+
+        if (num % 5 == 0 && num % 6 == 0) System.out.println(num+" is divisible by both  5 and 6 ");
+        else System.out.println(num+" is not divisible by both  5 and 6 ");
+    }
+
+
     public static void main(String[] args) {
 
         int number = 21;
@@ -40,6 +54,8 @@ public class ProgramsOnOperator {
         int res = findGreatestOf4Numbers(10, 3, 20, 45);
         System.out.println(" The greatest of 4 numbers is " + res);
 
+        isOddOrEven(11);
+        isDivisibleBy5And6(30);
 
     }
 }

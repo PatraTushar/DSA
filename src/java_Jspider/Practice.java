@@ -2,32 +2,46 @@ package java_Jspider;
 
 
 import java.util.Comparator;
-import java.util.TreeSet;
 
-class MyClass implements Comparator<Integer> {
-
-    @Override
-    public int compare(Integer o1, Integer o2) {
-
-        return o1.compareTo(o2);
-    }
-}
 
 public class Practice {
 
 
+    static void func() {
+
+        int a = 100;
+
+        if (a >0) {
+
+            a++;
+            System.out.println(" if block ");
+        }
+
+
+
+        else if (a >1000){
+
+            a--;
+            System.out.println(" else if block");
+        }
+
+
+
+        else {
+
+            System.out.println(" else block ");
+
+        }
+
+
+        System.out.println(a);
+    }
+
+
     public static void main(String[] args) {
 
-        TreeSet<Integer> treeSet = new TreeSet<>();
-        treeSet.add(10);
-        treeSet.add(0);
-        treeSet.add(15);
-        treeSet.add(5);
-        treeSet.add(20);
-        treeSet.add(20);
+        func();
 
-
-        System.out.println(treeSet);
 
     }
 }
