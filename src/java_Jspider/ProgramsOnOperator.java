@@ -57,5 +57,8 @@ public class ProgramsOnOperator {
         isOddOrEven(11);
         isDivisibleBy5And6(30);
 
+
+
+
     }
 }
