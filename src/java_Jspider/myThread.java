@@ -1,51 +1,56 @@
 package java_Jspider;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class myThread extends Thread {
 
-    static CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
-
+    static ConcurrentHashMap<Integer,String> map=new ConcurrentHashMap<>();
 
     @Override
     public void run() {
 
-
         try {
-            Thread.sleep(4000);
-        } catch (Exception e) {
-        }
+            Thread.sleep(2000);
+        }catch (Exception e){}
 
 
-        System.out.println(" iterating the child thread and try to modify the collection object ");
-        list.add("D");
+        map.put(4,"mehul");
 
+        System.out.println(" child thread is trying to  update the list ");
 
     }
 
     public static void main(String[] args) throws Exception {
 
+        map.put(1,"rahul");
+        map.put(2,"mohan");
+        map.put(3,"shweta");
 
-        list.add("A");
-        list.add("B");
-        list.add("C");
+        myThread t1=new myThread();
+        t1.start();
 
-        myThread t = new myThread();
-        t.start();
+        Set<Integer> key=map.keySet();
+        Iterator<Integer> it=key.iterator();
 
-        Iterator<String> it = list.iterator();
+        while (it.hasNext()){
 
-        while (it.hasNext()) {
+            Integer n=it.next();
 
-            String character = it.next();
-            System.out.println(" iterating the main thread and the object is " + character);
-            Thread.sleep(2000);
+            System.out.println(" main thread is iterating the list and want to print the names "+map.get(n));
+            Thread.sleep(3000);
+
+
         }
 
-        System.out.println(list);
+
+        System.out.println(map);
 
 
     }
+
+
 }
+
+

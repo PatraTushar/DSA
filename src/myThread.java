@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class myThread extends Thread {
 
-    static ArrayList<String> list = new ArrayList<>();
+    static CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
 
     @Override
     public void run() {
