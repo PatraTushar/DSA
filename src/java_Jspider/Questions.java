@@ -102,7 +102,7 @@ public class Questions {
 
     }
 
-    static void reverse(int num) {
+    static int reverse(int num) {
 
         int rev = 0;
 
@@ -113,13 +113,13 @@ public class Questions {
             num = num / 10;
         }
 
-        System.out.println(rev);
+        return rev;
     }
 
 
     static boolean isPalindrome(int num) {
 
-        int actualNum=num;
+        int actualNum = num;
         int rev = 0;
 
         while (num > 0) {
@@ -135,15 +135,15 @@ public class Questions {
 
     }
 
-    static int findSum(int num){
+    static int findSum(int num) {
 
-        int sum=0;
+        int sum = 0;
 
-        while (num>0){
+        while (num > 0) {
 
-            int digit=num%10;
-            sum+=digit;
-            num/=10;
+            int digit = num % 10;
+            sum += digit;
+            num /= 10;
         }
 
         return sum;
@@ -164,23 +164,118 @@ public class Questions {
     }
 
 
-        static boolean spyNumber(int num){
+    static boolean spyNumber(int num) {
 
-            int sum = findSum(num);
-            int product = findProduct(num);
+        int sum = findSum(num);
+        int product = findProduct(num);
 
-            return sum == product;
+        return sum == product;
+    }
+
+
+    static boolean harshadNumber(int num) {
+
+        int sum = findSum(num);
+
+        return num % sum == 0;
+
+
+    }
+
+    static int binaryToDecimal(int binary) {
+
+
+        int exponential = 1;
+        int sum = 0;
+
+        while (binary > 0) {
+
+            int lastDigit = binary % 10;
+
+            if (lastDigit == 1) sum += exponential;
+
+            exponential *= 2;
+            binary /= 10;
+        }
+
+        return sum;
+
+
+    }
+
+    static int findFact(int num) {
+
+        int fact = 1;
+
+        for (int i = num; i >= 1; i--) {
+
+            fact *= i;
+        }
+
+        return fact;
+    }
+
+
+    static boolean strongNumber(int num) {
+
+
+        if (num == 0) return false;
+
+        int actualNum = num;
+        int factSum = 0;
+
+        while (num > 0) {
+
+            int lastDigit = num % 10;
+            int fact = findFact(lastDigit);
+            factSum += fact;
+            num /= 10;
+
+        }
+
+        return actualNum == factSum;
+    }
+
+
+    static boolean primeOrNot(int num) {
+
+        if (num < 2) {
+            return false;
         }
 
 
-        static boolean harshadNumber(int num){
+        for (int i = 2; i * i <= num; i++) {
 
-        int sum=findSum(num);
-
-        return num%sum==0;
-
-
+            if (num % i == 0) {
+                return false;
+            }
         }
+
+        return true;
+
+
+    }
+
+    static boolean twistedPrime(int num) {
+
+        int rev = reverse(num);
+
+        return primeOrNot(num) == primeOrNot(rev);
+
+
+    }
+
+    static int findHCForGCD(int x, int y) {
+
+        while (y != 0) {
+            int rem = x % y;
+            x = y;
+            y = rem;
+        }
+
+        return x;
+    }
+
 
 
 
@@ -192,9 +287,13 @@ public class Questions {
         System.out.println(sumOfDigit(12345));
         System.out.println(productOfDigit(12345));
         findSumOfOddAndEven(123456);
-        reverse(12345);
+        System.out.println(reverse(12345));
         System.out.println(isPalindrome(12321));
         System.out.println(spyNumber(231));
+        System.out.println(binaryToDecimal(1010100));
+        System.out.println(strongNumber(145));
+        System.out.println(twistedPrime(13));
+        System.out.println(findHCForGCD(10,20));
 
 
     }
