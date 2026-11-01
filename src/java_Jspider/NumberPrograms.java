@@ -1,5 +1,7 @@
 package java_Jspider;
 
+import java.util.Scanner;
+
 public class NumberPrograms {
 
     static boolean isPalindrome(int num) {
@@ -389,7 +391,225 @@ public class NumberPrograms {
         return smallest;
     }
 
+
+    static int hcfOfTwoNumbers(int x, int y) {
+
+        while (y != 0) {
+
+            int rem = x % y;
+            x = y;
+            y = rem;
+        }
+
+        return x;
+    }
+
+    static int lcmOfTwoNumbers(int x, int y) {
+
+        return x * y / hcfOfTwoNumbers(x, y);
+
+    }
+
+
+    static int nthLargest(int num, int n) {
+
+
+        int count = 0;
+
+        for (int i = 9; i >= 0; i--) {
+
+
+            int temp = num;
+
+
+            while (temp > 0) {
+
+
+                int lastDigit = temp % 10;
+                if (lastDigit == i) {
+                    count++;
+                    break;
+                }
+                temp /= 10;
+
+
+            }
+
+            if (count == n) return i;
+
+
+        }
+
+
+        System.out.println(" we cannot find nth largest ");
+
+        return -1;
+    }
+
+
+    static int nthSmallest(int num, int n) {
+
+        return -1;
+    }
+
+
+    static String xylemOrPhloem(int num) {
+
+
+        int sumOfExtreme = 0;
+        int sumOfMean = 0;
+
+        int lastDigit = num % 10;
+        sumOfExtreme += lastDigit;
+        num /= 10;
+
+        if (num >= 100) {
+
+            while (num > 9) {
+
+                int digit = num % 10;
+                sumOfMean += digit;
+                num /= 10;
+            }
+
+
+            sumOfExtreme += num;
+
+
+        } else return " Neither Xylem Or Phloem ";
+
+
+        return sumOfExtreme == sumOfMean ? " xylem Number " : " Phloem Number ";
+
+
+    }
+
+
+    static boolean checkXylemOrPhloem(int num) {
+
+
+        int sumOfExtreme = 0;
+        int sumOfMean = 0;
+
+
+        int lastDigit = num % 10;
+        sumOfExtreme += lastDigit;
+        num /= 10;
+
+
+        if (num >= 100) {
+
+            while (num > 9) {
+
+                int digit = num % 10;
+                sumOfMean += digit;
+                num /= 10;
+            }
+
+
+            sumOfExtreme += num;
+
+
+        }
+
+        return sumOfExtreme == sumOfMean;
+    }
+
+
+    static int sumOfDigits(int num) {
+
+        int sum = 0;
+
+        while (num > 0) {
+
+            int lastDigit = num % 10;
+            sum += lastDigit;
+            num /= 10;
+        }
+
+        return sum;
+    }
+
+    static boolean magicNumber(int num) {
+
+        if (num <= 0) return false;
+
+        while (num > 9) {
+
+            num = sumOfDigits(num);
+
+
+        }
+
+        return num == 1;
+
+
+    }
+
+
+    static boolean magicNumberOptimized(int num) {
+
+        if (num <= 0) return false;
+
+        return num % 9 == 1;
+    }
+
+
+    static boolean checkMagicNumber(int num) {
+
+        int sum = 0;
+
+        while (num > 0 || sum > 9) {
+
+            if (num == 0) {
+
+                num = sum;
+                sum = 0;
+            }
+
+            int lastDigit = num % 10;
+            sum += lastDigit;
+            num /= 10;
+
+
+        }
+
+
+        return sum == 1;
+    }
+
+
+    static int findSumOfSquareOfDigit(int num) {
+
+        int sum = 0;
+
+        while (num > 0) {
+
+            int lastDigit = num % 10;
+            sum += lastDigit * lastDigit;
+            num /= 10;
+        }
+
+        return sum;
+    }
+
+
+    static String checkHappyOrSad(int num) {
+
+        int sumOfSquare = 0;
+
+        while (num !=1 && num!=4) {
+
+            num=findSumOfSquareOfDigit(num);
+
+        }
+
+        return num==1?"Happy Number":"Sad Number";
+
+    }
+
     public static void main(String[] args) {
+
 
         System.out.println(isPalindrome(121));
         System.out.println(isPrime(13));
@@ -399,6 +619,22 @@ public class NumberPrograms {
         System.out.println(smallestInDigit(21846));
         System.out.println(largestInDigit(21459));
 
+        System.out.println(lcmOfTwoNumbers(12, 15));
+
+
+        int num = 1234;
+
+        if (num < 100) {
+
+            System.out.println(" Neither xylem or phloem ");
+
+        } else if (checkXylemOrPhloem(num)) System.out.println(" xylem number ");
+
+
+        else System.out.println(" phloem number");
+
+
+        System.out.println(checkHappyOrSad(19));
 
     }
 }

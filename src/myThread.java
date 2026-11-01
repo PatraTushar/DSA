@@ -1,46 +1,24 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+public class myThread {
 
-public class myThread extends Thread {
 
-    static CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+    static int f2() {
 
-    @Override
-    public void run() {
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-        }
-
-        System.out.println(" child thread is updating the list ");
-        list.add("d");
+        return 3;
     }
 
-    public static void main(String[] args) throws InterruptedException {
-
-        list.add("a");
-        list.add("b");
-        list.add("c");
-
-        myThread t = new myThread();
-        t.start();
-
-        Iterator<String> itr = list.iterator();
-
-        while (itr.hasNext()) {
-
-            String s = itr.next();
-            System.out.println(" main thread is iterating the list and the current object is : " + s);
-            Thread.sleep(2000);
-        }
-
-        System.out.println(list);
+    static void f1(int a, int b) {
 
 
+        System.out.println(a + b);
+    }
+
+    public static void main(String[] args) {
 
 
+        f1(100,f2());
 
     }
+
+
 }
+
