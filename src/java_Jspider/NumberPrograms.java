@@ -598,14 +598,59 @@ public class NumberPrograms {
 
         int sumOfSquare = 0;
 
-        while (num !=1 && num!=4) {
+        while (num != 1 && num != 4) {
 
-            num=findSumOfSquareOfDigit(num);
+            num = findSumOfSquareOfDigit(num);
 
         }
 
-        return num==1?"Happy Number":"Sad Number";
+        return num == 1 ? "Happy Number" : "Sad Number";
 
+    }
+
+
+    static int sortDigitsInAsc(int num) {
+
+        int res = 0;
+
+        for (int i = 1; i <= 9; i++) {
+
+            int temp = num;
+
+            while (temp > 0) {
+
+                int lastDigit = temp % 10;
+                if (lastDigit == i) res = res * 10 + i;
+                temp /= 10;
+
+            }
+
+
+        }
+
+        return res;
+    }
+
+
+    static int sortDigitsInDesc(int num) {
+
+        int res = 0;
+
+        for (int i = 9; i >= 0; i--) {
+
+            int temp = num;
+
+            while (temp > 0) {
+
+                int lastDigit=temp%10;
+                if (lastDigit==i) res=res*10+i;
+                temp/=10;
+
+
+            }
+        }
+
+        return res;
     }
 
     public static void main(String[] args) {
@@ -635,6 +680,8 @@ public class NumberPrograms {
 
 
         System.out.println(checkHappyOrSad(19));
+        System.out.println(sortDigitsInAsc(91425));
+        System.out.println(sortDigitsInDesc(41295));
 
     }
 }
