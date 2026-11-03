@@ -56,7 +56,7 @@ public class NumberSeriesPrograms {
 
         }
 
-        System.out.println(res.trim();
+        System.out.println(res.trim());
     }
 
 
