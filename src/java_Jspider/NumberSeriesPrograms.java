@@ -80,12 +80,122 @@ public class NumberSeriesPrograms {
 
     }
 
+    static int rev(int num) {
+
+
+        int rev = 0;
+
+        while (num > 0) {
+
+            int lastDigit = num % 10;
+            rev = rev * 10 + lastDigit;
+            num /= 10;
+
+        }
+
+        return rev;
+    }
+
+    static boolean checkPalindrome(int num) {
+
+        return num == rev(num);
+    }
+
+    static void palindromeSeries(int n) {
+
+        int count = 0;
+
+        for (int i = 10; ; i++) {
+
+
+            if (checkPalindrome(i)) {
+
+                System.out.print(i + " ");
+                count++;
+
+                if (count == n) break;
+            }
+        }
+
+
+    }
+
+    static boolean isPrime(int num) {
+
+        if (num < 2) return false;
+
+        for (int i = 2; i * i <= num; i++) {
+
+            if (num % i == 0) return false;
+        }
+
+
+        return true;
+    }
+
+
+    static void primeNumberSeries(int n) {
+
+        if (n <= 0) return;
+
+        int count = 0;
+
+        for (int i = 1; ; i++) {
+
+            if (isPrime(i)) {
+
+                System.out.print(i + " ");
+                count++;
+
+                if (count == n) break;
+            }
+        }
+
+
+    }
+
+
+    static boolean twistedPrimeNumber(int num) {
+
+        int rev = rev(num);
+
+        boolean numberIsPrime = isPrime(num);
+        boolean revIsPrime = isPrime(rev);
+
+        return numberIsPrime && revIsPrime;
+
+
+    }
+
+    static void twistedPrimeNumberSeries(int n) {
+
+        int count=0;
+
+        for (int i = 10; ; i++) {
+
+            if (twistedPrimeNumber(i)){
+
+                System.out.print(i+" ");
+                count++;
+
+                if (count==n) break;
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
         fibonacciSeries(5);
         tribonacciSeries(7);
         lucasSeries(8);
         reverseOfFibonacci(5);
+
+        palindromeSeries(10);
+        System.out.println();
+        primeNumberSeries(10);
+        System.out.println();
+        twistedPrimeNumberSeries(10);
 
 
     }

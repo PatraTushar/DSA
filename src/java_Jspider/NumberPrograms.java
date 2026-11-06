@@ -459,27 +459,38 @@ public class NumberPrograms {
         int sumOfExtreme = 0;
         int sumOfMean = 0;
 
-        int lastDigit = num % 10;
-        sumOfExtreme += lastDigit;
+        if (num < 100) return "Not Xylem Or Phloem";
+
+        sumOfExtreme += num % 10;
         num /= 10;
 
-        if (num >= 100) {
+        while (num > 9) {
 
-            while (num > 9) {
+            sumOfMean += num % 10;
+            num /= 10;
+        }
 
-                int digit = num % 10;
-                sumOfMean += digit;
-                num /= 10;
-            }
-
-
-            sumOfExtreme += num;
+        sumOfExtreme += num;
 
 
-        } else return " Neither Xylem Or Phloem ";
+        return sumOfExtreme == sumOfMean ? "Xylem Number" : "Phloem Number";
 
 
-        return sumOfExtreme == sumOfMean ? " xylem Number " : " Phloem Number ";
+    }
+
+
+
+    static boolean isPerfectSquare(int num) {
+
+        if (num < 0) return false;
+
+        for (int i = 1; ; i++) {
+
+            int res = i * i;
+            if (res == num) return true;
+
+            else if (res > num) return false;
+        }
 
 
     }
@@ -596,7 +607,7 @@ public class NumberPrograms {
 
     static String checkHappyOrSad(int num) {
 
-        int sumOfSquare = 0;
+
 
         while (num != 1 && num != 4) {
 
@@ -642,15 +653,43 @@ public class NumberPrograms {
 
             while (temp > 0) {
 
-                int lastDigit=temp%10;
-                if (lastDigit==i) res=res*10+i;
-                temp/=10;
+                int lastDigit = temp % 10;
+                if (lastDigit == i) res = res * 10 + i;
+                temp /= 10;
 
 
             }
         }
 
         return res;
+    }
+
+
+    static String palindromic(int num) {
+
+        int actualNum = num;
+        int rev = reverse(num);
+        int carry = 0;
+
+        int sum = 0;
+
+        while (num > 0) {
+
+            sum += num % 10 + rev % 10 + carry;
+            num /= 10;
+
+            if (num == 0 && isPalindrome(num)) return "repeated repetation is palindromic";
+
+            else {
+                num = sum;
+                rev = reverse(num);
+            }
+
+        }
+
+
+        return "";
+
     }
 
     public static void main(String[] args) {
@@ -682,6 +721,7 @@ public class NumberPrograms {
         System.out.println(checkHappyOrSad(19));
         System.out.println(sortDigitsInAsc(91425));
         System.out.println(sortDigitsInDesc(41295));
+        System.out.println(palindromic(1234));
 
     }
 }
