@@ -196,6 +196,9 @@ public class NumberSeriesPrograms {
         primeNumberSeries(10);
         System.out.println();
         twistedPrimeNumberSeries(10);
+        System.out.println();
+
+        reverseOfFibonacci(8);
 
 
     }
