@@ -38,3 +38,9 @@ public class myThreadDemoC {
 // and the run() method is never executed.
 // There is only one thread i.e. the main thread.
 
+
+//"When we override the start() method of the Thread class and call obj.start(),
+// the overridden start() method gets executed instead of the original start() method.
+// Since the original start() method is not called, no new thread is created.
+// Therefore, only the main thread exists, and the run() method is not automatically executed."
+
