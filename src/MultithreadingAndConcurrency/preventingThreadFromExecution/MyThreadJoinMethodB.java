@@ -1,6 +1,7 @@
 package MultithreadingAndConcurrency.preventingThreadFromExecution;
 
-// case: 3-> If main thread calls join() method on child thread object and child thread calls join() method on main thread object then both thread will be wait forever and the program will be stucked/paused.This is something like Deadlock
+// case: 3-> If main thread calls join() method on child thread object and child thread calls join() method on main thread object
+// then both thread will be wait forever and the program will be stucked/paused.This is something like Deadlock
 class myThreadC extends Thread {
 
     static Thread mt;
