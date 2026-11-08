@@ -1,21 +1,31 @@
 public class myThread extends Thread {
 
-    public void start(){
-
-        super.start();
-        System.out.println(" start method  ");
-    }
-
+    @Override
     public void run() {
 
-        System.out.println("run method");
+        for (int i = 0; i < 10; i++) {
+
+            System.out.println(" child thread ");
+
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+            }
+        }
     }
 
     public static void main(String[] args) throws Exception {
 
         myThread t = new myThread();
         t.start();
-        System.out.println("main method");
 
+        t.join();
+
+        for (int i = 0; i < 10; i++) {
+
+            System.out.println(" main thread ");
+        }
     }
 }
+
+

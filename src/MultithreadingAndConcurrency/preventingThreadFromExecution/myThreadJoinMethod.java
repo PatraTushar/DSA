@@ -46,3 +46,16 @@ class myThreadA extends Thread {
 
         }
     }
+
+// myThreadA extends Thread class, hence obj represents a separate child thread when started using start().
+// Main thread creates and starts this child thread.
+
+//When the programmer calls start(), JVM starts a new thread of execution.
+//The JVM internally executes the run() method on that new thread.
+//The programmer is responsible for overriding run() to define the task that the child thread should perform.
+
+// Main thread: JVM automatically creates the main thread when the program starts executing the main() method.
+// The programmer does not need to create it explicitly.
+
+
+//Child thread: The programmer needs to create a thread object and call start() to start a new thread of execution.
