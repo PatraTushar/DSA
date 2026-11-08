@@ -48,3 +48,19 @@ public class myThreadYieldDemo {
 //✔ It can accept it → switch to another thread
 //✔ It can ignore it → continue running the same thread
 //✔ It is completely JVM + OS dependent
+
+
+
+
+
+// myThread t = new myThread();
+//- At this point, the child thread object is created.
+//- But the child thread has not started execution yet.
+//- Its state is NEW.
+
+
+//t.start();
+//- At this point, the child thread becomes eligible for execution.
+//- JVM thread scheduler decides when it gets CPU time.
+//- Its run() method starts executing.
+
