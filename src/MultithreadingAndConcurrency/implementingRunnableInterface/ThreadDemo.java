@@ -35,3 +35,9 @@ public class ThreadDemo {
 // run() method is executed by child thread
 // if I don't pass obj in the bracket of object creation  Thread t1 = new Thread();  then  “Thread class run method is called internally”
 // if I  pass obj in the bracket of object creation  Thread t1 = new Thread(obj);  then  myRunnable  class run method is called  where myRunnable is a userDefined class
+
+
+// Thread t = new Thread(r);
+// Here, the Thread object (child thread) is created, but it has not started execution yet.
+// It is in the NEW state.
+// "In multithreading, we cannot determine the exact output because the execution order depends on the thread scheduler and JVM."
