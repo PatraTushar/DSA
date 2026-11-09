@@ -1,5 +1,6 @@
 public class myRunnable implements Runnable {
 
+
     @Override
     public void run() {
 
@@ -9,11 +10,15 @@ public class myRunnable implements Runnable {
         }
     }
 
+
     public static void main(String[] args) {
 
+
         myRunnable r = new myRunnable();
-        Thread t = new Thread(r);
-        t.start();
+        Thread t1 = new Thread(r);
+
+        t1.start();
+
 
         for (int i = 0; i < 5; i++) {
 
@@ -24,11 +29,4 @@ public class myRunnable implements Runnable {
     }
 }
 
-
-   // Thread t = new Thread(r);
-// Here, the Thread object (child thread) is created, but it has not started execution yet.
-// It is in the NEW state.
-
-
-// "In multithreading, we cannot determine the exact output because the execution order depends on the thread scheduler and JVM."
 
