@@ -58,3 +58,5 @@ public class myThreadInterruptDemo {
 }
 // if we comment Line 1 then main thread won't interrupt child thread op is "End of main Thread" followed by 10 times "I am lazy thread"
 // if we won't comment Line 1 then main thread  interrupt child thread op is "End of main Thread"  "I am lazy thread"  "I got interrupted"
+
+

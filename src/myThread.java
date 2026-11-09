@@ -1,29 +1,39 @@
-public class myRunnable implements Runnable {
+public class myThread extends Thread {
+
+    static Thread mt;
 
 
     @Override
     public void run() {
 
-        for (int i = 0; i < 5; i++) {
+        for (int a = 1; a <= 100; a++) {
 
-            System.out.println(" child thread ");
+            System.out.println(" child thread " + a);
         }
+
+        try {
+
+            for (int i = 1; i <= 5; i++) {
+
+                System.out.println(" lazy thread " + i);
+                Thread.sleep(3000);
+
+            }
+        } catch (InterruptedException e) {
+
+            System.out.println(" i got interrupted ");
+        }
+
+
     }
 
-
-    public static void main(String[] args) {
-
-
-        myRunnable r = new myRunnable();
-        Thread t1 = new Thread(r);
-
-        t1.start();
+    public static void main(String[] args) throws Exception {
 
 
-        for (int i = 0; i < 5; i++) {
-
-            System.out.println(" main thread ");
-        }
+        myThread t = new myThread();
+        t.start();
+        t.interrupt();
+        System.out.println(" End Of Main ");
 
 
     }

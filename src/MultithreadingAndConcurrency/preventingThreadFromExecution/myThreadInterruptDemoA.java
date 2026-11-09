@@ -57,3 +57,7 @@ public class myThreadInterruptDemoA {
         System.out.println("End of main thread");
     }
 }
+
+
+// "When we call the interrupt method, the interrupt status of the target thread becomes true.
+// If the thread subsequently enters a sleep or wait state, it gets interrupted by throwing InterruptedException."
