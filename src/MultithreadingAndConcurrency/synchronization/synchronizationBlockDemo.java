@@ -91,13 +91,11 @@ public class synchronizationBlockDemo {
 
 //this refers to the current DisplayD object on which wish() is called, and the intrinsic (monitor) lock of that same object is used for synchronization.
 
-
-// t1 enters synchronized block → acquires lock
-//t2 tries to enter → blocked
-//t1 completes synchronized block → releases lock
-//Now t1 is outside the synchronized block → it can run concurrently with t2
-//t2 acquires the lock → executes the synchronized block
-
+// T1 enters synchronized block → acquires the lock.
+// T2 tries to enter → waits for the lock.
+// T1 exits synchronized block → releases the lock.
+// T2 acquires the lock → executes synchronized block.
+// Meanwhile, T1 can execute code outside the block concurrently with T2.
 
 // Inside synchronized block → only one thread at a time
 //Outside synchronized block → multiple threads can run concurrently
