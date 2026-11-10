@@ -78,8 +78,11 @@ public class Main {
 //  👉 The output is NOT deterministic
 //
 //🧠 Why?
-//
 //Because of thread scheduling (controlled by OS + JVM)
-//
 //You started t1, t2, t3
 //But who runs first is NOT guaranteed
+
+
+// // JVM assigns the default thread name (Thread-0, Thread-1, Thread-2...)
+//// when the Thread object is created, not when start() is called.
+//// The numbering follows the thread creation order.
