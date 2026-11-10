@@ -68,3 +68,11 @@ public class synchronizedDemoB {
 //- Each thread has its own execution stack.
 //- Threads can share the same object or operate on different objects.
 //- Synchronization depends on the lock being acquired, not on the thread class.
+
+
+
+ // A static synchronized method acquires the class-level lock (DisplayB.class),
+// not the individual object lock.
+// Therefore, even if multiple objects of the same class are created,
+// only one thread at a time can execute the static synchronized method.
+// Other threads must wait until the lock is released.
