@@ -54,12 +54,12 @@ class DisplayD {
 
 }
 
-class myThreadD extends Thread {
+class myThread1 extends Thread {
 
     DisplayD d;
     String name;
 
-    myThreadD(DisplayD d, String name) {
+    myThread1(DisplayD d, String name) {
 
         this.d = d;
         this.name = name;
@@ -78,8 +78,8 @@ public class synchronizationBlockDemo {
     public static void main(String[] args) {
 
         DisplayD obj = new DisplayD();
-        myThreadD t1 = new myThreadD(obj, "Dhoni");
-        myThreadD t2 = new myThreadD(obj, "Yuvraj");
+        myThread1 t1 = new myThread1(obj, "Dhoni");
+        myThread1 t2 = new myThread1(obj, "Yuvraj");
 
         t1.start();
         t2.start();
