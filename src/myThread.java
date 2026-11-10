@@ -1,40 +1,61 @@
-public class myThread extends Thread {
+public class myThread {
 
-    static Thread mt;
+    static boolean checkPowOf2(long num) {
 
+        long pow = 1;
 
-    @Override
-    public void run() {
+        while (pow < num) {
 
-        for (int a = 1; a <= 100; a++) {
+            pow *= 2;
 
-            System.out.println(" child thread " + a);
+            if (pow == num) return true;
         }
 
-        try {
-
-            for (int i = 1; i <= 5; i++) {
-
-                System.out.println(" lazy thread " + i);
-                Thread.sleep(3000);
-
-            }
-        } catch (InterruptedException e) {
-
-            System.out.println(" i got interrupted ");
-        }
-
-
+        return false;
     }
 
-    public static void main(String[] args) throws Exception {
+    static long findNearestPower(long num) {
+
+        long pow = 1;
+
+        while (pow <= num) {
+
+            pow = pow * 2;
+        }
+
+        return pow / 2;
+    }
+
+    static String counterGame(long n) {
+
+        long count = 0;
 
 
-        myThread t = new myThread();
-        t.start();
-        t.interrupt();
-        System.out.println(" End Of Main ");
+        while (n > 1) {
 
+            if (checkPowOf2(n)) {
+
+                n = n / 2;
+
+            } else {
+
+
+                n -= findNearestPower(n);
+
+
+            }
+
+            count++;
+
+
+        }
+
+
+        return count % 2 == 1 ? "Louise" : "Richard";
+    }
+
+
+    public static void main(String[] args) {
 
     }
 }
