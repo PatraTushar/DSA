@@ -1,93 +1,62 @@
 
-class Test {
+class Display {
 
-    synchronized void syncMethod() {
+    synchronized void wish(String name) {
 
-        System.out.println(Thread.currentThread().getName() + " entered sync method ");
+        for (int i = 0; i < 10; i++) {
 
-        try {
-            Thread.sleep(5000);
-        } catch (Exception e) {
+            System.out.print(" Good Morning ");
+
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+            }
+
+            System.out.println(name);
         }
-
-        System.out.println(Thread.currentThread().getName() + " exit sync method ");
-    }
-
-
-    void normalMethod() {
-
-        System.out.println(Thread.currentThread().getName() + "i am a normal method");
     }
 }
 
 
-class myThread1 extends Thread {
+class myThread extends Thread {
 
-    Test obj;
+    Display d;
+    String name;
 
-    myThread1(Test obj) {
-        this.obj = obj;
-    }
+    myThread(Display d, String name) {
 
-    @Override
-    public void run() {
-
-        obj.syncMethod();
-    }
-
-
-}
-
-
-class myThread2 extends Thread {
-
-    Test obj;
-
-    myThread2(Test obj) {
-
-        this.obj = obj;
+        this.d = d;
+        this.name = name;
     }
 
 
     @Override
     public void run() {
 
-        obj.syncMethod();
-    }
-
-
-}
-
-class myThread3 extends Thread {
-
-    Test obj;
-
-    myThread3(Test obj) {
-
-        this.obj = obj;
-    }
-
-    @Override
-    public void run() {
-        obj.normalMethod();
+        d.wish(name);
     }
 }
-
 
 public class mainClass {
 
 
     public static void main(String[] args) {
 
-        Test obj = new Test();
+        Display d = new Display();
 
-        myThread1 t1 = new myThread1(obj);
-        myThread2 t2 = new myThread2(obj);
-        myThread3 t3 = new myThread3(obj);
+        myThread t1 = new myThread(d, "virat");
+      //  System.out.println(t1.getName());
+        myThread t2 = new myThread(d, "rohit");
+      //  System.out.println(t2.getName());
+        myThread t3 = new myThread(d, "rahul");
+      //  System.out.println(t2.getName());
+        myThread t4 = new myThread(d, "hardik");
+        //System.out.println(t4.getName());
 
         t1.start();
         t2.start();
         t3.start();
+        t4.start();
 
 
     }

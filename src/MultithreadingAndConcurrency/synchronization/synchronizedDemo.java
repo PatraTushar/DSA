@@ -64,3 +64,7 @@ public class synchronizedDemo {
 
 // If we are not declaring wish() method as synchronized then both threads will be executed concurrently and hence we will get irregular output
 // if we are declaring wish() method as synchronized then at a time only one thread is allowed to execute the wish() method on the given display object hence we will get regular output
+
+
+// // At the time of thread object creation, instance variables are initialized
+//// When start() is called, a new thread starts and executes the run() method when scheduled.
