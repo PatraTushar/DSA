@@ -8,22 +8,22 @@ public class Q6 {
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
-        int largest = Integer.MIN_VALUE;
-        int secLargest = Integer.MIN_VALUE;
+        int firstLargest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
 
         for (int ele : arr) {
 
-            if (ele > largest) {
-                secLargest = largest;
-                largest = ele;
-            } else if (ele > secLargest && ele != largest) {
+            if (ele > firstLargest) {
 
-                secLargest = ele;
+                secondLargest = firstLargest;
+                firstLargest = ele;
+            } else if (ele < firstLargest && ele > secondLargest) {
 
+                secondLargest = ele;
             }
-
         }
-        return secLargest;
+
+        return secondLargest == Integer.MIN_VALUE ? -1 : secondLargest;
     }
 
     public static void main(String[] args) {
@@ -32,6 +32,9 @@ public class Q6 {
 
         int[] arr = {9, 8, 9, 6, 9, 5, 8};
         System.out.println(" second largest is :" + secondLargest(arr));
+
+        int[] num={5,5,5,5};
+        System.out.println(secondLargest(num));
 
 
     }
