@@ -57,3 +57,14 @@ public class synchronizedDemoB {
 
 
 // Since there is only one DisplayB class object, the first thread that enters the static synchronized method acquires the class-level lock, and other threads must wait until the lock is released.
+
+
+
+// 1. Same class: Multiple Thread objects can be created from the same Thread subclass.
+//2. Different classes: Multiple Thread objects can be created from different Thread subclasses.
+
+//In both cases:
+//- Each Thread object represents an individual thread.
+//- Each thread has its own execution stack.
+//- Threads can share the same object or operate on different objects.
+//- Synchronization depends on the lock being acquired, not on the thread class.
