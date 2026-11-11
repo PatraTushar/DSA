@@ -1,41 +1,60 @@
 
+class Display {
 
-class myThread extends Thread {
+    synchronized void syncMethod() {
 
+        System.out.println(Thread.currentThread().getName() + " entered sync method ");
 
-    String name;
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+        }
 
-    myThread(  String name) {
+        System.out.println(Thread.currentThread().getName() + " exit sync method ");
 
-
-        this.name = name;
     }
 
 
+    void normalMethod() {
 
+        System.out.println(Thread.currentThread().getName() + " executing normal method ");
+    }
 }
+
+
+class myThread1 extends Thread {
+
+    Display d;
+    boolean isSynchronized;
+
+    myThread1(Display d,boolean isSynchronized) {
+        this.d = d;
+        this.isSynchronized=isSynchronized;
+    }
+
+    @Override
+    public void run() {
+
+        if (isSynchronized) {
+            d.syncMethod();
+        } else d.normalMethod();
+    }
+}
+
 
 public class mainClass {
 
 
     public static void main(String[] args) {
 
-
-
-
-        myThread t1 = new myThread( "virat");
-        System.out.println(t1.getName());
-        myThread t2 = new myThread( "rohit");
-       System.out.println(t2.getName());
-        myThread t3 = new myThread( "rahul");
-       System.out.println(t3.getName());
-        myThread t4 = new myThread( "hardik");
-        System.out.println(t4.getName());
+        Display d = new Display();
+        myThread1 t1 = new myThread1(d,true);
+        myThread1 t2 = new myThread1(d,true);
+        myThread1 t3 = new myThread1(d,false);
 
         t1.start();
         t2.start();
         t3.start();
-        t4.start();
 
 
     }
