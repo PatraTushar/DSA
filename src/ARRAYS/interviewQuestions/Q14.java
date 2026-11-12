@@ -79,7 +79,7 @@ public class Q14 {
 
     public static void main(String[] args) {
 
-        // Q: move all the even integers at teh beginning followed by all the odd integers
+        // Q: move all the even integers at the beginning followed by all the odd integers
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)

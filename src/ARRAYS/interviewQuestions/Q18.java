@@ -2,27 +2,31 @@ package ARRAYS.interviewQuestions;
 
 public class Q18 {
 
-    static boolean subArrayWithEqualSum(int[] arr) {
+    static boolean subArrayWithEqualSum(int[] nums) {
 
         //Time Complexity (TC): O(n)
         //Space Complexity (SC): O(1)
 
+        int n = nums.length;
         int totalSum = 0;
-        for (int ele : arr) {
+
+        for (int ele : nums) {
+
             totalSum += ele;
         }
 
-        int currSum = 0;
-        for (int ele : arr) {
+        int prefixSum = 0;
 
-            currSum += ele;
+        for (int i = 0; i < n - 1; i++) {
 
-            if (currSum == (totalSum - currSum)) return true;
+            prefixSum += nums[i];
+            int suffixSum = totalSum - prefixSum;
+
+            if (prefixSum == suffixSum) return true;
 
         }
 
         return false;
-
 
     }
 
