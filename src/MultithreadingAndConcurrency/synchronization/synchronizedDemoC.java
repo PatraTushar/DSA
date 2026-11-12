@@ -77,3 +77,8 @@ public class synchronizedDemoC {
 
     }
 }
+
+
+// All synchronized instance methods of the same object share a common object-level lock.
+// Therefore, if one thread acquires that lock, other threads cannot execute
+// any synchronized instance method on that same object until the lock is released.
