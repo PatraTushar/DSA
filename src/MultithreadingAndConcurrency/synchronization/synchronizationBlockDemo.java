@@ -99,3 +99,12 @@ public class synchronizationBlockDemo {
 
 // Inside synchronized block → only one thread at a time
 //Outside synchronized block → multiple threads can run concurrently
+
+
+// Both threads are using the same DisplayD object.
+// Whichever thread enters this synchronized block first
+// acquires the lock of the current DisplayD object (this).
+// The other thread must wait until the holding thread
+// exits the synchronized block and releases the lock.
+// After the lock is released, the waiting thread can acquire
+// the same object's lock and execute the synchronized block.
