@@ -104,6 +104,9 @@ public class Q2 {
         int[] arr1 = {1, 1, 2, 3, 4, 5};
         int[] arr2 = {2, 3, 4, 4, 5};
 
+        int[] a1 = {1, 3, 9, 10, 19};
+        int[] a2 = {1, 9, 9, 12, 14};
+
         Set<Integer> Ans = union(arr1, arr2);
         System.out.println(Ans);
 
@@ -113,3 +116,6 @@ public class Q2 {
 
     }
 }
+
+
+// Union = Combine both arrays and remove duplicate elements.
