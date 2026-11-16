@@ -170,3 +170,11 @@ public class Q3 {
 
     }
 }
+
+
+// intersection
+
+//Compare elements from both arrays.
+//Find the elements that are present in both arrays.
+//Ignore elements that are not common.
+//Keep each common element only once.

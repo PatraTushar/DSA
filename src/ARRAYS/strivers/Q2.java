@@ -119,3 +119,8 @@ public class Q2 {
 
 
 // Union = Combine both arrays and remove duplicate elements.
+
+
+// Take all elements from both arrays.
+//Remove duplicates.
+//Keep each element only once.
