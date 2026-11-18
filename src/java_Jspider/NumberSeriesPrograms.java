@@ -9,6 +9,7 @@ public class NumberSeriesPrograms {
         int b = 1;
 
 
+
         for (int i = 0; i < n; i++) {
 
             System.out.print(a + " ");
@@ -189,6 +190,7 @@ public class NumberSeriesPrograms {
         fibonacciSeries(5);
         tribonacciSeries(7);
         lucasSeries(8);
+        System.out.println("------------------------------------------------------------");
         reverseOfFibonacci(5);
 
         palindromeSeries(10);

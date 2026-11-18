@@ -392,6 +392,43 @@ public class NumberPrograms {
     }
 
 
+    static int decimalToBinaryOptimized(int num) {
+
+        int binary = 0;
+        int place = 1;
+
+        while (num > 0) {
+
+            int rem = num % 2;
+            binary += rem * place;
+
+            place *= 10;
+            num /= 2;
+        }
+
+        return binary;
+    }
+
+
+    static int binaryToDecimalOptimized(int num) {
+
+        int decimal=0;
+        int power=1;
+
+        while (num>0){
+
+            int rem=num%10;
+
+            decimal+=rem*power;
+            power*=2;
+
+            num/=10;
+        }
+
+        return decimal;
+    }
+
+
     static int hcfOfTwoNumbers(int x, int y) {
 
         while (y != 0) {
@@ -403,6 +440,13 @@ public class NumberPrograms {
 
         return x;
     }
+
+
+    static int hcfOf3Numbers(int a,int b,int c){
+
+        return hcfOfTwoNumbers(hcfOfTwoNumbers(a,b),c);
+    }
+
 
     static int lcmOfTwoNumbers(int x, int y) {
 
@@ -479,7 +523,6 @@ public class NumberPrograms {
     }
 
 
-
     static boolean isPerfectSquare(int num) {
 
         if (num < 0) return false;
@@ -493,6 +536,28 @@ public class NumberPrograms {
         }
 
 
+    }
+
+    static boolean isPerfectSquareOptimized(int num) {
+
+        if (num < 0) return false;
+
+        int low = 0;
+        int high = num;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+            long square = (long) mid * mid;
+
+            if (square == num) return true;
+
+            else if (square < num) low = mid + 1;
+
+            else high = mid - 1;
+        }
+
+        return false;
     }
 
 
@@ -606,7 +671,6 @@ public class NumberPrograms {
 
 
     static String checkHappyOrSad(int num) {
-
 
 
         while (num != 1 && num != 4) {
