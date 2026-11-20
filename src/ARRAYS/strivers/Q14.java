@@ -68,5 +68,9 @@ public class Q14 {
         int[] ans = rearrange(arr);
         System.out.println(Arrays.toString(ans));
 
+        int[] num={-4,1,-3,-10,2,-8};
+        int[] ans1 = rearrange(num);
+        System.out.println(Arrays.toString(ans1));
+
     }
 }
